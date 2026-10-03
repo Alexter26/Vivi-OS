@@ -7,6 +7,7 @@
 <title>ViviOS - Para Mi Amor ❤️</title>
 
 <style>
+
 :root{
   --accent:#ff2d55;
   --accent2:#ff6b8a;
@@ -23,7 +24,8 @@
   font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
 }
 
-html,body{
+html,
+body{
   width:100%;
   height:100%;
   overflow:hidden;
@@ -38,461 +40,479 @@ body{
   color:var(--text);
 }
 
-/* =========================
-   LAPTOP INTRO
-========================= */
+
+/* =====================================================
+   INTRO PORTÁTIL
+====================================================== */
 
 #laptop-intro{
   position:fixed;
   inset:0;
-  z-index:999999;
+  z-index:100000;
   display:flex;
   align-items:center;
   justify-content:center;
   overflow:hidden;
   background:
     radial-gradient(
-      circle at 50% 42%,
-      #4b294b 0%,
-      #241725 38%,
-      #0d0b11 75%,
-      #050509 100%
+      circle at 50% 40%,
+      #4a294f 0%,
+      #241629 38%,
+      #0c0a10 100%
     );
   opacity:1;
   visibility:visible;
-  pointer-events:auto;
+  transition:
+    opacity .9s ease,
+    visibility .9s ease;
 }
 
-#laptop-intro.hide{
-  animation:introFade .9s ease forwards;
+#laptop-intro.finish{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+#laptop-intro::before{
+  content:"";
+  position:absolute;
+  width:700px;
+  height:700px;
+  border-radius:50%;
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,80,125,.18),
+      transparent 65%
+    );
+  filter:blur(25px);
   pointer-events:none;
 }
 
 .laptop-scene{
   position:relative;
-  width:560px;
-  height:400px;
+  width:680px;
+  height:560px;
   display:flex;
-  align-items:center;
+  align-items:flex-end;
   justify-content:center;
   perspective:1400px;
-  transform:scale(.9);
+  transform-style:preserve-3d;
+}
+
+.laptop-shadow{
+  position:absolute;
+  bottom:32px;
+  left:50%;
+  width:570px;
+  height:55px;
+  transform:translateX(-50%);
+  border-radius:50%;
+  background:rgba(0,0,0,.65);
+  filter:blur(22px);
+  opacity:0;
+  transition:opacity .8s ease;
+}
+
+#laptop-intro.play .laptop-shadow{
+  opacity:1;
 }
 
 .laptop{
   position:relative;
-  width:560px;
-  height:330px;
+  width:590px;
+  height:465px;
   transform-style:preserve-3d;
-  transform:rotateX(3deg);
-  will-change:transform;
+  transform:translateY(25px);
 }
 
-/* Luz detrás del portátil */
-
-.laptop::before{
-  content:"";
-  position:absolute;
-  left:50%;
-  top:45%;
-  width:420px;
-  height:300px;
-  transform:translate(-50%,-50%);
-  border-radius:50%;
-  background:radial-gradient(
-    ellipse,
-    rgba(255,45,85,.22),
-    rgba(255,45,85,.07) 40%,
-    transparent 72%
-  );
-  filter:blur(20px);
-  pointer-events:none;
-  z-index:0;
-}
-
-/* Sombra */
-
-.laptop::after{
-  content:"";
-  position:absolute;
-  left:50%;
-  bottom:-38px;
-  width:500px;
-  height:32px;
-  transform:translateX(-50%);
-  border-radius:50%;
-  background:rgba(0,0,0,.58);
-  filter:blur(18px);
-  opacity:.85;
-  z-index:0;
-}
-
-/* =========================
-   BASE
-========================= */
+/* =====================================================
+   BASE DEL PORTÁTIL
+====================================================== */
 
 .laptop-base{
   position:absolute;
-  left:0;
-  bottom:0;
-  width:100%;
-  height:40px;
-  border-radius:0 0 20px 20px;
+  left:15px;
+  bottom:55px;
+  width:560px;
+  height:52px;
+  border-radius:
+    0 0
+    24px 24px;
   background:
     linear-gradient(
       180deg,
-      #eeeeF2 0%,
-      #c9c9d0 45%,
-      #9999a2 100%
+      #dcdde0 0%,
+      #bfc1c5 50%,
+      #999ba0 100%
     );
-  border:1px solid rgba(255,255,255,.5);
   box-shadow:
-    0 20px 35px rgba(0,0,0,.42),
-    inset 0 1px 2px rgba(255,255,255,.95);
-  transform:rotateX(12deg);
-  transform-origin:bottom center;
-  z-index:2;
+    0 12px 25px rgba(0,0,0,.45),
+    inset 0 1px rgba(255,255,255,.9),
+    inset 0 -2px rgba(0,0,0,.16);
+  transform:perspective(700px) rotateX(58deg);
+  transform-origin:center top;
+  transform-style:preserve-3d;
+  z-index:5;
 }
+
+/* Parte superior visible del teclado */
 
 .laptop-base::before{
   content:"";
   position:absolute;
-  left:50%;
-  top:-3px;
-  width:105px;
-  height:6px;
-  transform:translateX(-50%);
-  border-radius:0 0 8px 8px;
-  background:rgba(55,55,60,.6);
+  left:0;
+  top:-25px;
+  width:560px;
+  height:55px;
+  border-radius:13px 13px 7px 7px;
+  background:
+    linear-gradient(
+      145deg,
+      #eeeeef,
+      #c9cace
+    );
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.9),
+    inset 0 -1px rgba(0,0,0,.12);
 }
 
-/* =========================
+/* Parte frontal */
+
+.laptop-base::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:-3px;
+  width:80px;
+  height:4px;
+  transform:translateX(-50%);
+  border-radius:0 0 8px 8px;
+  background:rgba(70,70,70,.35);
+}
+
+/* =====================================================
    TECLADO
-========================= */
+====================================================== */
 
 .keyboard{
   position:absolute;
-  left:38px;
-  right:38px;
-  top:-22px;
-  height:26px;
-  padding:4px 7px;
-  display:grid;
-  grid-template-rows:repeat(2,1fr);
-  grid-template-columns:repeat(12,1fr);
+  z-index:3;
+  left:24px;
+  top:-17px;
+  width:512px;
+  height:37px;
+  display:flex;
+  flex-direction:column;
   gap:3px;
-  border-radius:5px 5px 2px 2px;
-  background:linear-gradient(
-    145deg,
-    #b5b5bd,
-    #898991
-  );
-  box-shadow:
-    inset 0 1px 2px rgba(255,255,255,.65),
-    0 2px 5px rgba(0,0,0,.25);
+  padding:2px 0;
 }
 
-.keyboard span{
-  display:block;
-  border-radius:2px;
-  background:linear-gradient(
-    145deg,
-    #f4f4f6,
-    #c9c9cf
-  );
-  box-shadow:
-    0 1px 1px rgba(0,0,0,.22),
-    inset 0 1px rgba(255,255,255,.9);
+.keyboard-row{
+  display:flex;
+  justify-content:center;
+  gap:3px;
+  height:7px;
 }
+
+.key{
+  width:25px;
+  height:7px;
+  border-radius:2px;
+  background:
+    linear-gradient(
+      180deg,
+      #77797d,
+      #55575a
+    );
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.18),
+    0 1px 1px rgba(0,0,0,.22);
+}
+
+.key.wide{
+  width:37px;
+}
+
+.key.space{
+  width:125px;
+}
+
+/* =====================================================
+   TRACKPAD
+====================================================== */
 
 .trackpad{
   position:absolute;
+  z-index:4;
   left:50%;
-  bottom:-18px;
-  width:145px;
-  height:24px;
+  top:13px;
+  width:155px;
+  height:55px;
   transform:translateX(-50%);
   border-radius:5px;
-  background:linear-gradient(
-    145deg,
-    #d1d1d6,
-    #aaaab2
-  );
-  border:1px solid rgba(255,255,255,.4);
+  background:
+    linear-gradient(
+      145deg,
+      #d5d6d8,
+      #b9babd
+    );
+  border:1px solid rgba(100,100,100,.16);
   box-shadow:
-    inset 0 1px 2px rgba(0,0,0,.13);
+    inset 0 1px rgba(255,255,255,.7),
+    0 1px 2px rgba(0,0,0,.08);
 }
 
-/* =========================
-   TAPA DEL PORTÁTIL
-========================= */
+/* =====================================================
+   BISAGRA
+====================================================== */
+
+.laptop-hinge{
+  position:absolute;
+  left:50%;
+  bottom:104px;
+  width:500px;
+  height:12px;
+  transform:translateX(-50%);
+  border-radius:50%;
+  background:
+    linear-gradient(
+      180deg,
+      #76777a,
+      #424347
+    );
+  box-shadow:
+    0 3px 5px rgba(0,0,0,.35);
+  z-index:6;
+}
+
+/* =====================================================
+   TAPA / PANTALLA
+====================================================== */
 
 .laptop-lid{
   position:absolute;
-  left:0;
-  bottom:29px;
-  width:100%;
-  height:300px;
-
-  transform-origin:50% 100%;
+  left:45px;
+  bottom:105px;
+  width:500px;
+  height:345px;
+  transform-origin:center bottom;
+  transform:
+    rotateX(-88deg)
+    translateZ(0);
   transform-style:preserve-3d;
-
-  /* Estado inicial: portátil cerrado */
-  transform:rotateX(-78deg);
-
-  backface-visibility:hidden;
-  -webkit-backface-visibility:hidden;
-
-  z-index:3;
-  will-change:transform;
+  z-index:10;
 }
-
-/*
-   IMPORTANTE:
-   La animación NO comienza automáticamente.
-   JavaScript agrega .play cuando la página ya está lista.
-*/
 
 #laptop-intro.play .laptop-lid{
   animation:
-    openLaptop
-    2.25s
-    cubic-bezier(.18,.82,.18,1)
+    laptopOpen
+    2.5s
+    cubic-bezier(.18,.82,.25,1)
     .15s
     forwards;
 }
 
-.laptop-lid::after{
-  content:"";
+@keyframes laptopOpen{
+
+  0%{
+    transform:
+      rotateX(-88deg)
+      translateZ(0);
+  }
+
+  65%{
+    transform:
+      rotateX(8deg)
+      translateZ(0);
+  }
+
+  82%{
+    transform:
+      rotateX(-4deg)
+      translateZ(0);
+  }
+
+  100%{
+    transform:
+      rotateX(0deg)
+      translateZ(0);
+  }
+
+}
+
+.laptop-lid-shell{
   position:absolute;
   inset:0;
-  border-radius:18px 18px 5px 5px;
+  border-radius:18px 18px 8px 8px;
+  padding:10px;
   background:
     linear-gradient(
       145deg,
-      rgba(255,255,255,.18),
-      transparent 32%,
-      transparent 68%,
-      rgba(0,0,0,.22)
+      #e4e5e7,
+      #aeb0b4
     );
-  pointer-events:none;
+  box-shadow:
+    0 15px 35px rgba(0,0,0,.45),
+    inset 0 1px rgba(255,255,255,.9),
+    inset 0 -2px rgba(0,0,0,.2);
+  transform-style:preserve-3d;
 }
 
-/* =========================
-   PANTALLA
-========================= */
+.laptop-screen-bezel{
+  position:relative;
+  width:100%;
+  height:100%;
+  padding:13px;
+  border-radius:10px 10px 4px 4px;
+  background:#111214;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.04);
+}
 
 .laptop-screen{
-  position:absolute;
-  inset:0;
-  padding:13px;
-  border-radius:18px 18px 5px 5px;
-  background:
-    linear-gradient(
-      145deg,
-      #27282e,
-      #08090c
-    );
-  border:2px solid #55565d;
-  box-shadow:
-    0 20px 38px rgba(0,0,0,.5),
-    inset 0 1px 2px rgba(255,255,255,.2);
+  position:relative;
+  width:100%;
+  height:100%;
   overflow:hidden;
+  border-radius:4px;
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      #6a355e,
+      #28152f 55%,
+      #100c16 100%
+    );
+  box-shadow:
+    inset 0 0 35px rgba(0,0,0,.45);
 }
 
-.laptop-screen::before{
-  content:"";
-  position:absolute;
-  top:5px;
-  left:50%;
-  width:7px;
-  height:7px;
-  transform:translateX(-50%);
-  border-radius:50%;
-  background:#050505;
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,.08),
-    0 0 8px rgba(255,255,255,.04);
-  z-index:3;
-}
+/* Brillo de pantalla */
 
 .laptop-screen::after{
   content:"";
   position:absolute;
   inset:0;
   background:
-    radial-gradient(
-      circle at 50% 50%,
-      rgba(255,45,85,.30),
-      transparent 45%
-    ),
     linear-gradient(
       125deg,
-      rgba(255,255,255,.13),
-      transparent 30%,
+      rgba(255,255,255,.14),
+      transparent 35%,
       transparent 70%,
-      rgba(255,255,255,.05)
+      rgba(255,255,255,.04)
     );
-  opacity:0;
   pointer-events:none;
 }
 
-#laptop-intro.play .laptop-screen::after{
-  animation:
-    screenGlow
-    .9s
-    ease
-    2.45s
-    forwards;
+/* Cámara */
+
+.laptop-camera{
+  position:absolute;
+  z-index:3;
+  top:4px;
+  left:50%;
+  width:5px;
+  height:5px;
+  transform:translateX(-50%);
+  border-radius:50%;
+  background:#050505;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.08);
 }
+
+/* =====================================================
+   CONTENIDO DE LA PANTALLA
+====================================================== */
 
 .laptop-screen-content{
   position:absolute;
-  inset:13px;
+  inset:0;
+  z-index:2;
   display:flex;
   align-items:center;
   justify-content:center;
   flex-direction:column;
-  border-radius:9px;
-  background:
-    radial-gradient(
-      circle at center,
-      #421e38,
-      #110d15 75%
-    );
-  color:white;
-
-  opacity:0;
-  transform:translateY(12px) scale(.94);
-
-  overflow:hidden;
-}
-
-#laptop-intro.play .laptop-screen-content{
-  animation:
-    screenOn
-    .9s
-    cubic-bezier(.2,.8,.2,1)
-    2.45s
-    forwards;
-}
-
-.laptop-screen-content::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(
-      circle at center,
-      rgba(255,255,255,.08),
-      transparent 55%
-    );
+  color:#fff;
+  text-align:center;
 }
 
 .intro-heart{
-  position:relative;
-  font-size:50px;
-  color:#ff2d55;
-  text-shadow:
-    0 0 18px rgba(255,45,85,.7),
-    0 0 45px rgba(255,45,85,.32);
-  animation:introPulse 1.5s ease-in-out infinite;
+  font-size:64px;
+  filter:
+    drop-shadow(
+      0 8px 18px
+      rgba(255,45,85,.4)
+    );
+  opacity:0;
+  transform:scale(.65);
+}
+
+#laptop-intro.play .intro-heart{
+  animation:
+    introHeart
+    .8s
+    ease
+    1.8s
+    forwards;
+}
+
+@keyframes introHeart{
+
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+
 }
 
 .intro-name{
-  position:relative;
-  margin-top:7px;
-  font-size:25px;
-  font-weight:600;
-  letter-spacing:.6px;
+  margin-top:5px;
+  font-size:27px;
+  font-weight:700;
+  letter-spacing:.5px;
+  opacity:0;
+  transform:translateY(12px);
+}
+
+#laptop-intro.play .intro-name{
+  animation:
+    introText
+    .8s
+    ease
+    2.15s
+    forwards;
 }
 
 .intro-sub{
-  position:relative;
-  margin-top:4px;
-  font-size:11px;
-  opacity:.62;
-  letter-spacing:.8px;
+  margin-top:7px;
+  font-size:13px;
+  opacity:0;
+  color:rgba(255,255,255,.7);
+  transform:translateY(10px);
 }
 
-/* =========================
-   ANIMACIONES LAPTOP
-========================= */
-
-@keyframes openLaptop{
-
-  0%{
-    transform:rotateX(-78deg);
-  }
-
-  35%{
-    transform:rotateX(-55deg);
-  }
-
-  70%{
-    transform:rotateX(-18deg);
-  }
-
-  100%{
-    transform:rotateX(0deg);
-  }
-
+#laptop-intro.play .intro-sub{
+  animation:
+    introText
+    .8s
+    ease
+    2.4s
+    forwards;
 }
 
-@keyframes screenOn{
-
-  0%{
-    opacity:0;
-    transform:translateY(12px) scale(.94);
-  }
-
-  100%{
-    opacity:1;
-    transform:translateY(0) scale(1);
-  }
-
-}
-
-@keyframes screenGlow{
-
-  0%{
-    opacity:0;
-  }
-
-  100%{
-    opacity:1;
-  }
-
-}
-
-@keyframes introPulse{
-
-  50%{
-    transform:scale(1.08);
-  }
-
-}
-
-@keyframes introFade{
+@keyframes introText{
 
   to{
-    opacity:0;
-    visibility:hidden;
+    opacity:1;
+    transform:translateY(0);
   }
 
 }
 
-@media(max-width:600px){
 
-  .laptop-scene{
-    transform:scale(.58);
-  }
-
-}
-
-/* =========================
+/* =====================================================
    BOOT
-========================= */
+====================================================== */
 
 #boot{
   position:fixed;
@@ -503,12 +523,15 @@ body{
   justify-content:center;
   flex-direction:column;
   color:white;
-  background:radial-gradient(
-    circle at center,
-    #34203e,
-    #120f18 70%
-  );
-  transition:opacity .9s,visibility .9s;
+  background:
+    radial-gradient(
+      circle at center,
+      #34203e,
+      #120f18 70%
+    );
+  transition:
+    opacity .9s,
+    visibility .9s;
 }
 
 #boot.hide{
@@ -558,16 +581,21 @@ body{
 }
 
 @keyframes load{
-  to{width:100%}
+  to{
+    width:100%
+  }
 }
 
 @keyframes pulse{
-  50%{transform:scale(1.08)}
+  50%{
+    transform:scale(1.08)
+  }
 }
 
-/* =========================
+
+/* =====================================================
    LOGIN
-========================= */
+====================================================== */
 
 #login{
   position:fixed;
@@ -598,16 +626,18 @@ body{
   width:92px;
   height:92px;
   border-radius:50%;
-  background:linear-gradient(
-    135deg,
-    #fff,
-    #ffd7e0
-  );
+  background:
+    linear-gradient(
+      135deg,
+      #fff,
+      #ffd7e0
+    );
   display:flex;
   align-items:center;
   justify-content:center;
   font-size:45px;
-  box-shadow:0 15px 45px rgba(0,0,0,.35);
+  box-shadow:
+    0 15px 45px rgba(0,0,0,.35);
   margin-bottom:18px;
 }
 
@@ -638,9 +668,10 @@ body{
   transform:translateY(-2px);
 }
 
-/* =========================
+
+/* =====================================================
    TOP BAR
-========================= */
+====================================================== */
 
 #top-bar{
   position:fixed;
@@ -680,9 +711,10 @@ body{
   font-variant-numeric:tabular-nums;
 }
 
-/* =========================
+
+/* =====================================================
    DESKTOP
-========================= */
+====================================================== */
 
 #desktop{
   position:fixed;
@@ -716,21 +748,19 @@ body{
   align-items:center;
   justify-content:center;
   font-size:38px;
-  filter:drop-shadow(
-    0 5px 7px rgba(0,0,0,.25)
-  );
+  filter:drop-shadow(0 5px 7px rgba(0,0,0,.25));
 }
 
 .desktop-label{
   font-size:11px;
   font-weight:600;
-  text-shadow:
-    0 2px 5px rgba(0,0,0,.8);
+  text-shadow:0 2px 5px rgba(0,0,0,.8);
 }
 
-/* =========================
+
+/* =====================================================
    DOCK
-========================= */
+====================================================== */
 
 #dock-container{
   position:fixed;
@@ -750,8 +780,7 @@ body{
   background:rgba(255,255,255,.30);
   backdrop-filter:blur(25px);
   -webkit-backdrop-filter:blur(25px);
-  box-shadow:
-    0 14px 35px rgba(0,0,0,.20);
+  box-shadow:0 14px 35px rgba(0,0,0,.20);
 }
 
 .dock-icon{
@@ -770,8 +799,7 @@ body{
   align-items:center;
   justify-content:center;
   font-size:25px;
-  box-shadow:
-    0 5px 10px rgba(0,0,0,.12);
+  box-shadow:0 5px 10px rgba(0,0,0,.12);
   transition:
     transform .16s ease,
     margin .16s ease;
@@ -793,9 +821,10 @@ body{
   background:#333;
 }
 
-/* =========================
+
+/* =====================================================
    WINDOWS
-========================= */
+====================================================== */
 
 .window{
   position:fixed;
@@ -813,8 +842,7 @@ body{
   -webkit-backdrop-filter:blur(30px);
   border:1px solid rgba(255,255,255,.65);
   border-radius:14px;
-  box-shadow:
-    0 30px 80px rgba(0,0,0,.32);
+  box-shadow:0 30px 80px rgba(0,0,0,.32);
   overflow:hidden;
   z-index:2000;
   opacity:0;
@@ -895,9 +923,17 @@ body{
   cursor:pointer;
 }
 
-.dot-close{background:#ff5f57}
-.dot-min{background:#ffbd2e}
-.dot-max{background:#28c840}
+.dot-close{
+  background:#ff5f57;
+}
+
+.dot-min{
+  background:#ffbd2e;
+}
+
+.dot-max{
+  background:#28c840;
+}
 
 .window-title{
   position:absolute;
@@ -919,9 +955,10 @@ body{
   -webkit-overflow-scrolling:touch;
 }
 
-/* =========================
+
+/* =====================================================
    CARTA
-========================= */
+====================================================== */
 
 .letter-paper{
   background:
@@ -932,8 +969,7 @@ body{
     );
   padding:30px;
   border-radius:14px;
-  box-shadow:
-    0 8px 25px rgba(0,0,0,.08);
+  box-shadow:0 8px 25px rgba(0,0,0,.08);
   font-family:Georgia,serif;
   font-size:15px;
   line-height:1.8;
@@ -955,9 +991,10 @@ body{
   color:#b51d43;
 }
 
-/* =========================
+
+/* =====================================================
    GALERÍA
-========================= */
+====================================================== */
 
 .gallery-grid{
   display:grid;
@@ -974,8 +1011,7 @@ body{
   background:#fff;
   padding:8px;
   border-radius:12px;
-  box-shadow:
-    0 7px 18px rgba(0,0,0,.09);
+  box-shadow:0 7px 18px rgba(0,0,0,.09);
   cursor:pointer;
   transition:.25s;
   animation:cardIn .45s both;
@@ -986,7 +1022,8 @@ body{
     translateY(-4px)
     rotate(.3deg);
   box-shadow:
-    0 13px 25px rgba(0,0,0,.15);
+    0 13px 25px
+    rgba(0,0,0,.15);
 }
 
 .photo-card img{
@@ -997,6 +1034,7 @@ body{
   display:block;
   -webkit-user-drag:none;
   user-select:none;
+  -webkit-user-select:none;
 }
 
 .photo-card p{
@@ -1018,9 +1056,10 @@ body{
   }
 }
 
-/* =========================
+
+/* =====================================================
    RAZONES
-========================= */
+====================================================== */
 
 .reason-item{
   background:rgba(255,255,255,.78);
@@ -1028,15 +1067,15 @@ body{
   margin-bottom:11px;
   border-left:4px solid var(--accent);
   border-radius:11px;
-  box-shadow:
-    0 3px 12px rgba(0,0,0,.05);
+  box-shadow:0 3px 12px rgba(0,0,0,.05);
   font-size:14px;
   animation:cardIn .4s both;
 }
 
-/* =========================
+
+/* =====================================================
    VALES
-========================= */
+====================================================== */
 
 .coupon{
   display:flex;
@@ -1066,9 +1105,10 @@ body{
   background:#34c759!important;
 }
 
-/* =========================
+
+/* =====================================================
    SORPRESA
-========================= */
+====================================================== */
 
 .surprise{
   text-align:center;
@@ -1102,9 +1142,10 @@ body{
   color:var(--accent);
 }
 
-/* =========================
-   MÚSICA
-========================= */
+
+/* =====================================================
+   MÚSICA LOCAL
+====================================================== */
 
 .music-card{
   text-align:center;
@@ -1129,396 +1170,10 @@ body{
   display:block;
 }
 
-/* =========================
-   NUEVAS APPS
-========================= */
 
-.app-intro{
-  text-align:center;
-  padding:8px 5px 22px;
-}
-
-.app-intro-icon{
-  font-size:48px;
-  margin-bottom:8px;
-}
-
-.app-intro h2{
-  font-size:21px;
-  margin-bottom:6px;
-}
-
-.app-intro p{
-  color:#777;
-  font-size:13px;
-  line-height:1.6;
-}
-
-.memory-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:13px;
-}
-
-.memory-card{
-  background:rgba(255,255,255,.82);
-  border-radius:15px;
-  padding:20px 14px;
-  text-align:center;
-  cursor:pointer;
-  box-shadow:
-    0 6px 18px rgba(0,0,0,.07);
-  transition:.25s;
-  border:1px solid rgba(255,255,255,.8);
-}
-
-.memory-card:hover{
-  transform:translateY(-4px);
-  box-shadow:
-    0 12px 25px rgba(0,0,0,.12);
-}
-
-.memory-card .icon{
-  font-size:34px;
-  margin-bottom:8px;
-}
-
-.memory-card strong{
-  display:block;
-  font-size:13px;
-}
-
-.memory-card span{
-  display:block;
-  font-size:10px;
-  color:#888;
-  margin-top:4px;
-}
-
-.timeline{
-  position:relative;
-  margin:10px 4px;
-  padding-left:30px;
-}
-
-.timeline::before{
-  content:"";
-  position:absolute;
-  left:8px;
-  top:5px;
-  bottom:5px;
-  width:2px;
-  background:
-    linear-gradient(
-      #ff2d55,
-      #ffb3c3
-    );
-}
-
-.timeline-item{
-  position:relative;
-  margin-bottom:24px;
-  background:rgba(255,255,255,.78);
-  border-radius:14px;
-  padding:15px;
-  box-shadow:
-    0 5px 15px rgba(0,0,0,.06);
-}
-
-.timeline-item::before{
-  content:"❤️";
-  position:absolute;
-  left:-31px;
-  top:12px;
-  font-size:15px;
-  background:#fff;
-  border-radius:50%;
-}
-
-.timeline-date{
-  font-size:10px;
-  color:#d91e4d;
-  font-weight:700;
-  margin-bottom:5px;
-  text-transform:uppercase;
-}
-
-.timeline-title{
-  font-size:15px;
-  font-weight:700;
-  margin-bottom:5px;
-}
-
-.timeline-text{
-  font-size:12px;
-  line-height:1.6;
-  color:#666;
-}
-
-.chat{
-  background:#efeef3;
-  border-radius:15px;
-  padding:15px;
-  min-height:100%;
-}
-
-.chat-date{
-  text-align:center;
-  color:#888;
-  font-size:10px;
-  margin-bottom:16px;
-}
-
-.message{
-  max-width:78%;
-  padding:10px 13px;
-  border-radius:16px;
-  margin-bottom:9px;
-  font-size:12px;
-  line-height:1.45;
-  box-shadow:
-    0 2px 5px rgba(0,0,0,.05);
-}
-
-.message.me{
-  margin-left:auto;
-  background:#ff2d55;
-  color:#fff;
-  border-bottom-right-radius:5px;
-}
-
-.message.her{
-  margin-right:auto;
-  background:#fff;
-  color:#333;
-  border-bottom-left-radius:5px;
-}
-
-.message small{
-  display:block;
-  opacity:.55;
-  font-size:9px;
-  margin-top:4px;
-}
-
-.plan{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  background:rgba(255,255,255,.82);
-  padding:14px;
-  border-radius:13px;
-  margin-bottom:10px;
-  cursor:pointer;
-  transition:.2s;
-  border:1px solid transparent;
-}
-
-.plan:hover{
-  transform:translateX(3px);
-}
-
-.plan.checked{
-  border-color:#b8e8c5;
-  background:#f2fff5;
-}
-
-.plan-checkbox{
-  width:24px;
-  height:24px;
-  border-radius:7px;
-  border:2px solid #ff8da5;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex:none;
-  color:#fff;
-  font-size:13px;
-}
-
-.plan.checked .plan-checkbox{
-  background:#34c759;
-  border-color:#34c759;
-}
-
-.plan-text{
-  font-size:13px;
-}
-
-.plan.checked .plan-text{
-  text-decoration:line-through;
-  color:#777;
-}
-
-.achievement{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  padding:14px;
-  background:rgba(255,255,255,.78);
-  border-radius:14px;
-  margin-bottom:10px;
-  opacity:.45;
-  filter:grayscale(.8);
-  transition:.3s;
-}
-
-.achievement.unlocked{
-  opacity:1;
-  filter:none;
-  box-shadow:
-    0 5px 18px rgba(255,45,85,.12);
-}
-
-.achievement-icon{
-  width:48px;
-  height:48px;
-  border-radius:14px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:25px;
-  background:#eee;
-  flex:none;
-}
-
-.achievement.unlocked .achievement-icon{
-  background:
-    linear-gradient(
-      135deg,
-      #fff,
-      #ffe1e8
-    );
-}
-
-.achievement strong{
-  display:block;
-  font-size:13px;
-}
-
-.achievement p{
-  font-size:10px;
-  color:#777;
-  margin-top:3px;
-}
-
-.system-card{
-  background:rgba(255,255,255,.82);
-  border-radius:16px;
-  padding:20px;
-  box-shadow:
-    0 6px 20px rgba(0,0,0,.06);
-  margin-bottom:14px;
-}
-
-.system-header{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  margin-bottom:18px;
-}
-
-.system-logo{
-  width:62px;
-  height:62px;
-  border-radius:17px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:
-    linear-gradient(
-      135deg,
-      #ff2d55,
-      #ff8da5
-    );
-  font-size:32px;
-  box-shadow:
-    0 8px 18px rgba(255,45,85,.25);
-}
-
-.system-header h2{
-  font-size:20px;
-}
-
-.system-header p{
-  color:#888;
-  font-size:11px;
-  margin-top:3px;
-}
-
-.system-row{
-  display:flex;
-  justify-content:space-between;
-  padding:10px 0;
-  border-bottom:1px solid #eee;
-  font-size:12px;
-}
-
-.system-row:last-child{
-  border-bottom:0;
-}
-
-.system-row span:last-child{
-  color:#888;
-  text-align:right;
-}
-
-.love-counter{
-  text-align:center;
-  padding:30px 15px;
-  background:
-    linear-gradient(
-      145deg,
-      #fff,
-      #fff1f5
-    );
-  border-radius:18px;
-}
-
-.love-heart{
-  font-size:65px;
-  animation:pulse 1.8s infinite;
-}
-
-.love-counter h2{
-  color:#d91e4d;
-  margin:10px 0 6px;
-}
-
-.love-counter p{
-  color:#777;
-  font-size:12px;
-  line-height:1.6;
-}
-
-.stat-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:9px;
-  margin-top:14px;
-}
-
-.stat{
-  background:#fff;
-  padding:12px;
-  border-radius:11px;
-  text-align:center;
-}
-
-.stat b{
-  display:block;
-  font-size:18px;
-  color:#d91e4d;
-}
-
-.stat span{
-  font-size:9px;
-  color:#888;
-}
-
-/* =========================
+/* =====================================================
    VISOR
-========================= */
+====================================================== */
 
 #image-viewer{
   position:fixed;
@@ -1547,6 +1202,7 @@ body{
   touch-action:none;
   -webkit-user-drag:none;
   user-select:none;
+  -webkit-user-select:none;
 }
 
 .viewer-close{
@@ -1586,24 +1242,32 @@ body{
 }
 
 @keyframes fadeIn{
-  from{opacity:0}
-  to{opacity:1}
+  from{
+    opacity:0
+  }
+
+  to{
+    opacity:1
+  }
 }
 
-/* =========================
-   CORAZONES / TOAST
-========================= */
+
+/* =====================================================
+   CORAZONES
+====================================================== */
 
 .click-heart{
   position:fixed;
   pointer-events:none;
   font-size:22px;
   z-index:60000;
-  animation:heartFloat .9s forwards;
+  animation:
+    heartFloat
+    .9s
+    forwards;
 }
 
 @keyframes heartFloat{
-
   from{
     opacity:1;
     transform:
@@ -1617,8 +1281,12 @@ body{
       translate(-50%,-95px)
       scale(1.35);
   }
-
 }
+
+
+/* =====================================================
+   TOAST
+====================================================== */
 
 .toast{
   position:fixed;
@@ -1632,30 +1300,13 @@ body{
   color:#fff;
   font-size:12px;
   backdrop-filter:blur(15px);
-  box-shadow:
-    0 8px 25px rgba(0,0,0,.25);
-  animation:toastIn .25s ease;
+  box-shadow:0 8px 25px rgba(0,0,0,.25);
 }
 
-@keyframes toastIn{
 
-  from{
-    opacity:0;
-    transform:
-      translate(-50%,-10px);
-  }
-
-  to{
-    opacity:1;
-    transform:
-      translate(-50%,0);
-  }
-
-}
-
-/* =========================
+/* =====================================================
    JUEGO
-========================= */
+====================================================== */
 
 .game-window{
   width:min(900px,92vw);
@@ -1715,6 +1366,7 @@ body{
   background:#fff3f7;
   touch-action:none;
   user-select:none;
+  -webkit-user-select:none;
 }
 
 .game-mobile-help{
@@ -1772,13 +1424,19 @@ body{
   font-size:13px;
   font-weight:700;
   cursor:pointer;
-  box-shadow:
-    0 7px 18px rgba(255,45,85,.25);
+  box-shadow:0 7px 18px rgba(255,45,85,.25);
+  transition:.2s;
 }
 
-/* =========================
+.game-btn:hover{
+  transform:translateY(-2px);
+  background:#e9274f;
+}
+
+
+/* =====================================================
    MOBILE
-========================= */
+====================================================== */
 
 @media(max-width:600px){
 
@@ -1884,27 +1542,32 @@ body{
     display:block;
   }
 
-  .memory-grid{
-    grid-template-columns:repeat(2,1fr);
+
+  /* PORTÁTIL EN MÓVIL */
+
+  .laptop-scene{
+    width:100vw;
+    height:520px;
+    transform:
+      scale(.58);
+    transform-origin:center center;
   }
 
-  .memory-card{
-    padding:15px 8px;
+  .laptop{
+    transform:translateY(25px);
   }
 
-  .memory-card .icon{
-    font-size:28px;
-  }
-
-  .timeline{
-    padding-left:27px;
-  }
-
-  .message{
-    max-width:88%;
+  #laptop-intro::before{
+    width:500px;
+    height:500px;
   }
 
 }
+
+
+/* =====================================================
+   SCROLLBAR
+====================================================== */
 
 ::-webkit-scrollbar{
   width:7px;
@@ -1914,35 +1577,51 @@ body{
   background:rgba(0,0,0,.18);
   border-radius:10px;
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     LAPTOP INTRO
-========================= -->
+
+<!-- =====================================================
+     INTRO DEL PORTÁTIL
+====================================================== -->
 
 <div id="laptop-intro">
 
   <div class="laptop-scene">
 
+    <div class="laptop-shadow"></div>
+
     <div class="laptop">
 
       <div class="laptop-lid">
 
-        <div class="laptop-screen">
+        <div class="laptop-lid-shell">
 
-          <div class="laptop-screen-content">
+          <div class="laptop-screen-bezel">
 
-            <div class="intro-heart">♥</div>
+            <div class="laptop-screen">
 
-            <div class="intro-name">
-              ViviOS
-            </div>
+              <div class="laptop-camera"></div>
 
-            <div class="intro-sub">
-              Para mi amor
+              <div class="laptop-screen-content">
+
+                <div class="intro-heart">
+                  ❤️
+                </div>
+
+                <div class="intro-name">
+                  ViviOS
+                </div>
+
+                <div class="intro-sub">
+                  Para mi amor
+                </div>
+
+              </div>
+
             </div>
 
           </div>
@@ -1951,37 +1630,93 @@ body{
 
       </div>
 
+
+      <div class="laptop-hinge"></div>
+
+
       <div class="laptop-base">
 
         <div class="keyboard">
 
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
+          <div class="keyboard-row">
 
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+
+          </div>
+
+
+          <div class="keyboard-row">
+
+            <span class="key wide"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key wide"></span>
+
+          </div>
+
+
+          <div class="keyboard-row">
+
+            <span class="key wide"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key wide"></span>
+
+          </div>
+
+
+          <div class="keyboard-row">
+
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key space"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+
+          </div>
 
         </div>
+
 
         <div class="trackpad"></div>
 
@@ -1993,9 +1728,16 @@ body{
 
 </div>
 
+
+<!-- =====================================================
+     PANTALLA DE CARGA
+====================================================== -->
+
 <div id="boot">
 
-  <div class="boot-logo">❤️</div>
+  <div class="boot-logo">
+    ❤️
+  </div>
 
   <div class="boot-title">
     ViviOS
@@ -2011,6 +1753,11 @@ body{
 
 </div>
 
+
+<!-- =====================================================
+     LOGIN
+====================================================== -->
+
 <div id="login">
 
   <div class="login-avatar">
@@ -2025,31 +1772,31 @@ body{
     Una pequeña sorpresa te está esperando
   </div>
 
-  <button class="login-btn" id="login-btn">
+  <button
+    class="login-btn"
+    id="login-btn"
+  >
     Iniciar sesión
   </button>
 
 </div>
 
+
+<!-- =====================================================
+     BARRA SUPERIOR
+====================================================== -->
+
 <div id="top-bar">
 
   <div class="top-left">
 
-    <span class="apple">
-      
-    </span>
+    <span class="apple"></span>
 
-    <span>
-      ViviOS
-    </span>
+    <span>ViviOS</span>
 
-    <span class="menu">
-      Archivo
-    </span>
+    <span class="menu">Archivo</span>
 
-    <span class="menu">
-      Ventana
-    </span>
+    <span class="menu">Ventana</span>
 
   </div>
 
@@ -2057,9 +1804,17 @@ body{
 
 </div>
 
+
+<!-- =====================================================
+     ESCRITORIO
+====================================================== -->
+
 <div id="desktop">
 
-  <div class="desktop-item" data-open="win-carta">
+  <div
+    class="desktop-item"
+    data-open="win-carta"
+  >
 
     <div class="desktop-icon">
       💌
@@ -2071,7 +1826,11 @@ body{
 
   </div>
 
-  <div class="desktop-item" data-open="win-momentos">
+
+  <div
+    class="desktop-item"
+    data-open="win-momentos"
+  >
 
     <div class="desktop-icon">
       🖼️
@@ -2083,7 +1842,11 @@ body{
 
   </div>
 
-  <div class="desktop-item" data-open="win-razones">
+
+  <div
+    class="desktop-item"
+    data-open="win-razones"
+  >
 
     <div class="desktop-icon">
       📝
@@ -2095,19 +1858,11 @@ body{
 
   </div>
 
-  <div class="desktop-item" data-open="win-recuerdos">
 
-    <div class="desktop-icon">
-      📁
-    </div>
-
-    <div class="desktop-label">
-      Recuerdos
-    </div>
-
-  </div>
-
-  <div class="desktop-item" data-open="win-juego">
+  <div
+    class="desktop-item"
+    data-open="win-juego"
+  >
 
     <div class="desktop-icon">
       🎮
@@ -2119,7 +1874,11 @@ body{
 
   </div>
 
-  <div class="desktop-item" data-open="win-papelera">
+
+  <div
+    class="desktop-item"
+    data-open="win-papelera"
+  >
 
     <div class="desktop-icon">
       🗑️
@@ -2133,39 +1892,61 @@ body{
 
 </div>
 
+
+<!-- =====================================================
+     DOCK
+====================================================== -->
+
 <div id="dock-container">
 
   <div id="dock">
 
-    <div class="dock-icon" data-open="win-carta">
+    <div
+      class="dock-icon"
+      data-open="win-carta"
+    >
       💌
     </div>
 
-    <div class="dock-icon" data-open="win-momentos">
+    <div
+      class="dock-icon"
+      data-open="win-momentos"
+    >
       📸
     </div>
 
-    <div class="dock-icon" data-open="win-canciones">
+    <div
+      class="dock-icon"
+      data-open="win-canciones"
+    >
       🎵
     </div>
 
-    <div class="dock-icon" data-open="win-razones">
+    <div
+      class="dock-icon"
+      data-open="win-razones"
+    >
       💖
     </div>
 
-    <div class="dock-icon" data-open="win-vales">
+    <div
+      class="dock-icon"
+      data-open="win-vales"
+    >
       🎟️
     </div>
 
-    <div class="dock-icon" data-open="win-sorpresa">
+    <div
+      class="dock-icon"
+      data-open="win-sorpresa"
+    >
       🎁
     </div>
 
-    <div class="dock-icon" data-open="win-recuerdos">
-      📁
-    </div>
-
-    <div class="dock-icon" data-open="win-juego">
+    <div
+      class="dock-icon"
+      data-open="win-juego"
+    >
       🎮
     </div>
 
@@ -2173,28 +1954,23 @@ body{
 
 </div>
 
-<!-- CARTA -->
 
-<div id="win-carta" class="window">
+<!-- =====================================================
+     CARTA
+====================================================== -->
+
+<div
+  id="win-carta"
+  class="window"
+>
 
   <div class="window-header">
 
     <div class="window-dots">
 
-      <button
-        class="dot dot-close"
-        data-close="win-carta">
-      </button>
-
-      <button
-        class="dot dot-min"
-        data-min="win-carta">
-      </button>
-
-      <button
-        class="dot dot-max"
-        data-max="win-carta">
-      </button>
+      <button class="dot dot-close" data-close="win-carta"></button>
+      <button class="dot dot-min" data-min="win-carta"></button>
+      <button class="dot dot-max" data-max="win-carta"></button>
 
     </div>
 
@@ -2225,28 +2001,23 @@ body{
 
 </div>
 
-<!-- FOTOS -->
 
-<div id="win-momentos" class="window">
+<!-- =====================================================
+     FOTOS
+====================================================== -->
+
+<div
+  id="win-momentos"
+  class="window"
+>
 
   <div class="window-header">
 
     <div class="window-dots">
 
-      <button
-        class="dot dot-close"
-        data-close="win-momentos">
-      </button>
-
-      <button
-        class="dot dot-min"
-        data-min="win-momentos">
-      </button>
-
-      <button
-        class="dot dot-max"
-        data-max="win-momentos">
-      </button>
+      <button class="dot dot-close" data-close="win-momentos"></button>
+      <button class="dot dot-min" data-min="win-momentos"></button>
+      <button class="dot dot-max" data-max="win-momentos"></button>
 
     </div>
 
@@ -2260,35 +2031,30 @@ body{
 
     <div
       class="gallery-grid"
-      id="display-galeria">
-    </div>
+      id="display-galeria"
+    ></div>
 
   </div>
 
 </div>
 
-<!-- MÚSICA -->
 
-<div id="win-canciones" class="window">
+<!-- =====================================================
+     MÚSICA
+====================================================== -->
+
+<div
+  id="win-canciones"
+  class="window"
+>
 
   <div class="window-header">
 
     <div class="window-dots">
 
-      <button
-        class="dot dot-close"
-        data-close="win-canciones">
-      </button>
-
-      <button
-        class="dot dot-min"
-        data-min="win-canciones">
-      </button>
-
-      <button
-        class="dot dot-max"
-        data-max="win-canciones">
-      </button>
+      <button class="dot dot-close" data-close="win-canciones"></button>
+      <button class="dot dot-min" data-min="win-canciones"></button>
+      <button class="dot dot-max" data-max="win-canciones"></button>
 
     </div>
 
@@ -2312,11 +2078,13 @@ body{
       id="local-audio"
       class="local-audio"
       controls
-      preload="metadata">
+      preload="metadata"
+    >
 
       <source
         src="assets/musica/nuestra-cancion.mp3"
-        type="audio/mpeg">
+        type="audio/mpeg"
+      >
 
       Tu navegador no puede reproducir este audio.
 
@@ -2326,28 +2094,23 @@ body{
 
 </div>
 
-<!-- RAZONES -->
 
-<div id="win-razones" class="window">
+<!-- =====================================================
+     RAZONES
+====================================================== -->
+
+<div
+  id="win-razones"
+  class="window"
+>
 
   <div class="window-header">
 
     <div class="window-dots">
 
-      <button
-        class="dot dot-close"
-        data-close="win-razones">
-      </button>
-
-      <button
-        class="dot dot-min"
-        data-min="win-razones">
-      </button>
-
-      <button
-        class="dot dot-max"
-        data-max="win-razones">
-      </button>
+      <button class="dot dot-close" data-close="win-razones"></button>
+      <button class="dot dot-min" data-min="win-razones"></button>
+      <button class="dot dot-max" data-max="win-razones"></button>
 
     </div>
 
@@ -2364,11 +2127,11 @@ body{
     </div>
 
     <div class="reason-item">
-      2. Porque haces que incluso un día normal se sienta especial.
+      2. Por cómo haces que incluso un día normal se sienta especial.
     </div>
 
     <div class="reason-item">
-      3. Porque me haces sentir amado y elegido.
+      3. Por que me haces sentir amado y elegido.
     </div>
 
     <div class="reason-item">
@@ -2383,28 +2146,23 @@ body{
 
 </div>
 
-<!-- VALES -->
 
-<div id="win-vales" class="window">
+<!-- =====================================================
+     VALES
+====================================================== -->
+
+<div
+  id="win-vales"
+  class="window"
+>
 
   <div class="window-header">
 
     <div class="window-dots">
 
-      <button
-        class="dot dot-close"
-        data-close="win-vales">
-      </button>
-
-      <button
-        class="dot dot-min"
-        data-min="win-vales">
-      </button>
-
-      <button
-        class="dot dot-max"
-        data-max="win-vales">
-      </button>
+      <button class="dot dot-close" data-close="win-vales"></button>
+      <button class="dot dot-min" data-min="win-vales"></button>
+      <button class="dot dot-max" data-max="win-vales"></button>
 
     </div>
 
@@ -2424,13 +2182,7 @@ body{
           jugar Free Fire como antes 🎮
         </strong>
 
-        <p
-          style="
-            font-size:11px;
-            color:#777;
-            margin-top:4px;
-          "
-        >
+        <p style="font-size:11px;color:#777;margin-top:4px;">
           Canjeable por jugar.
         </p>
 
@@ -2442,6 +2194,7 @@ body{
 
     </div>
 
+
     <div class="coupon">
 
       <div>
@@ -2450,13 +2203,7 @@ body{
           Ver películas 🎬
         </strong>
 
-        <p
-          style="
-            font-size:11px;
-            color:#777;
-            margin-top:4px;
-          "
-        >
+        <p style="font-size:11px;color:#777;margin-top:4px;">
           Tú eliges la película.
         </p>
 
@@ -2468,6 +2215,7 @@ body{
 
     </div>
 
+
     <div class="coupon">
 
       <div>
@@ -2476,14 +2224,8 @@ body{
           Hacer más actividades juntos 🤗
         </strong>
 
-        <p
-          style="
-            font-size:11px;
-            color:#777;
-            margin-top:4px;
-          "
-        >
-          Puedes darme ideas de lo que quieras hacer.
+        <p style="font-size:11px;color:#777;margin-top:4px;">
+          puedes darme ideas de lo que quieras hacer.
         </p>
 
       </div>
@@ -2498,28 +2240,23 @@ body{
 
 </div>
 
-<!-- SORPRESA -->
 
-<div id="win-sorpresa" class="window">
+<!-- =====================================================
+     SORPRESA
+====================================================== -->
+
+<div
+  id="win-sorpresa"
+  class="window"
+>
 
   <div class="window-header">
 
     <div class="window-dots">
 
-      <button
-        class="dot dot-close"
-        data-close="win-sorpresa">
-      </button>
-
-      <button
-        class="dot dot-min"
-        data-min="win-sorpresa">
-      </button>
-
-      <button
-        class="dot dot-max"
-        data-max="win-sorpresa">
-      </button>
+      <button class="dot dot-close" data-close="win-sorpresa"></button>
+      <button class="dot dot-min" data-min="win-sorpresa"></button>
+      <button class="dot dot-max" data-max="win-sorpresa"></button>
 
     </div>
 
@@ -2531,12 +2268,7 @@ body{
 
   <div class="window-body surprise">
 
-    <p
-      style="
-        font-weight:600;
-        margin-bottom:18px;
-      "
-    >
+    <p style="font-weight:600;margin-bottom:18px;">
       Hay algo escondido aquí...
     </p>
 
@@ -2555,882 +2287,23 @@ body{
 
 </div>
 
-<!-- RECUERDOS -->
 
-<div id="win-recuerdos" class="window">
+<!-- =====================================================
+     PAPELERA
+====================================================== -->
 
-  <div class="window-header">
-
-    <div class="window-dots">
-
-      <button
-        class="dot dot-close"
-        data-close="win-recuerdos">
-      </button>
-
-      <button
-        class="dot dot-min"
-        data-min="win-recuerdos">
-      </button>
-
-      <button
-        class="dot dot-max"
-        data-max="win-recuerdos">
-      </button>
-
-    </div>
-
-    <div class="window-title">
-      Recuerdos
-    </div>
-
-  </div>
-
-  <div class="window-body">
-
-    <div class="app-intro">
-
-      <div class="app-intro-icon">
-        📁
-      </div>
-
-      <h2>
-        Nuestros recuerdos
-      </h2>
-
-      <p>
-        Todo lo que quiero guardar de nuestra historia,
-        en un pequeño rincón hecho para ti.
-      </p>
-
-    </div>
-
-    <div class="memory-grid">
-
-      <div
-        class="memory-card"
-        data-open="win-historia">
-
-        <div class="icon">
-          🕐
-        </div>
-
-        <strong>
-          Nuestra historia
-        </strong>
-
-        <span>
-          Momentos importantes
-        </span>
-
-      </div>
-
-      <div
-        class="memory-card"
-        data-open="win-mensajes">
-
-        <div class="icon">
-          💬
-        </div>
-
-        <strong>
-          Mensajes
-        </strong>
-
-        <span>
-          Palabras que guardo
-        </span>
-
-      </div>
-
-      <div
-        class="memory-card"
-        data-open="win-planes">
-
-        <div class="icon">
-          ❤️
-        </div>
-
-        <strong>
-          Planes juntos
-        </strong>
-
-        <span>
-          Cosas por vivir
-        </span>
-
-      </div>
-
-      <div
-        class="memory-card"
-        data-open="win-logros">
-
-        <div class="icon">
-          🏆
-        </div>
-
-        <strong>
-          Logros
-        </strong>
-
-        <span>
-          Cosas desbloqueadas
-        </span>
-
-      </div>
-
-      <div
-        class="memory-card"
-        data-open="win-acerca">
-
-        <div class="icon">
-          🖥️
-        </div>
-
-        <strong>
-          Acerca de ViviOS
-        </strong>
-
-        <span>
-          Información del sistema
-        </span>
-
-      </div>
-
-      <div
-        class="memory-card"
-        id="love-counter-card">
-
-        <div class="icon">
-          💗
-        </div>
-
-        <strong>
-          Amor.exe
-        </strong>
-
-        <span>
-          Estado: infinito
-        </span>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-<!-- HISTORIA -->
-
-<div id="win-historia" class="window">
+<div
+  id="win-papelera"
+  class="window"
+>
 
   <div class="window-header">
 
     <div class="window-dots">
 
-      <button
-        class="dot dot-close"
-        data-close="win-historia">
-      </button>
-
-      <button
-        class="dot dot-min"
-        data-min="win-historia">
-      </button>
-
-      <button
-        class="dot dot-max"
-        data-max="win-historia">
-      </button>
-
-    </div>
-
-    <div class="window-title">
-      Nuestra historia
-    </div>
-
-  </div>
-
-  <div class="window-body">
-
-    <div class="app-intro">
-
-      <div class="app-intro-icon">
-        🕐
-      </div>
-
-      <h2>
-        Nuestra historia
-      </h2>
-
-      <p>
-        Algunos momentos que quiero conservar para siempre.
-      </p>
-
-    </div>
-
-    <div class="timeline">
-
-      <div class="timeline-item">
-
-        <div class="timeline-date">
-          El comienzo
-        </div>
-
-        <div class="timeline-title">
-          La noche que nos conocimos 🎮
-        </div>
-
-        <div class="timeline-text">
-          Una partida de Free Fire que parecía una más terminó
-          convirtiéndose en el comienzo de algo que ninguno de los dos
-          esperaba.
-        </div>
-
-      </div>
-
-      <div class="timeline-item">
-
-        <div class="timeline-date">
-          Nuestro primer paso
-        </div>
-
-        <div class="timeline-title">
-          Nos hicimos novios ❤️
-        </div>
-
-        <div class="timeline-text">
-          Ese momento que convirtió todas esas conversaciones,
-          llamadas y emociones en nuestra historia.
-        </div>
-
-      </div>
-
-      <div class="timeline-item">
-
-        <div class="timeline-date">
-          Después
-        </div>
-
-        <div class="timeline-title">
-          Aprendimos juntos
-        </div>
-
-        <div class="timeline-text">
-          También llegaron momentos difíciles. Pero cada uno dejó algo:
-          aprender, cambiar, crecer y entender mejor al otro.
-        </div>
-
-      </div>
-
-      <div class="timeline-item">
-
-        <div class="timeline-date">
-          Hoy
-        </div>
-
-        <div class="timeline-title">
-          Seguimos escribiendo la historia 💕
-        </div>
-
-        <div class="timeline-text">
-          Y esta parte todavía no tiene final. Porque todavía quedan
-          demasiadas cosas por vivir juntos.
-        </div>
-
-      </div>
-
-      <div class="timeline-item">
-
-        <div class="timeline-date">
-          Próximamente...
-        </div>
-
-        <div class="timeline-title">
-          Más recuerdos por crear ✨
-        </div>
-
-        <div class="timeline-text">
-          Este espacio queda reservado para todas las cosas bonitas
-          que todavía nos esperan.
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-<!-- MENSAJES -->
-
-<div id="win-mensajes" class="window">
-
-  <div class="window-header">
-
-    <div class="window-dots">
-
-      <button
-        class="dot dot-close"
-        data-close="win-mensajes">
-      </button>
-
-      <button
-        class="dot dot-min"
-        data-min="win-mensajes">
-      </button>
-
-      <button
-        class="dot dot-max"
-        data-max="win-mensajes">
-      </button>
-
-    </div>
-
-    <div class="window-title">
-      Mensajes guardados
-    </div>
-
-  </div>
-
-  <div class="window-body">
-
-    <div class="app-intro">
-
-      <div class="app-intro-icon">
-        💬
-      </div>
-
-      <h2>
-        Mensajes guardados
-      </h2>
-
-      <p>
-        Algunas palabras que merecen quedarse aquí.
-      </p>
-
-    </div>
-
-    <div class="chat">
-
-      <div class="chat-date">
-        Un recuerdo cualquiera ❤️
-      </div>
-
-      <div class="message her">
-        Te amo muchísimo ❤️
-        <small>Viviana</small>
-      </div>
-
-      <div class="message me">
-        Yo te amo muchísimo más.
-        <small>Tú</small>
-      </div>
-
-      <div class="message her">
-        No quiero que te vayas nunca 🥺
-        <small>Viviana</small>
-      </div>
-
-      <div class="message me">
-        Entonces tendremos que seguir haciendo
-        que valga la pena quedarnos.
-        <small>Tú</small>
-      </div>
-
-      <div class="message her">
-        Siempre vas a ser especial para mí. ❤️
-        <small>Viviana</small>
-      </div>
-
-      <div class="message me">
-        Y tú vas a tener un lugar en mi corazón
-        que nadie más puede ocupar.
-        <small>Tú</small>
-      </div>
-
-      <div class="message her">
-        Te extraño.
-        <small>Viviana</small>
-      </div>
-
-      <div class="message me">
-        Yo también. Pero algún día estos mensajes
-        serán recuerdos de cuando estábamos lejos.
-        <small>Tú</small>
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-<!-- PLANES -->
-
-<div id="win-planes" class="window">
-
-  <div class="window-header">
-
-    <div class="window-dots">
-
-      <button
-        class="dot dot-close"
-        data-close="win-planes">
-      </button>
-
-      <button
-        class="dot dot-min"
-        data-min="win-planes">
-      </button>
-
-      <button
-        class="dot dot-max"
-        data-max="win-planes">
-      </button>
-
-    </div>
-
-    <div class="window-title">
-      Cosas que quiero vivir contigo
-    </div>
-
-  </div>
-
-  <div class="window-body">
-
-    <div class="app-intro">
-
-      <div class="app-intro-icon">
-        ❤️
-      </div>
-
-      <h2>
-        Cosas que todavía quiero vivir contigo
-      </h2>
-
-      <p>
-        No son tareas. Son pequeños sueños que podemos ir convirtiendo
-        en recuerdos.
-      </p>
-
-    </div>
-
-    <div id="plans-container">
-
-      <div class="plan">
-        <div class="plan-checkbox"></div>
-        <div class="plan-text">
-          Tener una cita juntos ❤️
-        </div>
-      </div>
-
-      <div class="plan">
-        <div class="plan-checkbox"></div>
-        <div class="plan-text">
-          Tomarnos muchas fotos juntos 📸
-        </div>
-      </div>
-
-      <div class="plan">
-        <div class="plan-checkbox"></div>
-        <div class="plan-text">
-          Ver una película abrazados 🎬
-        </div>
-      </div>
-
-      <div class="plan">
-        <div class="plan-checkbox"></div>
-        <div class="plan-text">
-          Viajar juntos ✈️
-        </div>
-      </div>
-
-      <div class="plan">
-        <div class="plan-checkbox"></div>
-        <div class="plan-text">
-          Cocinar algo juntos 🍕
-        </div>
-      </div>
-
-      <div class="plan">
-        <div class="plan-checkbox"></div>
-        <div class="plan-text">
-          Conocer un lugar nuevo 🌎
-        </div>
-      </div>
-
-      <div class="plan">
-        <div class="plan-checkbox"></div>
-        <div class="plan-text">
-          Crear muchos más recuerdos 💕
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-<!-- LOGROS -->
-
-<div id="win-logros" class="window">
-
-  <div class="window-header">
-
-    <div class="window-dots">
-
-      <button
-        class="dot dot-close"
-        data-close="win-logros">
-      </button>
-
-      <button
-        class="dot dot-min"
-        data-min="win-logros">
-      </button>
-
-      <button
-        class="dot dot-max"
-        data-max="win-logros">
-      </button>
-
-    </div>
-
-    <div class="window-title">
-      Logros
-    </div>
-
-  </div>
-
-  <div class="window-body">
-
-    <div class="app-intro">
-
-      <div class="app-intro-icon">
-        🏆
-      </div>
-
-      <h2>
-        Logros de ViviOS
-      </h2>
-
-      <p>
-        Explora el sistema para descubrirlos.
-      </p>
-
-    </div>
-
-    <div
-      class="achievement unlocked"
-      id="achievement-welcome">
-
-      <div class="achievement-icon">
-        ❤️
-      </div>
-
-      <div>
-
-        <strong>
-          Bienvenida a ViviOS
-        </strong>
-
-        <p>
-          Iniciar sesión por primera vez.
-        </p>
-
-      </div>
-
-    </div>
-
-    <div
-      class="achievement"
-      id="achievement-letter">
-
-      <div class="achievement-icon">
-        💌
-      </div>
-
-      <div>
-
-        <strong>
-          Corazón abierto
-        </strong>
-
-        <p>
-          Leer la carta completa.
-        </p>
-
-      </div>
-
-    </div>
-
-    <div
-      class="achievement"
-      id="achievement-photos">
-
-      <div class="achievement-icon">
-        📸
-      </div>
-
-      <div>
-
-        <strong>
-          Álbum completo
-        </strong>
-
-        <p>
-          Explorar tus recuerdos fotográficos.
-        </p>
-
-      </div>
-
-    </div>
-
-    <div
-      class="achievement"
-      id="achievement-music">
-
-      <div class="achievement-icon">
-        🎵
-      </div>
-
-      <div>
-
-        <strong>
-          Nuestra canción
-        </strong>
-
-        <p>
-          Abrir el reproductor de música.
-        </p>
-
-      </div>
-
-    </div>
-
-    <div
-      class="achievement"
-      id="achievement-game">
-
-      <div class="achievement-icon">
-        🎮
-      </div>
-
-      <div>
-
-        <strong>
-          Gamer
-        </strong>
-
-        <p>
-          Jugar Vivi Runner.
-        </p>
-
-      </div>
-
-    </div>
-
-    <div
-      class="achievement"
-      id="achievement-plans">
-
-      <div class="achievement-icon">
-        ✨
-      </div>
-
-      <div>
-
-        <strong>
-          Soñando juntos
-        </strong>
-
-        <p>
-          Completar uno de los planes.
-        </p>
-
-      </div>
-
-    </div>
-
-    <div
-      class="achievement"
-      id="achievement-gift">
-
-      <div class="achievement-icon">
-        🎁
-      </div>
-
-      <div>
-
-        <strong>
-          Curiosa
-        </strong>
-
-        <p>
-          Abrir el regalo sorpresa.
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-<!-- ACERCA DE -->
-
-<div id="win-acerca" class="window">
-
-  <div class="window-header">
-
-    <div class="window-dots">
-
-      <button
-        class="dot dot-close"
-        data-close="win-acerca">
-      </button>
-
-      <button
-        class="dot dot-min"
-        data-min="win-acerca">
-      </button>
-
-      <button
-        class="dot dot-max"
-        data-max="win-acerca">
-      </button>
-
-    </div>
-
-    <div class="window-title">
-      Acerca de ViviOS
-    </div>
-
-  </div>
-
-  <div class="window-body">
-
-    <div class="system-card">
-
-      <div class="system-header">
-
-        <div class="system-logo">
-          ❤️
-        </div>
-
-        <div>
-
-          <h2>
-            ViviOS
-          </h2>
-
-          <p>
-            Edición especial para Viviana
-          </p>
-
-        </div>
-
-      </div>
-
-      <div class="system-row">
-        <span>Versión</span>
-        <span>1.1 ❤️</span>
-      </div>
-
-      <div class="system-row">
-        <span>Desarrollado para</span>
-        <span>Viviana</span>
-      </div>
-
-      <div class="system-row">
-        <span>Almacenamiento</span>
-        <span>Recuerdos ilimitados</span>
-      </div>
-
-      <div class="system-row">
-        <span>Procesador</span>
-        <span>Amor.exe</span>
-      </div>
-
-      <div class="system-row">
-        <span>Estado</span>
-        <span>Funcionando correctamente ❤️</span>
-      </div>
-
-    </div>
-
-    <div class="love-counter">
-
-      <div class="love-heart">
-        ❤️
-      </div>
-
-      <h2>
-        Amor.exe
-      </h2>
-
-      <p>
-        Error: la cantidad de amor supera<br>
-        la capacidad de almacenamiento del sistema.
-      </p>
-
-      <div class="stat-grid">
-
-        <div class="stat">
-          <b>31</b>
-          <span>Fotos</span>
-        </div>
-
-        <div class="stat">
-          <b>∞</b>
-          <span>Recuerdos</span>
-        </div>
-
-        <div class="stat">
-          <b>1</b>
-          <span>Viviana</span>
-        </div>
-
-        <div class="stat">
-          <b>∞</b>
-          <span>Amor</span>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-<!-- PAPELERA -->
-
-<div id="win-papelera" class="window">
-
-  <div class="window-header">
-
-    <div class="window-dots">
-
-      <button
-        class="dot dot-close"
-        data-close="win-papelera">
-      </button>
-
-      <button
-        class="dot dot-min"
-        data-min="win-papelera">
-      </button>
-
-      <button
-        class="dot dot-max"
-        data-max="win-papelera">
-      </button>
+      <button class="dot dot-close" data-close="win-papelera"></button>
+      <button class="dot dot-min" data-min="win-papelera"></button>
+      <button class="dot dot-max" data-max="win-papelera"></button>
 
     </div>
 
@@ -3442,10 +2315,7 @@ body{
 
   <div
     class="window-body"
-    style="
-      text-align:center;
-      padding-top:55px;
-    "
+    style="text-align:center;padding-top:55px;"
   >
 
     <div style="font-size:65px">
@@ -3465,7 +2335,10 @@ body{
 
 </div>
 
-<!-- JUEGO -->
+
+<!-- =====================================================
+     VIVI RUNNER
+====================================================== -->
 
 <div
   id="win-juego"
@@ -3476,20 +2349,9 @@ body{
 
     <div class="window-dots">
 
-      <button
-        class="dot dot-close"
-        data-close="win-juego">
-      </button>
-
-      <button
-        class="dot dot-min"
-        data-min="win-juego">
-      </button>
-
-      <button
-        class="dot dot-max"
-        data-max="win-juego">
-      </button>
+      <button class="dot dot-close" data-close="win-juego"></button>
+      <button class="dot dot-min" data-min="win-juego"></button>
+      <button class="dot dot-max" data-max="win-juego"></button>
 
     </div>
 
@@ -3508,19 +2370,9 @@ body{
       </div>
 
       <div class="game-score">
-
-        ❤️
-        <span id="heartScore">
-          0
-        </span>
-
+        ❤️ <span id="heartScore">0</span>
         &nbsp;&nbsp;
-
-        ⭐
-        <span id="gameScore">
-          0
-        </span>
-
+        ⭐ <span id="gameScore">0</span>
       </div>
 
       <div class="game-help">
@@ -3531,7 +2383,10 @@ body{
 
     <canvas id="gameCanvas"></canvas>
 
-    <div class="game-mobile-help">
+    <div
+      class="game-mobile-help"
+      id="mobileGameHelp"
+    >
       Toca la pantalla para saltar ❤️
     </div>
 
@@ -3547,16 +2402,12 @@ body{
       <div class="game-over-score">
 
         Puntuación:
-        <b id="finalScore">
-          0
-        </b>
+        <b id="finalScore">0</b>
 
         <br>
 
         Corazones:
-        <b id="finalHearts">
-          0
-        </b>
+        <b id="finalHearts">0</b>
 
       </div>
 
@@ -3573,7 +2424,10 @@ body{
 
 </div>
 
-<!-- VISOR -->
+
+<!-- =====================================================
+     VISOR DE FOTOS
+====================================================== -->
 
 <div id="image-viewer">
 
@@ -3607,15 +2461,17 @@ body{
 
 </div>
 
+
 <script>
 
-/* =========================
-   DATOS
-========================= */
 
-const appData={
+/* =====================================================
+   DATOS DE VIVIOS
+====================================================== */
 
-  carta:`Hola mi gorda hermosa❤️
+const appData = {
+
+  carta: `Hola mi gorda hermosa❤️
 
  Espero que estés bien,hace mucho tiempo que no te hacia una carta y creo que ya era hora además aprovechando que ya volvimos a estar juntos y siendo hoy un dia 30 que pues ese día es nuestra fecha especial, tenemos ya 2 años y 2 meses de habernos hecho novios y la verdad que quiero agradecerte por todo lo bueno que me has regalado por todos los momentos bellos que hemos vivido y a pesar de que tuviéramos momentos no tan lindos pues igual creo que nos han servido de alguna forma para mejorar como personas aprender de los errores y no volver a caer en ellos, de verdad no sabes cuanto te amo y si es una palabra que te repito mucho pero es que pues te amo y me encanta decirte cuanto te amo mi amor eres una mujer increíble y de verdad eres la persona con la que me quiero poner viejito aun recuerdo el día que nos conocimos esa noche jugando free totalmente random sin esperar que llegaramos a todo esto jamás me hubiera imaginado que llegarias a significar tanto para mi bueno en realidad eres mi todo sabes cada momento que hemos vivido, cada cosa linda que nos hemos dicho, cada llamada, cada mensaje todas esas cosas las voy a atesorar por el resto de mi vida las palabras sobran cuando se trata de ti mi amor me has hecho sentir el hombre más feliz del mundo, el más amado, el más afortunado por tenerte eres motivación para seguir adelante, eres mi motivación para ser un mejor hombre cada día por que quiero que mi mejor versión la disfrutes, se que eh cometido muchos errores y siento que ya te estoy demostrando que los estoy cambiando y espero que lo estes notando eres mi primer y último pensamiento del día, te pienso al despertar y te pienso antes de dormir estoy perdidamente enamorado de ti y lo que más deseo en este mundo es que tu y yo cumplamos todas esas promesas que nos hicimos esos sueños en conjunto que tenemos que los hagamos realidad y se que asi va a ser por que vamos a poner de nuestra parte para que sea así mi amor gracias por estar en mi vida, gracias por elegirme a mi como el hombre con el que quieres estar eres una mujer maravillosa, bella, hermosa y divina por dentro y por fuera mi vida sin ti no sería igual eres todo para mi y no me da miedo decírtelo tu sabes el papel tan importante que tienes en mi vida se que estamos madurando y que esto nos va durar para siempre mientras nos sigamos amando incondicionalmente y mientras el estar lejos del otro no sea una opción se que todo va a estar bien contigo a mi lado la vida es hermosa y eso lo tengo muy presente se que no es una carta tan larga pero espero que te haya gustado y que disfrutes de todo esto que hice para ti con mucho amor, te amo te amo infinitamente Viviana Margoth🥺❤️`,
 
@@ -3624,282 +2480,298 @@ const appData={
   fotos:Array.from(
     {length:31},
     (_,i)=>
-      'assets/fotos/foto'+
-      String(i+1).padStart(2,'0')+
+      'assets/fotos/foto' +
+      String(i+1).padStart(2,'0') +
       '.jpg'
   )
 
 };
 
 
-/* =========================
+/* =====================================================
    UTILIDADES
-========================= */
+====================================================== */
 
-const $=selector=>
-  document.querySelector(selector);
+const $ =
+  selector =>
+    document.querySelector(selector);
 
-const $$=selector=>
-  document.querySelectorAll(selector);
+const $$ =
+  selector =>
+    document.querySelectorAll(selector);
 
-let zIndex=3000;
-
-
-/* =========================
-   LOGROS
-========================= */
-
-function unlockAchievement(id){
-
-  const element=
-    document.getElementById(id);
-
-  if(!element)return;
-
-  if(!element.classList.contains('unlocked')){
-
-    element.classList.add('unlocked');
-
-    const name=
-      element.querySelector('strong')?.textContent||
-      'Nuevo logro';
-
-    showToast(
-      '🏆 Logro desbloqueado: '+name
-    );
-
-  }
-
-}
+let zIndex = 3000;
 
 
-/* =========================
-   VENTANAS
-========================= */
+/* =====================================================
+   ABRIR VENTANA
+====================================================== */
 
 function abrirVentana(id){
 
-  const w=
+  const w =
     document.getElementById(id);
 
-  if(!w)return;
+  if(!w){
+    return;
+  }
 
   w.classList.remove(
     'minimized',
     'closing'
   );
 
-  w.classList.add('active');
+  w.classList.add(
+    'active'
+  );
 
-  w.style.zIndex=++zIndex;
+  w.style.zIndex =
+    ++zIndex;
 
   $$('.dock-icon').forEach(
-    icon=>
+    icon =>
       icon.classList.remove('open')
   );
 
-  $$('.dock-icon[data-open="'+id+'"]')
-    .forEach(
-      icon=>
-        icon.classList.add('open')
-    );
+  $$('.dock-icon[data-open="'+id+'"]').forEach(
+    icon =>
+      icon.classList.add('open')
+  );
 
-  if(id==='win-carta'){
+  if(id === 'win-carta'){
     typeLetter();
   }
 
-  if(id==='win-momentos'){
-    unlockAchievement(
-      'achievement-photos'
+  if(id === 'win-juego'){
+
+    setTimeout(
+      ()=>{
+        resizeGame();
+
+        if(!gameStarted){
+          resetGame();
+        }
+      },
+      80
     );
-  }
-
-  if(id==='win-canciones'){
-    unlockAchievement(
-      'achievement-music'
-    );
-  }
-
-  if(id==='win-juego'){
-
-    unlockAchievement(
-      'achievement-game'
-    );
-
-    setTimeout(()=>{
-
-      resizeGame();
-
-      if(!gameStarted){
-        resetGame();
-      }
-
-    },80);
 
   }
 
 }
 
 
+/* =====================================================
+   CERRAR VENTANA
+====================================================== */
+
 function cerrarVentana(id){
 
-  const w=
+  const w =
     document.getElementById(id);
 
-  if(!w)return;
+  if(!w){
+    return;
+  }
 
-  if(id==='win-juego'){
+  if(id === 'win-juego'){
     stopGame();
   }
 
   w.classList.add('closing');
 
-  setTimeout(()=>{
+  setTimeout(
+    ()=>{
+      w.classList.remove(
+        'active',
+        'closing'
+      );
 
-    w.classList.remove(
-      'active',
-      'closing'
-    );
+      updateDock(id);
 
-    updateDock(id);
-
-  },220);
+    },
+    220
+  );
 
 }
 
 
+/* =====================================================
+   MINIMIZAR
+====================================================== */
+
 function minimizarVentana(id){
 
-  const w=
+  const w =
     document.getElementById(id);
 
-  if(!w)return;
+  if(!w){
+    return;
+  }
 
-  w.classList.remove('active');
-  w.classList.add('minimized');
+  w.classList.remove(
+    'active'
+  );
+
+  w.classList.add(
+    'minimized'
+  );
 
   updateDock(id);
 
 }
 
 
+/* =====================================================
+   MAXIMIZAR
+====================================================== */
+
 function maximizarVentana(id){
 
-  const w=
+  const w =
     document.getElementById(id);
 
-  if(!w)return;
+  if(!w){
+    return;
+  }
 
-  w.classList.toggle('maximized');
+  w.classList.toggle(
+    'maximized'
+  );
 
-  if(id==='win-juego'){
+  if(id === 'win-juego'){
+
     setTimeout(
       resizeGame,
       80
     );
+
   }
 
 }
 
 
+/* =====================================================
+   DOCK
+====================================================== */
+
 function updateDock(id){
 
   $$('.dock-icon[data-open="'+id+'"]')
     .forEach(
-      icon=>
+      icon =>
         icon.classList.remove('open')
     );
 
 }
 
 
-/* =========================
-   BOTONES
-========================= */
+/* =====================================================
+   BOTONES data-open
+====================================================== */
 
-$$('[data-open]').forEach(element=>{
+$$('[data-open]').forEach(
+  element => {
 
-  element.addEventListener(
-    'click',
-    event=>{
+    element.addEventListener(
+      'click',
+      event => {
 
-      event.stopPropagation();
+        event.stopPropagation();
 
-      abrirVentana(
-        element.dataset.open
-      );
+        abrirVentana(
+          element.dataset.open
+        );
 
-    }
-  );
+      }
+    );
 
-});
-
-
-$$('[data-close]').forEach(element=>{
-
-  element.addEventListener(
-    'click',
-    event=>{
-
-      event.stopPropagation();
-
-      cerrarVentana(
-        element.dataset.close
-      );
-
-    }
-  );
-
-});
+  }
+);
 
 
-$$('[data-min]').forEach(element=>{
+/* =====================================================
+   BOTONES CERRAR
+====================================================== */
 
-  element.addEventListener(
-    'click',
-    event=>{
+$$('[data-close]').forEach(
+  element => {
 
-      event.stopPropagation();
+    element.addEventListener(
+      'click',
+      event => {
 
-      minimizarVentana(
-        element.dataset.min
-      );
+        event.stopPropagation();
 
-    }
-  );
+        cerrarVentana(
+          element.dataset.close
+        );
 
-});
+      }
+    );
 
-
-$$('[data-max]').forEach(element=>{
-
-  element.addEventListener(
-    'click',
-    event=>{
-
-      event.stopPropagation();
-
-      maximizarVentana(
-        element.dataset.max
-      );
-
-    }
-  );
-
-});
+  }
+);
 
 
-/* =========================
+/* =====================================================
+   BOTONES MINIMIZAR
+====================================================== */
+
+$$('[data-min]').forEach(
+  element => {
+
+    element.addEventListener(
+      'click',
+      event => {
+
+        event.stopPropagation();
+
+        minimizarVentana(
+          element.dataset.min
+        );
+
+      }
+    );
+
+  }
+);
+
+
+/* =====================================================
+   BOTONES MAXIMIZAR
+====================================================== */
+
+$$('[data-max]').forEach(
+  element => {
+
+    element.addEventListener(
+      'click',
+      event => {
+
+        event.stopPropagation();
+
+        maximizarVentana(
+          element.dataset.max
+        );
+
+      }
+    );
+
+  }
+);
+
+
+/* =====================================================
    Z-INDEX
-========================= */
+====================================================== */
 
 $$('.window').forEach(
-  windowElement=>{
+  windowElement => {
 
     windowElement.addEventListener(
       'mousedown',
       ()=>{
-        windowElement.style.zIndex=
+        windowElement.style.zIndex =
           ++zIndex;
       }
     );
@@ -3907,7 +2779,7 @@ $$('.window').forEach(
     windowElement.addEventListener(
       'touchstart',
       ()=>{
-        windowElement.style.zIndex=
+        windowElement.style.zIndex =
           ++zIndex;
       },
       {passive:true}
@@ -3917,154 +2789,169 @@ $$('.window').forEach(
 );
 
 
-/* =========================
-   DRAG
-========================= */
+/* =====================================================
+   DRAG WINDOWS
+====================================================== */
 
-let drag=null;
+let drag = null;
 
-$$('.window-header').forEach(header=>{
 
-  header.addEventListener(
-    'mousedown',
-    event=>{
+$$('.window-header').forEach(
+  header => {
 
-      if(
-        event.target.classList.contains('dot')
-      ){
-        return;
-      }
+    header.addEventListener(
+      'mousedown',
+      event => {
 
-      const windowElement=
-        header.closest('.window');
+        if(
+          event.target.classList.contains('dot')
+        ){
+          return;
+        }
 
-      if(
-        windowElement.classList.contains(
-          'maximized'
-        )
-      ){
-        return;
-      }
+        const windowElement =
+          header.closest('.window');
 
-      const rect=
-        windowElement.getBoundingClientRect();
+        if(
+          windowElement.classList.contains('maximized')
+        ){
+          return;
+        }
 
-      drag={
-        windowElement,
-        startX:event.clientX,
-        startY:event.clientY,
-        left:rect.left,
-        top:rect.top
-      };
+        const rect =
+          windowElement.getBoundingClientRect();
 
-      windowElement.style.transform='none';
-      windowElement.style.left=
-        rect.left+'px';
-      windowElement.style.top=
-        rect.top+'px';
+        drag = {
 
-      function move(e){
+          windowElement,
 
-        if(!drag)return;
+          startX:event.clientX,
 
-        drag.windowElement.style.left=
-          drag.left+
-          e.clientX-
-          drag.startX+
-          'px';
+          startY:event.clientY,
 
-        drag.windowElement.style.top=
-          drag.top+
-          e.clientY-
-          drag.startY+
-          'px';
+          left:rect.left,
 
-      }
+          top:rect.top
 
-      function stop(){
+        };
 
-        drag=null;
+        windowElement.style.transform =
+          'none';
 
-        document.removeEventListener(
+        windowElement.style.left =
+          rect.left + 'px';
+
+        windowElement.style.top =
+          rect.top + 'px';
+
+
+        function move(e){
+
+          if(!drag){
+            return;
+          }
+
+          drag.windowElement.style.left =
+            (
+              drag.left +
+              e.clientX -
+              drag.startX
+            ) + 'px';
+
+          drag.windowElement.style.top =
+            (
+              drag.top +
+              e.clientY -
+              drag.startY
+            ) + 'px';
+
+        }
+
+
+        function stop(){
+
+          drag = null;
+
+          document.removeEventListener(
+            'mousemove',
+            move
+          );
+
+          document.removeEventListener(
+            'mouseup',
+            stop
+          );
+
+        }
+
+
+        document.addEventListener(
           'mousemove',
           move
         );
 
-        document.removeEventListener(
+        document.addEventListener(
           'mouseup',
           stop
         );
 
       }
+    );
 
-      document.addEventListener(
-        'mousemove',
-        move
-      );
-
-      document.addEventListener(
-        'mouseup',
-        stop
-      );
-
-    }
-  );
-
-});
+  }
+);
 
 
-/* =========================
+/* =====================================================
    CARTA
-========================= */
+====================================================== */
 
 let typingTimer;
 
 function typeLetter(){
 
-  clearTimeout(typingTimer);
+  clearTimeout(
+    typingTimer
+  );
 
-  const element=
+  const element =
     $('#display-carta');
 
-  if(!element)return;
+  if(!element){
+    return;
+  }
 
-  const text=
+  const text =
     appData.carta;
 
   if(
-    element.dataset.done===text
+    element.dataset.done === text
   ){
-
-    unlockAchievement(
-      'achievement-letter'
-    );
-
     return;
-
   }
 
-  element.dataset.done=text;
-  element.textContent='';
+  element.dataset.done =
+    text;
 
-  let index=0;
+  element.textContent =
+    '';
+
+  let index = 0;
 
   function write(){
 
-    if(index<text.length){
+    if(index < text.length){
 
-      element.textContent+=
-        text[index++];
+      element.textContent +=
+        text[index];
 
-      typingTimer=setTimeout(
-        write,
-        12
-      );
+      index++;
 
-    }else{
-
-      unlockAchievement(
-        'achievement-letter'
-      );
+      typingTimer =
+        setTimeout(
+          write,
+          12
+        );
 
     }
 
@@ -4075,59 +2962,75 @@ function typeLetter(){
 }
 
 
-/* =========================
-   GALERÍA
-========================= */
+/* =====================================================
+   RENDER APP
+====================================================== */
 
 function renderApp(){
 
   try{
 
-    document.body.style.backgroundImage=
+    document.body.style.backgroundImage =
       'url("assets/fondo.jpg")';
 
-    const gallery=
+
+    const gallery =
       $('#display-galeria');
 
-    gallery.innerHTML='';
+    gallery.innerHTML =
+      '';
+
 
     appData.fotos.forEach(
       (src,index)=>{
 
-        const card=
+        const card =
           document.createElement('div');
 
-        card.className='photo-card';
+        card.className =
+          'photo-card';
 
-        card.style.animationDelay=
-          index*.07+'s';
+        card.style.animationDelay =
+          (index * .07) + 's';
 
-        const image=
+
+        const image =
           document.createElement('img');
 
-        image.src=src;
-        image.alt=
-          'Foto '+(index+1);
-        image.loading='lazy';
-        image.draggable=false;
+        image.src =
+          src;
 
-        image.onerror=()=>{
-          console.error(
-            'No se pudo cargar:',
-            src
-          );
-        };
+        image.alt =
+          'Foto ' + (index + 1);
 
-        const caption=
+        image.loading =
+          'lazy';
+
+        image.draggable =
+          false;
+
+
+        image.onerror =
+          ()=>{
+            console.error(
+              'No se pudo cargar:',
+              src
+            );
+          };
+
+
+        const caption =
           document.createElement('p');
 
-        caption.textContent=
-          'Foto #'+(index+1);
+        caption.textContent =
+          'Foto #' + (index + 1);
+
 
         card.append(
           image,
           caption
         );
+
 
         card.addEventListener(
           'click',
@@ -4136,13 +3039,17 @@ function renderApp(){
           }
         );
 
-        gallery.appendChild(card);
+
+        gallery.appendChild(
+          card
+        );
 
       }
     );
 
-    $('#display-carta')
-      .dataset.done='';
+
+    $('#display-carta').dataset.done =
+      '';
 
   }catch(error){
 
@@ -4156,15 +3063,20 @@ function renderApp(){
 }
 
 
+/* =====================================================
+   PRECARGAR FOTOS
+====================================================== */
+
 function preloadPhotos(){
 
   appData.fotos.forEach(
-    src=>{
+    src => {
 
-      const image=
+      const image =
         new Image();
 
-      image.src=src;
+      image.src =
+        src;
 
     }
   );
@@ -4172,17 +3084,23 @@ function preloadPhotos(){
 }
 
 
-/* =========================
-   VISOR
-========================= */
+/* =====================================================
+   VISOR DE FOTOS
+====================================================== */
 
-let viewerIndex=0;
+let viewerIndex = 0;
+
 
 function openViewer(index){
 
-  if(!appData.fotos.length)return;
+  if(
+    !appData.fotos.length
+  ){
+    return;
+  }
 
-  viewerIndex=index;
+  viewerIndex =
+    index;
 
   updateViewer();
 
@@ -4194,90 +3112,113 @@ function openViewer(index){
 
 function updateViewer(){
 
-  if(!appData.fotos.length)return;
+  if(
+    !appData.fotos.length
+  ){
+    return;
+  }
 
-  const source=
+  const source =
     appData.fotos[viewerIndex];
 
-  $('#viewer-img').src=
+  $('#viewer-img').src =
     source;
 
-  $('#viewer-caption')
-    .textContent=
-      'Foto '+
-      (viewerIndex+1)+
-      ' de '+
-      appData.fotos.length;
+  $('#viewer-caption').textContent =
+    'Foto ' +
+    (viewerIndex + 1) +
+    ' de ' +
+    appData.fotos.length;
 
 }
 
 
-$('#viewer-close').onclick=()=>{
-  $('#image-viewer')
-    .classList.remove('show');
-};
+/* =====================================================
+   VISOR: CERRAR
+====================================================== */
+
+$('#viewer-close').onclick =
+  ()=>{
+    $('#image-viewer')
+      .classList.remove('show');
+  };
 
 
-$('#viewer-prev').onclick=()=>{
+/* =====================================================
+   VISOR: ANTERIOR
+====================================================== */
 
-  viewerIndex=
-    (
-      viewerIndex-
-      1+
-      appData.fotos.length
-    )%
-    appData.fotos.length;
+$('#viewer-prev').onclick =
+  ()=>{
 
-  updateViewer();
+    viewerIndex =
+      (
+        viewerIndex -
+        1 +
+        appData.fotos.length
+      ) %
+      appData.fotos.length;
 
-};
+    updateViewer();
 
-
-$('#viewer-next').onclick=()=>{
-
-  viewerIndex=
-    (
-      viewerIndex+
-      1
-    )%
-    appData.fotos.length;
-
-  updateViewer();
-
-};
+  };
 
 
-const viewer=
+/* =====================================================
+   VISOR: SIGUIENTE
+====================================================== */
+
+$('#viewer-next').onclick =
+  ()=>{
+
+    viewerIndex =
+      (
+        viewerIndex +
+        1
+      ) %
+      appData.fotos.length;
+
+    updateViewer();
+
+  };
+
+
+/* =====================================================
+   SWIPE EN ANDROID
+====================================================== */
+
+const viewer =
   $('#image-viewer');
 
-const viewerImage=
+const viewerImage =
   $('#viewer-img');
 
-let touchStartX=0;
-let touchStartY=0;
-let touchStartTime=0;
+let touchStartX = 0;
+let touchStartY = 0;
+let touchStartTime = 0;
+
 
 viewer.addEventListener(
   'touchstart',
-  event=>{
+  event => {
 
     if(
-      !event.touches||
-      event.touches.length!==1
+      !event.touches ||
+      event.touches.length !== 1
     ){
       return;
     }
 
-    const touch=
+    const touch =
       event.touches[0];
 
-    touchStartX=
+    touchStartX =
       touch.clientX;
 
-    touchStartY=
+    touchStartY =
       touch.clientY;
 
-    touchStartTime=
+    touchStartTime =
       Date.now();
 
   },
@@ -4287,42 +3228,55 @@ viewer.addEventListener(
 
 viewer.addEventListener(
   'touchend',
-  event=>{
+  event => {
 
     if(
-      !event.changedTouches||
-      event.changedTouches.length!==1
+      !event.changedTouches ||
+      event.changedTouches.length !== 1
     ){
       return;
     }
 
-    const touch=
+    const touch =
       event.changedTouches[0];
 
-    const deltaX=
-      touch.clientX-touchStartX;
+    const deltaX =
+      touch.clientX -
+      touchStartX;
 
-    const deltaY=
-      touch.clientY-touchStartY;
+    const deltaY =
+      touch.clientY -
+      touchStartY;
 
-    const duration=
-      Date.now()-touchStartTime;
+    const duration =
+      Date.now() -
+      touchStartTime;
 
-    if(duration>1200)return;
 
-    if(Math.abs(deltaX)<40)return;
+    if(duration > 1200){
+      return;
+    }
+
+    if(Math.abs(deltaX) < 40){
+      return;
+    }
 
     if(
-      Math.abs(deltaX)<=
+      Math.abs(deltaX) <=
       Math.abs(deltaY)
     ){
       return;
     }
 
-    if(deltaX<0){
+
+    if(deltaX < 0){
+
       $('#viewer-next').click();
+
     }else{
+
       $('#viewer-prev').click();
+
     }
 
   },
@@ -4332,56 +3286,54 @@ viewer.addEventListener(
 
 viewerImage.addEventListener(
   'dragstart',
-  event=>{
+  event => {
     event.preventDefault();
   }
 );
 
 
-/* =========================
+/* =====================================================
    VALES
-========================= */
+====================================================== */
 
-$$('.claim-btn').forEach(button=>{
+$$('.claim-btn').forEach(
+  button => {
 
-  button.addEventListener(
-    'click',
-    ()=>{
+    button.addEventListener(
+      'click',
+      ()=>{
 
-      button.textContent=
-        '¡CANJEADO! ❤️';
+        button.textContent =
+          '¡CANJEADO! ❤️';
 
-      button.classList.add(
-        'claimed'
-      );
+        button.classList.add(
+          'claimed'
+        );
 
-      showToast(
-        'Vale canjeado 💕'
-      );
+        showToast(
+          'Vale canjeado 💕'
+        );
 
-    }
-  );
+      }
+    );
 
-});
+  }
+);
 
 
-/* =========================
+/* =====================================================
    REGALO
-========================= */
+====================================================== */
 
 $('#gift-btn').addEventListener(
   'click',
   ()=>{
 
-    $('#gift-text')
-      .style.display='block';
+    $('#gift-text').style.display =
+      'block';
 
-    $('#gift-btn')
-      .style.animation='none';
-
-    unlockAchievement(
-      'achievement-gift'
-    );
+    $('#gift-btn').style.animation =
+      'none';
 
     burstHearts();
 
@@ -4389,65 +3341,20 @@ $('#gift-btn').addEventListener(
 );
 
 
-/* =========================
-   PLANES
-========================= */
-
-$$('.plan').forEach(plan=>{
-
-  plan.addEventListener(
-    'click',
-    ()=>{
-
-      plan.classList.toggle(
-        'checked'
-      );
-
-      const checkbox=
-        plan.querySelector(
-          '.plan-checkbox'
-        );
-
-      if(
-        plan.classList.contains(
-          'checked'
-        )
-      ){
-
-        checkbox.textContent='✓';
-
-        unlockAchievement(
-          'achievement-plans'
-        );
-
-        showToast(
-          'Un recuerdo más por vivir juntos ❤️'
-        );
-
-      }else{
-
-        checkbox.textContent='';
-
-      }
-
-    }
-  );
-
-});
-
-
-/* =========================
+/* =====================================================
    RELOJ
-========================= */
+====================================================== */
 
 function updateClock(){
 
-  const clock=
+  const clock =
     $('#mac-clock');
 
-  if(!clock)return;
+  if(!clock){
+    return;
+  }
 
-  clock.textContent=
+  clock.textContent =
     new Date().toLocaleString(
       'es-ES',
       {
@@ -4469,26 +3376,27 @@ setInterval(
 );
 
 
-/* =========================
+/* =====================================================
    TOAST
-========================= */
+====================================================== */
 
 function showToast(message){
 
-  const previous=
-    document.querySelector(
-      '.toast'
-    );
+  const previous =
+    document.querySelector('.toast');
 
   if(previous){
     previous.remove();
   }
 
-  const toast=
+  const toast =
     document.createElement('div');
 
-  toast.className='toast';
-  toast.textContent=message;
+  toast.className =
+    'toast';
+
+  toast.textContent =
+    message;
 
   document.body.appendChild(
     toast
@@ -4498,43 +3406,45 @@ function showToast(message){
     ()=>{
       toast.remove();
     },
-    2400
+    2200
   );
 
 }
 
 
-/* =========================
+/* =====================================================
    CORAZONES
-========================= */
+====================================================== */
 
 function createHeart(x,y){
 
-  const heart=
+  const heart =
     document.createElement('div');
 
-  heart.className=
+  heart.className =
     'click-heart';
 
-  const hearts=[
-    '💖',
-    '💕',
-    '❤️',
-    '💗'
-  ];
+  const hearts =
+    [
+      '💖',
+      '💕',
+      '❤️',
+      '💗'
+    ];
 
-  heart.textContent=
+  heart.textContent =
     hearts[
       Math.floor(
-        Math.random()*hearts.length
+        Math.random() *
+        hearts.length
       )
     ];
 
-  heart.style.left=
-    x+'px';
+  heart.style.left =
+    x + 'px';
 
-  heart.style.top=
-    y+'px';
+  heart.style.top =
+    y + 'px';
 
   document.body.appendChild(
     heart
@@ -4552,20 +3462,21 @@ function createHeart(x,y){
 
 document.addEventListener(
   'click',
-  event=>{
+  event => {
 
     if(
       event.target.closest(
-        'button,'+
-        'input,'+
-        'textarea,'+
-        '.window-header,'+
-        '.dock,'+
-        '.desktop-item,'+
-        '.memory-card,'+
-        '.plan,'+
-        '#image-viewer,'+
-        '#gameCanvas'
+        'button,' +
+        'input,' +
+        'textarea,' +
+        '.window-header,' +
+        '.dock,' +
+        '.desktop-item,' +
+        '#image-viewer,' +
+        '#gameCanvas,' +
+        '#laptop-intro,' +
+        '#boot,' +
+        '#login'
       )
     ){
       return;
@@ -4580,11 +3491,15 @@ document.addEventListener(
 );
 
 
+/* =====================================================
+   EXPLOSIÓN DE CORAZONES
+====================================================== */
+
 function burstHearts(){
 
   for(
-    let i=0;
-    i<14;
+    let i = 0;
+    i < 14;
     i++
   ){
 
@@ -4593,16 +3508,18 @@ function burstHearts(){
 
         createHeart(
 
-          innerWidth/2+
-          (Math.random()-.5)*220,
+          innerWidth / 2 +
+          (Math.random() - .5) *
+          220,
 
-          innerHeight/2+
-          (Math.random()-.5)*120
+          innerHeight / 2 +
+          (Math.random() - .5) *
+          120
 
         );
 
       },
-      i*45
+      i * 45
     );
 
   }
@@ -4610,137 +3527,125 @@ function burstHearts(){
 }
 
 
-/* =========================
-   LOVE COUNTER
-========================= */
-
-$('#love-counter-card')
-  .addEventListener(
-    'click',
-    ()=>{
-
-      showToast(
-        'Amor.exe sigue funcionando perfectamente ❤️'
-      );
-
-      unlockAchievement(
-        'achievement-welcome'
-      );
-
-    }
-  );
-
-
-/* =========================
+/* =====================================================
    VIVI RUNNER
-========================= */
+====================================================== */
 
-const canvas=
+const canvas =
   $('#gameCanvas');
 
-const ctx=
+const ctx =
   canvas.getContext('2d');
 
-const gameOverlay=
+const gameOverlay =
   $('#gameOverlay');
 
-const gameScoreEl=
+const gameScoreEl =
   $('#gameScore');
 
-const heartScoreEl=
+const heartScoreEl =
   $('#heartScore');
 
-const finalScoreEl=
+const finalScoreEl =
   $('#finalScore');
 
-const finalHeartsEl=
+const finalHeartsEl =
   $('#finalHearts');
 
-const restartGame=
+const restartGame =
   $('#restartGame');
 
-let gameRunning=false;
-let gameAnimation=null;
-let gameStarted=false;
 
-let gameWidth=800;
-let gameHeight=350;
+let gameRunning = false;
+let gameAnimation = null;
+let gameStarted = false;
 
-let score=0;
-let heartsCollected=0;
+let gameWidth = 800;
+let gameHeight = 350;
 
-let speed=5;
-let groundY=0;
+let score = 0;
+let heartsCollected = 0;
 
-let lastTime=0;
-let obstacleTimer=0;
-let heartTimer=0;
+let speed = 5;
 
-let obstacles=[];
-let collectibles=[];
+let groundY = 0;
+
+let lastTime = 0;
+
+let obstacleTimer = 0;
+let heartTimer = 0;
+
+let obstacles = [];
+let collectibles = [];
 
 
-const player={
+const player = {
 
   x:110,
   y:0,
+
   width:42,
   height:68,
+
   velocityY:0,
+
   gravity:.72,
   jumpPower:-13,
+
   grounded:true
 
 };
 
 
-const vivi={
+const vivi = {
 
   x:55,
   y:0,
+
   width:42,
   height:68,
+
   bounce:0
 
 };
 
 
+/* =====================================================
+   REDIMENSIONAR JUEGO
+====================================================== */
+
 function resizeGame(){
 
-  if(!canvas)return;
+  if(!canvas){
+    return;
+  }
 
-  const rect=
+  const rect =
     canvas.getBoundingClientRect();
 
-  const width=
-    Math.max(
-      300,
-      rect.width
-    );
+  const width =
+    Math.max(300,rect.width);
 
-  const height=
-    Math.max(
-      200,
-      rect.height
-    );
+  const height =
+    Math.max(200,rect.height);
 
-  const ratio=
+  const ratio =
     Math.min(
-      window.devicePixelRatio||1,
+      window.devicePixelRatio || 1,
       2
     );
 
-  canvas.width=
-    width*ratio;
+  canvas.width =
+    width * ratio;
 
-  canvas.height=
-    height*ratio;
+  canvas.height =
+    height * ratio;
 
-  canvas.style.width=
-    width+'px';
+  canvas.style.width =
+    width + 'px';
 
-  canvas.style.height=
-    height+'px';
+  canvas.style.height =
+    height + 'px';
 
   ctx.setTransform(
     ratio,
@@ -4751,22 +3656,25 @@ function resizeGame(){
     0
   );
 
-  gameWidth=width;
-  gameHeight=height;
+  gameWidth =
+    width;
 
-  groundY=
-    gameHeight-52;
+  gameHeight =
+    height;
+
+  groundY =
+    gameHeight - 52;
 
   if(player.grounded){
 
-    player.y=
-      groundY-
+    player.y =
+      groundY -
       player.height;
 
   }
 
-  vivi.y=
-    groundY-
+  vivi.y =
+    groundY -
     vivi.height;
 
 }
@@ -4775,69 +3683,97 @@ function resizeGame(){
 window.addEventListener(
   'resize',
   ()=>{
-
     if(
-      $('#win-juego')&&
-      $('#win-juego')
-        .classList.contains('active')
+      $('#win-juego') &&
+      $('#win-juego').classList.contains('active')
     ){
 
       resizeGame();
 
     }
-
   }
 );
+
+
+/* =====================================================
+   INICIAR / REINICIAR
+====================================================== */
+
+function startGameIfNeeded(){
+
+  if(gameRunning){
+    return;
+  }
+
+  gameRunning = true;
+  gameStarted = true;
+
+  lastTime =
+    performance.now();
+
+  gameAnimation =
+    requestAnimationFrame(
+      gameLoop
+    );
+
+}
 
 
 function resetGame(){
 
   resizeGame();
 
-  score=0;
-  heartsCollected=0;
+  score = 0;
+  heartsCollected = 0;
 
-  speed=5;
+  speed = 5;
 
-  obstacleTimer=0;
-  heartTimer=0;
+  obstacleTimer = 0;
+  heartTimer = 0;
 
-  obstacles=[];
-  collectibles=[];
+  obstacles = [];
+  collectibles = [];
 
-  player.velocityY=0;
-  player.grounded=true;
+  player.velocityY = 0;
+  player.grounded = true;
 
-  player.y=
-    groundY-
+  player.y =
+    groundY -
     player.height;
 
-  vivi.y=
-    groundY-
+  vivi.y =
+    groundY -
     vivi.height;
 
-  vivi.bounce=0;
+  vivi.bounce = 0;
 
-  gameScoreEl.textContent='0';
-  heartScoreEl.textContent='0';
-  finalScoreEl.textContent='0';
-  finalHeartsEl.textContent='0';
+  gameScoreEl.textContent =
+    '0';
+
+  heartScoreEl.textContent =
+    '0';
+
+  finalScoreEl.textContent =
+    '0';
+
+  finalHeartsEl.textContent =
+    '0';
 
   gameOverlay.classList.add(
     'hidden'
   );
 
-  gameStarted=true;
-  gameRunning=true;
+  gameStarted = true;
+  gameRunning = true;
 
-  lastTime=
+  lastTime =
     performance.now();
 
   cancelAnimationFrame(
     gameAnimation
   );
 
-  gameAnimation=
+  gameAnimation =
     requestAnimationFrame(
       gameLoop
     );
@@ -4847,16 +3783,20 @@ function resetGame(){
 
 function stopGame(){
 
-  gameRunning=false;
+  gameRunning = false;
 
   cancelAnimationFrame(
     gameAnimation
   );
 
-  gameAnimation=null;
+  gameAnimation = null;
 
 }
 
+
+/* =====================================================
+   SALTO
+====================================================== */
 
 function jump(){
 
@@ -4870,28 +3810,32 @@ function jump(){
 
   if(player.grounded){
 
-    player.velocityY=
+    player.velocityY =
       player.jumpPower;
 
-    player.grounded=false;
+    player.grounded =
+      false;
 
   }
 
 }
 
 
+/* =====================================================
+   CONTROLES
+====================================================== */
+
 document.addEventListener(
   'keydown',
-  event=>{
+  event => {
 
     if(
-      event.code==='Space'||
-      event.key==='ArrowUp'
+      event.code === 'Space' ||
+      event.key === 'ArrowUp'
     ){
 
       if(
-        $('#win-juego')
-          .classList.contains('active')
+        $('#win-juego').classList.contains('active')
       ){
 
         event.preventDefault();
@@ -4908,13 +3852,12 @@ document.addEventListener(
 
 canvas.addEventListener(
   'pointerdown',
-  event=>{
+  event => {
 
     event.preventDefault();
 
     if(
-      !$('#win-juego')
-        .classList.contains('active')
+      !$('#win-juego').classList.contains('active')
     ){
       return;
     }
@@ -4925,22 +3868,30 @@ canvas.addEventListener(
 );
 
 
+/* =====================================================
+   LOOP
+====================================================== */
+
 function gameLoop(time){
 
-  if(!gameRunning)return;
+  if(!gameRunning){
+    return;
+  }
 
-  const delta=
+  const delta =
     Math.min(
-      (time-lastTime)/16.67,
+      (time - lastTime) / 16.67,
       2
     );
 
-  lastTime=time;
+  lastTime =
+    time;
 
   updateGame(delta);
+
   drawGame();
 
-  gameAnimation=
+  gameAnimation =
     requestAnimationFrame(
       gameLoop
     );
@@ -4948,113 +3899,141 @@ function gameLoop(time){
 }
 
 
+/* =====================================================
+   ACTUALIZAR JUEGO
+====================================================== */
+
 function updateGame(delta){
 
-  score+=.12*delta;
+  score +=
+    0.12 * delta;
 
-  gameScoreEl.textContent=
+  gameScoreEl.textContent =
     Math.floor(score);
 
-  speed=
+
+  speed =
     Math.min(
       9,
-      5+score/350
+      5 +
+      score / 350
     );
 
-  player.velocityY+=
-    player.gravity*delta;
 
-  player.y+=
-    player.velocityY*delta;
+  player.velocityY +=
+    player.gravity * delta;
+
+  player.y +=
+    player.velocityY * delta;
+
 
   if(
-    player.y+
-    player.height>=
+    player.y +
+    player.height >=
     groundY
   ){
 
-    player.y=
-      groundY-
+    player.y =
+      groundY -
       player.height;
 
-    player.velocityY=0;
-    player.grounded=true;
+    player.velocityY =
+      0;
+
+    player.grounded =
+      true;
 
   }
 
-  vivi.bounce+=
-    .13*delta;
 
-  vivi.y=
-    groundY-
-    vivi.height+
-    Math.sin(
-      vivi.bounce
-    )*3;
+  vivi.bounce +=
+    .13 * delta;
 
-  obstacleTimer+=delta;
-  heartTimer+=delta;
+
+  vivi.y =
+    groundY -
+    vivi.height +
+    Math.sin(vivi.bounce) * 3;
+
+
+  obstacleTimer +=
+    delta;
+
+  heartTimer +=
+    delta;
+
 
   if(
-    obstacleTimer>
+    obstacleTimer >
     Math.max(
       52,
-      88-score/20
+      88 -
+      score / 20
     )
   ){
 
     spawnObstacle();
 
-    obstacleTimer=0;
+    obstacleTimer = 0;
 
   }
 
-  if(heartTimer>95){
+
+  if(
+    heartTimer >
+    95
+  ){
 
     spawnHeart();
 
-    heartTimer=0;
+    heartTimer = 0;
 
   }
 
+
   obstacles.forEach(
-    obstacle=>{
-      obstacle.x-=
-        speed*delta;
+    obstacle => {
+
+      obstacle.x -=
+        speed * delta;
+
     }
   );
+
 
   collectibles.forEach(
-    heart=>{
+    heart => {
 
-      heart.x-=
-        speed*delta;
+      heart.x -=
+        speed * delta;
 
-      heart.rotation+=
-        .05*delta;
+      heart.rotation +=
+        .05 * delta;
 
     }
   );
 
-  obstacles=
+
+  obstacles =
     obstacles.filter(
-      obstacle=>
-        obstacle.x+
-        obstacle.width>
+      obstacle =>
+        obstacle.x +
+        obstacle.width >
         -40
     );
 
-  collectibles=
+
+  collectibles =
     collectibles.filter(
-      heart=>
-        heart.x+
-        heart.size>
+      heart =>
+        heart.x +
+        heart.size >
         -40
     );
+
 
   for(
-    const obstacle
-    of obstacles
+    const obstacle of obstacles
   ){
 
     if(
@@ -5072,14 +4051,14 @@ function updateGame(delta){
 
   }
 
+
   for(
-    let i=
-      collectibles.length-1;
-    i>=0;
+    let i = collectibles.length - 1;
+    i >= 0;
     i--
   ){
 
-    const heart=
+    const heart =
       collectibles[i];
 
     if(
@@ -5091,10 +4070,10 @@ function updateGame(delta){
 
       heartsCollected++;
 
-      heartScoreEl.textContent=
+      heartScoreEl.textContent =
         heartsCollected;
 
-      score+=20;
+      score += 20;
 
       collectibles.splice(
         i,
@@ -5108,20 +4087,30 @@ function updateGame(delta){
 }
 
 
+/* =====================================================
+   OBSTÁCULOS
+====================================================== */
+
 function spawnObstacle(){
 
-  const height=
-    28+
-    Math.random()*34;
+  const height =
+    28 +
+    Math.random() *
+    34;
 
-  const width=
-    25+
-    Math.random()*18;
+  const width =
+    25 +
+    Math.random() *
+    18;
 
   obstacles.push({
 
-    x:gameWidth+20,
-    y:groundY-height,
+    x:
+      gameWidth + 20,
+
+    y:
+      groundY - height,
+
     width,
     height
 
@@ -5132,25 +4121,27 @@ function spawnObstacle(){
 
 function spawnHeart(){
 
-  const minY=
+  const minY =
     Math.max(
       65,
-      groundY-155
+      groundY - 155
     );
 
-  const maxY=
-    groundY-80;
+  const maxY =
+    groundY - 80;
 
   collectibles.push({
 
-    x:gameWidth+25,
+    x:
+      gameWidth + 25,
 
     y:
-      minY+
-      Math.random()*
-      (maxY-minY),
+      minY +
+      Math.random() *
+      (maxY - minY),
 
     size:18,
+
     rotation:0
 
   });
@@ -5158,29 +4149,29 @@ function spawnHeart(){
 }
 
 
+/* =====================================================
+   COLISIONES
+====================================================== */
+
 function collision(a,b){
 
-  const paddingX=8;
-  const paddingY=8;
+  const paddingX = 8;
+  const paddingY = 8;
 
-  return(
-    a.x+
-      paddingX<
-      b.x+b.width&&
+  return (
 
-    a.x+
-      a.width-
-      paddingX>
-      b.x&&
+    a.x + paddingX <
+    b.x + b.width &&
 
-    a.y+
-      paddingY<
-      b.y+b.height&&
+    a.x + a.width - paddingX >
+    b.x &&
 
-    a.y+
-      a.height-
-      paddingY>
-      b.y
+    a.y + paddingY <
+    b.y + b.height &&
+
+    a.y + a.height - paddingY >
+    b.y
+
   );
 
 }
@@ -5191,68 +4182,66 @@ function circlePlayerCollision(
   heart
 ){
 
-  const cx=
-    heart.x+
-    heart.size/2;
+  const cx =
+    heart.x + heart.size / 2;
 
-  const cy=
-    heart.y+
-    heart.size/2;
+  const cy =
+    heart.y + heart.size / 2;
 
-  const closestX=
+  const closestX =
     Math.max(
       player.x,
       Math.min(
         cx,
-        player.x+
-        player.width
+        player.x + player.width
       )
     );
 
-  const closestY=
+  const closestY =
     Math.max(
       player.y,
       Math.min(
         cy,
-        player.y+
-        player.height
+        player.y + player.height
       )
     );
 
-  const dx=
-    cx-
-    closestX;
+  const dx =
+    cx - closestX;
 
-  const dy=
-    cy-
-    closestY;
+  const dy =
+    cy - closestY;
 
-  return(
-    dx*dx+
-    dy*dy
-  )<
+  return (
+    dx * dx +
+    dy * dy
+  ) <
   Math.pow(
-    heart.size*.72,
+    heart.size * .72,
     2
   );
 
 }
 
 
+/* =====================================================
+   FIN DEL JUEGO
+====================================================== */
+
 function endGame(){
 
-  gameRunning=false;
+  gameRunning = false;
 
   cancelAnimationFrame(
     gameAnimation
   );
 
-  gameAnimation=null;
+  gameAnimation = null;
 
-  finalScoreEl.textContent=
+  finalScoreEl.textContent =
     Math.floor(score);
 
-  finalHeartsEl.textContent=
+  finalHeartsEl.textContent =
     heartsCollected;
 
   gameOverlay.classList.remove(
@@ -5261,6 +4250,10 @@ function endGame(){
 
 }
 
+
+/* =====================================================
+   DIBUJAR TODO
+====================================================== */
 
 function drawGame(){
 
@@ -5271,7 +4264,10 @@ function drawGame(){
     gameHeight
   );
 
-  const sky=
+
+  /* CIELO */
+
+  const sky =
     ctx.createLinearGradient(
       0,
       0,
@@ -5289,7 +4285,8 @@ function drawGame(){
     '#fff7fa'
   );
 
-  ctx.fillStyle=sky;
+  ctx.fillStyle =
+    sky;
 
   ctx.fillRect(
     0,
@@ -5298,20 +4295,26 @@ function drawGame(){
     gameHeight
   );
 
+
+  /* SOL */
+
   ctx.beginPath();
 
   ctx.arc(
-    gameWidth-85,
+    gameWidth - 85,
     62,
     28,
     0,
-    Math.PI*2
+    Math.PI * 2
   );
 
-  ctx.fillStyle=
+  ctx.fillStyle =
     'rgba(255,205,112,.65)';
 
   ctx.fill();
+
+
+  /* NUBES */
 
   drawCloud(
     100,
@@ -5320,12 +4323,16 @@ function drawGame(){
   );
 
   drawCloud(
-    gameWidth*.48,
+    gameWidth * .48,
     82,
     .65
   );
 
-  ctx.fillStyle='#f8cad8';
+
+  /* COLINAS */
+
+  ctx.fillStyle =
+    '#f8cad8';
 
   ctx.beginPath();
 
@@ -5335,16 +4342,16 @@ function drawGame(){
   );
 
   ctx.quadraticCurveTo(
-    gameWidth*.18,
-    groundY-55,
-    gameWidth*.38,
+    gameWidth * .18,
+    groundY - 55,
+    gameWidth * .38,
     groundY
   );
 
   ctx.quadraticCurveTo(
-    gameWidth*.60,
-    groundY-75,
-    gameWidth*.83,
+    gameWidth * .60,
+    groundY - 75,
+    gameWidth * .83,
     groundY
   );
 
@@ -5357,17 +4364,25 @@ function drawGame(){
 
   ctx.fill();
 
-  ctx.fillStyle='#fff';
+
+  /* SUELO */
+
+  ctx.fillStyle =
+    '#fff';
 
   ctx.fillRect(
     0,
     groundY,
     gameWidth,
-    gameHeight-groundY
+    gameHeight - groundY
   );
 
-  ctx.strokeStyle='#ffd0dc';
-  ctx.lineWidth=2;
+
+  ctx.strokeStyle =
+    '#ffd0dc';
+
+  ctx.lineWidth =
+    2;
 
   ctx.beginPath();
 
@@ -5383,37 +4398,57 @@ function drawGame(){
 
   ctx.stroke();
 
+
+  /* PEQUEÑAS FLORES */
+
   for(
-    let x=10;
-    x<gameWidth;
-    x+=85
+    let x = 10;
+    x < gameWidth;
+    x += 85
   ){
 
-    const offset=
+    const offset =
       Math.sin(
-        x*.08
-      )*4;
+        x * .08
+      ) * 4;
 
     drawFlower(
       x,
-      groundY+22+offset
+      groundY + 22 + offset
     );
 
   }
+
+
+  /* OBSTÁCULOS */
 
   obstacles.forEach(
     drawObstacle
   );
 
+
+  /* CORAZONES */
+
   collectibles.forEach(
     drawCollectible
   );
 
+
+  /* VIVI */
+
   drawVivi();
+
+
+  /* JUGADOR */
+
   drawPlayer();
 
 }
 
+
+/* =====================================================
+   NUBES
+====================================================== */
 
 function drawCloud(
   x,
@@ -5433,7 +4468,7 @@ function drawCloud(
     scale
   );
 
-  ctx.fillStyle=
+  ctx.fillStyle =
     'rgba(255,255,255,.72)';
 
   ctx.beginPath();
@@ -5443,7 +4478,7 @@ function drawCloud(
     8,
     18,
     0,
-    Math.PI*2
+    Math.PI * 2
   );
 
   ctx.arc(
@@ -5451,7 +4486,7 @@ function drawCloud(
     0,
     23,
     0,
-    Math.PI*2
+    Math.PI * 2
   );
 
   ctx.arc(
@@ -5459,7 +4494,7 @@ function drawCloud(
     10,
     17,
     0,
-    Math.PI*2
+    Math.PI * 2
   );
 
   ctx.fill();
@@ -5468,6 +4503,10 @@ function drawCloud(
 
 }
 
+
+/* =====================================================
+   FLORES
+====================================================== */
 
 function drawFlower(
   x,
@@ -5481,8 +4520,11 @@ function drawFlower(
     y
   );
 
-  ctx.strokeStyle='#9bcf9d';
-  ctx.lineWidth=1.5;
+  ctx.strokeStyle =
+    '#9bcf9d';
+
+  ctx.lineWidth =
+    1.5;
 
   ctx.beginPath();
 
@@ -5498,33 +4540,39 @@ function drawFlower(
 
   ctx.stroke();
 
-  ctx.fillStyle='#ff8daa';
+
+  ctx.fillStyle =
+    '#ff8daa';
 
   for(
-    let i=0;
-    i<5;
+    let i = 0;
+    i < 5;
     i++
   ){
 
-    const angle=
-      i*Math.PI*2/5;
+    const angle =
+      i *
+      Math.PI *
+      2 /
+      5;
 
     ctx.beginPath();
 
     ctx.arc(
-      Math.cos(angle)*4,
-      -5+
-        Math.sin(angle)*4,
+      Math.cos(angle) * 4,
+      -5 + Math.sin(angle) * 4,
       3,
       0,
-      Math.PI*2
+      Math.PI * 2
     );
 
     ctx.fill();
 
   }
 
-  ctx.fillStyle='#ffd65c';
+
+  ctx.fillStyle =
+    '#ffd65c';
 
   ctx.beginPath();
 
@@ -5533,7 +4581,7 @@ function drawFlower(
     -5,
     2.2,
     0,
-    Math.PI*2
+    Math.PI * 2
   );
 
   ctx.fill();
@@ -5543,16 +4591,16 @@ function drawFlower(
 }
 
 
-/* =========================
-   PERSONAJE
-========================= */
+/* =====================================================
+   PERSONAJE DEL USUARIO
+====================================================== */
 
 function drawPlayer(){
 
-  const x=
+  const x =
     player.x;
 
-  const y=
+  const y =
     player.y;
 
   ctx.save();
@@ -5562,24 +4610,31 @@ function drawPlayer(){
     y
   );
 
-  ctx.fillStyle=
+
+  /* SOMBRA */
+
+  ctx.fillStyle =
     'rgba(0,0,0,.10)';
 
   ctx.beginPath();
 
   ctx.ellipse(
-    player.width/2,
-    player.height+2,
+    player.width / 2,
+    player.height + 2,
     22,
     5,
     0,
     0,
-    Math.PI*2
+    Math.PI * 2
   );
 
   ctx.fill();
 
-  ctx.fillStyle='#202124';
+
+  /* CUERPO */
+
+  ctx.fillStyle =
+    '#202124';
 
   roundRect(
     ctx,
@@ -5592,7 +4647,11 @@ function drawPlayer(){
 
   ctx.fill();
 
-  ctx.fillStyle='#f3c7b7';
+
+  /* CUELLO */
+
+  ctx.fillStyle =
+    '#f3c7b7';
 
   ctx.fillRect(
     18,
@@ -5601,7 +4660,11 @@ function drawPlayer(){
     9
   );
 
-  ctx.fillStyle='#f3c7b7';
+
+  /* CARA */
+
+  ctx.fillStyle =
+    '#f3c7b7';
 
   ctx.beginPath();
 
@@ -5615,7 +4678,11 @@ function drawPlayer(){
 
   ctx.fill();
 
-  ctx.fillStyle='#171717';
+
+  /* PELO FRENCH CROP */
+
+  ctx.fillStyle =
+    '#171717';
 
   ctx.beginPath();
 
@@ -5672,9 +4739,16 @@ function drawPlayer(){
 
   ctx.fill();
 
-  ctx.strokeStyle='#222';
-  ctx.lineWidth=2;
-  ctx.fillStyle=
+
+  /* GAFAS */
+
+  ctx.strokeStyle =
+    '#222';
+
+  ctx.lineWidth =
+    2;
+
+  ctx.fillStyle =
     'rgba(255,255,255,.28)';
 
   ctx.beginPath();
@@ -5696,7 +4770,9 @@ function drawPlayer(){
   );
 
   ctx.fill();
+
   ctx.stroke();
+
 
   ctx.beginPath();
 
@@ -5712,7 +4788,11 @@ function drawPlayer(){
 
   ctx.stroke();
 
-  ctx.fillStyle='#5b3b2d';
+
+  /* OJOS */
+
+  ctx.fillStyle =
+    '#5b3b2d';
 
   ctx.beginPath();
 
@@ -5721,7 +4801,7 @@ function drawPlayer(){
     21,
     1.5,
     0,
-    Math.PI*2
+    Math.PI * 2
   );
 
   ctx.arc(
@@ -5729,13 +4809,19 @@ function drawPlayer(){
     21,
     1.5,
     0,
-    Math.PI*2
+    Math.PI * 2
   );
 
   ctx.fill();
 
-  ctx.strokeStyle='#9e4b52';
-  ctx.lineWidth=1.4;
+
+  /* SONRISA */
+
+  ctx.strokeStyle =
+    '#9e4b52';
+
+  ctx.lineWidth =
+    1.4;
 
   ctx.beginPath();
 
@@ -5743,20 +4829,28 @@ function drawPlayer(){
     21.5,
     26,
     4,
-    .15,
-    Math.PI-.15
+    0.15,
+    Math.PI - .15
   );
 
   ctx.stroke();
 
-  ctx.strokeStyle='#202124';
-  ctx.lineWidth=6;
-  ctx.lineCap='round';
 
-  const running=
+  /* PIERNAS */
+
+  ctx.strokeStyle =
+    '#202124';
+
+  ctx.lineWidth =
+    6;
+
+  ctx.lineCap =
+    'round';
+
+  const running =
     Math.sin(
-      performance.now()*.018
-    )*4;
+      performance.now() * .018
+    ) * 4;
 
   ctx.beginPath();
 
@@ -5766,7 +4860,7 @@ function drawPlayer(){
   );
 
   ctx.lineTo(
-    13-running,
+    13 - running,
     68
   );
 
@@ -5776,27 +4870,28 @@ function drawPlayer(){
   );
 
   ctx.lineTo(
-    30+running,
+    30 + running,
     68
   );
 
   ctx.stroke();
+
 
   ctx.restore();
 
 }
 
 
-/* =========================
+/* =====================================================
    VIVI
-========================= */
+====================================================== */
 
 function drawVivi(){
 
-  const x=
+  const x =
     vivi.x;
 
-  const y=
+  const y =
     vivi.y;
 
   ctx.save();
@@ -5806,24 +4901,31 @@ function drawVivi(){
     y
   );
 
-  ctx.fillStyle=
+
+  /* SOMBRA */
+
+  ctx.fillStyle =
     'rgba(0,0,0,.09)';
 
   ctx.beginPath();
 
   ctx.ellipse(
-    vivi.width/2,
-    vivi.height+2,
+    vivi.width / 2,
+    vivi.height + 2,
     21,
     5,
     0,
     0,
-    Math.PI*2
+    Math.PI * 2
   );
 
   ctx.fill();
 
-  ctx.fillStyle='#b96c86';
+
+  /* CUERPO */
+
+  ctx.fillStyle =
+    '#b96c86';
 
   roundRect(
     ctx,
@@ -5836,7 +4938,11 @@ function drawVivi(){
 
   ctx.fill();
 
-  ctx.fillStyle='#f5c9b8';
+
+  /* CUELLO */
+
+  ctx.fillStyle =
+    '#f5c9b8';
 
   ctx.fillRect(
     17,
@@ -5845,7 +4951,11 @@ function drawVivi(){
     9
   );
 
-  ctx.fillStyle='#a94d38';
+
+  /* CABELLO ROJIZO DETRÁS */
+
+  ctx.fillStyle =
+    '#a94d38';
 
   ctx.beginPath();
 
@@ -5896,7 +5006,11 @@ function drawVivi(){
 
   ctx.fill();
 
-  ctx.fillStyle='#f5c9b8';
+
+  /* CARA */
+
+  ctx.fillStyle =
+    '#f5c9b8';
 
   ctx.beginPath();
 
@@ -5910,7 +5024,11 @@ function drawVivi(){
 
   ctx.fill();
 
-  ctx.fillStyle='#b9573b';
+
+  /* MECHONES NARANJAS */
+
+  ctx.fillStyle =
+    '#b9573b';
 
   ctx.beginPath();
 
@@ -5919,7 +5037,7 @@ function drawVivi(){
     18,
     7,
     0,
-    Math.PI*2
+    Math.PI * 2
   );
 
   ctx.arc(
@@ -5927,12 +5045,16 @@ function drawVivi(){
     18,
     7,
     0,
-    Math.PI*2
+    Math.PI * 2
   );
 
   ctx.fill();
 
-  ctx.fillStyle='#b9573b';
+
+  /* PARTE SUPERIOR DEL PELO */
+
+  ctx.fillStyle =
+    '#b9573b';
 
   ctx.beginPath();
 
@@ -5980,9 +5102,16 @@ function drawVivi(){
 
   ctx.fill();
 
-  ctx.strokeStyle='#4a3432';
-  ctx.lineWidth=2;
-  ctx.fillStyle=
+
+  /* GAFAS */
+
+  ctx.strokeStyle =
+    '#4a3432';
+
+  ctx.lineWidth =
+    2;
+
+  ctx.fillStyle =
     'rgba(255,255,255,.32)';
 
   ctx.beginPath();
@@ -6004,7 +5133,11 @@ function drawVivi(){
   );
 
   ctx.fill();
+
   ctx.stroke();
+
+
+  /* PUENTE */
 
   ctx.beginPath();
 
@@ -6020,7 +5153,11 @@ function drawVivi(){
 
   ctx.stroke();
 
-  ctx.fillStyle='#5b3a2d';
+
+  /* OJOS */
+
+  ctx.fillStyle =
+    '#5b3a2d';
 
   ctx.beginPath();
 
@@ -6029,7 +5166,7 @@ function drawVivi(){
     21,
     1.5,
     0,
-    Math.PI*2
+    Math.PI * 2
   );
 
   ctx.arc(
@@ -6037,12 +5174,15 @@ function drawVivi(){
     21,
     1.5,
     0,
-    Math.PI*2
+    Math.PI * 2
   );
 
   ctx.fill();
 
-  ctx.fillStyle=
+
+  /* MEJILLAS */
+
+  ctx.fillStyle =
     'rgba(236,125,129,.35)';
 
   ctx.beginPath();
@@ -6052,7 +5192,7 @@ function drawVivi(){
     27,
     3,
     0,
-    Math.PI*2
+    Math.PI * 2
   );
 
   ctx.arc(
@@ -6060,13 +5200,19 @@ function drawVivi(){
     27,
     3,
     0,
-    Math.PI*2
+    Math.PI * 2
   );
 
   ctx.fill();
 
-  ctx.strokeStyle='#a84d55';
-  ctx.lineWidth=1.4;
+
+  /* SONRISA */
+
+  ctx.strokeStyle =
+    '#a84d55';
+
+  ctx.lineWidth =
+    1.4;
 
   ctx.beginPath();
 
@@ -6075,19 +5221,27 @@ function drawVivi(){
     26,
     4,
     .15,
-    Math.PI-.15
+    Math.PI - .15
   );
 
   ctx.stroke();
 
-  ctx.strokeStyle='#7c465b';
-  ctx.lineWidth=6;
-  ctx.lineCap='round';
 
-  const running=
+  /* PIERNAS */
+
+  ctx.strokeStyle =
+    '#7c465b';
+
+  ctx.lineWidth =
+    6;
+
+  ctx.lineCap =
+    'round';
+
+  const running =
     Math.sin(
-      performance.now()*.018+1
-    )*4;
+      performance.now() * .018 + 1
+    ) * 4;
 
   ctx.beginPath();
 
@@ -6097,7 +5251,7 @@ function drawVivi(){
   );
 
   ctx.lineTo(
-    13-running,
+    13 - running,
     68
   );
 
@@ -6107,16 +5261,21 @@ function drawVivi(){
   );
 
   ctx.lineTo(
-    30+running,
+    30 + running,
     68
   );
 
   ctx.stroke();
 
+
   ctx.restore();
 
 }
 
+
+/* =====================================================
+   OBSTÁCULO
+====================================================== */
 
 function drawObstacle(
   obstacle
@@ -6129,7 +5288,9 @@ function drawObstacle(
     obstacle.y
   );
 
-  ctx.fillStyle='#d95b73';
+
+  ctx.fillStyle =
+    '#d95b73';
 
   roundRect(
     ctx,
@@ -6142,42 +5303,50 @@ function drawObstacle(
 
   ctx.fill();
 
-  ctx.fillStyle=
+
+  ctx.fillStyle =
     'rgba(255,255,255,.32)';
 
   ctx.beginPath();
 
   ctx.arc(
-    obstacle.width*.35,
-    obstacle.height*.28,
+    obstacle.width * .35,
+    obstacle.height * .28,
     3,
     0,
-    Math.PI*2
+    Math.PI * 2
   );
 
   ctx.arc(
-    obstacle.width*.68,
-    obstacle.height*.52,
+    obstacle.width * .68,
+    obstacle.height * .52,
     2.5,
     0,
-    Math.PI*2
+    Math.PI * 2
   );
 
   ctx.fill();
 
-  ctx.fillStyle='#a83d55';
+
+  ctx.fillStyle =
+    '#a83d55';
 
   ctx.fillRect(
-    obstacle.width*.43,
+    obstacle.width * .43,
     -6,
     3,
     7
   );
 
+
   ctx.restore();
 
 }
 
+
+/* =====================================================
+   CORAZÓN COLECCIONABLE
+====================================================== */
 
 function drawCollectible(
   heart
@@ -6186,10 +5355,8 @@ function drawCollectible(
   ctx.save();
 
   ctx.translate(
-    heart.x+
-      heart.size/2,
-    heart.y+
-      heart.size/2
+    heart.x + heart.size / 2,
+    heart.y + heart.size / 2
   );
 
   ctx.rotate(
@@ -6226,7 +5393,8 @@ function drawCollectible(
     8
   );
 
-  ctx.fillStyle='#ff2d55';
+  ctx.fillStyle =
+    '#ff2d55';
 
   ctx.fill();
 
@@ -6234,6 +5402,10 @@ function drawCollectible(
 
 }
 
+
+/* =====================================================
+   RECTÁNGULO REDONDEADO
+====================================================== */
 
 function roundRect(
   context,
@@ -6244,48 +5416,48 @@ function roundRect(
   radius
 ){
 
-  const r=
+  const r =
     Math.min(
       radius,
-      width/2,
-      height/2
+      width / 2,
+      height / 2
     );
 
   context.beginPath();
 
   context.moveTo(
-    x+r,
+    x + r,
     y
   );
 
   context.arcTo(
-    x+width,
+    x + width,
     y,
-    x+width,
-    y+height,
+    x + width,
+    y + height,
     r
   );
 
   context.arcTo(
-    x+width,
-    y+height,
+    x + width,
+    y + height,
     x,
-    y+height,
-    r
-  );
-
-  context.arcTo(
-    x,
-    y+height,
-    x,
-    y,
+    y + height,
     r
   );
 
   context.arcTo(
     x,
+    y + height,
+    x,
     y,
-    x+width,
+    r
+  );
+
+  context.arcTo(
+    x,
+    y,
+    x + width,
     y,
     r
   );
@@ -6295,13 +5467,13 @@ function roundRect(
 }
 
 
-/* =========================
-   REINICIAR JUEGO
-========================= */
+/* =====================================================
+   BOTÓN REINICIAR
+====================================================== */
 
 restartGame.addEventListener(
   'click',
-  event=>{
+  event => {
 
     event.stopPropagation();
 
@@ -6311,20 +5483,23 @@ restartGame.addEventListener(
 );
 
 
-/* =========================
+/* =====================================================
    TECLADO
-========================= */
+====================================================== */
 
 document.addEventListener(
   'keydown',
-  event=>{
+  event => {
 
-    if(event.key==='Escape'){
+    if(
+      event.key === 'Escape'
+    ){
 
       $('#image-viewer')
         .classList.remove('show');
 
     }
+
 
     if(
       $('#image-viewer')
@@ -6332,7 +5507,7 @@ document.addEventListener(
     ){
 
       if(
-        event.key==='ArrowLeft'
+        event.key === 'ArrowLeft'
       ){
 
         $('#viewer-prev').click();
@@ -6340,7 +5515,7 @@ document.addEventListener(
       }
 
       if(
-        event.key==='ArrowRight'
+        event.key === 'ArrowRight'
       ){
 
         $('#viewer-next').click();
@@ -6353,21 +5528,32 @@ document.addEventListener(
 );
 
 
-/* =========================
+/* =====================================================
    ARRANQUE DE VIVIOS
-========================= */
+====================================================== */
 
-let bootDone=false;
+let bootDone = false;
+
+const INTRO_DURATION = 4200;
+
+
+/* =====================================================
+   LANZAR SISTEMA
+====================================================== */
 
 function launchOS(){
 
-  if(bootDone)return;
+  if(bootDone){
+    return;
+  }
 
-  bootDone=true;
+  bootDone = true;
+
 
   try{
 
     renderApp();
+
     preloadPhotos();
 
   }catch(error){
@@ -6379,43 +5565,67 @@ function launchOS(){
 
   }
 
-  const boot=
+
+  const boot =
     $('#boot');
 
   if(boot){
-    boot.classList.add('hide');
+
+    boot.classList.add(
+      'hide'
+    );
+
   }
 
-  $('#login').classList.add(
-    'show'
-  );
+
+  const login =
+    $('#login');
+
+  if(login){
+
+    login.classList.add(
+      'show'
+    );
+
+  }
 
 }
 
 
-function beginBootSequence(){
+/* =====================================================
+   ARRANCAR BOOT
+====================================================== */
 
-  const boot=
+function startBootSequence(){
+
+  const boot =
     $('#boot');
 
-  if(!boot)return;
+  if(!boot){
+
+    launchOS();
+
+    return;
+
+  }
+
 
   boot.classList.add(
     'boot-ready'
   );
+
 
   setTimeout(
     launchOS,
     1800
   );
 
+
   setTimeout(
     ()=>{
-
       if(!bootDone){
         launchOS();
       }
-
     },
     2500
   );
@@ -6423,97 +5633,132 @@ function beginBootSequence(){
 }
 
 
-/* =========================
+/* =====================================================
    INTRO DEL PORTÁTIL
-========================= */
+====================================================== */
 
-const laptopIntro=
-  $('#laptop-intro');
+function startViviOSIntro(){
+
+  const intro =
+    $('#laptop-intro');
+
+  if(!intro){
+
+    startBootSequence();
+
+    return;
+
+  }
 
 
-/*
-   Primero dejamos que el navegador pinte
-   el portátil completamente cerrado.
-
-   Después de un frame activamos .play.
-   Esto evita que el navegador interprete
-   el estado inicial y final como uno solo.
-*/
-
-requestAnimationFrame(()=>{
-
-  requestAnimationFrame(()=>{
-
-    if(laptopIntro){
-
-      laptopIntro.classList.add(
-        'play'
+  requestAnimationFrame(
+    ()=>{
+      requestAnimationFrame(
+        ()=>{
+          intro.classList.add(
+            'play'
+          );
+        }
       );
-
     }
-
-  });
-
-});
+  );
 
 
-/*
-   Secuencia:
+  setTimeout(
+    ()=>{
 
-   0.00s  portátil cerrado
-   0.15s  comienza apertura
-   2.40s  pantalla comienza a encenderse
-   4.60s  intro desaparece
-   5.50s  comienza ViviOS
-*/
-
-setTimeout(
-  ()=>{
-
-    if(laptopIntro){
-
-      laptopIntro.classList.add(
-        'hide'
+      intro.classList.add(
+        'finish'
       );
+
 
       setTimeout(
         ()=>{
 
-          if(laptopIntro){
-            laptopIntro.remove();
+          if(intro){
+
+            intro.remove();
+
           }
 
         },
         900
       );
 
+
+      startBootSequence();
+
+    },
+    INTRO_DURATION
+  );
+
+}
+
+
+/* =====================================================
+   INICIAR CUANDO EL DOM ESTÉ LISTO
+====================================================== */
+
+if(
+  document.readyState === 'loading'
+){
+
+  document.addEventListener(
+    'DOMContentLoaded',
+    startViviOSIntro,
+    {once:true}
+  );
+
+}else{
+
+  startViviOSIntro();
+
+}
+
+
+/* =====================================================
+   SEGURIDAD CONTRA INTRO / BOOT CONGELADO
+====================================================== */
+
+setTimeout(
+  ()=>{
+
+    if(!bootDone){
+
+      const boot =
+        $('#boot');
+
+      if(
+        boot &&
+        !boot.classList.contains('hide')
+      ){
+
+        launchOS();
+
+      }
+
     }
 
-    beginBootSequence();
-
   },
-  5000
+  7000
 );
 
 
-/* =========================
+/* =====================================================
    LOGIN
-========================= */
+====================================================== */
 
 $('#login-btn').addEventListener(
   'click',
   ()=>{
 
-    $('#login').style.opacity='0';
-
-    unlockAchievement(
-      'achievement-welcome'
-    );
+    $('#login').style.opacity =
+      '0';
 
     setTimeout(
       ()=>{
 
-        $('#login').style.display=
+        $('#login').style.display =
           'none';
 
         showToast(
