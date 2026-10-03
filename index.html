@@ -1,10 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <title>ViviOS - Para Mi Amor ❤️</title>
+
 <style>
 :root{
   --accent:#ff2d55;
@@ -14,276 +15,762 @@
   --border:rgba(255,255,255,.58);
   --text:#1d1d1f;
 }
-*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif}
-html,body{width:100%;height:100%;overflow:hidden}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif
+}
+
+html,body{
+  width:100%;
+  height:100%;
+  overflow:hidden
+}
+
 body{
-  background:linear-gradient(135deg,#ff9a9e,#fecfef 48%,#a1c4fd);
-  background-size:cover;background-position:center;
+  background:
+    linear-gradient(135deg,rgba(255,154,158,.35),rgba(254,207,239,.30) 48%,rgba(161,196,253,.30)),
+    url("assets/fondo.jpg") center/cover no-repeat;
   color:var(--text);
 }
+
 button,input,textarea{font:inherit}
 button{cursor:pointer}
 
-/* BOOT */
+/* ================= BOOT ================= */
+
 #boot{
-  position:fixed;inset:0;z-index:50000;
-  display:flex;align-items:center;justify-content:center;
-  flex-direction:column;color:white;
+  position:fixed;
+  inset:0;
+  z-index:50000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  color:white;
   background:radial-gradient(circle at center,#34203e,#120f18 70%);
   transition:opacity .9s,visibility .9s;
 }
-#boot.hide{opacity:0;visibility:hidden;pointer-events:none}
-.boot-logo{font-size:54px;margin-bottom:18px;animation:pulse 2s infinite}
-.boot-title{font-size:24px;font-weight:600;letter-spacing:.5px}
-.boot-sub{font-size:13px;opacity:.65;margin-top:6px}
-.boot-progress{width:190px;height:5px;background:rgba(255,255,255,.16);border-radius:10px;margin-top:28px;overflow:hidden}
-.boot-progress span{display:block;height:100%;width:0;background:white;border-radius:10px;animation:load 2.2s ease forwards}
-@keyframes load{to{width:100%}}
-@keyframes pulse{50%{transform:scale(1.08)}}
 
-/* LOGIN */
-#login{
-  position:fixed;inset:0;z-index:40000;
-  display:none;align-items:center;justify-content:center;
-  flex-direction:column;color:white;
-  background:linear-gradient(135deg,#17121d,#40223c 55%,#1c1930);
-  opacity:0;transition:opacity .8s;
+#boot.hide{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none
 }
-#login.show{display:flex;opacity:1}
-.login-avatar{
-  width:92px;height:92px;border-radius:50%;
-  background:linear-gradient(135deg,#fff,#ffd7e0);
-  display:flex;align-items:center;justify-content:center;
-  font-size:45px;box-shadow:0 15px 45px rgba(0,0,0,.35);
+
+.boot-logo{
+  font-size:54px;
   margin-bottom:18px;
+  animation:pulse 2s infinite
 }
-.login-name{font-size:21px;font-weight:600}
-.login-hint{font-size:12px;opacity:.6;margin:5px 0 20px}
+
+.boot-title{
+  font-size:24px;
+  font-weight:600;
+  letter-spacing:.5px
+}
+
+.boot-sub{
+  font-size:13px;
+  opacity:.65;
+  margin-top:6px
+}
+
+.boot-progress{
+  width:190px;
+  height:5px;
+  background:rgba(255,255,255,.16);
+  border-radius:10px;
+  margin-top:28px;
+  overflow:hidden
+}
+
+.boot-progress span{
+  display:block;
+  height:100%;
+  width:0;
+  background:white;
+  border-radius:10px;
+  animation:load 2.2s ease forwards
+}
+
+@keyframes load{
+  to{width:100%}
+}
+
+@keyframes pulse{
+  50%{transform:scale(1.08)}
+}
+
+/* ================= LOGIN ================= */
+
+#login{
+  position:fixed;
+  inset:0;
+  z-index:40000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  color:white;
+  background:linear-gradient(135deg,#17121d,#40223c 55%,#1c1930);
+  opacity:0;
+  transition:opacity .8s
+}
+
+#login.show{
+  display:flex;
+  opacity:1
+}
+
+.login-avatar{
+  width:92px;
+  height:92px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#fff,#ffd7e0);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:45px;
+  box-shadow:0 15px 45px rgba(0,0,0,.35);
+  margin-bottom:18px
+}
+
+.login-name{
+  font-size:21px;
+  font-weight:600
+}
+
+.login-hint{
+  font-size:12px;
+  opacity:.6;
+  margin:5px 0 20px
+}
+
 .login-btn{
-  border:0;border-radius:22px;padding:11px 25px;
-  background:rgba(255,255,255,.16);color:#fff;
+  border:0;
+  border-radius:22px;
+  padding:11px 25px;
+  background:rgba(255,255,255,.16);
+  color:#fff;
   border:1px solid rgba(255,255,255,.25);
-  backdrop-filter:blur(15px);transition:.25s;
+  backdrop-filter:blur(15px);
+  transition:.25s
 }
-.login-btn:hover{background:rgba(255,255,255,.28);transform:translateY(-2px)}
 
-/* TOP BAR */
+.login-btn:hover{
+  background:rgba(255,255,255,.28);
+  transform:translateY(-2px)
+}
+
+/* ================= TOP BAR ================= */
+
 #top-bar{
-  position:fixed;top:0;left:0;width:100%;height:30px;z-index:10000;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:0 14px;background:rgba(255,255,255,.38);
-  backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:30px;
+  z-index:10000;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 14px;
+  background:rgba(255,255,255,.38);
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
   border-bottom:1px solid rgba(255,255,255,.35);
-  font-size:12px;font-weight:600;
+  font-size:12px;
+  font-weight:600
 }
-.top-left{display:flex;align-items:center;gap:12px}
-.apple{font-size:15px}
-.menu{opacity:.7;font-weight:400}
-#mac-clock{font-variant-numeric:tabular-nums}
 
-/* DESKTOP */
+.top-left{
+  display:flex;
+  align-items:center;
+  gap:12px
+}
+
+.apple{
+  font-size:15px
+}
+
+.menu{
+  opacity:.7;
+  font-weight:400
+}
+
+#mac-clock{
+  font-variant-numeric:tabular-nums
+}
+
+/* ================= DESKTOP ================= */
+
 #desktop{
-  position:fixed;inset:30px 0 0 0;padding:18px;
-}
-.desktop-item{
-  width:82px;display:flex;flex-direction:column;align-items:center;
-  gap:5px;padding:7px;border-radius:9px;cursor:pointer;
-  margin-bottom:10px;color:#fff;text-align:center;
-  transition:.2s;
-}
-.desktop-item:hover{background:rgba(255,255,255,.18)}
-.desktop-icon{
-  width:54px;height:54px;display:flex;align-items:center;justify-content:center;
-  font-size:38px;filter:drop-shadow(0 5px 7px rgba(0,0,0,.25));
-}
-.desktop-label{
-  font-size:11px;font-weight:600;text-shadow:0 2px 5px rgba(0,0,0,.8);
+  position:fixed;
+  inset:30px 0 0 0;
+  padding:18px
 }
 
-/* DOCK */
+.desktop-item{
+  width:82px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:5px;
+  padding:7px;
+  border-radius:9px;
+  cursor:pointer;
+  margin-bottom:10px;
+  color:#fff;
+  text-align:center;
+  transition:.2s
+}
+
+.desktop-item:hover{
+  background:rgba(255,255,255,.18)
+}
+
+.desktop-icon{
+  width:54px;
+  height:54px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:38px;
+  filter:drop-shadow(0 5px 7px rgba(0,0,0,.25))
+}
+
+.desktop-label{
+  font-size:11px;
+  font-weight:600;
+  text-shadow:0 2px 5px rgba(0,0,0,.8)
+}
+
+/* ================= DOCK ================= */
+
 #dock-container{
-  position:fixed;left:50%;bottom:9px;transform:translateX(-50%);
-  z-index:15000;
+  position:fixed;
+  left:50%;
+  bottom:9px;
+  transform:translateX(-50%);
+  z-index:15000
 }
+
 #dock{
-  display:flex;align-items:flex-end;gap:7px;padding:8px 10px;
-  border:1px solid var(--border);border-radius:21px;
+  display:flex;
+  align-items:flex-end;
+  gap:7px;
+  padding:8px 10px;
+  border:1px solid var(--border);
+  border-radius:21px;
   background:rgba(255,255,255,.30);
-  backdrop-filter:blur(25px);-webkit-backdrop-filter:blur(25px);
-  box-shadow:0 14px 35px rgba(0,0,0,.20);
+  backdrop-filter:blur(25px);
+  -webkit-backdrop-filter:blur(25px);
+  box-shadow:0 14px 35px rgba(0,0,0,.20)
 }
+
 .dock-icon{
-  position:relative;width:48px;height:48px;border-radius:13px;
+  position:relative;
+  width:48px;
+  height:48px;
+  border-radius:13px;
   border:1px solid rgba(255,255,255,.45);
   background:linear-gradient(145deg,rgba(255,255,255,.82),rgba(255,255,255,.45));
-  display:flex;align-items:center;justify-content:center;font-size:25px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:25px;
   box-shadow:0 5px 10px rgba(0,0,0,.12);
-  transition:transform .16s ease,margin .16s ease;
+  transition:transform .16s ease,margin .16s ease
 }
-.dock-icon:hover{transform:translateY(-10px) scale(1.22);margin:0 5px}
+
+.dock-icon:hover{
+  transform:translateY(-10px) scale(1.22);
+  margin:0 5px
+}
+
 .dock-icon.open::after{
-  content:"";position:absolute;bottom:-5px;width:4px;height:4px;
-  border-radius:50%;background:#333;
+  content:"";
+  position:absolute;
+  bottom:-5px;
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:#333
 }
 
-/* WINDOWS */
+/* ================= WINDOWS ================= */
+
 .window{
-  position:fixed;display:none;flex-direction:column;
-  width:min(760px,88vw);height:min(650px,76vh);
-  min-width:300px;min-height:240px;
-  top:50%;left:50%;transform:translate(-50%,-50%);
+  position:fixed;
+  display:none;
+  flex-direction:column;
+  width:min(760px,88vw);
+  height:min(650px,76vh);
+  min-width:300px;
+  min-height:240px;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
   background:rgba(248,248,250,.82);
-  backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);
-  border:1px solid rgba(255,255,255,.65);border-radius:14px;
+  backdrop-filter:blur(30px);
+  -webkit-backdrop-filter:blur(30px);
+  border:1px solid rgba(255,255,255,.65);
+  border-radius:14px;
   box-shadow:0 30px 80px rgba(0,0,0,.32);
-  overflow:hidden;z-index:2000;
-  opacity:0;scale:.94;
+  overflow:hidden;
+  z-index:2000;
+  opacity:0;
+  scale:.94
 }
-.window.active{display:flex;animation:windowIn .28s cubic-bezier(.2,.8,.2,1) forwards}
-.window.closing{animation:windowOut .22s forwards}
-.window.minimized{display:none!important}
-@keyframes windowIn{to{opacity:1;scale:1}}
-@keyframes windowOut{to{opacity:0;scale:.92}}
-.window.maximized{
-  top:40px!important;left:0!important;transform:none!important;
-  width:100vw!important;height:calc(100vh - 40px)!important;
-  border-radius:0!important;
-}
-.window-header{
-  height:42px;flex:none;background:rgba(235,235,238,.78);
-  border-bottom:1px solid rgba(0,0,0,.08);
-  display:flex;align-items:center;padding:0 14px;position:relative;
-  cursor:grab;
-}
-.window-header:active{cursor:grabbing}
-.window-dots{display:flex;gap:7px;z-index:2}
-.dot{width:13px;height:13px;border-radius:50%;border:0;padding:0}
-.dot-close{background:#ff5f57}.dot-min{background:#ffbd2e}.dot-max{background:#28c840}
-.window-title{
-  position:absolute;left:50%;transform:translateX(-50%);
-  font-size:13px;font-weight:600;color:#4b4b4d;
-  white-space:nowrap;max-width:55%;overflow:hidden;text-overflow:ellipsis;
-}
-.window-body{flex:1;overflow:auto;padding:20px;-webkit-overflow-scrolling:touch}
 
-/* LETTER */
+.window.active{
+  display:flex;
+  animation:windowIn .28s cubic-bezier(.2,.8,.2,1) forwards
+}
+
+.window.closing{
+  animation:windowOut .22s forwards
+}
+
+.window.minimized{
+  display:none!important
+}
+
+@keyframes windowIn{
+  to{
+    opacity:1;
+    scale:1
+  }
+}
+
+@keyframes windowOut{
+  to{
+    opacity:0;
+    scale:.92
+  }
+}
+
+.window.maximized{
+  top:40px!important;
+  left:0!important;
+  transform:none!important;
+  width:100vw!important;
+  height:calc(100vh - 40px)!important;
+  border-radius:0!important
+}
+
+.window-header{
+  height:42px;
+  flex:none;
+  background:rgba(235,235,238,.78);
+  border-bottom:1px solid rgba(0,0,0,.08);
+  display:flex;
+  align-items:center;
+  padding:0 14px;
+  position:relative;
+  cursor:grab
+}
+
+.window-header:active{
+  cursor:grabbing
+}
+
+.window-dots{
+  display:flex;
+  gap:7px;
+  z-index:2
+}
+
+.dot{
+  width:13px;
+  height:13px;
+  border-radius:50%;
+  border:0;
+  padding:0
+}
+
+.dot-close{background:#ff5f57}
+.dot-min{background:#ffbd2e}
+.dot-max{background:#28c840}
+
+.window-title{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:13px;
+  font-weight:600;
+  color:#4b4b4d;
+  white-space:nowrap;
+  max-width:55%;
+  overflow:hidden;
+  text-overflow:ellipsis
+}
+
+.window-body{
+  flex:1;
+  overflow:auto;
+  padding:20px;
+  -webkit-overflow-scrolling:touch
+}
+
+/* ================= LETTER ================= */
+
 .letter-paper{
   background:linear-gradient(145deg,#fff,#fff7fa);
-  padding:30px;border-radius:14px;box-shadow:0 8px 25px rgba(0,0,0,.08);
-  font-family:Georgia,serif;font-size:15px;line-height:1.8;white-space:pre-line;
-  min-height:100%;
+  padding:30px;
+  border-radius:14px;
+  box-shadow:0 8px 25px rgba(0,0,0,.08);
+  font-family:Georgia,serif;
+  font-size:15px;
+  line-height:1.8;
+  white-space:pre-line;
+  min-height:100%
 }
-.letter-heading{text-align:center;font-family:inherit;font-size:22px;margin-bottom:22px;color:#d91e4d}
-.letter-sign{text-align:right;margin-top:28px;font-style:italic;color:#b51d43}
-.cursor{display:inline-block;width:2px;height:1em;background:#d91e4d;vertical-align:-2px;animation:blink .7s infinite}
-@keyframes blink{50%{opacity:0}}
 
-/* GALLERY */
-.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+.letter-heading{
+  text-align:center;
+  font-family:inherit;
+  font-size:22px;
+  margin-bottom:22px;
+  color:#d91e4d
+}
+
+.letter-sign{
+  text-align:right;
+  margin-top:28px;
+  font-style:italic;
+  color:#b51d43
+}
+
+/* ================= GALLERY ================= */
+
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+  gap:14px
+}
+
 .photo-card{
-  background:#fff;padding:8px;border-radius:12px;box-shadow:0 7px 18px rgba(0,0,0,.09);
-  cursor:pointer;transition:.25s;animation:cardIn .45s both;
-}
-.photo-card:hover{transform:translateY(-4px) rotate(.3deg);box-shadow:0 13px 25px rgba(0,0,0,.15)}
-.photo-card img{width:100%;height:145px;object-fit:cover;border-radius:8px;display:block}
-.photo-card p{text-align:center;font-size:11px;margin:7px 0 2px;color:#555}
-@keyframes cardIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:none}}
-
-/* REASONS */
-.reason-item{
-  background:rgba(255,255,255,.78);padding:14px 16px;margin-bottom:11px;
-  border-left:4px solid var(--accent);border-radius:11px;
-  box-shadow:0 3px 12px rgba(0,0,0,.05);font-size:14px;
-  animation:cardIn .4s both;
+  background:#fff;
+  padding:8px;
+  border-radius:12px;
+  box-shadow:0 7px 18px rgba(0,0,0,.09);
+  cursor:pointer;
+  transition:.25s;
+  animation:cardIn .45s both
 }
 
-/* COUPONS */
-.coupon{
-  display:flex;justify-content:space-between;align-items:center;gap:12px;
-  background:#fff;padding:15px;border:1px solid #ffd2dc;border-radius:13px;margin-bottom:12px;
+.photo-card:hover{
+  transform:translateY(-4px) rotate(.3deg);
+  box-shadow:0 13px 25px rgba(0,0,0,.15)
 }
-.claim-btn,.surprise-btn,.save-btn{
-  border:0;color:#fff;background:var(--accent);border-radius:20px;
-  padding:9px 15px;font-size:12px;font-weight:600;white-space:nowrap;
+
+.photo-card img{
+  width:100%;
+  height:145px;
+  object-fit:cover;
+  border-radius:8px;
+  display:block
 }
-.claimed{background:#34c759!important}
 
-/* SURPRISE */
-.surprise{text-align:center;padding:35px 20px}
-.gift{font-size:85px;display:inline-block;cursor:pointer;animation:giftFloat 2s ease-in-out infinite}
-@keyframes giftFloat{50%{transform:translateY(-8px) rotate(2deg)}}
-#gift-text{display:none;margin-top:20px;font-size:21px;font-weight:700;color:var(--accent)}
-
-/* MUSIC */
-.music-card{text-align:center;padding:35px 20px}
-.album{
-  width:min(260px,70vw);aspect-ratio:1;border-radius:15px;object-fit:cover;
-  box-shadow:0 20px 40px rgba(0,0,0,.22);margin-bottom:20px;
+.photo-card p{
+  text-align:center;
+  font-size:11px;
+  margin:7px 0 2px;
+  color:#555
 }
-.music-title{font-size:20px;font-weight:700}
-.music-artist{font-size:13px;color:#777;margin:6px 0 18px}
-audio{width:100%;max-width:500px}
 
-/* SETTINGS */
-.form-group{margin-bottom:15px}
-.form-group label{display:block;font-size:12px;font-weight:600;color:#555;margin-bottom:6px}
-.form-group input, .form-group textarea, .form-group select{
-  width:100%;border:1px solid #ccc;border-radius:9px;padding:10px;
-  background:rgba(255,255,255,.9);outline:none;font-size:13px;resize:vertical;
-}
-.form-group input[type="file"]{padding:7px;background:#fff}
-.form-group input:focus,.form-group textarea:focus{border-color:#007aff;box-shadow:0 0 0 3px rgba(0,122,255,.12)}
-.save-btn{width:100%;background:#007aff;margin-top:3px}
-.hint{font-size:11px;color:#777;margin-top:5px;line-height:1.4}
-
-/* IMAGE VIEWER */
-#image-viewer{
-  position:fixed;inset:0;background:rgba(0,0,0,.82);
-  z-index:30000;display:none;align-items:center;justify-content:center;
-  flex-direction:column;backdrop-filter:blur(12px);
-}
-#image-viewer.show{display:flex;animation:fadeIn .2s}
-#viewer-img{max-width:90vw;max-height:78vh;object-fit:contain;border-radius:10px;box-shadow:0 20px 60px #000}
-.viewer-close{
-  position:absolute;top:25px;right:25px;width:35px;height:35px;border:0;
-  border-radius:50%;background:rgba(255,255,255,.18);color:white;font-size:20px
-}
-.viewer-nav{display:flex;gap:15px;margin-top:18px}
-.viewer-nav button{border:0;border-radius:20px;padding:8px 18px;background:rgba(255,255,255,.16);color:white}
-#viewer-caption{color:white;font-size:12px;margin-top:10px}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-
-/* HEARTS */
-.click-heart{position:fixed;pointer-events:none;font-size:22px;z-index:60000;animation:heartFloat .9s forwards}
-@keyframes heartFloat{from{opacity:1;transform:translate(-50%,-50%) scale(.5)}to{opacity:0;transform:translate(-50%,-95px) scale(1.35)}}
-
-/* MOBILE */
-@media(max-width:600px){
-  #top-bar{height:32px}
-  #desktop{inset:32px 0 0;padding:12px}
-  .desktop-item{width:74px}
-  .desktop-icon{font-size:34px}
-  .window{
-    width:96vw;height:82vh;min-width:0;
-    border-radius:12px;
+@keyframes cardIn{
+  from{
+    opacity:0;
+    transform:translateY(15px)
   }
-  .window.maximized{top:32px!important;height:calc(100vh - 32px)!important}
-  .window-header{height:40px}
-  .window-body{padding:14px}
-  .gallery-grid{grid-template-columns:repeat(2,1fr);gap:9px}
-  .photo-card img{height:120px}
-  #dock{max-width:95vw;overflow-x:auto}
-  .dock-icon{flex:0 0 43px;width:43px;height:43px;font-size:22px}
-  .dock-icon:hover{transform:none;margin:0}
-  .letter-paper{padding:20px;font-size:14px}
+  to{
+    opacity:1;
+    transform:none
+  }
 }
 
-/* SCROLLBAR */
-::-webkit-scrollbar{width:7px}
-::-webkit-scrollbar-thumb{background:rgba(0,0,0,.18);border-radius:10px}
+/* ================= REASONS ================= */
+
+.reason-item{
+  background:rgba(255,255,255,.78);
+  padding:14px 16px;
+  margin-bottom:11px;
+  border-left:4px solid var(--accent);
+  border-radius:11px;
+  box-shadow:0 3px 12px rgba(0,0,0,.05);
+  font-size:14px;
+  animation:cardIn .4s both
+}
+
+/* ================= COUPONS ================= */
+
+.coupon{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  background:#fff;
+  padding:15px;
+  border:1px solid #ffd2dc;
+  border-radius:13px;
+  margin-bottom:12px
+}
+
+.claim-btn{
+  border:0;
+  color:#fff;
+  background:var(--accent);
+  border-radius:20px;
+  padding:9px 15px;
+  font-size:12px;
+  font-weight:600;
+  white-space:nowrap
+}
+
+.claimed{
+  background:#34c759!important
+}
+
+/* ================= SURPRISE ================= */
+
+.surprise{
+  text-align:center;
+  padding:35px 20px
+}
+
+.gift{
+  font-size:85px;
+  display:inline-block;
+  cursor:pointer;
+  animation:giftFloat 2s ease-in-out infinite
+}
+
+@keyframes giftFloat{
+  50%{
+    transform:translateY(-8px) rotate(2deg)
+  }
+}
+
+#gift-text{
+  display:none;
+  margin-top:20px;
+  font-size:21px;
+  font-weight:700;
+  color:var(--accent)
+}
+
+/* ================= MUSIC ================= */
+
+.music-card{
+  text-align:center;
+  padding:35px 20px
+}
+
+.album{
+  width:min(260px,70vw);
+  aspect-ratio:1;
+  border-radius:15px;
+  object-fit:cover;
+  box-shadow:0 20px 40px rgba(0,0,0,.22);
+  margin-bottom:20px
+}
+
+.music-title{
+  font-size:20px;
+  font-weight:700
+}
+
+.music-artist{
+  font-size:13px;
+  color:#777;
+  margin:6px 0 18px
+}
+
+audio{
+  width:100%;
+  max-width:500px
+}
+
+/* ================= IMAGE VIEWER ================= */
+
+#image-viewer{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.82);
+  z-index:30000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  backdrop-filter:blur(12px)
+}
+
+#image-viewer.show{
+  display:flex;
+  animation:fadeIn .2s
+}
+
+#viewer-img{
+  max-width:90vw;
+  max-height:78vh;
+  object-fit:contain;
+  border-radius:10px;
+  box-shadow:0 20px 60px #000
+}
+
+.viewer-close{
+  position:absolute;
+  top:25px;
+  right:25px;
+  width:35px;
+  height:35px;
+  border:0;
+  border-radius:50%;
+  background:rgba(255,255,255,.18);
+  color:white;
+  font-size:20px
+}
+
+.viewer-nav{
+  display:flex;
+  gap:15px;
+  margin-top:18px
+}
+
+.viewer-nav button{
+  border:0;
+  border-radius:20px;
+  padding:8px 18px;
+  background:rgba(255,255,255,.16);
+  color:white
+}
+
+#viewer-caption{
+  color:white;
+  font-size:12px;
+  margin-top:10px
+}
+
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+/* ================= HEARTS ================= */
+
+.click-heart{
+  position:fixed;
+  pointer-events:none;
+  font-size:22px;
+  z-index:60000;
+  animation:heartFloat .9s forwards
+}
+
+@keyframes heartFloat{
+  from{
+    opacity:1;
+    transform:translate(-50%,-50%) scale(.5)
+  }
+  to{
+    opacity:0;
+    transform:translate(-50%,-95px) scale(1.35)
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:600px){
+
+  #top-bar{
+    height:32px
+  }
+
+  #desktop{
+    inset:32px 0 0;
+    padding:12px
+  }
+
+  .desktop-item{
+    width:74px
+  }
+
+  .desktop-icon{
+    font-size:34px
+  }
+
+  .window{
+    width:96vw;
+    height:82vh;
+    min-width:0;
+    border-radius:12px
+  }
+
+  .window.maximized{
+    top:32px!important;
+    height:calc(100vh - 32px)!important
+  }
+
+  .window-header{
+    height:40px
+  }
+
+  .window-body{
+    padding:14px
+  }
+
+  .gallery-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:9px
+  }
+
+  .photo-card img{
+    height:120px
+  }
+
+  #dock{
+    max-width:95vw;
+    overflow-x:auto
+  }
+
+  .dock-icon{
+    flex:0 0 43px;
+    width:43px;
+    height:43px;
+    font-size:22px
+  }
+
+  .dock-icon:hover{
+    transform:none;
+    margin:0
+  }
+
+  .letter-paper{
+    padding:20px;
+    font-size:14px
+  }
+}
+
+/* ================= SCROLLBAR ================= */
+
+::-webkit-scrollbar{
+  width:7px
+}
+
+::-webkit-scrollbar-thumb{
+  background:rgba(0,0,0,.18);
+  border-radius:10px
+}
 </style>
 </head>
+
 <body>
+
+<!-- ================= BOOT ================= -->
 
 <div id="boot">
   <div class="boot-logo">❤️</div>
@@ -292,6 +779,8 @@ audio{width:100%;max-width:500px}
   <div class="boot-progress"><span></span></div>
 </div>
 
+<!-- ================= LOGIN ================= -->
+
 <div id="login">
   <div class="login-avatar">❤️</div>
   <div class="login-name">Viviana</div>
@@ -299,131 +788,411 @@ audio{width:100%;max-width:500px}
   <button class="login-btn" id="login-btn">Iniciar sesión</button>
 </div>
 
+<!-- ================= TOP BAR ================= -->
+
 <div id="top-bar">
   <div class="top-left">
-    <span class="apple"></span><span>ViviOS</span><span class="menu">Archivo</span><span class="menu">Ventana</span>
+    <span class="apple"></span>
+    <span>ViviOS</span>
+    <span class="menu">Archivo</span>
+    <span class="menu">Ventana</span>
   </div>
+
   <div id="mac-clock"></div>
 </div>
 
+<!-- ================= DESKTOP ================= -->
+
 <div id="desktop">
-  <div class="desktop-item" data-open="win-carta"><div class="desktop-icon">💌</div><div class="desktop-label">Carta.pdf</div></div>
-  <div class="desktop-item" data-open="win-momentos"><div class="desktop-icon">🖼️</div><div class="desktop-label">Fotos</div></div>
-  <div class="desktop-item" data-open="win-razones"><div class="desktop-icon">📝</div><div class="desktop-label">Razones.txt</div></div>
-  <div class="desktop-item" data-open="win-papelera"><div class="desktop-icon">🗑️</div><div class="desktop-label">Papelera</div></div>
+
+  <div class="desktop-item" data-open="win-carta">
+    <div class="desktop-icon">💌</div>
+    <div class="desktop-label">Carta.pdf</div>
+  </div>
+
+  <div class="desktop-item" data-open="win-momentos">
+    <div class="desktop-icon">🖼️</div>
+    <div class="desktop-label">Fotos</div>
+  </div>
+
+  <div class="desktop-item" data-open="win-razones">
+    <div class="desktop-icon">📝</div>
+    <div class="desktop-label">Razones.txt</div>
+  </div>
+
+  <div class="desktop-item" data-open="win-papelera">
+    <div class="desktop-icon">🗑️</div>
+    <div class="desktop-label">Papelera</div>
+  </div>
+
 </div>
+
+<!-- ================= DOCK ================= -->
 
 <div id="dock-container">
+
   <div id="dock">
+
     <div class="dock-icon" data-open="win-carta">💌</div>
+
     <div class="dock-icon" data-open="win-momentos">📸</div>
+
     <div class="dock-icon" data-open="win-canciones">🎵</div>
+
     <div class="dock-icon" data-open="win-razones">💖</div>
+
     <div class="dock-icon" data-open="win-vales">🎟️</div>
+
     <div class="dock-icon" data-open="win-sorpresa">🎁</div>
-    <div class="dock-icon" data-open="win-config">⚙️</div>
+
   </div>
+
 </div>
+
+<!-- ================= CARTA ================= -->
 
 <div id="win-carta" class="window">
-  <div class="window-header"><div class="window-dots"><button class="dot dot-close" data-close="win-carta"></button><button class="dot dot-min" data-min="win-carta"></button><button class="dot dot-max" data-max="win-carta"></button></div><div class="window-title">Carta para ti</div></div>
-  <div class="window-body"><div class="letter-paper"><div class="letter-heading">Para Viviana ❤️</div><div id="display-carta"></div><div class="letter-sign">Con todo mi amor,<br>para siempre ❤️</div></div></div>
+
+  <div class="window-header">
+
+    <div class="window-dots">
+      <button class="dot dot-close" data-close="win-carta"></button>
+      <button class="dot dot-min" data-min="win-carta"></button>
+      <button class="dot dot-max" data-max="win-carta"></button>
+    </div>
+
+    <div class="window-title">Carta para ti</div>
+
+  </div>
+
+  <div class="window-body">
+
+    <div class="letter-paper">
+
+      <div class="letter-heading">
+        Para Viviana ❤️
+      </div>
+
+      <div id="display-carta"></div>
+
+      <div class="letter-sign">
+        Con todo mi amor,<br>
+        para siempre ❤️
+      </div>
+
+    </div>
+
+  </div>
+
 </div>
+
+<!-- ================= FOTOS ================= -->
 
 <div id="win-momentos" class="window">
-  <div class="window-header"><div class="window-dots"><button class="dot dot-close" data-close="win-momentos"></button><button class="dot dot-min" data-min="win-momentos"></button><button class="dot dot-max" data-max="win-momentos"></button></div><div class="window-title">Nuestras Fotos</div></div>
-  <div class="window-body"><div class="gallery-grid" id="display-galeria"></div></div>
+
+  <div class="window-header">
+
+    <div class="window-dots">
+      <button class="dot dot-close" data-close="win-momentos"></button>
+      <button class="dot dot-min" data-min="win-momentos"></button>
+      <button class="dot dot-max" data-max="win-momentos"></button>
+    </div>
+
+    <div class="window-title">Nuestras Fotos</div>
+
+  </div>
+
+  <div class="window-body">
+
+    <div class="gallery-grid" id="display-galeria"></div>
+
+  </div>
+
 </div>
+
+<!-- ================= MUSICA ================= -->
 
 <div id="win-canciones" class="window">
-  <div class="window-header"><div class="window-dots"><button class="dot dot-close" data-close="win-canciones"></button><button class="dot dot-min" data-min="win-canciones"></button><button class="dot dot-max" data-max="win-canciones"></button></div><div class="window-title">Nuestra Canción</div></div>
-  <div class="window-body music-card">
-    <img id="album-cover" class="album" src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=700" alt="Portada">
-    <div class="music-title" id="music-title">Nuestra canción especial</div>
-    <div class="music-artist" id="music-artist">Para mi persona favorita ❤️</div>
-    <audio controls id="audio-player"></audio>
+
+  <div class="window-header">
+
+    <div class="window-dots">
+      <button class="dot dot-close" data-close="win-canciones"></button>
+      <button class="dot dot-min" data-min="win-canciones"></button>
+      <button class="dot dot-max" data-max="win-canciones"></button>
+    </div>
+
+    <div class="window-title">Nuestra Canción</div>
+
   </div>
+
+  <div class="window-body music-card">
+
+    <img
+      id="album-cover"
+      class="album"
+      src="assets/fondo.jpg"
+      alt="Portada"
+    >
+
+    <div class="music-title" id="music-title">
+      Nuestra canción especial
+    </div>
+
+    <div class="music-artist" id="music-artist">
+      Para mi persona favorita ❤️
+    </div>
+
+    <audio
+      controls
+      id="audio-player"
+      preload="metadata"
+    >
+      <source
+        src="assets/musica/nuestra-cancion.mp3"
+        type="audio/mpeg"
+      >
+      Tu navegador no puede reproducir este audio.
+    </audio>
+
+  </div>
+
 </div>
+
+<!-- ================= RAZONES ================= -->
 
 <div id="win-razones" class="window">
-  <div class="window-header"><div class="window-dots"><button class="dot dot-close" data-close="win-razones"></button><button class="dot dot-min" data-min="win-razones"></button><button class="dot dot-max" data-max="win-razones"></button></div><div class="window-title">Razones para amarte</div></div>
-  <div class="window-body">
-    <div class="reason-item">1. Por tu forma tan bonita de sonreír. ❤️</div>
-    <div class="reason-item">2. Por cómo haces que incluso un día normal se sienta especial.</div>
-    <div class="reason-item">3. Por la paz que siento cuando estoy contigo.</div>
-    <div class="reason-item">4. Por cada recuerdo que hemos construido.</div>
-    <div class="reason-item">5. Por ser tú, sin tener que cambiar nada.</div>
+
+  <div class="window-header">
+
+    <div class="window-dots">
+      <button class="dot dot-close" data-close="win-razones"></button>
+      <button class="dot dot-min" data-min="win-razones"></button>
+      <button class="dot dot-max" data-max="win-razones"></button>
+    </div>
+
+    <div class="window-title">
+      Razones para amarte
+    </div>
+
   </div>
+
+  <div class="window-body">
+
+    <div class="reason-item">
+      1. Por tu forma tan bonita de sonreír. ❤️
+    </div>
+
+    <div class="reason-item">
+      2. Por cómo haces que incluso un día normal se sienta especial.
+    </div>
+
+    <div class="reason-item">
+      3. Por la paz que siento cuando estoy contigo.
+    </div>
+
+    <div class="reason-item">
+      4. Por cada recuerdo que hemos construido.
+    </div>
+
+    <div class="reason-item">
+      5. Por ser tú, sin tener que cambiar nada.
+    </div>
+
+  </div>
+
 </div>
+
+<!-- ================= VALES ================= -->
 
 <div id="win-vales" class="window">
-  <div class="window-header"><div class="window-dots"><button class="dot dot-close" data-close="win-vales"></button><button class="dot dot-min" data-min="win-vales"></button><button class="dot dot-max" data-max="win-vales"></button></div><div class="window-title">Vales Canjeables</div></div>
-  <div class="window-body">
-    <div class="coupon"><div><strong>Cena especial 🍝</strong><p style="font-size:11px;color:#777;margin-top:4px">Canjeable por tu comida favorita.</p></div><button class="claim-btn">Canjear</button></div>
-    <div class="coupon"><div><strong>Tarde de películas 🎬</strong><p style="font-size:11px;color:#777;margin-top:4px">Tú eliges la película y el postre.</p></div><button class="claim-btn">Canjear</button></div>
-    <div class="coupon"><div><strong>Abrazo infinito 🤗</strong><p style="font-size:11px;color:#777;margin-top:4px">Sin fecha de vencimiento.</p></div><button class="claim-btn">Canjear</button></div>
+
+  <div class="window-header">
+
+    <div class="window-dots">
+      <button class="dot dot-close" data-close="win-vales"></button>
+      <button class="dot dot-min" data-min="win-vales"></button>
+      <button class="dot dot-max" data-max="win-vales"></button>
+    </div>
+
+    <div class="window-title">
+      Vales Canjeables
+    </div>
+
   </div>
+
+  <div class="window-body">
+
+    <div class="coupon">
+
+      <div>
+        <strong>Cena especial 🍝</strong>
+
+        <p style="font-size:11px;color:#777;margin-top:4px">
+          Canjeable por tu comida favorita.
+        </p>
+      </div>
+
+      <button class="claim-btn">
+        Canjear
+      </button>
+
+    </div>
+
+    <div class="coupon">
+
+      <div>
+        <strong>Tarde de películas 🎬</strong>
+
+        <p style="font-size:11px;color:#777;margin-top:4px">
+          Tú eliges la película y el postre.
+        </p>
+      </div>
+
+      <button class="claim-btn">
+        Canjear
+      </button>
+
+    </div>
+
+    <div class="coupon">
+
+      <div>
+        <strong>Abrazo infinito 🤗</strong>
+
+        <p style="font-size:11px;color:#777;margin-top:4px">
+          Sin fecha de vencimiento.
+        </p>
+      </div>
+
+      <button class="claim-btn">
+        Canjear
+      </button>
+
+    </div>
+
+  </div>
+
 </div>
+
+<!-- ================= SORPRESA ================= -->
 
 <div id="win-sorpresa" class="window">
-  <div class="window-header"><div class="window-dots"><button class="dot dot-close" data-close="win-sorpresa"></button><button class="dot dot-min" data-min="win-sorpresa"></button><button class="dot dot-max" data-max="win-sorpresa"></button></div><div class="window-title">Regalito Sorpresa</div></div>
-  <div class="window-body surprise">
-    <p style="font-weight:600;margin-bottom:18px">Hay algo escondido aquí...</p>
-    <div class="gift" id="gift-btn">🎁</div>
-    <div id="gift-text">¡Vale por un postre juntos! 🍦❤️</div>
+
+  <div class="window-header">
+
+    <div class="window-dots">
+      <button class="dot dot-close" data-close="win-sorpresa"></button>
+      <button class="dot dot-min" data-min="win-sorpresa"></button>
+      <button class="dot dot-max" data-max="win-sorpresa"></button>
+    </div>
+
+    <div class="window-title">
+      Regalito Sorpresa
+    </div>
+
   </div>
+
+  <div class="window-body surprise">
+
+    <p style="font-weight:600;margin-bottom:18px">
+      Hay algo escondido aquí...
+    </p>
+
+    <div class="gift" id="gift-btn">
+      🎁
+    </div>
+
+    <div id="gift-text">
+      ¡Vale por un postre juntos! 🍦❤️
+    </div>
+
+  </div>
+
 </div>
+
+<!-- ================= PAPELERA ================= -->
 
 <div id="win-papelera" class="window">
-  <div class="window-header"><div class="window-dots"><button class="dot dot-close" data-close="win-papelera"></button><button class="dot dot-min" data-min="win-papelera"></button><button class="dot dot-max" data-max="win-papelera"></button></div><div class="window-title">Papelera</div></div>
-  <div class="window-body" style="text-align:center;padding-top:55px">
-    <div style="font-size:65px">✨</div><h3 style="margin:14px 0 8px">La papelera está vacía</h3>
-    <p style="font-size:13px;color:#666">No hay nada que cambiaría de ti. Eres perfecta tal como eres. ❤️</p>
+
+  <div class="window-header">
+
+    <div class="window-dots">
+      <button class="dot dot-close" data-close="win-papelera"></button>
+      <button class="dot dot-min" data-min="win-papelera"></button>
+      <button class="dot dot-max" data-max="win-papelera"></button>
+    </div>
+
+    <div class="window-title">
+      Papelera
+    </div>
+
   </div>
+
+  <div
+    class="window-body"
+    style="text-align:center;padding-top:55px"
+  >
+
+    <div style="font-size:65px">
+      ✨
+    </div>
+
+    <h3 style="margin:14px 0 8px">
+      La papelera está vacía
+    </h3>
+
+    <p style="font-size:13px;color:#666">
+      No hay nada que cambiaría de ti.
+      Eres perfecta tal como eres. ❤️
+    </p>
+
+  </div>
+
 </div>
 
-<div id="win-config" class="window">
-  <div class="window-header"><div class="window-dots"><button class="dot dot-close" data-close="win-config"></button><button class="dot dot-min" data-min="win-config"></button><button class="dot dot-max" data-max="win-config"></button></div><div class="window-title">Ajustes de ViviOS</div></div>
-  <div class="window-body">
-    <div class="form-group"><label>Carta</label><textarea id="cfg-carta" rows="7"></textarea></div>
-    
-    <div class="form-group">
-      <label>Fondo de pantalla (Seleccionar imagen local)</label>
-      <input type="file" id="cfg-fondo-file" accept="image/*">
-    </div>
-
-    <div class="form-group">
-      <label>Fotos adicionales (Puedes seleccionar varias de golpe)</label>
-      <input type="file" id="cfg-fotos-file" accept="image/*" multiple>
-    </div>
-
-    <div class="form-group">
-      <label>Archivo de música MP3 local</label>
-      <input type="file" id="cfg-musica-file" accept="audio/*">
-    </div>
-
-    <div class="form-group"><label>Título de la canción</label><input id="cfg-titulo" placeholder="Nuestra canción"></div>
-    <div class="form-group"><label>Artista</label><input id="cfg-artista" placeholder="Para mi persona favorita ❤️"></div>
-
-    <div class="form-group">
-      <label>Portada de música (Imagen local)</label>
-      <input type="file" id="cfg-portada-file" accept="image/*">
-    </div>
-
-    <button class="save-btn" id="btn-guardar">Guardar ajustes ❤</button>
-  </div>
-</div>
+<!-- ================= IMAGE VIEWER ================= -->
 
 <div id="image-viewer">
-  <button class="viewer-close" id="viewer-close">×</button>
-  <img id="viewer-img" src="" alt="Foto ampliada">
+
+  <button
+    class="viewer-close"
+    id="viewer-close"
+  >
+    ×
+  </button>
+
+  <img
+    id="viewer-img"
+    src=""
+    alt="Foto ampliada"
+  >
+
   <div id="viewer-caption"></div>
-  <div class="viewer-nav"><button id="viewer-prev">← Anterior</button><button id="viewer-next">Siguiente →</button></div>
+
+  <div class="viewer-nav">
+
+    <button id="viewer-prev">
+      ← Anterior
+    </button>
+
+    <button id="viewer-next">
+      Siguiente →
+    </button>
+
+  </div>
+
 </div>
 
 <script>
-const defaultData={
-  carta:`Hola mi amor ❤️
+
+/* =========================================================
+   DATOS DE VIVIOS
+   ========================================================= */
+
+const appData = {
+
+  carta: `Hola mi amor ❤️
 
 Quise crear este pequeño lugar solo para ti, Viviana.
 
@@ -432,223 +1201,780 @@ No es simplemente una página. Quería que cada carpeta, cada ventana y cada peq
 Gracias por cada sonrisa, por cada momento y por hacer que mi vida tenga recuerdos que quiero guardar para siempre.
 
 Te amo muchísimo. 💕`,
-  fondo:'',
-  fotos:[], // <-- Sin fotos por defecto
-  musica:'',
-  titulo:'Nuestra canción especial',
-  artista:'Para mi persona favorita ❤️',
-  portada:'https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=700'
+
+  /* FONDO REAL DE GITHUB */
+  fondo: "assets/fondo.jpg",
+
+  /* FOTOS REALES DE GITHUB */
+  fotos: [
+    "assets/fotos/foto01.jpg",
+    "assets/fotos/foto02.jpg",
+    "assets/fotos/foto03.jpg",
+    "assets/fotos/foto04.jpg",
+    "assets/fotos/foto05.jpg"
+  ],
+
+  /* MUSICA REAL DE GITHUB */
+  musica: "assets/musica/nuestra-cancion.mp3",
+
+  titulo: "Nuestra canción especial",
+
+  artista: "Para mi persona favorita ❤️",
+
+  /* USAMOS EL MISMO FONDO COMO PORTADA */
+  portada: "assets/fondo.jpg"
 };
 
-let appData;
-try{
-  appData=JSON.parse(localStorage.getItem('macViviOSData'))||defaultData;
-}catch(e){
-  appData=defaultData;
-}
 
-const $=s=>document.querySelector(s);
-const $$=s=>document.querySelectorAll(s); let zIndex=3000; let viewerIndex=0;  function save(){localStorage.setItem('macViviOSData',JSON.stringify(appData))}  function abrirVentana(id){   const w=document.getElementById(id); if(!w)return;   if(w.classList.contains('minimized'))w.classList.remove('minimized');   w.classList.add('active'); w.classList.remove('closing');   w.style.zIndex=++zIndex;   $$('.dock-icon').forEach(x=>x.classList.remove('open'));
-  $$('.dock-icon[data-open="'+id+'"]').forEach(x=>x.classList.add('open'));   if(id==='win-carta')typeLetter(); } function cerrarVentana(id){   const w=document.getElementById(id);if(!w)return;   w.classList.add('closing');   setTimeout(()=>{w.classList.remove('active','closing');updateDock(id)},210); } function minimizarVentana(id){   const w=document.getElementById(id);if(!w)return;   w.classList.remove('active');w.classList.add('minimized');updateDock(id); } function updateDock(id){   $$
-('.dock-icon[data-open="'+id+'"]').forEach(x=>x.classList.remove('open'));
-}
-function maximizarVentana(id){
-  const w=document.getElementById(id);if(!w)return;
-  w.classList.toggle('maximized');
-  if(w.classList.contains('maximized')){w.dataset.oldLeft=w.style.left;w.dataset.oldTop=w.style.top;w.style.left='';w.style.top=''}
-}
+/* =========================================================
+   VARIABLES
+   ========================================================= */
 
-$$('[data-open]').forEach(el=>el.addEventListener('click',e=>{e.stopPropagation();abrirVentana(el.dataset.open)}));$$
-('[data-close]').forEach(el=>el.addEventListener('click',e=>{e.stopPropagation();cerrarVentana(el.dataset.close)}));
-$$('[data-min]').forEach(el=>el.addEventListener('click',e=>{e.stopPropagation();minimizarVentana(el.dataset.min)}));$$
-('[data-max]').forEach(el=>el.addEventListener('click',e=>{e.stopPropagation();maximizarVentana(el.dataset.max)}));
+const $ = selector => document.querySelector(selector);
 
-$$('.window').forEach(w=>{   w.addEventListener('mousedown',()=>w.style.zIndex=++zIndex);   w.addEventListener('touchstart',()=>w.style.zIndex=++zIndex,{passive:true}); });  /* DRAG */ let drag=null; $$
-('.window-header').forEach(header=>{
-  const start=(clientX,clientY)=>{
-    const w=header.closest('.window');
-    if(w.classList.contains('maximized'))return;
-    const r=w.getBoundingClientRect();
-    drag={w,startX:clientX,startY:clientY,left:r.left,top:r.top};
-    w.style.transform='none';w.style.left=r.left+'px';w.style.top=r.top+'px';
-  };
-  const move=(x,y)=>{
-    if(!drag)return;
-    drag.w.style.left=(drag.left+x-drag.startX)+'px';
-    drag.w.style.top=(drag.top+y-drag.startY)+'px';
-  };
-  header.addEventListener('mousedown',e=>{
-    if(e.target.classList.contains('dot'))return;
-    start(e.clientX,e.clientY);
-    const mm=e=>move(e.clientX,e.clientY), up=()=>{drag=null;document.removeEventListener('mousemove',mm);document.removeEventListener('mouseup',up)};
-    document.addEventListener('mousemove',mm);document.addEventListener('mouseup',up);
+const $$ = selector => document.querySelectorAll(selector);
+
+let zIndex = 3000;
+
+let viewerIndex = 0;
+
+let drag = null;
+
+let typingTimer;
+
+
+/* =========================================================
+   VENTANAS
+   ========================================================= */
+
+function abrirVentana(id){
+
+  const w = document.getElementById(id);
+
+  if(!w) return;
+
+  if(w.classList.contains("minimized")){
+    w.classList.remove("minimized");
+  }
+
+  w.classList.add("active");
+
+  w.classList.remove("closing");
+
+  w.style.zIndex = ++zIndex;
+
+  $$(".dock-icon").forEach(x=>{
+    x.classList.remove("open");
   });
-  header.addEventListener('touchstart',e=>{
-    if(e.target.classList.contains('dot'))return;
-    const t=e.touches[0];start(t.clientX,t.clientY);
-    const mm=e=>{const t=e.touches[0];move(t.clientX,t.clientY)},up=()=>{drag=null;document.removeEventListener('touchmove',mm);document.removeEventListener('touchend',up)};
-    document.addEventListener('touchmove',mm,{passive:false});document.addEventListener('touchend',up);
-  },{passive:true});
+
+  $$('.dock-icon[data-open="'+id+'"]').forEach(x=>{
+    x.classList.add("open");
+  });
+
+  if(id === "win-carta"){
+    typeLetter();
+  }
+}
+
+
+function cerrarVentana(id){
+
+  const w = document.getElementById(id);
+
+  if(!w) return;
+
+  w.classList.add("closing");
+
+  setTimeout(()=>{
+
+    w.classList.remove("active","closing");
+
+    updateDock(id);
+
+  },210);
+}
+
+
+function minimizarVentana(id){
+
+  const w = document.getElementById(id);
+
+  if(!w) return;
+
+  w.classList.remove("active");
+
+  w.classList.add("minimized");
+
+  updateDock(id);
+}
+
+
+function updateDock(id){
+
+  $$('.dock-icon[data-open="'+id+'"]').forEach(x=>{
+    x.classList.remove("open");
+  });
+}
+
+
+function maximizarVentana(id){
+
+  const w = document.getElementById(id);
+
+  if(!w) return;
+
+  w.classList.toggle("maximized");
+}
+
+
+/* =========================================================
+   BOTONES DE VENTANAS
+   ========================================================= */
+
+$$("[data-open]").forEach(el=>{
+
+  el.addEventListener("click",e=>{
+
+    e.stopPropagation();
+
+    abrirVentana(el.dataset.open);
+
+  });
+
 });
 
-/* LETTER */
-let typingTimer;
+
+$$("[data-close]").forEach(el=>{
+
+  el.addEventListener("click",e=>{
+
+    e.stopPropagation();
+
+    cerrarVentana(el.dataset.close);
+
+  });
+
+});
+
+
+$$("[data-min]").forEach(el=>{
+
+  el.addEventListener("click",e=>{
+
+    e.stopPropagation();
+
+    minimizarVentana(el.dataset.min);
+
+  });
+
+});
+
+
+$$("[data-max]").forEach(el=>{
+
+  el.addEventListener("click",e=>{
+
+    e.stopPropagation();
+
+    maximizarVentana(el.dataset.max);
+
+  });
+
+});
+
+
+/* =========================================================
+   ACTIVAR VENTANA
+   ========================================================= */
+
+$$(".window").forEach(w=>{
+
+  w.addEventListener("mousedown",()=>{
+    w.style.zIndex = ++zIndex;
+  });
+
+  w.addEventListener(
+    "touchstart",
+    ()=>{
+      w.style.zIndex = ++zIndex;
+    },
+    {passive:true}
+  );
+
+});
+
+
+/* =========================================================
+   ARRASTRAR VENTANAS
+   ========================================================= */
+
+$$(".window-header").forEach(header=>{
+
+  const start = (clientX,clientY)=>{
+
+    const w = header.closest(".window");
+
+    if(w.classList.contains("maximized")) return;
+
+    const r = w.getBoundingClientRect();
+
+    drag = {
+      w,
+      startX:clientX,
+      startY:clientY,
+      left:r.left,
+      top:r.top
+    };
+
+    w.style.transform = "none";
+
+    w.style.left = r.left + "px";
+
+    w.style.top = r.top + "px";
+  };
+
+
+  const move = (x,y)=>{
+
+    if(!drag) return;
+
+    drag.w.style.left =
+      (drag.left + x - drag.startX) + "px";
+
+    drag.w.style.top =
+      (drag.top + y - drag.startY) + "px";
+  };
+
+
+  header.addEventListener("mousedown",e=>{
+
+    if(e.target.classList.contains("dot")) return;
+
+    start(e.clientX,e.clientY);
+
+    const mm = e=>{
+      move(e.clientX,e.clientY);
+    };
+
+    const up = ()=>{
+
+      drag = null;
+
+      document.removeEventListener("mousemove",mm);
+
+      document.removeEventListener("mouseup",up);
+
+    };
+
+    document.addEventListener("mousemove",mm);
+
+    document.addEventListener("mouseup",up);
+
+  });
+
+
+  header.addEventListener("touchstart",e=>{
+
+    if(e.target.classList.contains("dot")) return;
+
+    const t = e.touches[0];
+
+    start(t.clientX,t.clientY);
+
+    const mm = e=>{
+
+      const t = e.touches[0];
+
+      move(t.clientX,t.clientY);
+
+    };
+
+    const up = ()=>{
+
+      drag = null;
+
+      document.removeEventListener("touchmove",mm);
+
+      document.removeEventListener("touchend",up);
+
+    };
+
+    document.addEventListener(
+      "touchmove",
+      mm,
+      {passive:false}
+    );
+
+    document.addEventListener(
+      "touchend",
+      up
+    );
+
+  },{passive:true});
+
+});
+
+
+/* =========================================================
+   CARTA
+   ========================================================= */
+
 function typeLetter(){
+
+  const el = $("#display-carta");
+
+  const text = appData.carta;
+
+  if(el.dataset.done === text) return;
+
   clearTimeout(typingTimer);
-  const el=$('#display-carta'),text=appData.carta;
-  if(el.dataset.done===text)return;
-  el.dataset.done=text;el.innerHTML='';
-  let i=0;
+
+  el.dataset.done = text;
+
+  el.textContent = "";
+
+  let i = 0;
+
   function step(){
-    if(i<text.length){el.textContent+=text[i++];typingTimer=setTimeout(step,12)}
+
+    if(i < text.length){
+
+      el.textContent += text[i++];
+
+      typingTimer = setTimeout(step,12);
+
+    }
+
   }
+
   step();
 }
 
-/* RENDER */
+
+/* =========================================================
+   RENDER
+   ========================================================= */
+
 function renderApp(){
-  $('#cfg-carta').value=appData.carta;
-  $('#cfg-titulo').value=appData.titulo||'Nuestra canción especial';
-  $('#cfg-artista').value=appData.artista||'Para mi persona favorita ❤️️';
 
-  if(appData.fondo)document.body.style.backgroundImage=`url("${appData.fondo}")`;
-  else document.body.style.backgroundImage='linear-gradient(135deg,#ff9a9e,#fecfef 48%,#a1c4fd)';
+  /* FONDO */
 
-  const gal=$('#display-galeria');
-  gal.innerHTML='';
-  
-  if(!appData.fotos || appData.fotos.length === 0){
-    gal.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #666; font-size: 13px;">No hay fotos aún. Sube algunas desde los Ajustes (⚙️).</div>`;
-  } else {
-    appData.fotos.forEach((src,i)=>{
-      const card=document.createElement('div');card.className='photo-card';
-      card.style.animationDelay=(i*.07)+'s';
-      const img=document.createElement('img');img.src=src;img.alt='Foto '+(i+1);img.loading='lazy';
-      const p=document.createElement('p');p.textContent='Foto #'+(i+1); // <-- Cambiado a Foto #
-      card.append(img,p);card.addEventListener('click',()=>openViewer(i));
-      gal.appendChild(card);
+  document.body.style.background =
+    `linear-gradient(
+      135deg,
+      rgba(255,154,158,.35),
+      rgba(254,207,239,.30) 48%,
+      rgba(161,196,253,.30)
+    ),
+    url("${appData.fondo}") center/cover no-repeat`;
+
+
+  /* CARTA */
+
+  $("#display-carta").dataset.done = "";
+
+  $("#display-carta").textContent = "";
+
+
+  /* GALERIA */
+
+  const gal = $("#display-galeria");
+
+  gal.innerHTML = "";
+
+
+  appData.fotos.forEach((src,i)=>{
+
+    const card = document.createElement("div");
+
+    card.className = "photo-card";
+
+    card.style.animationDelay =
+      (i * .07) + "s";
+
+
+    const img = document.createElement("img");
+
+    img.src = src;
+
+    img.alt = "Foto " + (i + 1);
+
+    img.loading = "lazy";
+
+
+    /* Si una foto no existe, la ocultamos */
+
+    img.onerror = ()=>{
+
+      card.style.display = "none";
+
+    };
+
+
+    const p = document.createElement("p");
+
+    p.textContent =
+      "Foto #" + (i + 1);
+
+
+    card.append(img,p);
+
+
+    card.addEventListener("click",()=>{
+
+      openViewer(i);
+
     });
-  }
 
-  $('#music-title').textContent=appData.titulo||'Nuestra canción especial';
-  $('#music-artist').textContent=appData.artista||'Para mi persona favorita ❤️';
-  $('#album-cover').src=appData.portada||defaultData.portada;
-  const audio=$('#audio-player');
-  if(appData.musica){
-    audio.src=appData.musica;
-    audio.load();
-  } else {
-    audio.removeAttribute('src');
-  }
-  $('#display-carta').dataset.done='';
+
+    gal.appendChild(card);
+
+  });
+
+
+  /* MUSICA */
+
+  $("#music-title").textContent =
+    appData.titulo;
+
+
+  $("#music-artist").textContent =
+    appData.artista;
+
+
+  $("#album-cover").src =
+    appData.portada;
+
+
+  const audio = $("#audio-player");
+
+  audio.src = appData.musica;
+
+  audio.load();
+
 }
 
-/* GUARDAR CON ARCHIVOS LOCALES (FileReader) */
-const toBase64 = file => new Promise((resolve, reject) => {
-  const reader = new FileReader();
-  reader.readAsDataURL(file);
-  reader.onload = () => resolve(reader.result);
-  reader.onerror = error => reject(error);
-});
 
-$('#btn-guardar').addEventListener('click',async()=>{
-  appData.carta=$('#cfg-carta').value;
-  appData.titulo=$('#cfg-titulo').value.trim()||defaultData.titulo;
-  appData.artista=$('#cfg-artista').value.trim()||defaultData.artista;
+/* =========================================================
+   VISOR DE FOTOS
+   ========================================================= */
 
-  try {
-    const fondoFile=$('#cfg-fondo-file').files[0];
-    if(fondoFile){appData.fondo=await toBase64(fondoFile);}
-
-    const fotosFiles=$('#cfg-fotos-file').files;
-    if(fotosFiles.length>0){
-      const nuevasFotos=[];
-      for(let file of fotosFiles){
-        nuevasFotos.push(await toBase64(file));
-      }
-      appData.fotos=[...nuevasFotos,...(appData.fotos||[])];
-    }
-
-    const musicaFile=$('#cfg-musica-file').files[0];
-    if(musicaFile){appData.musica=await toBase64(musicaFile);}
-
-    const portadaFile=$('#cfg-portada-file').files[0];     if(portadaFile){appData.portada=await toBase64(portadaFile);}      save();     renderApp();     cerrarVentana('win-config');     showToast('¡Ajustes y archivos guardados! ❤️');   } catch(err) {     showToast('Error al procesar los archivos');   } });  /* COUPONS */ $$('.claim-btn').forEach(btn=>btn.addEventListener('click',()=>{
-  btn.textContent='¡CANJEADO! ❤️';btn.classList.add('claimed');showToast('Vale canjeado 💕');
-}));
-$('#gift-btn').addEventListener('click',()=>{
-  $('#gift-text').style.display='block';
-  $('#gift-btn').style.animation='none';
-  burstHearts();
-});
-
-/* VIEWER */
 function openViewer(i){
-  viewerIndex=i;updateViewer();$('#image-viewer').classList.add('show');
+
+  if(!appData.fotos.length) return;
+
+  viewerIndex = i;
+
+  updateViewer();
+
+  $("#image-viewer").classList.add("show");
 }
+
+
 function updateViewer(){
-  const src=appData.fotos[viewerIndex];$('#viewer-img').src=src;
-  $('#viewer-caption').textContent=`Foto ${viewerIndex+1} de ${appData.fotos.length}`;
-}
-$('#viewer-close').onclick=()=>$('#image-viewer').classList.remove('show');
-$('#viewer-prev').onclick=()=>{if(!appData.fotos.length)return;viewerIndex=(viewerIndex-1+appData.fotos.length)%appData.fotos.length;updateViewer()};
-$('#viewer-next').onclick=()=>{if(!appData.fotos.length)return;viewerIndex=(viewerIndex+1)%appData.fotos.length;updateViewer()};
 
-/* CLOCK */
+  const src =
+    appData.fotos[viewerIndex];
+
+  $("#viewer-img").src = src;
+
+  $("#viewer-caption").textContent =
+    `Foto ${viewerIndex + 1} de ${appData.fotos.length}`;
+}
+
+
+$("#viewer-close").onclick = ()=>{
+
+  $("#image-viewer").classList.remove("show");
+
+};
+
+
+$("#viewer-prev").onclick = ()=>{
+
+  if(!appData.fotos.length) return;
+
+  viewerIndex =
+    (viewerIndex - 1 + appData.fotos.length)
+    % appData.fotos.length;
+
+  updateViewer();
+
+};
+
+
+$("#viewer-next").onclick = ()=>{
+
+  if(!appData.fotos.length) return;
+
+  viewerIndex =
+    (viewerIndex + 1)
+    % appData.fotos.length;
+
+  updateViewer();
+
+};
+
+
+/* =========================================================
+   VALES
+   ========================================================= */
+
+$$(".claim-btn").forEach(btn=>{
+
+  btn.addEventListener("click",()=>{
+
+    btn.textContent = "¡CANJEADO! ❤️";
+
+    btn.classList.add("claimed");
+
+    showToast("Vale canjeado 💕");
+
+  });
+
+});
+
+
+/* =========================================================
+   SORPRESA
+   ========================================================= */
+
+$("#gift-btn").addEventListener("click",()=>{
+
+  $("#gift-text").style.display = "block";
+
+  $("#gift-btn").style.animation = "none";
+
+  burstHearts();
+
+});
+
+
+/* =========================================================
+   RELOJ
+   ========================================================= */
+
 function updateClock(){
-  $('#mac-clock').textContent=new Date().toLocaleString('es-ES',{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
-}
-updateClock();setInterval(updateClock,1000);
 
-/* TOAST */
+  $("#mac-clock").textContent =
+    new Date().toLocaleString(
+      "es-ES",
+      {
+        weekday:"short",
+        day:"numeric",
+        month:"short",
+        hour:"2-digit",
+        minute:"2-digit"
+      }
+    );
+
+}
+
+updateClock();
+
+setInterval(updateClock,1000);
+
+
+/* =========================================================
+   TOAST
+   ========================================================= */
+
 function showToast(msg){
-  const old=$('.toast');if(old)old.remove();
-  const t=document.createElement('div');t.className='toast';t.textContent=msg;
-  Object.assign(t.style,{position:'fixed',top:'48px',left:'50%',transform:'translateX(-50%)',zIndex:65000,padding:'10px 16px',borderRadius:'20px',background:'rgba(30,30,30,.78)',color:'#fff',fontSize:'12px',backdropFilter:'blur(15px)',boxShadow:'0 8px 25px rgba(0,0,0,.25)'});
-  document.body.appendChild(t);setTimeout(()=>t.remove(),2200);
-}
 
-/* HEART EFFECT */
-function heart(x,y){
-  const h=document.createElement('div');h.className='click-heart';h.textContent=['💖','💕','❤️','💗'][Math.floor(Math.random()*4)];
-  h.style.left=x+'px';h.style.top=y+'px';document.body.appendChild(h);setTimeout(()=>h.remove(),900);
-}
-document.addEventListener('click',e=>{
-  if(e.target.closest('button,input,textarea,audio,.window-header,.dock,.desktop-item,#image-viewer'))return;
-  heart(e.clientX,e.clientY);
-});
-function burstHearts(){
-  for(let i=0;i<14;i++)setTimeout(()=>heart(innerWidth/2+(Math.random()-.5)*220,innerHeight/2+(Math.random()-.5)*120),i*45);
-}
+  const old = $(".toast");
 
-/* ESC */
-document.addEventListener('keydown',e=>{
-  if(e.key==='Escape'){
-    $('#image-viewer').classList.remove('show');     $$('.window.active').forEach(w=>cerrarVentana(w.id));
-  }
-});
+  if(old) old.remove();
 
-/* BOOT */
-let bootDone = false;
-function launchOS() {
-  if (bootDone) return;
-  bootDone = true;
-  renderApp();
-  $('#boot').classList.add('hide');
-  $('#login').classList.add('show');
-}
+  const t =
+    document.createElement("div");
 
-window.addEventListener('load', () => {
-  setTimeout(launchOS, 2400);
-});
-setTimeout(launchOS, 4000);
+  t.className = "toast";
 
-$('#login-btn').addEventListener('click',()=>{
-  $('#login').style.opacity='0';
+  t.textContent = msg;
+
+  Object.assign(
+    t.style,
+    {
+      position:"fixed",
+      top:"48px",
+      left:"50%",
+      transform:"translateX(-50%)",
+      zIndex:65000,
+      padding:"10px 16px",
+      borderRadius:"20px",
+      background:"rgba(30,30,30,.78)",
+      color:"#fff",
+      fontSize:"12px",
+      backdropFilter:"blur(15px)",
+      boxShadow:"0 8px 25px rgba(0,0,0,.25)"
+    }
+  );
+
+  document.body.appendChild(t);
+
   setTimeout(()=>{
-    $('#login').style.display='none';
-    showToast('Bienvenida a ViviOS ❤️');
-  },700);
+    t.remove();
+  },2200);
+
+}
+
+
+/* =========================================================
+   CORAZONES
+   ========================================================= */
+
+function heart(x,y){
+
+  const h =
+    document.createElement("div");
+
+  h.className = "click-heart";
+
+  h.textContent =
+    ["💖","💕","❤️","💗"]
+    [Math.floor(Math.random()*4)];
+
+  h.style.left = x + "px";
+
+  h.style.top = y + "px";
+
+  document.body.appendChild(h);
+
+  setTimeout(()=>{
+    h.remove();
+  },900);
+
+}
+
+
+document.addEventListener("click",e=>{
+
+  if(
+    e.target.closest(
+      "button,input,textarea,audio,.window-header,.dock,.desktop-item,#image-viewer"
+    )
+  ) return;
+
+  heart(
+    e.clientX,
+    e.clientY
+  );
+
 });
+
+
+function burstHearts(){
+
+  for(let i=0;i<14;i++){
+
+    setTimeout(()=>{
+
+      heart(
+        innerWidth/2 +
+        (Math.random()-.5)*220,
+
+        innerHeight/2 +
+        (Math.random()-.5)*120
+      );
+
+    },i*45);
+
+  }
+
+}
+
+
+/* =========================================================
+   ESC
+   ========================================================= */
+
+document.addEventListener("keydown",e=>{
+
+  if(e.key === "Escape"){
+
+    $("#image-viewer")
+      .classList.remove("show");
+
+    $$(".window.active")
+      .forEach(w=>{
+        cerrarVentana(w.id);
+      });
+
+  }
+
+});
+
+
+/* =========================================================
+   INICIO
+   ========================================================= */
+
+let bootDone = false;
+
+
+function launchOS(){
+
+  if(bootDone) return;
+
+  bootDone = true;
+
+  renderApp();
+
+  $("#boot").classList.add("hide");
+
+  $("#login").classList.add("show");
+
+}
+
+
+window.addEventListener("load",()=>{
+
+  setTimeout(
+    launchOS,
+    2400
+  );
+
+});
+
+
+setTimeout(
+  launchOS,
+  4000
+);
+
+
+/* =========================================================
+   LOGIN + MUSICA
+   ========================================================= */
+
+$("#login-btn").addEventListener("click",()=>{
+
+  $("#login").style.opacity = "0";
+
+  /*
+   * Intentamos comenzar la canción después
+   * de la interacción de Viviana.
+   * Si el navegador bloquea el audio,
+   * podrá darle Play manualmente.
+   */
+
+  const audio = $("#audio-player");
+
+  audio.play().catch(()=>{});
+
+  setTimeout(()=>{
+
+    $("#login").style.display = "none";
+
+    showToast(
+      "Bienvenida a ViviOS ❤️"
+    );
+
+  },700);
+
+});
+
 </script>
+
 </body>
 </html>
