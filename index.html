@@ -14,6 +14,11 @@
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
 
+html,body{
+  width:100%;
+  height:100%;
+}
+
 body{
   overflow:hidden;
   background:#111;
@@ -28,7 +33,7 @@ body{
   width:100vw;
   height:100vh;
 
-  background-image:
+  background:
     linear-gradient(
       rgba(0,0,0,.12),
       rgba(0,0,0,.12)
@@ -56,9 +61,9 @@ body{
   justify-content:center;
   flex-direction:column;
 
-  z-index:9999;
+  z-index:99999;
 
-  transition:opacity .8s ease;
+  transition:opacity .6s ease;
 }
 
 .boot-logo{
@@ -78,6 +83,7 @@ body{
   background:#333;
 
   border-radius:10px;
+
   overflow:hidden;
 
   margin-top:20px;
@@ -89,10 +95,14 @@ body{
 
   background:#fff;
 
-  animation:loading 2s forwards;
+  animation:loading 1.5s forwards;
 }
 
 @keyframes loading{
+
+  from{
+    width:0%;
+  }
 
   to{
     width:100%;
@@ -124,7 +134,7 @@ body{
   background-size:cover;
   background-position:center;
 
-  transition:opacity .7s ease;
+  transition:opacity .6s ease;
 }
 
 .login-box{
@@ -151,8 +161,7 @@ body{
   width:90px;
   height:90px;
 
-  margin:auto;
-  margin-bottom:18px;
+  margin:0 auto 18px;
 
   border-radius:50%;
 
@@ -238,7 +247,9 @@ body{
 .top-left,
 .top-right{
   display:flex;
+
   align-items:center;
+
   gap:15px;
 }
 
@@ -247,7 +258,7 @@ body{
 }
 
 /* =========================
-   DESKTOP ICONS
+   ICONOS
 ========================= */
 
 .desktop-icons{
@@ -257,6 +268,7 @@ body{
   left:20px;
 
   display:flex;
+
   flex-direction:column;
 
   gap:20px;
@@ -293,13 +305,14 @@ body{
 }
 
 /* =========================
-   WINDOWS
+   VENTANAS
 ========================= */
 
 .window{
   position:absolute;
 
   width:650px;
+
   max-width:90vw;
   max-height:75vh;
 
@@ -333,6 +346,7 @@ body{
   height:42px;
 
   display:flex;
+
   align-items:center;
 
   padding:0 14px;
@@ -448,6 +462,8 @@ body{
   cursor:pointer;
 
   transition:.25s;
+
+  background:#222;
 }
 
 .gallery img:hover{
@@ -455,7 +471,7 @@ body{
 }
 
 /* =========================
-   MUSIC
+   MUSICA
 ========================= */
 
 .music-player{
@@ -736,7 +752,7 @@ body{
 }
 
 /* =========================
-   IMAGE VIEWER
+   VISOR
 ========================= */
 
 #image-viewer{
@@ -877,9 +893,9 @@ body{
 
 <body>
 
-<!-- =====================================================
+<!-- =========================
      BOOT
-====================================================== -->
+========================= -->
 
 <div id="boot">
 
@@ -892,17 +908,15 @@ body{
   </div>
 
   <div class="boot-bar">
-
     <div class="boot-progress"></div>
-
   </div>
 
 </div>
 
 
-<!-- =====================================================
+<!-- =========================
      LOGIN
-====================================================== -->
+========================= -->
 
 <div id="login">
 
@@ -934,13 +948,11 @@ body{
 </div>
 
 
-<!-- =====================================================
+<!-- =========================
      DESKTOP
-====================================================== -->
+========================= -->
 
 <div id="desktop">
-
-  <!-- TOP BAR -->
 
   <div class="topbar">
 
@@ -975,7 +987,7 @@ body{
   </div>
 
 
-  <!-- DESKTOP ICONS -->
+  <!-- ICONOS -->
 
   <div class="desktop-icons">
 
@@ -1029,9 +1041,9 @@ body{
   </div>
 
 
-  <!-- ===================================================
+  <!-- =========================
        CARTA
-  ==================================================== -->
+  ========================== -->
 
   <div
     class="window"
@@ -1048,7 +1060,6 @@ body{
         ></div>
 
         <div class="window-button minimize"></div>
-
         <div class="window-button maximize"></div>
 
       </div>
@@ -1076,9 +1087,9 @@ body{
   </div>
 
 
-  <!-- ===================================================
+  <!-- =========================
        FOTOS
-  ==================================================== -->
+  ========================== -->
 
   <div
     class="window"
@@ -1095,7 +1106,6 @@ body{
         ></div>
 
         <div class="window-button minimize"></div>
-
         <div class="window-button maximize"></div>
 
       </div>
@@ -1118,9 +1128,9 @@ body{
   </div>
 
 
-  <!-- ===================================================
+  <!-- =========================
        MUSICA
-  ==================================================== -->
+  ========================== -->
 
   <div
     class="window"
@@ -1137,7 +1147,6 @@ body{
         ></div>
 
         <div class="window-button minimize"></div>
-
         <div class="window-button maximize"></div>
 
       </div>
@@ -1198,9 +1207,9 @@ body{
   </div>
 
 
-  <!-- ===================================================
+  <!-- =========================
        RAZONES
-  ==================================================== -->
+  ========================== -->
 
   <div
     class="window"
@@ -1217,7 +1226,6 @@ body{
         ></div>
 
         <div class="window-button minimize"></div>
-
         <div class="window-button maximize"></div>
 
       </div>
@@ -1240,9 +1248,9 @@ body{
   </div>
 
 
-  <!-- ===================================================
+  <!-- =========================
        VALES
-  ==================================================== -->
+  ========================== -->
 
   <div
     class="window"
@@ -1259,7 +1267,6 @@ body{
         ></div>
 
         <div class="window-button minimize"></div>
-
         <div class="window-button maximize"></div>
 
       </div>
@@ -1282,9 +1289,9 @@ body{
   </div>
 
 
-  <!-- ===================================================
+  <!-- =========================
        SORPRESA
-  ==================================================== -->
+  ========================== -->
 
   <div
     class="window"
@@ -1301,7 +1308,6 @@ body{
         ></div>
 
         <div class="window-button minimize"></div>
-
         <div class="window-button maximize"></div>
 
       </div>
@@ -1349,9 +1355,9 @@ body{
   </div>
 
 
-  <!-- ===================================================
+  <!-- =========================
        DOCK
-  ==================================================== -->
+  ========================== -->
 
   <div class="dock">
 
@@ -1408,16 +1414,16 @@ body{
 </div>
 
 
-<!-- =====================================================
+<!-- =========================
      TOAST
-====================================================== -->
+========================= -->
 
 <div id="toast"></div>
 
 
-<!-- =====================================================
+<!-- =========================
      IMAGE VIEWER
-====================================================== -->
+========================= -->
 
 <div id="image-viewer">
 
@@ -1439,20 +1445,9 @@ body{
 
 <script>
 
-/* =========================================================
-   HELPER
-========================================================= */
-
-function $(selector){
-
-  return document.querySelector(selector);
-
-}
-
-
-/* =========================================================
+/* =========================
    DATOS
-========================================================= */
+========================= */
 
 const appData = {
 
@@ -1469,10 +1464,6 @@ Te amo muchísimo. 💕`,
   fondo:
     "assets/fondo.jpg",
 
-  /* =========================================
-     LAS 31 FOTOS
-  ========================================= */
-
   fotos: [
 
     "assets/fotos/foto01.jpg",
@@ -1480,37 +1471,31 @@ Te amo muchísimo. 💕`,
     "assets/fotos/foto03.jpg",
     "assets/fotos/foto04.jpg",
     "assets/fotos/foto05.jpg",
-
     "assets/fotos/foto06.jpg",
     "assets/fotos/foto07.jpg",
     "assets/fotos/foto08.jpg",
     "assets/fotos/foto09.jpg",
     "assets/fotos/foto10.jpg",
-
     "assets/fotos/foto11.jpg",
     "assets/fotos/foto12.jpg",
     "assets/fotos/foto13.jpg",
     "assets/fotos/foto14.jpg",
     "assets/fotos/foto15.jpg",
-
     "assets/fotos/foto16.jpg",
     "assets/fotos/foto17.jpg",
     "assets/fotos/foto18.jpg",
     "assets/fotos/foto19.jpg",
     "assets/fotos/foto20.jpg",
-
     "assets/fotos/foto21.jpg",
     "assets/fotos/foto22.jpg",
     "assets/fotos/foto23.jpg",
     "assets/fotos/foto24.jpg",
     "assets/fotos/foto25.jpg",
-
     "assets/fotos/foto26.jpg",
     "assets/fotos/foto27.jpg",
     "assets/fotos/foto28.jpg",
     "assets/fotos/foto29.jpg",
     "assets/fotos/foto30.jpg",
-
     "assets/fotos/foto31.jpg"
 
   ],
@@ -1530,9 +1515,9 @@ Te amo muchísimo. 💕`,
 };
 
 
-/* =========================================================
+/* =========================
    RAZONES
-========================================================= */
+========================= */
 
 const reasons = [
 
@@ -1555,9 +1540,9 @@ const reasons = [
 ];
 
 
-/* =========================================================
+/* =========================
    VALES
-========================================================= */
+========================= */
 
 const coupons = [
 
@@ -1600,14 +1585,14 @@ const coupons = [
 ];
 
 
-/* =========================================================
+/* =========================
    TOAST
-========================================================= */
+========================= */
 
 function showToast(message){
 
   const toast =
-    $("#toast");
+    document.getElementById("toast");
 
   toast.textContent =
     message;
@@ -1623,22 +1608,20 @@ function showToast(message){
 }
 
 
-/* =========================================================
+/* =========================
    WINDOWS
-========================================================= */
+========================= */
 
 function openWindow(id){
 
-  const windowElement =
+  const element =
     document.getElementById(id);
 
-  if(!windowElement){
-
+  if(!element){
     return;
-
   }
 
-  windowElement.style.display =
+  element.style.display =
     "block";
 
 }
@@ -1646,24 +1629,22 @@ function openWindow(id){
 
 function closeWindow(id){
 
-  const windowElement =
+  const element =
     document.getElementById(id);
 
-  if(!windowElement){
-
+  if(!element){
     return;
-
   }
 
-  windowElement.style.display =
+  element.style.display =
     "none";
 
 }
 
 
-/* =========================================================
+/* =========================
    RELOJ
-========================================================= */
+========================= */
 
 function updateClock(){
 
@@ -1680,8 +1661,15 @@ function updateClock(){
       now.getMinutes()
     ).padStart(2,"0");
 
-  $("#clock").textContent =
-    `${hours}:${minutes}`;
+  const clock =
+    document.getElementById("clock");
+
+  if(clock){
+
+    clock.textContent =
+      hours + ":" + minutes;
+
+  }
 
 }
 
@@ -1693,43 +1681,59 @@ setInterval(
 );
 
 
-/* =========================================================
-   RENDERIZAR
-========================================================= */
+/* =========================
+   RENDER
+========================= */
 
 function renderApp(){
 
   /* CARTA */
 
-  $("#letter-text").textContent =
+  document.getElementById(
+    "letter-text"
+  ).textContent =
     appData.carta;
 
 
   /* GALERÍA */
 
   const gallery =
-    $("#gallery");
+    document.getElementById(
+      "gallery"
+    );
 
   gallery.innerHTML =
     "";
 
+
   appData.fotos.forEach(
-    (photo,index)=>{
+    function(photo,index){
 
       const img =
-        document.createElement("img");
+        document.createElement(
+          "img"
+        );
 
       img.src =
         photo;
 
       img.alt =
-        `Recuerdo ${index + 1}`;
+        "Recuerdo " +
+        (index + 1);
 
       img.loading =
         "lazy";
 
+      img.onerror =
+        function(){
+
+          this.style.display =
+            "none";
+
+        };
+
       img.onclick =
-        ()=>{
+        function(){
 
           openImageViewer(
             photo
@@ -1747,62 +1751,63 @@ function renderApp(){
 
   /* MUSICA */
 
-  $("#music-title").textContent =
-    appData.titulo;
-
-  $("#music-artist").textContent =
-    appData.artista;
-
-  $("#album-cover").src =
-    appData.portada;
-
   const audio =
-    $("#audio-player");
+    document.getElementById(
+      "audio-player"
+    );
 
   audio.src =
     appData.musica;
 
-  /*
-    IMPORTANTE:
-    No usamos audio.play()
-    aquí.
-
-    La canción queda detenida
-    hasta que Viviana pulse
-    Play.
-  */
-
   audio.load();
+
+  document.getElementById(
+    "music-title"
+  ).textContent =
+    appData.titulo;
+
+  document.getElementById(
+    "music-artist"
+  ).textContent =
+    appData.artista;
+
+  document.getElementById(
+    "album-cover"
+  ).src =
+    appData.portada;
 
 
   /* RAZONES */
 
   const reasonsList =
-    $("#reasons-list");
+    document.getElementById(
+      "reasons-list"
+    );
 
   reasonsList.innerHTML =
     "";
 
   reasons.forEach(
-    (reason,index)=>{
+    function(reason,index){
 
       const element =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
 
       element.className =
         "reason";
 
-      element.innerHTML = `
+      element.innerHTML =
 
-        <div class="reason-number">
-          RAZÓN ${index + 1}
-        </div>
+        '<div class="reason-number">' +
+        'RAZÓN ' +
+        (index + 1) +
+        '</div>' +
 
-        <div class="reason-text">
-          ${reason}
-        </div>
-
-      `;
+        '<div class="reason-text">' +
+        reason +
+        '</div>';
 
       reasonsList.appendChild(
         element
@@ -1815,35 +1820,37 @@ function renderApp(){
   /* VALES */
 
   const couponsList =
-    $("#coupons-list");
+    document.getElementById(
+      "coupons-list"
+    );
 
   couponsList.innerHTML =
     "";
 
   coupons.forEach(
-    coupon=>{
+    function(coupon){
 
       const element =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
 
       element.className =
         "coupon";
 
-      element.innerHTML = `
+      element.innerHTML =
 
-        <div class="coupon-icon">
-          ${coupon.icon}
-        </div>
+        '<div class="coupon-icon">' +
+        coupon.icon +
+        '</div>' +
 
-        <div class="coupon-title">
-          ${coupon.title}
-        </div>
+        '<div class="coupon-title">' +
+        coupon.title +
+        '</div>' +
 
-        <div class="coupon-description">
-          ${coupon.description}
-        </div>
-
-      `;
+        '<div class="coupon-description">' +
+        coupon.description +
+        '</div>';
 
       couponsList.appendChild(
         element
@@ -1855,16 +1862,26 @@ function renderApp(){
 }
 
 
-/* =========================================================
-   VISOR DE FOTOS
-========================================================= */
+/* =========================
+   VISOR
+========================= */
 
 function openImageViewer(src){
 
-  $("#viewer-image").src =
+  const viewer =
+    document.getElementById(
+      "image-viewer"
+    );
+
+  const image =
+    document.getElementById(
+      "viewer-image"
+    );
+
+  image.src =
     src;
 
-  $("#image-viewer").style.display =
+  viewer.style.display =
     "flex";
 
 }
@@ -1872,15 +1889,17 @@ function openImageViewer(src){
 
 function closeImageViewer(){
 
-  $("#image-viewer").style.display =
+  document.getElementById(
+    "image-viewer"
+  ).style.display =
     "none";
 
 }
 
 
-/* =========================================================
+/* =========================
    SORPRESA
-========================================================= */
+========================= */
 
 function showLoveMessage(){
 
@@ -1891,64 +1910,93 @@ function showLoveMessage(){
 }
 
 
-/* =========================================================
-   BOOT
-========================================================= */
-
-window.addEventListener(
-  "load",
-  ()=>{
-
-    setTimeout(()=>{
-
-      $("#boot").style.opacity =
-        "0";
-
-      setTimeout(()=>{
-
-        $("#boot").style.display =
-          "none";
-
-      },800);
-
-    },2200);
-
-  }
-);
-
-
-/* =========================================================
+/* =========================
    LOGIN
-   SIN AUTOPLAY
-========================================================= */
+========================= */
 
-$("#login-btn").addEventListener(
+document.getElementById(
+  "login-btn"
+).addEventListener(
   "click",
-  ()=>{
+  function(){
 
-    $("#login").style.opacity =
-      "0";
-
-    setTimeout(()=>{
-
-      $("#login").style.display =
-        "none";
-
-      showToast(
-        "Bienvenida a ViviOS ❤️"
+    const login =
+      document.getElementById(
+        "login"
       );
 
-    },700);
+    login.style.opacity =
+      "0";
+
+    setTimeout(
+      function(){
+
+        login.style.display =
+          "none";
+
+        showToast(
+          "Bienvenida a ViviOS ❤️"
+        );
+
+      },
+      600
+    );
 
   }
 );
 
 
-/* =========================================================
-   INICIAR
-========================================================= */
+/* =========================
+   INICIAR APP
+========================= */
+
+/*
+   Renderizamos inmediatamente.
+   Las fotos usan lazy loading,
+   por lo que no bloquean el inicio.
+*/
 
 renderApp();
+
+
+/*
+   MUY IMPORTANTE:
+
+   No esperamos a que todas las
+   imágenes terminen de cargar.
+
+   ViviOS desaparece después
+   de 2 segundos sí o sí.
+*/
+
+setTimeout(
+  function(){
+
+    const boot =
+      document.getElementById(
+        "boot"
+      );
+
+    if(!boot){
+      return;
+    }
+
+    boot.style.opacity =
+      "0";
+
+    setTimeout(
+      function(){
+
+        boot.style.display =
+          "none";
+
+      },
+      600
+    );
+
+  },
+  2000
+);
 
 </script>
 
