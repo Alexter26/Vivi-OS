@@ -2,15 +2,19 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+>
 
 <title>ViviOS - Para Mi Amor ❤️</title>
 
 <style>
 
-/* =========================================
-   GENERAL
-========================================= */
+/* =====================================================
+   BASE
+===================================================== */
 
 * {
     box-sizing: border-box;
@@ -22,28 +26,35 @@ body {
     width: 100%;
     height: 100%;
     margin: 0;
-    padding: 0;
     overflow: hidden;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 }
 
 body {
-    background: #111;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background: #000;
     color: white;
+
     user-select: none;
     -webkit-user-select: none;
 }
 
 
-/* =========================================
-   BOOT
-========================================= */
+/* =====================================================
+   PANTALLA DE CARGA
+===================================================== */
 
 #boot {
     position: fixed;
     inset: 0;
-    background: #050505;
+
     z-index: 99999;
+
+    background: #050505;
 
     display: flex;
     align-items: center;
@@ -52,152 +63,83 @@ body {
     transition: opacity 0.6s ease;
 }
 
-.boot-content {
+.boot-container {
+    width: 250px;
     text-align: center;
 }
 
-.boot-heart {
+.boot-logo {
     font-size: 55px;
+    margin-bottom: 18px;
+
+    animation: bootPulse 1.5s infinite;
+}
+
+.boot-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.boot-subtitle {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
     margin-bottom: 20px;
-    animation: heartbeat 1.2s infinite;
 }
 
-.boot-text {
-    color: #fff;
-    font-size: 17px;
-    opacity: 0.8;
+.loading-bar {
+    width: 100%;
+    height: 4px;
+
+    background: rgba(255,255,255,0.15);
+
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-@keyframes heartbeat {
-    0%, 100% {
+.loading-progress {
+    height: 100%;
+    width: 0%;
+
+    background: #fff;
+
+    border-radius: 10px;
+
+    animation: loading 1.7s ease forwards;
+}
+
+@keyframes loading {
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes bootPulse {
+    0%,100% {
         transform: scale(1);
     }
 
     50% {
-        transform: scale(1.15);
+        transform: scale(1.08);
     }
 }
 
 
-/* =========================================
-   LOGIN
-========================================= */
-
-#login-screen {
-    position: fixed;
-    inset: 0;
-
-    background:
-        linear-gradient(
-            rgba(0,0,0,0.35),
-            rgba(0,0,0,0.55)
-        ),
-        url("assets/fondo.jpg");
-
-    background-size: cover;
-    background-position: center;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    z-index: 9000;
-}
-
-.login-box {
-    width: min(360px, 90%);
-    padding: 35px 28px;
-
-    background: rgba(255,255,255,0.13);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-
-    border: 1px solid rgba(255,255,255,0.25);
-    border-radius: 25px;
-
-    text-align: center;
-
-    box-shadow:
-        0 20px 60px rgba(0,0,0,0.35);
-}
-
-.login-heart {
-    font-size: 60px;
-    margin-bottom: 10px;
-}
-
-.login-box h1 {
-    margin: 0 0 8px;
-    font-size: 27px;
-}
-
-.login-box p {
-    margin: 0 0 25px;
-    opacity: 0.8;
-}
-
-#password {
-    width: 100%;
-    padding: 13px 16px;
-
-    border: none;
-    outline: none;
-
-    border-radius: 14px;
-
-    background: rgba(255,255,255,0.18);
-    color: white;
-
-    font-size: 16px;
-
-    text-align: center;
-}
-
-#password::placeholder {
-    color: rgba(255,255,255,0.65);
-}
-
-.login-button {
-    width: 100%;
-    margin-top: 14px;
-
-    padding: 13px;
-
-    border: none;
-    border-radius: 14px;
-
-    background: #ff4f81;
-    color: white;
-
-    font-size: 16px;
-    font-weight: 600;
-
-    cursor: pointer;
-}
-
-.login-button:active {
-    transform: scale(0.97);
-}
-
-.login-error {
-    margin-top: 12px;
-    color: #ff9eb8;
-    font-size: 14px;
-    min-height: 18px;
-}
-
-
-/* =========================================
-   DESKTOP
-========================================= */
+/* =====================================================
+   ESCRITORIO
+===================================================== */
 
 #desktop {
     position: fixed;
     inset: 0;
 
-    background:
+    background-image:
         linear-gradient(
-            rgba(0,0,0,0.10),
+            rgba(0,0,0,0.12),
             rgba(0,0,0,0.25)
         ),
         url("assets/fondo.jpg");
@@ -209,59 +151,70 @@ body {
 }
 
 
-/* =========================================
-   TOP BAR
-========================================= */
+/* =====================================================
+   BARRA SUPERIOR
+===================================================== */
 
 .top-bar {
     position: absolute;
+
     top: 0;
     left: 0;
     right: 0;
 
-    height: 42px;
-
-    background: rgba(20,20,20,0.35);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    height: 38px;
 
     display: flex;
     align-items: center;
 
     padding: 0 15px;
 
+    background: rgba(20,20,20,0.35);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+
     z-index: 1000;
 }
 
-.top-left {
-    font-weight: 600;
-    font-size: 14px;
+.apple-logo {
+    font-size: 18px;
+    margin-right: 16px;
 }
 
-.top-center {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+.menu-name {
+    font-size: 13px;
+    font-weight: 600;
+}
 
-    font-size: 14px;
-    opacity: 0.9;
+.menu-item {
+    margin-left: 18px;
+    font-size: 12px;
+    opacity: 0.85;
 }
 
 .top-right {
     margin-left: auto;
-    font-size: 13px;
+
+    font-size: 12px;
+
+    display: flex;
+    gap: 13px;
+
     opacity: 0.9;
 }
 
 
-/* =========================================
-   DESKTOP ICONS
-========================================= */
+/* =====================================================
+   ICONOS DEL ESCRITORIO
+===================================================== */
 
 .desktop-icons {
     position: absolute;
 
-    top: 65px;
+    top: 60px;
     left: 18px;
 
     display: flex;
@@ -269,28 +222,31 @@ body {
 
     gap: 18px;
 
-    z-index: 50;
+    z-index: 100;
 }
 
 .desktop-icon {
-    width: 75px;
+    width: 72px;
 
     text-align: center;
 
     cursor: pointer;
+
+    text-shadow:
+        0 2px 5px rgba(0,0,0,0.8);
 }
 
 .desktop-icon:active {
-    transform: scale(0.94);
+    transform: scale(0.93);
 }
 
-.desktop-icon-image {
+.icon-image {
     width: 52px;
     height: 52px;
 
-    margin: auto;
+    margin: 0 auto 5px;
 
-    border-radius: 14px;
+    border-radius: 13px;
 
     display: flex;
     align-items: center;
@@ -298,87 +254,92 @@ body {
 
     font-size: 28px;
 
-    background: rgba(255,255,255,0.18);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    background:
+        rgba(255,255,255,0.18);
 
-    border: 1px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border:
+        1px solid rgba(255,255,255,0.2);
 
     box-shadow:
-        0 8px 20px rgba(0,0,0,0.2);
+        0 6px 15px rgba(0,0,0,0.25);
 }
 
-.desktop-icon span {
-    display: block;
-
-    margin-top: 5px;
-
-    font-size: 12px;
-
-    color: white;
-
-    text-shadow:
-        0 2px 5px rgba(0,0,0,0.7);
+.icon-label {
+    font-size: 11px;
 }
 
 
-/* =========================================
-   WINDOWS
-========================================= */
+/* =====================================================
+   VENTANAS
+===================================================== */
 
 .window {
     position: absolute;
 
-    width: min(700px, 92vw);
-    height: min(620px, 78vh);
-
     left: 50%;
     top: 50%;
 
-    transform: translate(-50%, -50%) scale(0.95);
+    width: min(720px, 90vw);
+    height: min(620px, 78vh);
 
-    background: rgba(25,25,25,0.78);
+    transform:
+        translate(-50%, -50%)
+        scale(0.94);
+
+    opacity: 0;
+    pointer-events: none;
+
+    background:
+        rgba(25,25,30,0.78);
 
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
 
-    border: 1px solid rgba(255,255,255,0.18);
+    border:
+        1px solid rgba(255,255,255,0.18);
 
-    border-radius: 18px;
+    border-radius: 15px;
 
     overflow: hidden;
 
     box-shadow:
-        0 30px 80px rgba(0,0,0,0.5);
-
-    opacity: 0;
-    pointer-events: none;
+        0 25px 80px rgba(0,0,0,0.55);
 
     transition:
         opacity 0.25s ease,
         transform 0.25s ease;
 
-    z-index: 2000;
+    z-index: 3000;
 }
 
 .window.active {
     opacity: 1;
+
     pointer-events: auto;
 
-    transform: translate(-50%, -50%) scale(1);
+    transform:
+        translate(-50%, -50%)
+        scale(1);
 }
 
 .window-header {
-    height: 45px;
+    height: 42px;
 
-    background: rgba(255,255,255,0.08);
+    position: relative;
 
     display: flex;
     align-items: center;
 
     padding: 0 13px;
 
-    border-bottom: 1px solid rgba(255,255,255,0.12);
+    background:
+        rgba(255,255,255,0.08);
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.1);
 }
 
 .window-buttons {
@@ -386,71 +347,83 @@ body {
     gap: 7px;
 }
 
-.window-button {
+.close-button {
     width: 12px;
     height: 12px;
 
     border-radius: 50%;
 
-    background: rgba(255,255,255,0.3);
+    background: #ff5f57;
 
     cursor: pointer;
 }
 
 .window-title {
     position: absolute;
+
     left: 50%;
 
     transform: translateX(-50%);
 
-    font-size: 14px;
+    font-size: 13px;
+
     font-weight: 600;
+
+    color: rgba(255,255,255,0.9);
 }
 
 .window-content {
-    height: calc(100% - 45px);
+    height: calc(100% - 42px);
 
     overflow: auto;
 
-    padding: 25px;
+    padding: 24px;
 }
 
 
-/* =========================================
+/* =====================================================
    CARTA
-========================================= */
+===================================================== */
 
 .letter {
-    max-width: 600px;
+    max-width: 580px;
+
     margin: auto;
 
     line-height: 1.8;
 
-    font-size: 16px;
-    color: rgba(255,255,255,0.92);
+    font-size: 15px;
+
+    color:
+        rgba(255,255,255,0.9);
 }
 
 .letter h2 {
     text-align: center;
+
     margin-top: 0;
-    color: #ff8eac;
+
+    color: #ff9ab5;
 }
 
 .letter p {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
 .signature {
     text-align: right;
-    color: #ff8eac;
-    font-size: 18px;
+
+    color: #ff9ab5;
+
+    font-size: 17px;
+
     font-weight: 600;
 }
 
 
-/* =========================================
+/* =====================================================
    GALERÍA
-========================================= */
+===================================================== */
 
 .photo-gallery {
     width: 100%;
@@ -461,87 +434,95 @@ body {
 }
 
 .photo-counter {
-    text-align: center;
-
-    font-size: 14px;
-
-    opacity: 0.75;
-
-    margin-bottom: 8px;
-}
-
-.photo-slider {
-    width: 100%;
-
-    flex: 1;
-
-    min-height: 0;
+    height: 25px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
+    font-size: 12px;
+
+    color:
+        rgba(255,255,255,0.65);
+}
+
+.photo-slider {
     position: relative;
+
+    flex: 1;
+
+    min-height: 0;
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
 
     overflow: hidden;
 
-    touch-action: pan-y;
+    /*
+       Permite detectar el movimiento horizontal
+       sin que el navegador convierta el gesto
+       en desplazamiento de la página.
+    */
+    touch-action: none;
 
-    user-select: none;
     -webkit-user-select: none;
+    user-select: none;
 }
 
 .main-photo {
+    display: block;
+
     max-width: calc(100% - 100px);
-    max-height: 100%;
+    max-height: calc(100% - 20px);
 
     width: auto;
     height: auto;
 
     object-fit: contain;
 
-    border-radius: 14px;
+    border-radius: 12px;
 
     box-shadow:
-        0 15px 45px rgba(0,0,0,0.45);
+        0 15px 45px rgba(0,0,0,0.5);
 
-    user-select: none;
-    -webkit-user-select: none;
+    /*
+       MUY IMPORTANTE PARA ANDROID
+    */
+    touch-action: none;
 
     -webkit-user-drag: none;
     user-drag: none;
 
-    touch-action: pan-y;
+    -webkit-user-select: none;
+    user-select: none;
 
     pointer-events: auto;
-
-    transition:
-        opacity 0.22s ease,
-        transform 0.22s ease;
 }
 
 .photo-arrow {
     position: absolute;
 
     top: 50%;
+
     transform: translateY(-50%);
 
-    width: 45px;
-    height: 45px;
+    width: 43px;
+    height: 43px;
+
+    border: none;
 
     border-radius: 50%;
 
-    border: 1px solid rgba(255,255,255,0.2);
-
-    background: rgba(0,0,0,0.35);
-
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background:
+        rgba(0,0,0,0.42);
 
     color: white;
 
-    font-size: 34px;
-    line-height: 35px;
+    font-size: 30px;
 
     display: flex;
     align-items: center;
@@ -550,56 +531,66 @@ body {
     cursor: pointer;
 
     z-index: 20;
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .photo-arrow:active {
-    transform: translateY(-50%) scale(0.88);
+    transform:
+        translateY(-50%)
+        scale(0.88);
 }
 
 .photo-prev {
-    left: 12px;
+    left: 10px;
 }
 
 .photo-next {
-    right: 12px;
+    right: 10px;
 }
 
 .photo-hint {
     position: absolute;
 
     bottom: 8px;
+
     left: 50%;
 
     transform: translateX(-50%);
 
-    background: rgba(0,0,0,0.45);
+    padding: 5px 10px;
 
-    padding: 6px 12px;
+    background:
+        rgba(0,0,0,0.4);
 
     border-radius: 20px;
 
-    font-size: 11px;
+    font-size: 10px;
 
-    opacity: 0.65;
+    color:
+        rgba(255,255,255,0.75);
 
     pointer-events: none;
 }
 
 
-/* =========================================
-   THUMBNAILS
-========================================= */
+/* =====================================================
+   MINIATURAS
+===================================================== */
 
 .photo-thumbnails {
-    height: 78px;
+    height: 75px;
 
     display: flex;
 
+    align-items: center;
+
     gap: 8px;
 
-    overflow-x: auto;
+    padding: 8px 2px;
 
-    padding: 10px 4px 3px;
+    overflow-x: auto;
 
     scrollbar-width: none;
 }
@@ -609,25 +600,26 @@ body {
 }
 
 .photo-thumb {
-    flex: 0 0 58px;
+    width: 57px;
+    height: 57px;
 
-    width: 58px;
-    height: 58px;
+    flex: 0 0 57px;
 
     object-fit: cover;
 
-    border-radius: 9px;
+    border-radius: 8px;
 
-    opacity: 0.55;
+    border:
+        2px solid transparent;
 
-    border: 2px solid transparent;
+    opacity: 0.5;
 
     cursor: pointer;
 
     transition:
-        opacity 0.2s ease,
-        transform 0.2s ease,
-        border 0.2s ease;
+        opacity 0.2s,
+        transform 0.2s,
+        border-color 0.2s;
 
     -webkit-user-drag: none;
 }
@@ -635,17 +627,60 @@ body {
 .photo-thumb.active {
     opacity: 1;
 
-    border-color: #ff6f96;
+    border-color: #ff7fa2;
 
     transform: scale(1.05);
 }
 
 
-/* =========================================
-   MÚSICA
-========================================= */
+/* =====================================================
+   ANIMACIÓN FOTOS
+===================================================== */
 
-.music-box {
+.photo-slide-left {
+    animation:
+        photoLeft 0.22s ease;
+}
+
+.photo-slide-right {
+    animation:
+        photoRight 0.22s ease;
+}
+
+@keyframes photoLeft {
+
+    from {
+        opacity: 0;
+        transform: translateX(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}
+
+@keyframes photoRight {
+
+    from {
+        opacity: 0;
+        transform: translateX(-35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}
+
+
+/* =====================================================
+   MÚSICA
+===================================================== */
+
+.music-content {
     height: 100%;
 
     display: flex;
@@ -658,37 +693,44 @@ body {
 }
 
 .music-icon {
-    font-size: 75px;
+    font-size: 70px;
+
     margin-bottom: 15px;
 }
 
-.music-box h2 {
-    margin: 0 0 10px;
+.music-content h2 {
+    margin: 0 0 8px;
 }
 
-.music-box p {
+.music-content p {
     opacity: 0.7;
+
     margin-bottom: 25px;
 }
 
 audio {
-    width: 100%;
-    max-width: 450px;
+    width: min(450px, 100%);
 }
 
 
-/* =========================================
+/* =====================================================
    RAZONES
-========================================= */
+===================================================== */
 
 .reasons {
-    max-width: 600px;
+    max-width: 570px;
+
     margin: auto;
 }
 
 .reasons h2 {
     text-align: center;
-    color: #ff8eac;
+
+    color: #ff9ab5;
+
+    margin-top: 0;
+
+    margin-bottom: 25px;
 }
 
 .reason {
@@ -696,53 +738,72 @@ audio {
 
     margin-bottom: 12px;
 
-    border-radius: 14px;
+    border-radius: 12px;
 
-    background: rgba(255,255,255,0.07);
+    background:
+        rgba(255,255,255,0.06);
 
-    border: 1px solid rgba(255,255,255,0.08);
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    line-height: 1.5;
 }
 
 
-/* =========================================
+/* =====================================================
    VALES
-========================================= */
+===================================================== */
 
 .vouchers {
     display: grid;
 
     grid-template-columns:
-        repeat(auto-fit, minmax(180px, 1fr));
+        repeat(
+            auto-fit,
+            minmax(180px, 1fr)
+        );
 
     gap: 15px;
 }
 
 .voucher {
-    padding: 25px 15px;
+    padding: 22px 15px;
 
     text-align: center;
 
-    border-radius: 18px;
+    border-radius: 15px;
 
     background:
-        linear-gradient(
-            135deg,
-            rgba(255,111,150,0.25),
-            rgba(255,255,255,0.07)
-        );
+        rgba(255,255,255,0.06);
 
-    border: 1px solid rgba(255,255,255,0.12);
+    border:
+        1px solid rgba(255,255,255,0.1);
 }
 
 .voucher-icon {
     font-size: 40px;
-    margin-bottom: 10px;
+
+    margin-bottom: 8px;
+}
+
+.voucher h3 {
+    margin: 5px 0 8px;
+
+    font-size: 15px;
+}
+
+.voucher p {
+    margin: 0;
+
+    font-size: 12px;
+
+    opacity: 0.65;
 }
 
 
-/* =========================================
+/* =====================================================
    SORPRESA
-========================================= */
+===================================================== */
 
 .surprise {
     height: 100%;
@@ -757,13 +818,14 @@ audio {
 }
 
 .surprise-heart {
-    font-size: 100px;
+    font-size: 90px;
 
-    animation: heartbeat 1.3s infinite;
+    animation:
+        heartBeat 1.2s infinite;
 }
 
 .surprise h2 {
-    color: #ff8eac;
+    color: #ff9ab5;
 }
 
 .surprise p {
@@ -771,164 +833,170 @@ audio {
 
     line-height: 1.7;
 
-    opacity: 0.85;
+    opacity: 0.8;
+}
+
+@keyframes heartBeat {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+
 }
 
 
-/* =========================================
+/* =====================================================
    DOCK
-========================================= */
+===================================================== */
 
 .dock {
     position: absolute;
 
     left: 50%;
-    bottom: 15px;
+    bottom: 12px;
 
     transform: translateX(-50%);
 
     display: flex;
 
-    gap: 9px;
+    gap: 8px;
 
-    padding: 9px 12px;
+    padding: 8px 10px;
 
-    background: rgba(25,25,25,0.42);
+    border-radius: 19px;
 
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
+    background:
+        rgba(25,25,25,0.45);
 
-    border: 1px solid rgba(255,255,255,0.18);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 
-    border-radius: 22px;
+    border:
+        1px solid rgba(255,255,255,0.15);
 
     z-index: 5000;
 }
 
 .dock-item {
-    width: 47px;
-    height: 47px;
+    width: 43px;
+    height: 43px;
 
-    border-radius: 13px;
+    border-radius: 11px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    font-size: 24px;
+    font-size: 22px;
 
-    background: rgba(255,255,255,0.13);
+    background:
+        rgba(255,255,255,0.12);
 
     cursor: pointer;
 
     transition:
-        transform 0.15s ease,
-        background 0.15s ease;
+        transform 0.15s,
+        background 0.15s;
 }
 
 .dock-item:active {
-    transform: scale(0.85);
-}
-
-.dock-item:hover {
-    background: rgba(255,255,255,0.22);
+    transform: scale(0.86);
 }
 
 
-/* =========================================
+/* =====================================================
    TOAST
-========================================= */
+===================================================== */
 
 #toast {
     position: fixed;
 
     left: 50%;
-    bottom: 95px;
+    bottom: 80px;
 
     transform:
-        translateX(-50%)
-        translateY(20px);
+        translate(-50%, 15px);
 
-    background: rgba(20,20,20,0.75);
+    padding: 9px 15px;
+
+    background:
+        rgba(20,20,20,0.7);
 
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
 
-    border: 1px solid rgba(255,255,255,0.15);
+    border:
+        1px solid rgba(255,255,255,0.12);
 
-    padding: 11px 18px;
+    border-radius: 18px;
 
-    border-radius: 20px;
-
-    font-size: 13px;
+    font-size: 12px;
 
     opacity: 0;
 
     pointer-events: none;
 
     transition:
-        opacity 0.3s ease,
-        transform 0.3s ease;
+        opacity 0.25s,
+        transform 0.25s;
 
-    z-index: 9999;
+    z-index: 10000;
 }
 
 #toast.show {
     opacity: 1;
 
     transform:
-        translateX(-50%)
-        translateY(0);
+        translate(-50%, 0);
 }
 
 
-/* =========================================
-   MOBILE
-========================================= */
+/* =====================================================
+   MÓVIL
+===================================================== */
 
 @media (max-width: 600px) {
 
     .top-bar {
-        height: 38px;
+        height: 36px;
     }
 
-    .top-left {
-        font-size: 12px;
-    }
-
-    .top-center {
-        font-size: 12px;
+    .menu-item {
+        display: none;
     }
 
     .top-right {
-        font-size: 11px;
+        font-size: 10px;
     }
 
     .desktop-icons {
-        top: 55px;
-        left: 10px;
+        top: 50px;
+        left: 8px;
         gap: 12px;
     }
 
     .desktop-icon {
-        width: 62px;
+        width: 60px;
     }
 
-    .desktop-icon-image {
-        width: 45px;
-        height: 45px;
-        font-size: 24px;
+    .icon-image {
+        width: 44px;
+        height: 44px;
+
+        font-size: 23px;
     }
 
-    .desktop-icon span {
-        font-size: 10px;
+    .icon-label {
+        font-size: 9px;
     }
 
     .window {
         width: 94vw;
         height: 78vh;
-
-        border-radius: 17px;
     }
 
     .window-content {
@@ -936,17 +1004,15 @@ audio {
     }
 
     .main-photo {
-        max-width: calc(100% - 75px);
+        max-width: calc(100% - 72px);
         max-height: calc(100% - 10px);
-
-        border-radius: 12px;
     }
 
     .photo-arrow {
         width: 38px;
         height: 38px;
 
-        font-size: 29px;
+        font-size: 27px;
     }
 
     .photo-prev {
@@ -959,74 +1025,43 @@ audio {
 
     .photo-hint {
         font-size: 9px;
-        bottom: 5px;
     }
 
     .photo-thumbnails {
-        height: 70px;
+        height: 68px;
     }
 
     .photo-thumb {
-        width: 52px;
-        height: 52px;
-        flex-basis: 52px;
+        width: 51px;
+        height: 51px;
+
+        flex-basis: 51px;
     }
 
     .dock {
-        bottom: 8px;
+        bottom: 7px;
 
-        gap: 6px;
+        gap: 5px;
 
-        padding: 7px 8px;
-
-        border-radius: 18px;
+        padding: 7px;
     }
 
     .dock-item {
-        width: 42px;
-        height: 42px;
+        width: 39px;
+        height: 39px;
 
-        font-size: 21px;
-
-        border-radius: 11px;
+        font-size: 20px;
     }
+
 }
 
 
-/* =========================================
-   PHOTO SWIPE ANIMATION
-========================================= */
+/* =====================================================
+   PREVENIR ARRASTRE
+===================================================== */
 
-.photo-slide-left {
-    animation: slideLeft 0.25s ease;
-}
-
-.photo-slide-right {
-    animation: slideRight 0.25s ease;
-}
-
-@keyframes slideLeft {
-    0% {
-        opacity: 0;
-        transform: translateX(35px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideRight {
-    0% {
-        opacity: 0;
-        transform: translateX(-35px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
+img {
+    -webkit-user-drag: none;
 }
 
 </style>
@@ -1036,20 +1071,30 @@ audio {
 <body>
 
 
-<!-- =========================================
-     BOOT
-========================================= -->
+<!-- =====================================================
+     CARGA
+===================================================== -->
 
 <div id="boot">
 
-    <div class="boot-content">
+    <div class="boot-container">
 
-        <div class="boot-heart">
+        <div class="boot-logo">
             ❤️
         </div>
 
-        <div class="boot-text">
-            Iniciando ViviOS...
+        <div class="boot-title">
+            ViviOS
+        </div>
+
+        <div class="boot-subtitle">
+            Preparando algo especial para ti...
+        </div>
+
+        <div class="loading-bar">
+
+            <div class="loading-progress"></div>
+
         </div>
 
     </div>
@@ -1057,98 +1102,53 @@ audio {
 </div>
 
 
-<script>
-setTimeout(function () {
+<!-- =====================================================
+     ESCRITORIO
+===================================================== -->
 
-    var boot = document.getElementById("boot");
-
-    if (boot) {
-
-        boot.style.opacity = "0";
-
-        setTimeout(function () {
-
-            boot.style.display = "none";
-
-        }, 600);
-
-    }
-
-}, 2000);
-</script>
+<div id="desktop">
 
 
-<!-- =========================================
-     LOGIN
-========================================= -->
-
-<div id="login-screen">
-
-    <div class="login-box">
-
-        <div class="login-heart">
-            ❤️
-        </div>
-
-        <h1>ViviOS</h1>
-
-        <p>
-            Un pequeño lugar hecho para ti
-        </p>
-
-        <input
-            id="password"
-            type="password"
-            placeholder="Contraseña"
-            autocomplete="off"
-        >
-
-        <button
-            class="login-button"
-            onclick="login()"
-        >
-            Entrar ❤️
-        </button>
-
-        <div
-            id="login-error"
-            class="login-error"
-        ></div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================
-     DESKTOP
-========================================= -->
-
-<div id="desktop" style="display:none;">
-
-
-    <!-- TOP BAR -->
+    <!-- BARRA SUPERIOR -->
 
     <div class="top-bar">
 
-        <div class="top-left">
-            ViviOS ❤️
+        <div class="apple-logo">
+            ❤️
         </div>
 
-        <div class="top-center">
+        <div class="menu-name">
+            ViviOS
+        </div>
+
+        <div class="menu-item">
             Para mi amor
         </div>
 
-        <div class="top-right" id="clock">
-            00:00
+        <div class="menu-item">
+            Recuerdos
+        </div>
+
+        <div class="menu-item">
+            Amor
+        </div>
+
+        <div class="top-right">
+
+            <span>♥</span>
+
+            <span id="clock">
+                00:00
+            </span>
+
         </div>
 
     </div>
 
 
-    <!-- =====================================
-         DESKTOP ICONS
-    ====================================== -->
+    <!-- =================================================
+         ICONOS
+    ================================================= -->
 
     <div class="desktop-icons">
 
@@ -1158,13 +1158,13 @@ setTimeout(function () {
             onclick="openWindow('letter-window')"
         >
 
-            <div class="desktop-icon-image">
+            <div class="icon-image">
                 💌
             </div>
 
-            <span>
+            <div class="icon-label">
                 Carta
-            </span>
+            </div>
 
         </div>
 
@@ -1174,13 +1174,13 @@ setTimeout(function () {
             onclick="openWindow('photos-window')"
         >
 
-            <div class="desktop-icon-image">
+            <div class="icon-image">
                 🖼️
             </div>
 
-            <span>
+            <div class="icon-label">
                 Fotos
-            </span>
+            </div>
 
         </div>
 
@@ -1190,13 +1190,13 @@ setTimeout(function () {
             onclick="openWindow('music-window')"
         >
 
-            <div class="desktop-icon-image">
+            <div class="icon-image">
                 🎵
             </div>
 
-            <span>
+            <div class="icon-label">
                 Música
-            </span>
+            </div>
 
         </div>
 
@@ -1206,13 +1206,13 @@ setTimeout(function () {
             onclick="openWindow('reasons-window')"
         >
 
-            <div class="desktop-icon-image">
+            <div class="icon-image">
                 💗
             </div>
 
-            <span>
+            <div class="icon-label">
                 Razones
-            </span>
+            </div>
 
         </div>
 
@@ -1222,13 +1222,13 @@ setTimeout(function () {
             onclick="openWindow('vouchers-window')"
         >
 
-            <div class="desktop-icon-image">
+            <div class="icon-image">
                 🎟️
             </div>
 
-            <span>
+            <div class="icon-label">
                 Vales
-            </span>
+            </div>
 
         </div>
 
@@ -1238,22 +1238,23 @@ setTimeout(function () {
             onclick="openWindow('surprise-window')"
         >
 
-            <div class="desktop-icon-image">
+            <div class="icon-image">
                 🎁
             </div>
 
-            <span>
+            <div class="icon-label">
                 Sorpresa
-            </span>
+            </div>
 
         </div>
+
 
     </div>
 
 
-    <!-- =====================================
+    <!-- =================================================
          CARTA
-    ====================================== -->
+    ================================================= -->
 
     <div
         class="window"
@@ -1265,14 +1266,14 @@ setTimeout(function () {
             <div class="window-buttons">
 
                 <div
-                    class="window-button"
+                    class="close-button"
                     onclick="closeWindows()"
                 ></div>
 
             </div>
 
             <div class="window-title">
-                Carta para ti 💌
+                Carta 💌
             </div>
 
         </div>
@@ -1283,36 +1284,37 @@ setTimeout(function () {
             <div class="letter">
 
                 <h2>
-                    Para la persona que amo ❤️
+                    Para mi amor ❤️
                 </h2>
 
                 <p>
-                    Mi amor, hice este pequeño espacio pensando
-                    completamente en ti.
+                    Mi amor, hice este pequeño espacio
+                    pensando completamente en ti.
                 </p>
 
                 <p>
-                    Tal vez no sea el regalo más grande del mundo,
-                    pero cada detalle está hecho con muchísimo cariño.
-                    Quería crear algo que fuera solamente nuestro.
+                    Quería crear algo diferente, algo que
+                    pudiera guardar algunos de nuestros
+                    recuerdos y todas esas pequeñas cosas
+                    que hacen que nuestra historia sea
+                    especial.
                 </p>
 
                 <p>
-                    Aquí están algunos de nuestros recuerdos,
-                    algunas cosas que siento por ti y pequeños detalles
-                    que espero que te hagan sonreír.
+                    Cada foto, cada palabra y cada detalle
+                    de esta página está hecho con muchísimo
+                    cariño.
                 </p>
 
                 <p>
-                    Gracias por formar parte de mi vida, por cada
-                    conversación, cada llamada, cada risa y cada
-                    momento que hemos compartido.
+                    Gracias por cada momento, cada llamada,
+                    cada conversación, cada risa y cada
+                    recuerdo que hemos creado juntos.
                 </p>
 
                 <p>
-                    Te amo muchísimo y espero que cuando abras
-                    ViviOS recuerdes siempre lo especial que eres
-                    para mí.
+                    Espero que cuando vuelvas a entrar aquí,
+                    siempre puedas recordar cuánto te quiero.
                 </p>
 
                 <p class="signature">
@@ -1326,9 +1328,9 @@ setTimeout(function () {
     </div>
 
 
-    <!-- =====================================
+    <!-- =================================================
          FOTOS
-    ====================================== -->
+    ================================================= -->
 
     <div
         class="window"
@@ -1340,7 +1342,7 @@ setTimeout(function () {
             <div class="window-buttons">
 
                 <div
-                    class="window-button"
+                    class="close-button"
                     onclick="closeWindows()"
                 ></div>
 
@@ -1375,7 +1377,6 @@ setTimeout(function () {
                     <button
                         class="photo-arrow photo-prev"
                         onclick="previousPhoto()"
-                        aria-label="Foto anterior"
                     >
                         ‹
                     </button>
@@ -1393,7 +1394,6 @@ setTimeout(function () {
                     <button
                         class="photo-arrow photo-next"
                         onclick="nextPhoto()"
-                        aria-label="Foto siguiente"
                     >
                         ›
                     </button>
@@ -1420,9 +1420,9 @@ setTimeout(function () {
     </div>
 
 
-    <!-- =====================================
+    <!-- =================================================
          MÚSICA
-    ====================================== -->
+    ================================================= -->
 
     <div
         class="window"
@@ -1434,7 +1434,7 @@ setTimeout(function () {
             <div class="window-buttons">
 
                 <div
-                    class="window-button"
+                    class="close-button"
                     onclick="closeWindows()"
                 ></div>
 
@@ -1449,7 +1449,7 @@ setTimeout(function () {
 
         <div class="window-content">
 
-            <div class="music-box">
+            <div class="music-content">
 
                 <div class="music-icon">
                     🎵
@@ -1460,22 +1460,19 @@ setTimeout(function () {
                 </h2>
 
                 <p>
-                    Reprodúcela cuando quieras recordar
-                    este pequeño rincón.
+                    Una canción para nosotros.
                 </p>
 
                 <audio
+                    id="audio-player"
                     controls
                     preload="metadata"
-                    id="audio-player"
                 >
 
                     <source
                         src="assets/musica/nuestra-cancion.mp3"
                         type="audio/mpeg"
                     >
-
-                    Tu navegador no soporta audio.
 
                 </audio>
 
@@ -1486,9 +1483,9 @@ setTimeout(function () {
     </div>
 
 
-    <!-- =====================================
+    <!-- =================================================
          RAZONES
-    ====================================== -->
+    ================================================= -->
 
     <div
         class="window"
@@ -1500,7 +1497,7 @@ setTimeout(function () {
             <div class="window-buttons">
 
                 <div
-                    class="window-button"
+                    class="close-button"
                     onclick="closeWindows()"
                 ></div>
 
@@ -1518,31 +1515,29 @@ setTimeout(function () {
             <div class="reasons">
 
                 <h2>
-                    Algunas razones por las que te amo ❤️
+                    Algunas razones por las que te amo
                 </h2>
-
 
                 <div class="reason">
                     Porque contigo puedo ser yo mismo.
                 </div>
 
                 <div class="reason">
-                    Porque sabes hacerme sonreír incluso
-                    en los días difíciles.
+                    Porque sabes hacerme sonreír.
                 </div>
 
                 <div class="reason">
-                    Porque cada momento contigo termina
-                    convirtiéndose en un recuerdo especial.
+                    Porque cada momento contigo se vuelve
+                    un recuerdo especial.
                 </div>
 
                 <div class="reason">
-                    Porque tienes una forma única de hacer
-                    que me sienta querido.
+                    Porque tienes una forma única de hacerme
+                    sentir querido.
                 </div>
 
                 <div class="reason">
-                    Porque simplemente eres tú.
+                    Porque simplemente eres tú. ❤️
                 </div>
 
             </div>
@@ -1552,9 +1547,9 @@ setTimeout(function () {
     </div>
 
 
-    <!-- =====================================
+    <!-- =================================================
          VALES
-    ====================================== -->
+    ================================================= -->
 
     <div
         class="window"
@@ -1566,7 +1561,7 @@ setTimeout(function () {
             <div class="window-buttons">
 
                 <div
-                    class="window-button"
+                    class="close-button"
                     onclick="closeWindows()"
                 ></div>
 
@@ -1629,7 +1624,7 @@ setTimeout(function () {
                     </h3>
 
                     <p>
-                        Una salida solo para nosotros.
+                        Una cita solo para nosotros.
                     </p>
 
                 </div>
@@ -1659,9 +1654,9 @@ setTimeout(function () {
     </div>
 
 
-    <!-- =====================================
+    <!-- =================================================
          SORPRESA
-    ====================================== -->
+    ================================================= -->
 
     <div
         class="window"
@@ -1673,7 +1668,7 @@ setTimeout(function () {
             <div class="window-buttons">
 
                 <div
-                    class="window-button"
+                    class="close-button"
                     onclick="closeWindows()"
                 ></div>
 
@@ -1695,18 +1690,17 @@ setTimeout(function () {
                 </div>
 
                 <h2>
-                    Te amo, Viviana
+                    Te amo
                 </h2>
 
                 <p>
-                    Entre todas las personas del mundo,
-                    tuve la suerte de encontrarte a ti.
+                    Esta pequeña página está hecha para
+                    guardar un pedacito de nuestra historia.
                 </p>
 
                 <p>
-                    Y aunque esta pequeña página solamente
-                    sea código, cada cosa que puse aquí
-                    representa algo que siento de verdad.
+                    Y aunque solamente sea código,
+                    todo lo que representa es real.
                 </p>
 
             </div>
@@ -1716,9 +1710,9 @@ setTimeout(function () {
     </div>
 
 
-    <!-- =====================================
+    <!-- =================================================
          DOCK
-    ====================================== -->
+    ================================================= -->
 
     <div class="dock">
 
@@ -1726,7 +1720,6 @@ setTimeout(function () {
         <div
             class="dock-item"
             onclick="openWindow('letter-window')"
-            title="Carta"
         >
             💌
         </div>
@@ -1735,7 +1728,6 @@ setTimeout(function () {
         <div
             class="dock-item"
             onclick="openWindow('photos-window')"
-            title="Fotos"
         >
             🖼️
         </div>
@@ -1744,7 +1736,6 @@ setTimeout(function () {
         <div
             class="dock-item"
             onclick="openWindow('music-window')"
-            title="Música"
         >
             🎵
         </div>
@@ -1753,7 +1744,6 @@ setTimeout(function () {
         <div
             class="dock-item"
             onclick="openWindow('reasons-window')"
-            title="Razones"
         >
             💗
         </div>
@@ -1762,7 +1752,6 @@ setTimeout(function () {
         <div
             class="dock-item"
             onclick="openWindow('vouchers-window')"
-            title="Vales"
         >
             🎟️
         </div>
@@ -1771,7 +1760,6 @@ setTimeout(function () {
         <div
             class="dock-item"
             onclick="openWindow('surprise-window')"
-            title="Sorpresa"
         >
             🎁
         </div>
@@ -1783,66 +1771,48 @@ setTimeout(function () {
 </div>
 
 
-<!-- =========================================
+<!-- =====================================================
      TOAST
-========================================= -->
+===================================================== -->
 
 <div id="toast"></div>
 
 
 <script>
 
-/* =========================================
-   LOGIN
-========================================= */
+/* =====================================================
+   CARGA
+===================================================== */
 
-function login() {
+/*
+   Este temporizador está fuera del resto de funciones
+   para que la pantalla de carga pueda desaparecer
+   incluso si algún otro elemento tarda en cargar.
+*/
 
-    var password =
-        document.getElementById("password").value;
+setTimeout(function() {
 
-    var error =
-        document.getElementById("login-error");
+    var boot =
+        document.getElementById("boot");
 
-    /*
-       CAMBIA ESTA CONTRASEÑA SI QUIERES
-    */
+    if (boot) {
 
-    if (password === "viviana") {
+        boot.style.opacity = "0";
 
-        document.getElementById("login-screen").style.display =
-            "none";
+        setTimeout(function() {
 
-        document.getElementById("desktop").style.display =
-            "block";
+            boot.style.display = "none";
 
-        showToast("Bienvenida a ViviOS ❤️");
-
-    } else {
-
-        error.textContent =
-            "Contraseña incorrecta ❤️";
+        }, 600);
 
     }
 
-}
+}, 2000);
 
 
-document.getElementById("password").addEventListener(
-    "keydown",
-    function(event) {
-
-        if (event.key === "Enter") {
-            login();
-        }
-
-    }
-);
-
-
-/* =========================================
-   WINDOWS
-========================================= */
+/* =====================================================
+   VENTANAS
+===================================================== */
 
 function openWindow(id) {
 
@@ -1865,7 +1835,11 @@ function closeWindows() {
     var windows =
         document.querySelectorAll(".window");
 
-    for (var i = 0; i < windows.length; i++) {
+    for (
+        var i = 0;
+        i < windows.length;
+        i++
+    ) {
 
         windows[i].classList.remove("active");
 
@@ -1874,35 +1848,9 @@ function closeWindows() {
 }
 
 
-/* =========================================
-   TOAST
-========================================= */
-
-var toastTimer;
-
-function showToast(message) {
-
-    var toast =
-        document.getElementById("toast");
-
-    toast.textContent = message;
-
-    toast.classList.add("show");
-
-    clearTimeout(toastTimer);
-
-    toastTimer = setTimeout(function() {
-
-        toast.classList.remove("show");
-
-    }, 2500);
-
-}
-
-
-/* =========================================
+/* =====================================================
    RELOJ
-========================================= */
+===================================================== */
 
 function updateClock() {
 
@@ -1913,13 +1861,16 @@ function updateClock() {
         return;
     }
 
-    var now = new Date();
+    var now =
+        new Date();
 
     var hours =
-        String(now.getHours()).padStart(2, "0");
+        String(now.getHours())
+        .padStart(2, "0");
 
     var minutes =
-        String(now.getMinutes()).padStart(2, "0");
+        String(now.getMinutes())
+        .padStart(2, "0");
 
     clock.textContent =
         hours + ":" + minutes;
@@ -1928,12 +1879,15 @@ function updateClock() {
 
 updateClock();
 
-setInterval(updateClock, 1000);
+setInterval(
+    updateClock,
+    1000
+);
 
 
-/* =========================================
+/* =====================================================
    FOTOS
-========================================= */
+===================================================== */
 
 var photos = [
 
@@ -1974,7 +1928,6 @@ var photos = [
 
 var currentPhoto = 0;
 
-
 var mainPhoto =
     document.getElementById("main-photo");
 
@@ -1982,18 +1935,21 @@ var photoCounter =
     document.getElementById("photo-counter");
 
 var thumbnailsContainer =
-    document.getElementById("photo-thumbnails");
+    document.getElementById(
+        "photo-thumbnails"
+    );
 
 
-/* =========================================
+/* =====================================================
    MOSTRAR FOTO
-========================================= */
+===================================================== */
 
 function showPhoto(index, direction) {
 
     if (index < 0) {
 
-        index = photos.length - 1;
+        index =
+            photos.length - 1;
 
     }
 
@@ -2006,25 +1962,27 @@ function showPhoto(index, direction) {
     currentPhoto = index;
 
 
+    /*
+       Animación
+    */
+
+    mainPhoto.classList.remove(
+        "photo-slide-left",
+        "photo-slide-right"
+    );
+
+    void mainPhoto.offsetWidth;
+
+
     if (direction === "left") {
-
-        mainPhoto.classList.remove(
-            "photo-slide-right"
-        );
-
-        void mainPhoto.offsetWidth;
 
         mainPhoto.classList.add(
             "photo-slide-left"
         );
 
-    } else if (direction === "right") {
+    }
 
-        mainPhoto.classList.remove(
-            "photo-slide-left"
-        );
-
-        void mainPhoto.offsetWidth;
+    if (direction === "right") {
 
         mainPhoto.classList.add(
             "photo-slide-right"
@@ -2037,7 +1995,8 @@ function showPhoto(index, direction) {
         photos[currentPhoto];
 
     mainPhoto.alt =
-        "Recuerdo " + (currentPhoto + 1);
+        "Recuerdo " +
+        (currentPhoto + 1);
 
 
     photoCounter.textContent =
@@ -2051,9 +2010,9 @@ function showPhoto(index, direction) {
 }
 
 
-/* =========================================
+/* =====================================================
    SIGUIENTE
-========================================= */
+===================================================== */
 
 function nextPhoto() {
 
@@ -2065,9 +2024,9 @@ function nextPhoto() {
 }
 
 
-/* =========================================
+/* =====================================================
    ANTERIOR
-========================================= */
+===================================================== */
 
 function previousPhoto() {
 
@@ -2079,9 +2038,9 @@ function previousPhoto() {
 }
 
 
-/* =========================================
-   THUMBNAILS
-========================================= */
+/* =====================================================
+   MINIATURAS
+===================================================== */
 
 function createThumbnails() {
 
@@ -2094,29 +2053,31 @@ function createThumbnails() {
         i++
     ) {
 
-        var thumbnail =
+        var thumb =
             document.createElement("img");
 
 
-        thumbnail.className =
+        thumb.className =
             "photo-thumb";
 
 
-        thumbnail.src =
+        thumb.src =
             photos[i];
 
 
-        thumbnail.alt =
-            "Miniatura " + (i + 1);
+        thumb.alt =
+            "Foto " +
+            (i + 1);
 
 
-        thumbnail.draggable = false;
+        thumb.draggable = false;
 
 
-        thumbnail.dataset.index = i;
+        thumb.dataset.index =
+            i;
 
 
-        thumbnail.addEventListener(
+        thumb.addEventListener(
             "click",
             function() {
 
@@ -2133,7 +2094,7 @@ function createThumbnails() {
 
 
         thumbnailsContainer.appendChild(
-            thumbnail
+            thumb
         );
 
     }
@@ -2167,16 +2128,16 @@ function updateThumbnails() {
 
     if (thumbs[currentPhoto]) {
 
-        thumbs[currentPhoto].classList.add(
-            "active"
-        );
+        thumbs[currentPhoto]
+            .classList.add("active");
 
 
-        thumbs[currentPhoto].scrollIntoView({
-            behavior: "smooth",
-            block: "nearest",
-            inline: "center"
-        });
+        thumbs[currentPhoto]
+            .scrollIntoView({
+                behavior: "smooth",
+                block: "nearest",
+                inline: "center"
+            });
 
     }
 
@@ -2186,9 +2147,9 @@ function updateThumbnails() {
 createThumbnails();
 
 
-/* =========================================
-   PRELOAD FOTOS
-========================================= */
+/* =====================================================
+   PRE-CARGAR LAS 31 FOTOS
+===================================================== */
 
 for (
     var i = 0;
@@ -2205,49 +2166,54 @@ for (
 }
 
 
-/* =========================================
-   SWIPE PARA ANDROID
-========================================= */
+/* =====================================================
+   SWIPE ANDROID
+===================================================== */
+
+var photoSlider =
+    document.getElementById(
+        "photo-slider"
+    );
+
+
+var touchStartX = 0;
+var touchStartY = 0;
+
+var touchStartTime = 0;
+
+var swipeAlreadyTriggered = false;
+
 
 /*
-   IMPORTANTE:
-
-   El gesto se detecta directamente sobre
-   la imagen principal.
-
-   Esto evita que el navegador confunda
-   el movimiento con el scroll de la página.
+   TOUCHSTART
 */
 
-
-var swipeStartX = 0;
-var swipeStartY = 0;
-
-var swipeStartTime = 0;
-
-
-mainPhoto.addEventListener(
+photoSlider.addEventListener(
     "touchstart",
     function(event) {
 
         if (
             !event.touches ||
-            event.touches.length === 0
+            event.touches.length !== 1
         ) {
             return;
         }
 
 
-        swipeStartX =
+        touchStartX =
             event.touches[0].clientX;
 
 
-        swipeStartY =
+        touchStartY =
             event.touches[0].clientY;
 
 
-        swipeStartTime =
+        touchStartTime =
             Date.now();
+
+
+        swipeAlreadyTriggered =
+            false;
 
     },
     {
@@ -2256,68 +2222,93 @@ mainPhoto.addEventListener(
 );
 
 
-mainPhoto.addEventListener(
+/*
+   TOUCHEND
+*/
+
+photoSlider.addEventListener(
     "touchend",
     function(event) {
 
         if (
-            !event.changedTouches ||
-            event.changedTouches.length === 0
+            swipeAlreadyTriggered
         ) {
             return;
         }
+
+
+        if (
+            !event.changedTouches ||
+            event.changedTouches.length !== 1
+        ) {
+            return;
+        }
+
+
+        var touch =
+            event.changedTouches[0];
 
 
         var endX =
-            event.changedTouches[0].clientX;
-
+            touch.clientX;
 
         var endY =
-            event.changedTouches[0].clientY;
+            touch.clientY;
 
 
         var differenceX =
-            endX - swipeStartX;
+            endX - touchStartX;
 
 
         var differenceY =
-            endY - swipeStartY;
+            endY - touchStartY;
 
 
         var duration =
-            Date.now() - swipeStartTime;
+            Date.now() -
+            touchStartTime;
 
 
         /*
-           Ignorar gestos demasiado lentos.
+           El gesto tiene que ser relativamente
+           rápido y claramente horizontal.
         */
 
-        if (duration > 1000) {
+        if (
+            duration > 1200
+        ) {
             return;
         }
 
 
-        /*
-           El movimiento horizontal debe
-           ser mayor que el vertical.
-        */
+        if (
+            Math.abs(differenceX) < 35
+        ) {
+            return;
+        }
+
 
         if (
-            Math.abs(differenceX) >= 35 &&
-            Math.abs(differenceX) >
+            Math.abs(differenceX) <=
             Math.abs(differenceY)
         ) {
+            return;
+        }
 
 
-            if (differenceX < 0) {
+        swipeAlreadyTriggered =
+            true;
 
-                nextPhoto();
 
-            } else {
+        if (
+            differenceX < 0
+        ) {
 
-                previousPhoto();
+            nextPhoto();
 
-            }
+        } else {
+
+            previousPhoto();
 
         }
 
@@ -2328,9 +2319,9 @@ mainPhoto.addEventListener(
 );
 
 
-/* =========================================
-   EVITAR ARRASTRAR LA IMAGEN
-========================================= */
+/* =====================================================
+   EVITAR ARRASTRAR IMAGEN
+===================================================== */
 
 mainPhoto.addEventListener(
     "dragstart",
@@ -2342,119 +2333,9 @@ mainPhoto.addEventListener(
 );
 
 
-/* =========================================
-   SWIPE ADICIONAL SOBRE EL SLIDER
-========================================= */
-
-var photoSlider =
-    document.getElementById("photo-slider");
-
-
-var sliderStartX = 0;
-var sliderStartY = 0;
-var sliderStartTime = 0;
-
-
-photoSlider.addEventListener(
-    "touchstart",
-    function(event) {
-
-        if (
-            !event.touches ||
-            event.touches.length === 0
-        ) {
-            return;
-        }
-
-
-        sliderStartX =
-            event.touches[0].clientX;
-
-
-        sliderStartY =
-            event.touches[0].clientY;
-
-
-        sliderStartTime =
-            Date.now();
-
-    },
-    {
-        passive: true
-    }
-);
-
-
-photoSlider.addEventListener(
-    "touchend",
-    function(event) {
-
-        if (
-            !event.changedTouches ||
-            event.changedTouches.length === 0
-        ) {
-            return;
-        }
-
-
-        var endX =
-            event.changedTouches[0].clientX;
-
-
-        var endY =
-            event.changedTouches[0].clientY;
-
-
-        var differenceX =
-            endX - sliderStartX;
-
-
-        var differenceY =
-            endY - sliderStartY;
-
-
-        var duration =
-            Date.now() - sliderStartTime;
-
-
-        if (duration > 1000) {
-            return;
-        }
-
-
-        /*
-           Solo ejecutar si el gesto
-           realmente fue horizontal.
-        */
-
-        if (
-            Math.abs(differenceX) >= 45 &&
-            Math.abs(differenceX) >
-            Math.abs(differenceY)
-        ) {
-
-            if (differenceX < 0) {
-
-                nextPhoto();
-
-            } else {
-
-                previousPhoto();
-
-            }
-
-        }
-
-    },
-    {
-        passive: true
-    }
-);
-
-
-/* =========================================
+/* =====================================================
    TECLADO
-========================================= */
+===================================================== */
 
 document.addEventListener(
     "keydown",
@@ -2467,7 +2348,6 @@ document.addEventListener(
 
 
         if (
-            !photosWindow ||
             !photosWindow.classList.contains(
                 "active"
             )
@@ -2476,21 +2356,27 @@ document.addEventListener(
         }
 
 
-        if (event.key === "ArrowLeft") {
+        if (
+            event.key === "ArrowLeft"
+        ) {
 
             previousPhoto();
 
         }
 
 
-        if (event.key === "ArrowRight") {
+        if (
+            event.key === "ArrowRight"
+        ) {
 
             nextPhoto();
 
         }
 
 
-        if (event.key === "Escape") {
+        if (
+            event.key === "Escape"
+        ) {
 
             closeWindows();
 
@@ -2500,23 +2386,9 @@ document.addEventListener(
 );
 
 
-/* =========================================
-   BOTÓN ATRÁS DE ANDROID
-========================================= */
-
-window.addEventListener(
-    "popstate",
-    function() {
-
-        closeWindows();
-
-    }
-);
-
-
-/* =========================================
-   MOSTRAR PRIMERA FOTO
-========================================= */
+/* =====================================================
+   INICIAR GALERÍA
+===================================================== */
 
 showPhoto(0);
 
