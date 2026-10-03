@@ -7,7 +7,6 @@
 <title>ViviOS - Para Mi Amor ❤️</title>
 
 <style>
-
 :root{
   --accent:#ff2d55;
   --accent2:#ff6b8a;
@@ -24,26 +23,20 @@
   font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
 }
 
-html,
-body{
+html,body{
   width:100%;
   height:100%;
   overflow:hidden;
 }
 
 body{
-  background-image:url("assets/fondo.jpg");
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-  background-attachment:fixed;
+  background:url("assets/fondo.jpg") center/cover fixed no-repeat;
   color:var(--text);
 }
 
-
 /* =====================================================
-   INTRO PORTÁTIL
-====================================================== */
+   INTRO MACBOOK
+===================================================== */
 
 #laptop-intro{
   position:fixed;
@@ -55,319 +48,231 @@ body{
   overflow:hidden;
   background:
     radial-gradient(
-      circle at 50% 40%,
-      #4a294f 0%,
-      #241629 38%,
-      #0c0a10 100%
+      ellipse at center,
+      #29222f 0%,
+      #100e14 58%,
+      #050507 100%
     );
   opacity:1;
   visibility:visible;
-  transition:
-    opacity .9s ease,
-    visibility .9s ease;
+  pointer-events:auto;
 }
 
 #laptop-intro.finish{
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
-}
-
-#laptop-intro::before{
-  content:"";
-  position:absolute;
-  width:700px;
-  height:700px;
-  border-radius:50%;
-  background:
-    radial-gradient(
-      circle,
-      rgba(255,80,125,.18),
-      transparent 65%
-    );
-  filter:blur(25px);
+  animation:introFadeOut .85s ease forwards;
   pointer-events:none;
 }
 
 .laptop-scene{
   position:relative;
-  width:680px;
-  height:560px;
+  width:560px;
+  height:520px;
   display:flex;
   align-items:flex-end;
   justify-content:center;
-  perspective:1400px;
-  transform-style:preserve-3d;
+  perspective:1600px;
+  transform:scale(.88);
 }
 
 .laptop-shadow{
   position:absolute;
-  bottom:32px;
   left:50%;
-  width:570px;
-  height:55px;
+  bottom:42px;
+  width:545px;
+  height:35px;
   transform:translateX(-50%);
-  border-radius:50%;
-  background:rgba(0,0,0,.65);
+  background:rgba(0,0,0,.55);
   filter:blur(22px);
-  opacity:0;
-  transition:opacity .8s ease;
-}
-
-#laptop-intro.play .laptop-shadow{
-  opacity:1;
+  border-radius:50%;
 }
 
 .laptop{
   position:relative;
-  width:590px;
-  height:465px;
+  width:560px;
+  height:410px;
   transform-style:preserve-3d;
-  transform:translateY(25px);
+  transform:rotateX(8deg);
 }
-
-/* =====================================================
-   BASE DEL PORTÁTIL
-====================================================== */
 
 .laptop-base{
   position:absolute;
-  left:15px;
-  bottom:55px;
+  left:0;
+  bottom:0;
   width:560px;
-  height:52px;
-  border-radius:
-    0 0
-    24px 24px;
+  height:75px;
+  z-index:2;
+  border-radius:5px 5px 22px 22px;
   background:
     linear-gradient(
       180deg,
-      #dcdde0 0%,
-      #bfc1c5 50%,
-      #999ba0 100%
+      #e0e0e2 0%,
+      #c1c1c5 45%,
+      #8e8e93 100%
     );
   box-shadow:
-    0 12px 25px rgba(0,0,0,.45),
-    inset 0 1px rgba(255,255,255,.9),
-    inset 0 -2px rgba(0,0,0,.16);
-  transform:perspective(700px) rotateX(58deg);
-  transform-origin:center top;
-  transform-style:preserve-3d;
-  z-index:5;
+    0 15px 25px rgba(0,0,0,.35),
+    inset 0 1px 1px rgba(255,255,255,.85);
 }
-
-/* Parte superior visible del teclado */
 
 .laptop-base::before{
   content:"";
   position:absolute;
-  left:0;
-  top:-25px;
-  width:560px;
-  height:55px;
-  border-radius:13px 13px 7px 7px;
+  left:7px;
+  top:-14px;
+  width:546px;
+  height:62px;
+  border-radius:9px 9px 5px 5px;
   background:
     linear-gradient(
       145deg,
-      #eeeeef,
-      #c9cace
+      #f0f0f1,
+      #d1d1d4
     );
   box-shadow:
-    inset 0 1px rgba(255,255,255,.9),
-    inset 0 -1px rgba(0,0,0,.12);
+    inset 0 1px 2px rgba(255,255,255,.9),
+    0 1px 2px rgba(0,0,0,.15);
 }
 
-/* Parte frontal */
-
-.laptop-base::after{
-  content:"";
-  position:absolute;
-  left:50%;
-  bottom:-3px;
-  width:80px;
-  height:4px;
-  transform:translateX(-50%);
-  border-radius:0 0 8px 8px;
-  background:rgba(70,70,70,.35);
-}
-
-/* =====================================================
-   TECLADO
-====================================================== */
-
+/* Zona del teclado */
 .keyboard{
   position:absolute;
-  z-index:3;
-  left:24px;
-  top:-17px;
-  width:512px;
-  height:37px;
+  left:48px;
+  top:-5px;
+  width:310px;
+  height:34px;
+  z-index:4;
   display:flex;
   flex-direction:column;
   gap:3px;
-  padding:2px 0;
+  padding:3px 4px;
+  border-radius:4px;
+  background:#aaaab0;
+  box-shadow:inset 0 1px 2px rgba(0,0,0,.2);
 }
 
 .keyboard-row{
   display:flex;
-  justify-content:center;
   gap:3px;
-  height:7px;
+  height:5px;
 }
 
 .key{
-  width:25px;
-  height:7px;
-  border-radius:2px;
+  flex:1;
+  min-width:0;
+  border-radius:1.5px;
   background:
     linear-gradient(
       180deg,
-      #77797d,
-      #55575a
+      #5c5d61,
+      #2d2e32
     );
   box-shadow:
-    inset 0 1px rgba(255,255,255,.18),
-    0 1px 1px rgba(0,0,0,.22);
+    0 1px 1px rgba(0,0,0,.4),
+    inset 0 1px 1px rgba(255,255,255,.12);
 }
 
 .key.wide{
-  width:37px;
+  flex:1.7;
 }
 
 .key.space{
-  width:125px;
+  flex:4.4;
 }
 
-/* =====================================================
-   TRACKPAD
-====================================================== */
-
+/* Trackpad centrado debajo del teclado */
 .trackpad{
   position:absolute;
-  z-index:4;
   left:50%;
-  top:13px;
-  width:155px;
-  height:55px;
+  top:37px;
+  width:145px;
+  height:27px;
+  z-index:4;
   transform:translateX(-50%);
   border-radius:5px;
   background:
     linear-gradient(
       145deg,
-      #d5d6d8,
-      #b9babd
+      #dadadd,
+      #bdbdc1
     );
-  border:1px solid rgba(100,100,100,.16);
+  border:1px solid rgba(90,90,95,.18);
   box-shadow:
-    inset 0 1px rgba(255,255,255,.7),
+    inset 0 1px 2px rgba(255,255,255,.7),
     0 1px 2px rgba(0,0,0,.08);
 }
 
-/* =====================================================
-   BISAGRA
-====================================================== */
+.laptop-base::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:3px;
+  width:105px;
+  height:4px;
+  transform:translateX(-50%);
+  border-radius:0 0 5px 5px;
+  background:rgba(80,80,85,.55);
+}
 
 .laptop-hinge{
   position:absolute;
   left:50%;
-  bottom:104px;
-  width:500px;
+  bottom:70px;
+  width:470px;
   height:12px;
   transform:translateX(-50%);
-  border-radius:50%;
+  z-index:5;
+  border-radius:8px 8px 2px 2px;
   background:
     linear-gradient(
       180deg,
-      #76777a,
-      #424347
+      #66676b,
+      #343539
     );
-  box-shadow:
-    0 3px 5px rgba(0,0,0,.35);
-  z-index:6;
+  box-shadow:0 2px 4px rgba(0,0,0,.35);
 }
-
-/* =====================================================
-   TAPA / PANTALLA
-====================================================== */
 
 .laptop-lid{
   position:absolute;
-  left:45px;
-  bottom:105px;
+  left:30px;
+  bottom:70px;
   width:500px;
   height:345px;
-  transform-origin:center bottom;
-  transform:
-    rotateX(-88deg)
-    translateZ(0);
+  z-index:8;
+  transform-origin:50% 100%;
   transform-style:preserve-3d;
-  z-index:10;
+  transform:rotateX(-88deg);
 }
 
 #laptop-intro.play .laptop-lid{
-  animation:
-    laptopOpen
-    2.5s
-    cubic-bezier(.18,.82,.25,1)
-    .15s
-    forwards;
-}
-
-@keyframes laptopOpen{
-
-  0%{
-    transform:
-      rotateX(-88deg)
-      translateZ(0);
-  }
-
-  65%{
-    transform:
-      rotateX(8deg)
-      translateZ(0);
-  }
-
-  82%{
-    transform:
-      rotateX(-4deg)
-      translateZ(0);
-  }
-
-  100%{
-    transform:
-      rotateX(0deg)
-      translateZ(0);
-  }
-
+  animation:laptopOpen 2.15s cubic-bezier(.18,.78,.18,1) .2s forwards;
 }
 
 .laptop-lid-shell{
   position:absolute;
   inset:0;
+  padding:13px;
   border-radius:18px 18px 8px 8px;
-  padding:10px;
   background:
     linear-gradient(
       145deg,
-      #e4e5e7,
-      #aeb0b4
+      #e8e8ea,
+      #a8a8ad
     );
   box-shadow:
-    0 15px 35px rgba(0,0,0,.45),
-    inset 0 1px rgba(255,255,255,.9),
-    inset 0 -2px rgba(0,0,0,.2);
-  transform-style:preserve-3d;
+    0 15px 30px rgba(0,0,0,.38),
+    inset 0 1px 1px rgba(255,255,255,.85);
+  backface-visibility:hidden;
 }
 
 .laptop-screen-bezel{
   position:relative;
   width:100%;
   height:100%;
-  padding:13px;
-  border-radius:10px 10px 4px 4px;
-  background:#111214;
+  padding:12px;
+  border-radius:11px 11px 4px 4px;
+  background:#111115;
   box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,.04);
+    inset 0 0 0 1px rgba(255,255,255,.05);
 }
 
 .laptop-screen{
@@ -375,144 +280,110 @@ body{
   width:100%;
   height:100%;
   overflow:hidden;
-  border-radius:4px;
+  border-radius:5px;
   background:
     radial-gradient(
-      circle at 50% 45%,
-      #6a355e,
-      #28152f 55%,
-      #100c16 100%
+      circle at 50% 35%,
+      #513b55,
+      #211728 65%,
+      #0d0b12
     );
-  box-shadow:
-    inset 0 0 35px rgba(0,0,0,.45);
 }
 
-/* Brillo de pantalla */
-
-.laptop-screen::after{
+.laptop-screen::before{
   content:"";
   position:absolute;
   inset:0;
   background:
-    linear-gradient(
-      125deg,
-      rgba(255,255,255,.14),
-      transparent 35%,
-      transparent 70%,
-      rgba(255,255,255,.04)
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(255,255,255,.18),
+      transparent 48%
     );
-  pointer-events:none;
 }
-
-/* Cámara */
 
 .laptop-camera{
   position:absolute;
-  z-index:3;
-  top:4px;
+  top:5px;
   left:50%;
   width:5px;
   height:5px;
   transform:translateX(-50%);
   border-radius:50%;
-  background:#050505;
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,.08);
+  background:#29292d;
+  box-shadow:0 0 0 1px #050505;
+  z-index:4;
 }
-
-/* =====================================================
-   CONTENIDO DE LA PANTALLA
-====================================================== */
 
 .laptop-screen-content{
   position:absolute;
   inset:0;
   z-index:2;
   display:flex;
+  flex-direction:column;
   align-items:center;
   justify-content:center;
-  flex-direction:column;
-  color:#fff;
+  color:white;
   text-align:center;
 }
 
 .intro-heart{
-  font-size:64px;
-  filter:
-    drop-shadow(
-      0 8px 18px
-      rgba(255,45,85,.4)
-    );
-  opacity:0;
-  transform:scale(.65);
-}
-
-#laptop-intro.play .intro-heart{
-  animation:
-    introHeart
-    .8s
-    ease
-    1.8s
-    forwards;
-}
-
-@keyframes introHeart{
-
-  to{
-    opacity:1;
-    transform:scale(1);
-  }
-
+  font-size:45px;
+  line-height:1;
+  margin-bottom:12px;
+  filter:drop-shadow(
+    0 7px 15px rgba(255,45,85,.35)
+  );
+  animation:introHeartPulse 1.5s ease-in-out infinite;
 }
 
 .intro-name{
-  margin-top:5px;
   font-size:27px;
   font-weight:700;
   letter-spacing:.5px;
-  opacity:0;
-  transform:translateY(12px);
-}
-
-#laptop-intro.play .intro-name{
-  animation:
-    introText
-    .8s
-    ease
-    2.15s
-    forwards;
 }
 
 .intro-sub{
-  margin-top:7px;
+  margin-top:6px;
   font-size:13px;
-  opacity:0;
-  color:rgba(255,255,255,.7);
-  transform:translateY(10px);
+  opacity:.65;
+  letter-spacing:1px;
 }
 
-#laptop-intro.play .intro-sub{
-  animation:
-    introText
-    .8s
-    ease
-    2.4s
-    forwards;
-}
-
-@keyframes introText{
-
-  to{
-    opacity:1;
-    transform:translateY(0);
+@keyframes laptopOpen{
+  0%{
+    transform:rotateX(-88deg);
   }
 
+  55%{
+    transform:rotateX(-8deg);
+  }
+
+  78%{
+    transform:rotateX(4deg);
+  }
+
+  100%{
+    transform:rotateX(0deg);
+  }
 }
 
+@keyframes introHeartPulse{
+  50%{
+    transform:scale(1.08);
+  }
+}
+
+@keyframes introFadeOut{
+  to{
+    opacity:0;
+    visibility:hidden;
+  }
+}
 
 /* =====================================================
    BOOT
-====================================================== */
+===================================================== */
 
 #boot{
   position:fixed;
@@ -529,9 +400,7 @@ body{
       #34203e,
       #120f18 70%
     );
-  transition:
-    opacity .9s,
-    visibility .9s;
+  transition:opacity .9s,visibility .9s;
 }
 
 #boot.hide{
@@ -573,7 +442,6 @@ body{
   width:0;
   background:white;
   border-radius:10px;
-  animation:none;
 }
 
 #boot.boot-ready .boot-progress span{
@@ -581,21 +449,16 @@ body{
 }
 
 @keyframes load{
-  to{
-    width:100%
-  }
+  to{width:100%}
 }
 
 @keyframes pulse{
-  50%{
-    transform:scale(1.08)
-  }
+  50%{transform:scale(1.08)}
 }
-
 
 /* =====================================================
    LOGIN
-====================================================== */
+===================================================== */
 
 #login{
   position:fixed;
@@ -626,18 +489,12 @@ body{
   width:92px;
   height:92px;
   border-radius:50%;
-  background:
-    linear-gradient(
-      135deg,
-      #fff,
-      #ffd7e0
-    );
+  background:linear-gradient(135deg,#fff,#ffd7e0);
   display:flex;
   align-items:center;
   justify-content:center;
   font-size:45px;
-  box-shadow:
-    0 15px 45px rgba(0,0,0,.35);
+  box-shadow:0 15px 45px rgba(0,0,0,.35);
   margin-bottom:18px;
 }
 
@@ -668,10 +525,9 @@ body{
   transform:translateY(-2px);
 }
 
-
 /* =====================================================
    TOP BAR
-====================================================== */
+===================================================== */
 
 #top-bar{
   position:fixed;
@@ -711,10 +567,9 @@ body{
   font-variant-numeric:tabular-nums;
 }
 
-
 /* =====================================================
    DESKTOP
-====================================================== */
+===================================================== */
 
 #desktop{
   position:fixed;
@@ -757,10 +612,9 @@ body{
   text-shadow:0 2px 5px rgba(0,0,0,.8);
 }
 
-
 /* =====================================================
    DOCK
-====================================================== */
+===================================================== */
 
 #dock-container{
   position:fixed;
@@ -800,9 +654,7 @@ body{
   justify-content:center;
   font-size:25px;
   box-shadow:0 5px 10px rgba(0,0,0,.12);
-  transition:
-    transform .16s ease,
-    margin .16s ease;
+  transition:transform .16s ease,margin .16s ease;
   cursor:pointer;
 }
 
@@ -821,10 +673,9 @@ body{
   background:#333;
 }
 
-
 /* =====================================================
    WINDOWS
-====================================================== */
+===================================================== */
 
 .window{
   position:fixed;
@@ -851,18 +702,11 @@ body{
 
 .window.active{
   display:flex;
-  animation:
-    windowIn
-    .28s
-    cubic-bezier(.2,.8,.2,1)
-    forwards;
+  animation:windowIn .28s cubic-bezier(.2,.8,.2,1) forwards;
 }
 
 .window.closing{
-  animation:
-    windowOut
-    .22s
-    forwards;
+  animation:windowOut .22s forwards;
 }
 
 .window.minimized{
@@ -923,17 +767,9 @@ body{
   cursor:pointer;
 }
 
-.dot-close{
-  background:#ff5f57;
-}
-
-.dot-min{
-  background:#ffbd2e;
-}
-
-.dot-max{
-  background:#28c840;
-}
+.dot-close{background:#ff5f57}
+.dot-min{background:#ffbd2e}
+.dot-max{background:#28c840}
 
 .window-title{
   position:absolute;
@@ -955,18 +791,12 @@ body{
   -webkit-overflow-scrolling:touch;
 }
 
-
 /* =====================================================
    CARTA
-====================================================== */
+===================================================== */
 
 .letter-paper{
-  background:
-    linear-gradient(
-      145deg,
-      #fff,
-      #fff7fa
-    );
+  background:linear-gradient(145deg,#fff,#fff7fa);
   padding:30px;
   border-radius:14px;
   box-shadow:0 8px 25px rgba(0,0,0,.08);
@@ -991,18 +821,13 @@ body{
   color:#b51d43;
 }
 
-
 /* =====================================================
    GALERÍA
-====================================================== */
+===================================================== */
 
 .gallery-grid{
   display:grid;
-  grid-template-columns:
-    repeat(
-      auto-fill,
-      minmax(150px,1fr)
-    );
+  grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
   gap:14px;
   touch-action:pan-y;
 }
@@ -1018,12 +843,8 @@ body{
 }
 
 .photo-card:hover{
-  transform:
-    translateY(-4px)
-    rotate(.3deg);
-  box-shadow:
-    0 13px 25px
-    rgba(0,0,0,.15);
+  transform:translateY(-4px) rotate(.3deg);
+  box-shadow:0 13px 25px rgba(0,0,0,.15);
 }
 
 .photo-card img{
@@ -1034,7 +855,6 @@ body{
   display:block;
   -webkit-user-drag:none;
   user-select:none;
-  -webkit-user-select:none;
 }
 
 .photo-card p{
@@ -1056,10 +876,9 @@ body{
   }
 }
 
-
 /* =====================================================
    RAZONES
-====================================================== */
+===================================================== */
 
 .reason-item{
   background:rgba(255,255,255,.78);
@@ -1072,10 +891,9 @@ body{
   animation:cardIn .4s both;
 }
 
-
 /* =====================================================
    VALES
-====================================================== */
+===================================================== */
 
 .coupon{
   display:flex;
@@ -1105,10 +923,9 @@ body{
   background:#34c759!important;
 }
 
-
 /* =====================================================
    SORPRESA
-====================================================== */
+===================================================== */
 
 .surprise{
   text-align:center;
@@ -1119,18 +936,12 @@ body{
   font-size:85px;
   display:inline-block;
   cursor:pointer;
-  animation:
-    giftFloat
-    2s
-    ease-in-out
-    infinite;
+  animation:giftFloat 2s ease-in-out infinite;
 }
 
 @keyframes giftFloat{
   50%{
-    transform:
-      translateY(-8px)
-      rotate(2deg);
+    transform:translateY(-8px) rotate(2deg);
   }
 }
 
@@ -1142,10 +953,9 @@ body{
   color:var(--accent);
 }
 
-
 /* =====================================================
-   MÚSICA LOCAL
-====================================================== */
+   MÚSICA
+===================================================== */
 
 .music-card{
   text-align:center;
@@ -1170,10 +980,9 @@ body{
   display:block;
 }
 
-
 /* =====================================================
    VISOR
-====================================================== */
+===================================================== */
 
 #image-viewer{
   position:fixed;
@@ -1202,7 +1011,6 @@ body{
   touch-action:none;
   -webkit-user-drag:none;
   user-select:none;
-  -webkit-user-select:none;
 }
 
 .viewer-close{
@@ -1242,51 +1050,37 @@ body{
 }
 
 @keyframes fadeIn{
-  from{
-    opacity:0
-  }
-
-  to{
-    opacity:1
-  }
+  from{opacity:0}
+  to{opacity:1}
 }
-
 
 /* =====================================================
    CORAZONES
-====================================================== */
+===================================================== */
 
 .click-heart{
   position:fixed;
   pointer-events:none;
   font-size:22px;
   z-index:60000;
-  animation:
-    heartFloat
-    .9s
-    forwards;
+  animation:heartFloat .9s forwards;
 }
 
 @keyframes heartFloat{
   from{
     opacity:1;
-    transform:
-      translate(-50%,-50%)
-      scale(.5);
+    transform:translate(-50%,-50%) scale(.5);
   }
 
   to{
     opacity:0;
-    transform:
-      translate(-50%,-95px)
-      scale(1.35);
+    transform:translate(-50%,-95px) scale(1.35);
   }
 }
 
-
 /* =====================================================
    TOAST
-====================================================== */
+===================================================== */
 
 .toast{
   position:fixed;
@@ -1303,10 +1097,9 @@ body{
   box-shadow:0 8px 25px rgba(0,0,0,.25);
 }
 
-
 /* =====================================================
    JUEGO
-====================================================== */
+===================================================== */
 
 .game-window{
   width:min(900px,92vw);
@@ -1319,12 +1112,7 @@ body{
   display:flex;
   flex-direction:column;
   overflow:hidden;
-  background:
-    linear-gradient(
-      180deg,
-      #fff8fb 0%,
-      #ffeef4 100%
-    );
+  background:linear-gradient(180deg,#fff8fb,#ffeef4);
 }
 
 .game-top{
@@ -1366,7 +1154,6 @@ body{
   background:#fff3f7;
   touch-action:none;
   user-select:none;
-  -webkit-user-select:none;
 }
 
 .game-mobile-help{
@@ -1425,18 +1212,11 @@ body{
   font-weight:700;
   cursor:pointer;
   box-shadow:0 7px 18px rgba(255,45,85,.25);
-  transition:.2s;
 }
-
-.game-btn:hover{
-  transform:translateY(-2px);
-  background:#e9274f;
-}
-
 
 /* =====================================================
    MOBILE
-====================================================== */
+===================================================== */
 
 @media(max-width:600px){
 
@@ -1542,32 +1322,10 @@ body{
     display:block;
   }
 
-
-  /* PORTÁTIL EN MÓVIL */
-
   .laptop-scene{
-    width:100vw;
-    height:520px;
-    transform:
-      scale(.58);
-    transform-origin:center center;
+    transform:scale(.50);
   }
-
-  .laptop{
-    transform:translateY(25px);
-  }
-
-  #laptop-intro::before{
-    width:500px;
-    height:500px;
-  }
-
 }
-
-
-/* =====================================================
-   SCROLLBAR
-====================================================== */
 
 ::-webkit-scrollbar{
   width:7px;
@@ -1577,15 +1335,13 @@ body{
   background:rgba(0,0,0,.18);
   border-radius:10px;
 }
-
 </style>
 </head>
 
 <body>
 
-
 <!-- =====================================================
-     INTRO DEL PORTÁTIL
+     INTRO MACBOOK
 ====================================================== -->
 
 <div id="laptop-intro">
@@ -1630,16 +1386,13 @@ body{
 
       </div>
 
-
       <div class="laptop-hinge"></div>
-
 
       <div class="laptop-base">
 
         <div class="keyboard">
 
           <div class="keyboard-row">
-
             <span class="key"></span>
             <span class="key"></span>
             <span class="key"></span>
@@ -1653,15 +1406,9 @@ body{
             <span class="key"></span>
             <span class="key"></span>
             <span class="key"></span>
-            <span class="key"></span>
-            <span class="key"></span>
-            <span class="key"></span>
-
           </div>
 
-
           <div class="keyboard-row">
-
             <span class="key wide"></span>
             <span class="key"></span>
             <span class="key"></span>
@@ -1672,19 +1419,9 @@ body{
             <span class="key"></span>
             <span class="key"></span>
             <span class="key"></span>
-            <span class="key"></span>
-            <span class="key"></span>
-            <span class="key"></span>
-            <span class="key wide"></span>
-
           </div>
 
-
           <div class="keyboard-row">
-
-            <span class="key wide"></span>
-            <span class="key"></span>
-            <span class="key"></span>
             <span class="key"></span>
             <span class="key"></span>
             <span class="key"></span>
@@ -1695,15 +1432,10 @@ body{
             <span class="key"></span>
             <span class="key"></span>
             <span class="key wide"></span>
-
           </div>
 
-
           <div class="keyboard-row">
-
-            <span class="key"></span>
-            <span class="key"></span>
-            <span class="key"></span>
+            <span class="key wide"></span>
             <span class="key"></span>
             <span class="key"></span>
             <span class="key"></span>
@@ -1712,11 +1444,9 @@ body{
             <span class="key"></span>
             <span class="key"></span>
             <span class="key"></span>
-
           </div>
 
         </div>
-
 
         <div class="trackpad"></div>
 
@@ -1730,14 +1460,12 @@ body{
 
 
 <!-- =====================================================
-     PANTALLA DE CARGA
+     BOOT
 ====================================================== -->
 
 <div id="boot">
 
-  <div class="boot-logo">
-    ❤️
-  </div>
+  <div class="boot-logo">❤️</div>
 
   <div class="boot-title">
     ViviOS
@@ -1772,10 +1500,7 @@ body{
     Una pequeña sorpresa te está esperando
   </div>
 
-  <button
-    class="login-btn"
-    id="login-btn"
-  >
+  <button class="login-btn" id="login-btn">
     Iniciar sesión
   </button>
 
@@ -1789,15 +1514,10 @@ body{
 <div id="top-bar">
 
   <div class="top-left">
-
     <span class="apple"></span>
-
     <span>ViviOS</span>
-
     <span class="menu">Archivo</span>
-
     <span class="menu">Ventana</span>
-
   </div>
 
   <div id="mac-clock"></div>
@@ -1811,83 +1531,29 @@ body{
 
 <div id="desktop">
 
-  <div
-    class="desktop-item"
-    data-open="win-carta"
-  >
-
-    <div class="desktop-icon">
-      💌
-    </div>
-
-    <div class="desktop-label">
-      Carta.pdf
-    </div>
-
+  <div class="desktop-item" data-open="win-carta">
+    <div class="desktop-icon">💌</div>
+    <div class="desktop-label">Carta.pdf</div>
   </div>
 
-
-  <div
-    class="desktop-item"
-    data-open="win-momentos"
-  >
-
-    <div class="desktop-icon">
-      🖼️
-    </div>
-
-    <div class="desktop-label">
-      Fotos
-    </div>
-
+  <div class="desktop-item" data-open="win-momentos">
+    <div class="desktop-icon">🖼️</div>
+    <div class="desktop-label">Fotos</div>
   </div>
 
-
-  <div
-    class="desktop-item"
-    data-open="win-razones"
-  >
-
-    <div class="desktop-icon">
-      📝
-    </div>
-
-    <div class="desktop-label">
-      Razones.txt
-    </div>
-
+  <div class="desktop-item" data-open="win-razones">
+    <div class="desktop-icon">📝</div>
+    <div class="desktop-label">Razones.txt</div>
   </div>
 
-
-  <div
-    class="desktop-item"
-    data-open="win-juego"
-  >
-
-    <div class="desktop-icon">
-      🎮
-    </div>
-
-    <div class="desktop-label">
-      Vivi Runner
-    </div>
-
+  <div class="desktop-item" data-open="win-juego">
+    <div class="desktop-icon">🎮</div>
+    <div class="desktop-label">Vivi Runner</div>
   </div>
 
-
-  <div
-    class="desktop-item"
-    data-open="win-papelera"
-  >
-
-    <div class="desktop-icon">
-      🗑️
-    </div>
-
-    <div class="desktop-label">
-      Papelera
-    </div>
-
+  <div class="desktop-item" data-open="win-papelera">
+    <div class="desktop-icon">🗑️</div>
+    <div class="desktop-label">Papelera</div>
   </div>
 
 </div>
@@ -1901,54 +1567,13 @@ body{
 
   <div id="dock">
 
-    <div
-      class="dock-icon"
-      data-open="win-carta"
-    >
-      💌
-    </div>
-
-    <div
-      class="dock-icon"
-      data-open="win-momentos"
-    >
-      📸
-    </div>
-
-    <div
-      class="dock-icon"
-      data-open="win-canciones"
-    >
-      🎵
-    </div>
-
-    <div
-      class="dock-icon"
-      data-open="win-razones"
-    >
-      💖
-    </div>
-
-    <div
-      class="dock-icon"
-      data-open="win-vales"
-    >
-      🎟️
-    </div>
-
-    <div
-      class="dock-icon"
-      data-open="win-sorpresa"
-    >
-      🎁
-    </div>
-
-    <div
-      class="dock-icon"
-      data-open="win-juego"
-    >
-      🎮
-    </div>
+    <div class="dock-icon" data-open="win-carta">💌</div>
+    <div class="dock-icon" data-open="win-momentos">📸</div>
+    <div class="dock-icon" data-open="win-canciones">🎵</div>
+    <div class="dock-icon" data-open="win-razones">💖</div>
+    <div class="dock-icon" data-open="win-vales">🎟️</div>
+    <div class="dock-icon" data-open="win-sorpresa">🎁</div>
+    <div class="dock-icon" data-open="win-juego">🎮</div>
 
   </div>
 
@@ -1959,19 +1584,14 @@ body{
      CARTA
 ====================================================== -->
 
-<div
-  id="win-carta"
-  class="window"
->
+<div id="win-carta" class="window">
 
   <div class="window-header">
 
     <div class="window-dots">
-
       <button class="dot dot-close" data-close="win-carta"></button>
       <button class="dot dot-min" data-min="win-carta"></button>
       <button class="dot dot-max" data-max="win-carta"></button>
-
     </div>
 
     <div class="window-title">
@@ -2006,19 +1626,14 @@ body{
      FOTOS
 ====================================================== -->
 
-<div
-  id="win-momentos"
-  class="window"
->
+<div id="win-momentos" class="window">
 
   <div class="window-header">
 
     <div class="window-dots">
-
       <button class="dot dot-close" data-close="win-momentos"></button>
       <button class="dot dot-min" data-min="win-momentos"></button>
       <button class="dot dot-max" data-max="win-momentos"></button>
-
     </div>
 
     <div class="window-title">
@@ -2029,10 +1644,7 @@ body{
 
   <div class="window-body">
 
-    <div
-      class="gallery-grid"
-      id="display-galeria"
-    ></div>
+    <div class="gallery-grid" id="display-galeria"></div>
 
   </div>
 
@@ -2043,19 +1655,14 @@ body{
      MÚSICA
 ====================================================== -->
 
-<div
-  id="win-canciones"
-  class="window"
->
+<div id="win-canciones" class="window">
 
   <div class="window-header">
 
     <div class="window-dots">
-
       <button class="dot dot-close" data-close="win-canciones"></button>
       <button class="dot dot-min" data-min="win-canciones"></button>
       <button class="dot dot-max" data-max="win-canciones"></button>
-
     </div>
 
     <div class="window-title">
@@ -2080,14 +1687,11 @@ body{
       controls
       preload="metadata"
     >
-
       <source
         src="assets/musica/nuestra-cancion.mp3"
         type="audio/mpeg"
       >
-
       Tu navegador no puede reproducir este audio.
-
     </audio>
 
   </div>
@@ -2099,19 +1703,14 @@ body{
      RAZONES
 ====================================================== -->
 
-<div
-  id="win-razones"
-  class="window"
->
+<div id="win-razones" class="window">
 
   <div class="window-header">
 
     <div class="window-dots">
-
       <button class="dot dot-close" data-close="win-razones"></button>
       <button class="dot dot-min" data-min="win-razones"></button>
       <button class="dot dot-max" data-max="win-razones"></button>
-
     </div>
 
     <div class="window-title">
@@ -2151,19 +1750,14 @@ body{
      VALES
 ====================================================== -->
 
-<div
-  id="win-vales"
-  class="window"
->
+<div id="win-vales" class="window">
 
   <div class="window-header">
 
     <div class="window-dots">
-
       <button class="dot dot-close" data-close="win-vales"></button>
       <button class="dot dot-min" data-min="win-vales"></button>
       <button class="dot dot-max" data-max="win-vales"></button>
-
     </div>
 
     <div class="window-title">
@@ -2177,15 +1771,10 @@ body{
     <div class="coupon">
 
       <div>
-
-        <strong>
-          jugar Free Fire como antes 🎮
-        </strong>
-
+        <strong>jugar Free Fire como antes 🎮</strong>
         <p style="font-size:11px;color:#777;margin-top:4px;">
           Canjeable por jugar.
         </p>
-
       </div>
 
       <button class="claim-btn">
@@ -2194,19 +1783,13 @@ body{
 
     </div>
 
-
     <div class="coupon">
 
       <div>
-
-        <strong>
-          Ver películas 🎬
-        </strong>
-
+        <strong>Ver películas 🎬</strong>
         <p style="font-size:11px;color:#777;margin-top:4px;">
           Tú eliges la película.
         </p>
-
       </div>
 
       <button class="claim-btn">
@@ -2215,19 +1798,13 @@ body{
 
     </div>
 
-
     <div class="coupon">
 
       <div>
-
-        <strong>
-          Hacer más actividades juntos 🤗
-        </strong>
-
+        <strong>Hacer más actividades juntos 🤗</strong>
         <p style="font-size:11px;color:#777;margin-top:4px;">
           puedes darme ideas de lo que quieras hacer.
         </p>
-
       </div>
 
       <button class="claim-btn">
@@ -2245,19 +1822,14 @@ body{
      SORPRESA
 ====================================================== -->
 
-<div
-  id="win-sorpresa"
-  class="window"
->
+<div id="win-sorpresa" class="window">
 
   <div class="window-header">
 
     <div class="window-dots">
-
       <button class="dot dot-close" data-close="win-sorpresa"></button>
       <button class="dot dot-min" data-min="win-sorpresa"></button>
       <button class="dot dot-max" data-max="win-sorpresa"></button>
-
     </div>
 
     <div class="window-title">
@@ -2272,10 +1844,7 @@ body{
       Hay algo escondido aquí...
     </p>
 
-    <div
-      class="gift"
-      id="gift-btn"
-    >
+    <div class="gift" id="gift-btn">
       🎁
     </div>
 
@@ -2292,19 +1861,14 @@ body{
      PAPELERA
 ====================================================== -->
 
-<div
-  id="win-papelera"
-  class="window"
->
+<div id="win-papelera" class="window">
 
   <div class="window-header">
 
     <div class="window-dots">
-
       <button class="dot dot-close" data-close="win-papelera"></button>
       <button class="dot dot-min" data-min="win-papelera"></button>
       <button class="dot dot-max" data-max="win-papelera"></button>
-
     </div>
 
     <div class="window-title">
@@ -2340,19 +1904,14 @@ body{
      VIVI RUNNER
 ====================================================== -->
 
-<div
-  id="win-juego"
-  class="window game-window"
->
+<div id="win-juego" class="window game-window">
 
   <div class="window-header">
 
     <div class="window-dots">
-
       <button class="dot dot-close" data-close="win-juego"></button>
       <button class="dot dot-min" data-min="win-juego"></button>
       <button class="dot dot-max" data-max="win-juego"></button>
-
     </div>
 
     <div class="window-title">
@@ -2383,38 +1942,25 @@ body{
 
     <canvas id="gameCanvas"></canvas>
 
-    <div
-      class="game-mobile-help"
-      id="mobileGameHelp"
-    >
+    <div class="game-mobile-help">
       Toca la pantalla para saltar ❤️
     </div>
 
-    <div
-      class="game-overlay"
-      id="gameOverlay"
-    >
+    <div class="game-overlay" id="gameOverlay">
 
       <div class="game-over-title">
         ¡Game Over! 💔
       </div>
 
       <div class="game-over-score">
-
         Puntuación:
         <b id="finalScore">0</b>
-
         <br>
-
         Corazones:
         <b id="finalHearts">0</b>
-
       </div>
 
-      <button
-        class="game-btn"
-        id="restartGame"
-      >
+      <button class="game-btn" id="restartGame">
         Volver a jugar ❤️
       </button>
 
@@ -2426,15 +1972,12 @@ body{
 
 
 <!-- =====================================================
-     VISOR DE FOTOS
+     VISOR
 ====================================================== -->
 
 <div id="image-viewer">
 
-  <button
-    class="viewer-close"
-    id="viewer-close"
-  >
+  <button class="viewer-close" id="viewer-close">
     ×
   </button>
 
@@ -2464,14 +2007,13 @@ body{
 
 <script>
 
-
 /* =====================================================
-   DATOS DE VIVIOS
+   DATOS
 ====================================================== */
 
-const appData = {
+const appData={
 
-  carta: `Hola mi gorda hermosa❤️
+  carta:`Hola mi gorda hermosa❤️
 
  Espero que estés bien,hace mucho tiempo que no te hacia una carta y creo que ya era hora además aprovechando que ya volvimos a estar juntos y siendo hoy un dia 30 que pues ese día es nuestra fecha especial, tenemos ya 2 años y 2 meses de habernos hecho novios y la verdad que quiero agradecerte por todo lo bueno que me has regalado por todos los momentos bellos que hemos vivido y a pesar de que tuviéramos momentos no tan lindos pues igual creo que nos han servido de alguna forma para mejorar como personas aprender de los errores y no volver a caer en ellos, de verdad no sabes cuanto te amo y si es una palabra que te repito mucho pero es que pues te amo y me encanta decirte cuanto te amo mi amor eres una mujer increíble y de verdad eres la persona con la que me quiero poner viejito aun recuerdo el día que nos conocimos esa noche jugando free totalmente random sin esperar que llegaramos a todo esto jamás me hubiera imaginado que llegarias a significar tanto para mi bueno en realidad eres mi todo sabes cada momento que hemos vivido, cada cosa linda que nos hemos dicho, cada llamada, cada mensaje todas esas cosas las voy a atesorar por el resto de mi vida las palabras sobran cuando se trata de ti mi amor me has hecho sentir el hombre más feliz del mundo, el más amado, el más afortunado por tenerte eres motivación para seguir adelante, eres mi motivación para ser un mejor hombre cada día por que quiero que mi mejor versión la disfrutes, se que eh cometido muchos errores y siento que ya te estoy demostrando que los estoy cambiando y espero que lo estes notando eres mi primer y último pensamiento del día, te pienso al despertar y te pienso antes de dormir estoy perdidamente enamorado de ti y lo que más deseo en este mundo es que tu y yo cumplamos todas esas promesas que nos hicimos esos sueños en conjunto que tenemos que los hagamos realidad y se que asi va a ser por que vamos a poner de nuestra parte para que sea así mi amor gracias por estar en mi vida, gracias por elegirme a mi como el hombre con el que quieres estar eres una mujer maravillosa, bella, hermosa y divina por dentro y por fuera mi vida sin ti no sería igual eres todo para mi y no me da miedo decírtelo tu sabes el papel tan importante que tienes en mi vida se que estamos madurando y que esto nos va durar para siempre mientras nos sigamos amando incondicionalmente y mientras el estar lejos del otro no sea una opción se que todo va a estar bien contigo a mi lado la vida es hermosa y eso lo tengo muy presente se que no es una carta tan larga pero espero que te haya gustado y que disfrutes de todo esto que hice para ti con mucho amor, te amo te amo infinitamente Viviana Margoth🥺❤️`,
 
@@ -2479,10 +2021,7 @@ const appData = {
 
   fotos:Array.from(
     {length:31},
-    (_,i)=>
-      'assets/fotos/foto' +
-      String(i+1).padStart(2,'0') +
-      '.jpg'
+    (_,i)=>'assets/fotos/foto'+String(i+1).padStart(2,'0')+'.jpg'
   )
 
 };
@@ -2492,414 +2031,264 @@ const appData = {
    UTILIDADES
 ====================================================== */
 
-const $ =
-  selector =>
-    document.querySelector(selector);
+const $=selector=>document.querySelector(selector);
+const $$=selector=>document.querySelectorAll(selector);
 
-const $$ =
-  selector =>
-    document.querySelectorAll(selector);
-
-let zIndex = 3000;
+let zIndex=3000;
 
 
 /* =====================================================
-   ABRIR VENTANA
+   VENTANAS
 ====================================================== */
 
 function abrirVentana(id){
 
-  const w =
-    document.getElementById(id);
+  const w=document.getElementById(id);
 
-  if(!w){
-    return;
-  }
+  if(!w)return;
 
-  w.classList.remove(
-    'minimized',
-    'closing'
-  );
-
-  w.classList.add(
-    'active'
-  );
-
-  w.style.zIndex =
-    ++zIndex;
+  w.classList.remove('minimized','closing');
+  w.classList.add('active');
+  w.style.zIndex=++zIndex;
 
   $$('.dock-icon').forEach(
-    icon =>
-      icon.classList.remove('open')
+    icon=>icon.classList.remove('open')
   );
 
   $$('.dock-icon[data-open="'+id+'"]').forEach(
-    icon =>
-      icon.classList.add('open')
+    icon=>icon.classList.add('open')
   );
 
-  if(id === 'win-carta'){
-    typeLetter();
-  }
+  if(id==='win-carta')typeLetter();
 
-  if(id === 'win-juego'){
+  if(id==='win-juego'){
 
-    setTimeout(
-      ()=>{
-        resizeGame();
+    setTimeout(()=>{
 
-        if(!gameStarted){
-          resetGame();
-        }
-      },
-      80
-    );
+      resizeGame();
+
+      if(!gameStarted){
+        resetGame();
+      }
+
+    },80);
 
   }
 
 }
 
 
-/* =====================================================
-   CERRAR VENTANA
-====================================================== */
-
 function cerrarVentana(id){
 
-  const w =
-    document.getElementById(id);
+  const w=document.getElementById(id);
 
-  if(!w){
-    return;
-  }
+  if(!w)return;
 
-  if(id === 'win-juego'){
+  if(id==='win-juego'){
     stopGame();
   }
 
   w.classList.add('closing');
 
-  setTimeout(
-    ()=>{
-      w.classList.remove(
-        'active',
-        'closing'
-      );
+  setTimeout(()=>{
 
-      updateDock(id);
+    w.classList.remove('active','closing');
+    updateDock(id);
 
-    },
-    220
-  );
+  },220);
 
 }
 
 
-/* =====================================================
-   MINIMIZAR
-====================================================== */
-
 function minimizarVentana(id){
 
-  const w =
-    document.getElementById(id);
+  const w=document.getElementById(id);
 
-  if(!w){
-    return;
-  }
+  if(!w)return;
 
-  w.classList.remove(
-    'active'
-  );
-
-  w.classList.add(
-    'minimized'
-  );
+  w.classList.remove('active');
+  w.classList.add('minimized');
 
   updateDock(id);
 
 }
 
 
-/* =====================================================
-   MAXIMIZAR
-====================================================== */
-
 function maximizarVentana(id){
 
-  const w =
-    document.getElementById(id);
+  const w=document.getElementById(id);
 
-  if(!w){
-    return;
-  }
+  if(!w)return;
 
-  w.classList.toggle(
-    'maximized'
-  );
+  w.classList.toggle('maximized');
 
-  if(id === 'win-juego'){
-
-    setTimeout(
-      resizeGame,
-      80
-    );
-
+  if(id==='win-juego'){
+    setTimeout(resizeGame,80);
   }
 
 }
 
-
-/* =====================================================
-   DOCK
-====================================================== */
 
 function updateDock(id){
 
-  $$('.dock-icon[data-open="'+id+'"]')
-    .forEach(
-      icon =>
-        icon.classList.remove('open')
-    );
+  $$('.dock-icon[data-open="'+id+'"]').forEach(
+    icon=>icon.classList.remove('open')
+  );
 
 }
 
 
-/* =====================================================
-   BOTONES data-open
-====================================================== */
+$$('[data-open]').forEach(element=>{
 
-$$('[data-open]').forEach(
-  element => {
+  element.addEventListener('click',event=>{
 
-    element.addEventListener(
-      'click',
-      event => {
+    event.stopPropagation();
 
-        event.stopPropagation();
-
-        abrirVentana(
-          element.dataset.open
-        );
-
-      }
+    abrirVentana(
+      element.dataset.open
     );
 
-  }
-);
+  });
+
+});
 
 
-/* =====================================================
-   BOTONES CERRAR
-====================================================== */
+$$('[data-close]').forEach(element=>{
 
-$$('[data-close]').forEach(
-  element => {
+  element.addEventListener('click',event=>{
 
-    element.addEventListener(
-      'click',
-      event => {
+    event.stopPropagation();
 
-        event.stopPropagation();
-
-        cerrarVentana(
-          element.dataset.close
-        );
-
-      }
+    cerrarVentana(
+      element.dataset.close
     );
 
-  }
-);
+  });
+
+});
 
 
-/* =====================================================
-   BOTONES MINIMIZAR
-====================================================== */
+$$('[data-min]').forEach(element=>{
 
-$$('[data-min]').forEach(
-  element => {
+  element.addEventListener('click',event=>{
 
-    element.addEventListener(
-      'click',
-      event => {
+    event.stopPropagation();
 
-        event.stopPropagation();
-
-        minimizarVentana(
-          element.dataset.min
-        );
-
-      }
+    minimizarVentana(
+      element.dataset.min
     );
 
-  }
-);
+  });
+
+});
 
 
-/* =====================================================
-   BOTONES MAXIMIZAR
-====================================================== */
+$$('[data-max]').forEach(element=>{
 
-$$('[data-max]').forEach(
-  element => {
+  element.addEventListener('click',event=>{
 
-    element.addEventListener(
-      'click',
-      event => {
+    event.stopPropagation();
 
-        event.stopPropagation();
-
-        maximizarVentana(
-          element.dataset.max
-        );
-
-      }
+    maximizarVentana(
+      element.dataset.max
     );
 
-  }
-);
+  });
+
+});
+
+
+$$('.window').forEach(windowElement=>{
+
+  windowElement.addEventListener(
+    'mousedown',
+    ()=>windowElement.style.zIndex=++zIndex
+  );
+
+  windowElement.addEventListener(
+    'touchstart',
+    ()=>windowElement.style.zIndex=++zIndex,
+    {passive:true}
+  );
+
+});
 
 
 /* =====================================================
-   Z-INDEX
+   DRAG
 ====================================================== */
 
-$$('.window').forEach(
-  windowElement => {
+let drag=null;
 
-    windowElement.addEventListener(
-      'mousedown',
-      ()=>{
-        windowElement.style.zIndex =
-          ++zIndex;
-      }
+$$('.window-header').forEach(header=>{
+
+  header.addEventListener('mousedown',event=>{
+
+    if(event.target.classList.contains('dot')){
+      return;
+    }
+
+    const w=header.closest('.window');
+
+    if(w.classList.contains('maximized')){
+      return;
+    }
+
+    const rect=w.getBoundingClientRect();
+
+    drag={
+      windowElement:w,
+      startX:event.clientX,
+      startY:event.clientY,
+      left:rect.left,
+      top:rect.top
+    };
+
+    w.style.transform='none';
+    w.style.left=rect.left+'px';
+    w.style.top=rect.top+'px';
+
+    function move(e){
+
+      if(!drag)return;
+
+      drag.windowElement.style.left=
+        drag.left+e.clientX-drag.startX+'px';
+
+      drag.windowElement.style.top=
+        drag.top+e.clientY-drag.startY+'px';
+
+    }
+
+    function stop(){
+
+      drag=null;
+
+      document.removeEventListener(
+        'mousemove',
+        move
+      );
+
+      document.removeEventListener(
+        'mouseup',
+        stop
+      );
+
+    }
+
+    document.addEventListener(
+      'mousemove',
+      move
     );
 
-    windowElement.addEventListener(
-      'touchstart',
-      ()=>{
-        windowElement.style.zIndex =
-          ++zIndex;
-      },
-      {passive:true}
+    document.addEventListener(
+      'mouseup',
+      stop
     );
 
-  }
-);
+  });
 
-
-/* =====================================================
-   DRAG WINDOWS
-====================================================== */
-
-let drag = null;
-
-
-$$('.window-header').forEach(
-  header => {
-
-    header.addEventListener(
-      'mousedown',
-      event => {
-
-        if(
-          event.target.classList.contains('dot')
-        ){
-          return;
-        }
-
-        const windowElement =
-          header.closest('.window');
-
-        if(
-          windowElement.classList.contains('maximized')
-        ){
-          return;
-        }
-
-        const rect =
-          windowElement.getBoundingClientRect();
-
-        drag = {
-
-          windowElement,
-
-          startX:event.clientX,
-
-          startY:event.clientY,
-
-          left:rect.left,
-
-          top:rect.top
-
-        };
-
-        windowElement.style.transform =
-          'none';
-
-        windowElement.style.left =
-          rect.left + 'px';
-
-        windowElement.style.top =
-          rect.top + 'px';
-
-
-        function move(e){
-
-          if(!drag){
-            return;
-          }
-
-          drag.windowElement.style.left =
-            (
-              drag.left +
-              e.clientX -
-              drag.startX
-            ) + 'px';
-
-          drag.windowElement.style.top =
-            (
-              drag.top +
-              e.clientY -
-              drag.startY
-            ) + 'px';
-
-        }
-
-
-        function stop(){
-
-          drag = null;
-
-          document.removeEventListener(
-            'mousemove',
-            move
-          );
-
-          document.removeEventListener(
-            'mouseup',
-            stop
-          );
-
-        }
-
-
-        document.addEventListener(
-          'mousemove',
-          move
-        );
-
-        document.addEventListener(
-          'mouseup',
-          stop
-        );
-
-      }
-    );
-
-  }
-);
+});
 
 
 /* =====================================================
@@ -2910,48 +2299,31 @@ let typingTimer;
 
 function typeLetter(){
 
-  clearTimeout(
-    typingTimer
-  );
+  clearTimeout(typingTimer);
 
-  const element =
-    $('#display-carta');
+  const element=$('#display-carta');
 
-  if(!element){
-    return;
-  }
+  if(!element)return;
 
-  const text =
-    appData.carta;
+  const text=appData.carta;
 
-  if(
-    element.dataset.done === text
-  ){
-    return;
-  }
+  if(element.dataset.done===text)return;
 
-  element.dataset.done =
-    text;
+  element.dataset.done=text;
+  element.textContent='';
 
-  element.textContent =
-    '';
-
-  let index = 0;
+  let index=0;
 
   function write(){
 
-    if(index < text.length){
+    if(index<text.length){
 
-      element.textContent +=
-        text[index];
+      element.textContent+=text[index++];
 
-      index++;
-
-      typingTimer =
-        setTimeout(
-          write,
-          12
-        );
+      typingTimer=setTimeout(
+        write,
+        12
+      );
 
     }
 
@@ -2963,93 +2335,50 @@ function typeLetter(){
 
 
 /* =====================================================
-   RENDER APP
+   GALERÍA
 ====================================================== */
 
 function renderApp(){
 
   try{
 
-    document.body.style.backgroundImage =
+    document.body.style.backgroundImage=
       'url("assets/fondo.jpg")';
 
+    const gallery=$('#display-galeria');
 
-    const gallery =
-      $('#display-galeria');
+    gallery.innerHTML='';
 
-    gallery.innerHTML =
-      '';
+    appData.fotos.forEach((src,index)=>{
 
+      const card=document.createElement('div');
 
-    appData.fotos.forEach(
-      (src,index)=>{
+      card.className='photo-card';
+      card.style.animationDelay=(index*.07)+'s';
 
-        const card =
-          document.createElement('div');
+      const image=document.createElement('img');
 
-        card.className =
-          'photo-card';
+      image.src=src;
+      image.alt='Foto '+(index+1);
+      image.loading='lazy';
+      image.draggable=false;
 
-        card.style.animationDelay =
-          (index * .07) + 's';
+      const caption=document.createElement('p');
 
+      caption.textContent='Foto #'+(index+1);
 
-        const image =
-          document.createElement('img');
+      card.append(image,caption);
 
-        image.src =
-          src;
+      card.addEventListener(
+        'click',
+        ()=>openViewer(index)
+      );
 
-        image.alt =
-          'Foto ' + (index + 1);
+      gallery.appendChild(card);
 
-        image.loading =
-          'lazy';
+    });
 
-        image.draggable =
-          false;
-
-
-        image.onerror =
-          ()=>{
-            console.error(
-              'No se pudo cargar:',
-              src
-            );
-          };
-
-
-        const caption =
-          document.createElement('p');
-
-        caption.textContent =
-          'Foto #' + (index + 1);
-
-
-        card.append(
-          image,
-          caption
-        );
-
-
-        card.addEventListener(
-          'click',
-          ()=>{
-            openViewer(index);
-          }
-        );
-
-
-        gallery.appendChild(
-          card
-        );
-
-      }
-    );
-
-
-    $('#display-carta').dataset.done =
-      '';
+    $('#display-carta').dataset.done='';
 
   }catch(error){
 
@@ -3063,163 +2392,101 @@ function renderApp(){
 }
 
 
-/* =====================================================
-   PRECARGAR FOTOS
-====================================================== */
-
 function preloadPhotos(){
 
-  appData.fotos.forEach(
-    src => {
+  appData.fotos.forEach(src=>{
 
-      const image =
-        new Image();
+    const image=new Image();
+    image.src=src;
 
-      image.src =
-        src;
-
-    }
-  );
+  });
 
 }
 
 
 /* =====================================================
-   VISOR DE FOTOS
+   VISOR
 ====================================================== */
 
-let viewerIndex = 0;
-
+let viewerIndex=0;
 
 function openViewer(index){
 
-  if(
-    !appData.fotos.length
-  ){
-    return;
-  }
+  if(!appData.fotos.length)return;
 
-  viewerIndex =
-    index;
+  viewerIndex=index;
 
   updateViewer();
 
-  $('#image-viewer')
-    .classList.add('show');
+  $('#image-viewer').classList.add('show');
 
 }
 
 
 function updateViewer(){
 
-  if(
-    !appData.fotos.length
-  ){
-    return;
-  }
+  const source=appData.fotos[viewerIndex];
 
-  const source =
-    appData.fotos[viewerIndex];
+  $('#viewer-img').src=source;
 
-  $('#viewer-img').src =
-    source;
-
-  $('#viewer-caption').textContent =
-    'Foto ' +
-    (viewerIndex + 1) +
-    ' de ' +
-    appData.fotos.length;
+  $('#viewer-caption').textContent=
+    'Foto '+(viewerIndex+1)+' de '+appData.fotos.length;
 
 }
 
 
-/* =====================================================
-   VISOR: CERRAR
-====================================================== */
-
-$('#viewer-close').onclick =
-  ()=>{
-    $('#image-viewer')
-      .classList.remove('show');
-  };
+$('#viewer-close').onclick=()=>{
+  $('#image-viewer').classList.remove('show');
+};
 
 
-/* =====================================================
-   VISOR: ANTERIOR
-====================================================== */
+$('#viewer-prev').onclick=()=>{
 
-$('#viewer-prev').onclick =
-  ()=>{
+  viewerIndex=
+    (viewerIndex-1+appData.fotos.length)%
+    appData.fotos.length;
 
-    viewerIndex =
-      (
-        viewerIndex -
-        1 +
-        appData.fotos.length
-      ) %
-      appData.fotos.length;
+  updateViewer();
 
-    updateViewer();
+};
 
-  };
+
+$('#viewer-next').onclick=()=>{
+
+  viewerIndex=
+    (viewerIndex+1)%
+    appData.fotos.length;
+
+  updateViewer();
+
+};
 
 
 /* =====================================================
-   VISOR: SIGUIENTE
+   SWIPE
 ====================================================== */
 
-$('#viewer-next').onclick =
-  ()=>{
+const viewer=$('#image-viewer');
+const viewerImage=$('#viewer-img');
 
-    viewerIndex =
-      (
-        viewerIndex +
-        1
-      ) %
-      appData.fotos.length;
-
-    updateViewer();
-
-  };
-
-
-/* =====================================================
-   SWIPE EN ANDROID
-====================================================== */
-
-const viewer =
-  $('#image-viewer');
-
-const viewerImage =
-  $('#viewer-img');
-
-let touchStartX = 0;
-let touchStartY = 0;
-let touchStartTime = 0;
-
+let touchStartX=0;
+let touchStartY=0;
+let touchStartTime=0;
 
 viewer.addEventListener(
   'touchstart',
-  event => {
+  event=>{
 
     if(
       !event.touches ||
-      event.touches.length !== 1
-    ){
-      return;
-    }
+      event.touches.length!==1
+    )return;
 
-    const touch =
-      event.touches[0];
+    const touch=event.touches[0];
 
-    touchStartX =
-      touch.clientX;
-
-    touchStartY =
-      touch.clientY;
-
-    touchStartTime =
-      Date.now();
+    touchStartX=touch.clientX;
+    touchStartY=touch.clientY;
+    touchStartTime=Date.now();
 
   },
   {passive:true}
@@ -3228,55 +2495,28 @@ viewer.addEventListener(
 
 viewer.addEventListener(
   'touchend',
-  event => {
+  event=>{
 
     if(
       !event.changedTouches ||
-      event.changedTouches.length !== 1
-    ){
-      return;
-    }
+      event.changedTouches.length!==1
+    )return;
 
-    const touch =
-      event.changedTouches[0];
+    const touch=event.changedTouches[0];
 
-    const deltaX =
-      touch.clientX -
-      touchStartX;
+    const deltaX=touch.clientX-touchStartX;
+    const deltaY=touch.clientY-touchStartY;
 
-    const deltaY =
-      touch.clientY -
-      touchStartY;
+    if(Date.now()-touchStartTime>1200)return;
 
-    const duration =
-      Date.now() -
-      touchStartTime;
+    if(Math.abs(deltaX)<40)return;
 
+    if(Math.abs(deltaX)<=Math.abs(deltaY))return;
 
-    if(duration > 1200){
-      return;
-    }
-
-    if(Math.abs(deltaX) < 40){
-      return;
-    }
-
-    if(
-      Math.abs(deltaX) <=
-      Math.abs(deltaY)
-    ){
-      return;
-    }
-
-
-    if(deltaX < 0){
-
+    if(deltaX<0){
       $('#viewer-next').click();
-
     }else{
-
       $('#viewer-prev').click();
-
     }
 
   },
@@ -3286,9 +2526,7 @@ viewer.addEventListener(
 
 viewerImage.addEventListener(
   'dragstart',
-  event => {
-    event.preventDefault();
-  }
+  event=>event.preventDefault()
 );
 
 
@@ -3296,49 +2534,33 @@ viewerImage.addEventListener(
    VALES
 ====================================================== */
 
-$$('.claim-btn').forEach(
-  button => {
+$$('.claim-btn').forEach(button=>{
 
-    button.addEventListener(
-      'click',
-      ()=>{
+  button.addEventListener('click',()=>{
 
-        button.textContent =
-          '¡CANJEADO! ❤️';
+    button.textContent='¡CANJEADO! ❤️';
+    button.classList.add('claimed');
 
-        button.classList.add(
-          'claimed'
-        );
+    showToast('Vale canjeado 💕');
 
-        showToast(
-          'Vale canjeado 💕'
-        );
+  });
 
-      }
-    );
-
-  }
-);
+});
 
 
 /* =====================================================
    REGALO
 ====================================================== */
 
-$('#gift-btn').addEventListener(
-  'click',
-  ()=>{
+$('#gift-btn').addEventListener('click',()=>{
 
-    $('#gift-text').style.display =
-      'block';
+  $('#gift-text').style.display='block';
 
-    $('#gift-btn').style.animation =
-      'none';
+  $('#gift-btn').style.animation='none';
 
-    burstHearts();
+  burstHearts();
 
-  }
-);
+});
 
 
 /* =====================================================
@@ -3347,14 +2569,11 @@ $('#gift-btn').addEventListener(
 
 function updateClock(){
 
-  const clock =
-    $('#mac-clock');
+  const clock=$('#mac-clock');
 
-  if(!clock){
-    return;
-  }
+  if(!clock)return;
 
-  clock.textContent =
+  clock.textContent=
     new Date().toLocaleString(
       'es-ES',
       {
@@ -3382,30 +2601,19 @@ setInterval(
 
 function showToast(message){
 
-  const previous =
-    document.querySelector('.toast');
+  const previous=document.querySelector('.toast');
 
-  if(previous){
-    previous.remove();
-  }
+  if(previous)previous.remove();
 
-  const toast =
-    document.createElement('div');
+  const toast=document.createElement('div');
 
-  toast.className =
-    'toast';
+  toast.className='toast';
+  toast.textContent=message;
 
-  toast.textContent =
-    message;
-
-  document.body.appendChild(
-    toast
-  );
+  document.body.appendChild(toast);
 
   setTimeout(
-    ()=>{
-      toast.remove();
-    },
+    ()=>toast.remove(),
     2200
   );
 
@@ -3418,42 +2626,31 @@ function showToast(message){
 
 function createHeart(x,y){
 
-  const heart =
-    document.createElement('div');
+  const heart=document.createElement('div');
 
-  heart.className =
-    'click-heart';
+  heart.className='click-heart';
 
-  const hearts =
-    [
-      '💖',
-      '💕',
-      '❤️',
-      '💗'
-    ];
+  const hearts=[
+    '💖',
+    '💕',
+    '❤️',
+    '💗'
+  ];
 
-  heart.textContent =
+  heart.textContent=
     hearts[
       Math.floor(
-        Math.random() *
-        hearts.length
+        Math.random()*hearts.length
       )
     ];
 
-  heart.style.left =
-    x + 'px';
+  heart.style.left=x+'px';
+  heart.style.top=y+'px';
 
-  heart.style.top =
-    y + 'px';
-
-  document.body.appendChild(
-    heart
-  );
+  document.body.appendChild(heart);
 
   setTimeout(
-    ()=>{
-      heart.remove();
-    },
+    ()=>heart.remove(),
     900
   );
 
@@ -3462,21 +2659,11 @@ function createHeart(x,y){
 
 document.addEventListener(
   'click',
-  event => {
+  event=>{
 
     if(
       event.target.closest(
-        'button,' +
-        'input,' +
-        'textarea,' +
-        '.window-header,' +
-        '.dock,' +
-        '.desktop-item,' +
-        '#image-viewer,' +
-        '#gameCanvas,' +
-        '#laptop-intro,' +
-        '#boot,' +
-        '#login'
+        'button,input,textarea,.window-header,.dock,.desktop-item,#image-viewer,#gameCanvas'
       )
     ){
       return;
@@ -3491,36 +2678,20 @@ document.addEventListener(
 );
 
 
-/* =====================================================
-   EXPLOSIÓN DE CORAZONES
-====================================================== */
-
 function burstHearts(){
 
-  for(
-    let i = 0;
-    i < 14;
-    i++
-  ){
+  for(let i=0;i<14;i++){
 
-    setTimeout(
-      ()=>{
+    setTimeout(()=>{
 
-        createHeart(
+      createHeart(
+        innerWidth/2+
+        (Math.random()-.5)*220,
+        innerHeight/2+
+        (Math.random()-.5)*120
+      );
 
-          innerWidth / 2 +
-          (Math.random() - .5) *
-          220,
-
-          innerHeight / 2 +
-          (Math.random() - .5) *
-          120
-
-        );
-
-      },
-      i * 45
-    );
+    },i*45);
 
   }
 
@@ -3531,121 +2702,81 @@ function burstHearts(){
    VIVI RUNNER
 ====================================================== */
 
-const canvas =
-  $('#gameCanvas');
+const canvas=$('#gameCanvas');
+const ctx=canvas.getContext('2d');
 
-const ctx =
-  canvas.getContext('2d');
+const gameOverlay=$('#gameOverlay');
+const gameScoreEl=$('#gameScore');
+const heartScoreEl=$('#heartScore');
+const finalScoreEl=$('#finalScore');
+const finalHeartsEl=$('#finalHearts');
+const restartGame=$('#restartGame');
 
-const gameOverlay =
-  $('#gameOverlay');
+let gameRunning=false;
+let gameAnimation=null;
+let gameStarted=false;
 
-const gameScoreEl =
-  $('#gameScore');
+let gameWidth=800;
+let gameHeight=350;
 
-const heartScoreEl =
-  $('#heartScore');
+let score=0;
+let heartsCollected=0;
 
-const finalScoreEl =
-  $('#finalScore');
+let speed=5;
+let groundY=0;
 
-const finalHeartsEl =
-  $('#finalHearts');
+let lastTime=0;
+let obstacleTimer=0;
+let heartTimer=0;
 
-const restartGame =
-  $('#restartGame');
-
-
-let gameRunning = false;
-let gameAnimation = null;
-let gameStarted = false;
-
-let gameWidth = 800;
-let gameHeight = 350;
-
-let score = 0;
-let heartsCollected = 0;
-
-let speed = 5;
-
-let groundY = 0;
-
-let lastTime = 0;
-
-let obstacleTimer = 0;
-let heartTimer = 0;
-
-let obstacles = [];
-let collectibles = [];
+let obstacles=[];
+let collectibles=[];
 
 
-const player = {
-
+const player={
   x:110,
   y:0,
-
   width:42,
   height:68,
-
   velocityY:0,
-
   gravity:.72,
   jumpPower:-13,
-
   grounded:true
-
 };
 
 
-const vivi = {
-
+const vivi={
   x:55,
   y:0,
-
   width:42,
   height:68,
-
   bounce:0
-
 };
 
 
 /* =====================================================
-   REDIMENSIONAR JUEGO
+   REDIMENSIONAR
 ====================================================== */
 
 function resizeGame(){
 
-  if(!canvas){
-    return;
-  }
+  if(!canvas)return;
 
-  const rect =
-    canvas.getBoundingClientRect();
+  const rect=canvas.getBoundingClientRect();
 
-  const width =
-    Math.max(300,rect.width);
+  const width=Math.max(300,rect.width);
+  const height=Math.max(200,rect.height);
 
-  const height =
-    Math.max(200,rect.height);
+  const ratio=Math.min(
+    window.devicePixelRatio||1,
+    2
+  );
 
-  const ratio =
-    Math.min(
-      window.devicePixelRatio || 1,
-      2
-    );
+  canvas.width=width*ratio;
+  canvas.height=height*ratio;
 
-  canvas.width =
-    width * ratio;
-
-  canvas.height =
-    height * ratio;
-
-  canvas.style.width =
-    width + 'px';
-
-  canvas.style.height =
-    height + 'px';
+  canvas.style.width=width+'px';
+  canvas.style.height=height+'px';
 
   ctx.setTransform(
     ratio,
@@ -3656,26 +2787,16 @@ function resizeGame(){
     0
   );
 
-  gameWidth =
-    width;
+  gameWidth=width;
+  gameHeight=height;
 
-  gameHeight =
-    height;
-
-  groundY =
-    gameHeight - 52;
+  groundY=gameHeight-52;
 
   if(player.grounded){
-
-    player.y =
-      groundY -
-      player.height;
-
+    player.y=groundY-player.height;
   }
 
-  vivi.y =
-    groundY -
-    vivi.height;
+  vivi.y=groundY-vivi.height;
 
 }
 
@@ -3683,155 +2804,97 @@ function resizeGame(){
 window.addEventListener(
   'resize',
   ()=>{
+
     if(
       $('#win-juego') &&
       $('#win-juego').classList.contains('active')
     ){
-
       resizeGame();
-
     }
+
   }
 );
 
 
 /* =====================================================
-   INICIAR / REINICIAR
+   JUEGO
 ====================================================== */
-
-function startGameIfNeeded(){
-
-  if(gameRunning){
-    return;
-  }
-
-  gameRunning = true;
-  gameStarted = true;
-
-  lastTime =
-    performance.now();
-
-  gameAnimation =
-    requestAnimationFrame(
-      gameLoop
-    );
-
-}
-
 
 function resetGame(){
 
   resizeGame();
 
-  score = 0;
-  heartsCollected = 0;
+  score=0;
+  heartsCollected=0;
+  speed=5;
 
-  speed = 5;
+  obstacleTimer=0;
+  heartTimer=0;
 
-  obstacleTimer = 0;
-  heartTimer = 0;
+  obstacles=[];
+  collectibles=[];
 
-  obstacles = [];
-  collectibles = [];
+  player.velocityY=0;
+  player.grounded=true;
 
-  player.velocityY = 0;
-  player.grounded = true;
+  player.y=groundY-player.height;
+  vivi.y=groundY-vivi.height;
+  vivi.bounce=0;
 
-  player.y =
-    groundY -
-    player.height;
+  gameScoreEl.textContent='0';
+  heartScoreEl.textContent='0';
+  finalScoreEl.textContent='0';
+  finalHeartsEl.textContent='0';
 
-  vivi.y =
-    groundY -
-    vivi.height;
+  gameOverlay.classList.add('hidden');
 
-  vivi.bounce = 0;
+  gameStarted=true;
+  gameRunning=true;
 
-  gameScoreEl.textContent =
-    '0';
+  lastTime=performance.now();
 
-  heartScoreEl.textContent =
-    '0';
+  cancelAnimationFrame(gameAnimation);
 
-  finalScoreEl.textContent =
-    '0';
-
-  finalHeartsEl.textContent =
-    '0';
-
-  gameOverlay.classList.add(
-    'hidden'
-  );
-
-  gameStarted = true;
-  gameRunning = true;
-
-  lastTime =
-    performance.now();
-
-  cancelAnimationFrame(
-    gameAnimation
-  );
-
-  gameAnimation =
-    requestAnimationFrame(
-      gameLoop
-    );
+  gameAnimation=requestAnimationFrame(gameLoop);
 
 }
 
 
 function stopGame(){
 
-  gameRunning = false;
+  gameRunning=false;
 
-  cancelAnimationFrame(
-    gameAnimation
-  );
+  cancelAnimationFrame(gameAnimation);
 
-  gameAnimation = null;
+  gameAnimation=null;
 
 }
 
-
-/* =====================================================
-   SALTO
-====================================================== */
 
 function jump(){
 
   if(!gameRunning){
-
     resetGame();
-
     return;
-
   }
 
   if(player.grounded){
 
-    player.velocityY =
-      player.jumpPower;
-
-    player.grounded =
-      false;
+    player.velocityY=player.jumpPower;
+    player.grounded=false;
 
   }
 
 }
 
 
-/* =====================================================
-   CONTROLES
-====================================================== */
-
 document.addEventListener(
   'keydown',
-  event => {
+  event=>{
 
     if(
-      event.code === 'Space' ||
-      event.key === 'ArrowUp'
+      event.code==='Space' ||
+      event.key==='ArrowUp'
     ){
 
       if(
@@ -3852,15 +2915,13 @@ document.addEventListener(
 
 canvas.addEventListener(
   'pointerdown',
-  event => {
+  event=>{
 
     event.preventDefault();
 
     if(
       !$('#win-juego').classList.contains('active')
-    ){
-      return;
-    }
+    )return;
 
     jump();
 
@@ -3868,217 +2929,125 @@ canvas.addEventListener(
 );
 
 
-/* =====================================================
-   LOOP
-====================================================== */
-
 function gameLoop(time){
 
-  if(!gameRunning){
-    return;
-  }
+  if(!gameRunning)return;
 
-  const delta =
-    Math.min(
-      (time - lastTime) / 16.67,
-      2
-    );
+  const delta=Math.min(
+    (time-lastTime)/16.67,
+    2
+  );
 
-  lastTime =
-    time;
+  lastTime=time;
 
   updateGame(delta);
-
   drawGame();
 
-  gameAnimation =
-    requestAnimationFrame(
-      gameLoop
-    );
+  gameAnimation=requestAnimationFrame(gameLoop);
 
 }
 
 
-/* =====================================================
-   ACTUALIZAR JUEGO
-====================================================== */
-
 function updateGame(delta){
 
-  score +=
-    0.12 * delta;
+  score+=.12*delta;
 
-  gameScoreEl.textContent =
-    Math.floor(score);
+  gameScoreEl.textContent=Math.floor(score);
 
+  speed=Math.min(
+    9,
+    5+score/350
+  );
 
-  speed =
-    Math.min(
-      9,
-      5 +
-      score / 350
-    );
-
-
-  player.velocityY +=
-    player.gravity * delta;
-
-  player.y +=
-    player.velocityY * delta;
-
+  player.velocityY+=player.gravity*delta;
+  player.y+=player.velocityY*delta;
 
   if(
-    player.y +
-    player.height >=
-    groundY
+    player.y+player.height>=groundY
   ){
 
-    player.y =
-      groundY -
-      player.height;
-
-    player.velocityY =
-      0;
-
-    player.grounded =
-      true;
+    player.y=groundY-player.height;
+    player.velocityY=0;
+    player.grounded=true;
 
   }
 
+  vivi.bounce+=.13*delta;
 
-  vivi.bounce +=
-    .13 * delta;
+  vivi.y=
+    groundY-vivi.height+
+    Math.sin(vivi.bounce)*3;
 
-
-  vivi.y =
-    groundY -
-    vivi.height +
-    Math.sin(vivi.bounce) * 3;
-
-
-  obstacleTimer +=
-    delta;
-
-  heartTimer +=
-    delta;
-
+  obstacleTimer+=delta;
+  heartTimer+=delta;
 
   if(
-    obstacleTimer >
-    Math.max(
-      52,
-      88 -
-      score / 20
-    )
+    obstacleTimer>
+    Math.max(52,88-score/20)
   ){
 
     spawnObstacle();
-
-    obstacleTimer = 0;
+    obstacleTimer=0;
 
   }
 
-
-  if(
-    heartTimer >
-    95
-  ){
+  if(heartTimer>95){
 
     spawnHeart();
-
-    heartTimer = 0;
+    heartTimer=0;
 
   }
 
-
   obstacles.forEach(
-    obstacle => {
-
-      obstacle.x -=
-        speed * delta;
-
-    }
+    obstacle=>obstacle.x-=speed*delta
   );
-
 
   collectibles.forEach(
-    heart => {
-
-      heart.x -=
-        speed * delta;
-
-      heart.rotation +=
-        .05 * delta;
-
+    heart=>{
+      heart.x-=speed*delta;
+      heart.rotation+=.05*delta;
     }
   );
 
+  obstacles=obstacles.filter(
+    obstacle=>obstacle.x+obstacle.width>-40
+  );
 
-  obstacles =
-    obstacles.filter(
-      obstacle =>
-        obstacle.x +
-        obstacle.width >
-        -40
-    );
+  collectibles=collectibles.filter(
+    heart=>heart.x+heart.size>-40
+  );
 
+  for(const obstacle of obstacles){
 
-  collectibles =
-    collectibles.filter(
-      heart =>
-        heart.x +
-        heart.size >
-        -40
-    );
-
-
-  for(
-    const obstacle of obstacles
-  ){
-
-    if(
-      collision(
-        player,
-        obstacle
-      )
-    ){
+    if(collision(player,obstacle)){
 
       endGame();
-
       return;
 
     }
 
   }
 
-
   for(
-    let i = collectibles.length - 1;
-    i >= 0;
+    let i=collectibles.length-1;
+    i>=0;
     i--
   ){
 
-    const heart =
-      collectibles[i];
+    const heart=collectibles[i];
 
     if(
-      circlePlayerCollision(
-        player,
-        heart
-      )
+      circlePlayerCollision(player,heart)
     ){
 
       heartsCollected++;
 
-      heartScoreEl.textContent =
+      heartScoreEl.textContent=
         heartsCollected;
 
-      score += 20;
+      score+=20;
 
-      collectibles.splice(
-        i,
-        1
-      );
+      collectibles.splice(i,1);
 
     }
 
@@ -4087,33 +3056,16 @@ function updateGame(delta){
 }
 
 
-/* =====================================================
-   OBSTÁCULOS
-====================================================== */
-
 function spawnObstacle(){
 
-  const height =
-    28 +
-    Math.random() *
-    34;
-
-  const width =
-    25 +
-    Math.random() *
-    18;
+  const height=28+Math.random()*34;
+  const width=25+Math.random()*18;
 
   obstacles.push({
-
-    x:
-      gameWidth + 20,
-
-    y:
-      groundY - height,
-
+    x:gameWidth+20,
+    y:groundY-height,
     width,
     height
-
   });
 
 }
@@ -4121,138 +3073,81 @@ function spawnObstacle(){
 
 function spawnHeart(){
 
-  const minY =
-    Math.max(
-      65,
-      groundY - 155
-    );
+  const minY=Math.max(
+    65,
+    groundY-155
+  );
 
-  const maxY =
-    groundY - 80;
+  const maxY=groundY-80;
 
   collectibles.push({
-
-    x:
-      gameWidth + 25,
-
-    y:
-      minY +
-      Math.random() *
-      (maxY - minY),
-
+    x:gameWidth+25,
+    y:minY+Math.random()*(maxY-minY),
     size:18,
-
     rotation:0
-
   });
 
 }
 
 
-/* =====================================================
-   COLISIONES
-====================================================== */
-
 function collision(a,b){
 
-  const paddingX = 8;
-  const paddingY = 8;
+  const paddingX=8;
+  const paddingY=8;
 
-  return (
-
-    a.x + paddingX <
-    b.x + b.width &&
-
-    a.x + a.width - paddingX >
-    b.x &&
-
-    a.y + paddingY <
-    b.y + b.height &&
-
-    a.y + a.height - paddingY >
-    b.y
-
+  return(
+    a.x+paddingX<b.x+b.width &&
+    a.x+a.width-paddingX>b.x &&
+    a.y+paddingY<b.y+b.height &&
+    a.y+a.height-paddingY>b.y
   );
 
 }
 
 
-function circlePlayerCollision(
-  player,
-  heart
-){
+function circlePlayerCollision(player,heart){
 
-  const cx =
-    heart.x + heart.size / 2;
+  const cx=heart.x+heart.size/2;
+  const cy=heart.y+heart.size/2;
 
-  const cy =
-    heart.y + heart.size / 2;
-
-  const closestX =
-    Math.max(
-      player.x,
-      Math.min(
-        cx,
-        player.x + player.width
-      )
-    );
-
-  const closestY =
-    Math.max(
-      player.y,
-      Math.min(
-        cy,
-        player.y + player.height
-      )
-    );
-
-  const dx =
-    cx - closestX;
-
-  const dy =
-    cy - closestY;
-
-  return (
-    dx * dx +
-    dy * dy
-  ) <
-  Math.pow(
-    heart.size * .72,
-    2
+  const closestX=Math.max(
+    player.x,
+    Math.min(cx,player.x+player.width)
   );
+
+  const closestY=Math.max(
+    player.y,
+    Math.min(cy,player.y+player.height)
+  );
+
+  const dx=cx-closestX;
+  const dy=cy-closestY;
+
+  return(
+    dx*dx+dy*dy
+  )<Math.pow(heart.size*.72,2);
 
 }
 
-
-/* =====================================================
-   FIN DEL JUEGO
-====================================================== */
 
 function endGame(){
 
-  gameRunning = false;
+  gameRunning=false;
 
-  cancelAnimationFrame(
-    gameAnimation
-  );
+  cancelAnimationFrame(gameAnimation);
 
-  gameAnimation = null;
+  gameAnimation=null;
 
-  finalScoreEl.textContent =
-    Math.floor(score);
+  finalScoreEl.textContent=Math.floor(score);
+  finalHeartsEl.textContent=heartsCollected;
 
-  finalHeartsEl.textContent =
-    heartsCollected;
-
-  gameOverlay.classList.remove(
-    'hidden'
-  );
+  gameOverlay.classList.remove('hidden');
 
 }
 
 
 /* =====================================================
-   DIBUJAR TODO
+   DIBUJO DEL JUEGO
 ====================================================== */
 
 function drawGame(){
@@ -4264,29 +3159,17 @@ function drawGame(){
     gameHeight
   );
 
-
-  /* CIELO */
-
-  const sky =
-    ctx.createLinearGradient(
-      0,
-      0,
-      0,
-      gameHeight
-    );
-
-  sky.addColorStop(
+  const sky=ctx.createLinearGradient(
     0,
-    '#ffdce7'
+    0,
+    0,
+    gameHeight
   );
 
-  sky.addColorStop(
-    1,
-    '#fff7fa'
-  );
+  sky.addColorStop(0,'#ffdce7');
+  sky.addColorStop(1,'#fff7fa');
 
-  ctx.fillStyle =
-    sky;
+  ctx.fillStyle=sky;
 
   ctx.fillRect(
     0,
@@ -4296,206 +3179,108 @@ function drawGame(){
   );
 
 
-  /* SOL */
-
   ctx.beginPath();
 
   ctx.arc(
-    gameWidth - 85,
+    gameWidth-85,
     62,
     28,
     0,
-    Math.PI * 2
+    Math.PI*2
   );
 
-  ctx.fillStyle =
-    'rgba(255,205,112,.65)';
-
+  ctx.fillStyle='rgba(255,205,112,.65)';
   ctx.fill();
 
 
-  /* NUBES */
-
-  drawCloud(
-    100,
-    55,
-    .9
-  );
-
-  drawCloud(
-    gameWidth * .48,
-    82,
-    .65
-  );
+  drawCloud(100,55,.9);
+  drawCloud(gameWidth*.48,82,.65);
 
 
-  /* COLINAS */
-
-  ctx.fillStyle =
-    '#f8cad8';
+  ctx.fillStyle='#f8cad8';
 
   ctx.beginPath();
 
-  ctx.moveTo(
-    0,
+  ctx.moveTo(0,groundY);
+
+  ctx.quadraticCurveTo(
+    gameWidth*.18,
+    groundY-55,
+    gameWidth*.38,
     groundY
   );
 
   ctx.quadraticCurveTo(
-    gameWidth * .18,
-    groundY - 55,
-    gameWidth * .38,
+    gameWidth*.60,
+    groundY-75,
+    gameWidth*.83,
     groundY
   );
 
-  ctx.quadraticCurveTo(
-    gameWidth * .60,
-    groundY - 75,
-    gameWidth * .83,
-    groundY
-  );
-
-  ctx.lineTo(
-    gameWidth,
-    groundY
-  );
-
+  ctx.lineTo(gameWidth,groundY);
   ctx.closePath();
-
   ctx.fill();
 
 
-  /* SUELO */
-
-  ctx.fillStyle =
-    '#fff';
+  ctx.fillStyle='#fff';
 
   ctx.fillRect(
     0,
     groundY,
     gameWidth,
-    gameHeight - groundY
+    gameHeight-groundY
   );
 
 
-  ctx.strokeStyle =
-    '#ffd0dc';
-
-  ctx.lineWidth =
-    2;
+  ctx.strokeStyle='#ffd0dc';
+  ctx.lineWidth=2;
 
   ctx.beginPath();
-
-  ctx.moveTo(
-    0,
-    groundY
-  );
-
-  ctx.lineTo(
-    gameWidth,
-    groundY
-  );
-
+  ctx.moveTo(0,groundY);
+  ctx.lineTo(gameWidth,groundY);
   ctx.stroke();
 
 
-  /* PEQUEÑAS FLORES */
-
   for(
-    let x = 10;
-    x < gameWidth;
-    x += 85
+    let x=10;
+    x<gameWidth;
+    x+=85
   ){
 
-    const offset =
-      Math.sin(
-        x * .08
-      ) * 4;
+    const offset=
+      Math.sin(x*.08)*4;
 
     drawFlower(
       x,
-      groundY + 22 + offset
+      groundY+22+offset
     );
 
   }
 
 
-  /* OBSTÁCULOS */
-
-  obstacles.forEach(
-    drawObstacle
-  );
-
-
-  /* CORAZONES */
-
-  collectibles.forEach(
-    drawCollectible
-  );
-
-
-  /* VIVI */
+  obstacles.forEach(drawObstacle);
+  collectibles.forEach(drawCollectible);
 
   drawVivi();
-
-
-  /* JUGADOR */
-
   drawPlayer();
 
 }
 
 
-/* =====================================================
-   NUBES
-====================================================== */
-
-function drawCloud(
-  x,
-  y,
-  scale
-){
+function drawCloud(x,y,scale){
 
   ctx.save();
 
-  ctx.translate(
-    x,
-    y
-  );
+  ctx.translate(x,y);
+  ctx.scale(scale,scale);
 
-  ctx.scale(
-    scale,
-    scale
-  );
-
-  ctx.fillStyle =
-    'rgba(255,255,255,.72)';
+  ctx.fillStyle='rgba(255,255,255,.72)';
 
   ctx.beginPath();
 
-  ctx.arc(
-    0,
-    8,
-    18,
-    0,
-    Math.PI * 2
-  );
-
-  ctx.arc(
-    20,
-    0,
-    23,
-    0,
-    Math.PI * 2
-  );
-
-  ctx.arc(
-    46,
-    10,
-    17,
-    0,
-    Math.PI * 2
-  );
+  ctx.arc(0,8,18,0,Math.PI*2);
+  ctx.arc(20,0,23,0,Math.PI*2);
+  ctx.arc(46,10,17,0,Math.PI*2);
 
   ctx.fill();
 
@@ -4504,75 +3289,41 @@ function drawCloud(
 }
 
 
-/* =====================================================
-   FLORES
-====================================================== */
-
-function drawFlower(
-  x,
-  y
-){
+function drawFlower(x,y){
 
   ctx.save();
 
-  ctx.translate(
-    x,
-    y
-  );
+  ctx.translate(x,y);
 
-  ctx.strokeStyle =
-    '#9bcf9d';
-
-  ctx.lineWidth =
-    1.5;
+  ctx.strokeStyle='#9bcf9d';
+  ctx.lineWidth=1.5;
 
   ctx.beginPath();
-
-  ctx.moveTo(
-    0,
-    8
-  );
-
-  ctx.lineTo(
-    0,
-    -5
-  );
-
+  ctx.moveTo(0,8);
+  ctx.lineTo(0,-5);
   ctx.stroke();
 
+  ctx.fillStyle='#ff8daa';
 
-  ctx.fillStyle =
-    '#ff8daa';
+  for(let i=0;i<5;i++){
 
-  for(
-    let i = 0;
-    i < 5;
-    i++
-  ){
-
-    const angle =
-      i *
-      Math.PI *
-      2 /
-      5;
+    const angle=i*Math.PI*2/5;
 
     ctx.beginPath();
 
     ctx.arc(
-      Math.cos(angle) * 4,
-      -5 + Math.sin(angle) * 4,
+      Math.cos(angle)*4,
+      -5+Math.sin(angle)*4,
       3,
       0,
-      Math.PI * 2
+      Math.PI*2
     );
 
     ctx.fill();
 
   }
 
-
-  ctx.fillStyle =
-    '#ffd65c';
+  ctx.fillStyle='#ffd65c';
 
   ctx.beginPath();
 
@@ -4581,7 +3332,7 @@ function drawFlower(
     -5,
     2.2,
     0,
-    Math.PI * 2
+    Math.PI*2
   );
 
   ctx.fill();
@@ -4592,49 +3343,36 @@ function drawFlower(
 
 
 /* =====================================================
-   PERSONAJE DEL USUARIO
+   PERSONAJE
 ====================================================== */
 
 function drawPlayer(){
 
-  const x =
-    player.x;
-
-  const y =
-    player.y;
+  const x=player.x;
+  const y=player.y;
 
   ctx.save();
 
-  ctx.translate(
-    x,
-    y
-  );
+  ctx.translate(x,y);
 
-
-  /* SOMBRA */
-
-  ctx.fillStyle =
-    'rgba(0,0,0,.10)';
+  ctx.fillStyle='rgba(0,0,0,.10)';
 
   ctx.beginPath();
 
   ctx.ellipse(
-    player.width / 2,
-    player.height + 2,
+    player.width/2,
+    player.height+2,
     22,
     5,
     0,
     0,
-    Math.PI * 2
+    Math.PI*2
   );
 
   ctx.fill();
 
 
-  /* CUERPO */
-
-  ctx.fillStyle =
-    '#202124';
+  ctx.fillStyle='#202124';
 
   roundRect(
     ctx,
@@ -4648,23 +3386,9 @@ function drawPlayer(){
   ctx.fill();
 
 
-  /* CUELLO */
+  ctx.fillStyle='#f3c7b7';
 
-  ctx.fillStyle =
-    '#f3c7b7';
-
-  ctx.fillRect(
-    18,
-    30,
-    8,
-    9
-  );
-
-
-  /* CARA */
-
-  ctx.fillStyle =
-    '#f3c7b7';
+  ctx.fillRect(18,30,8,9);
 
   ctx.beginPath();
 
@@ -4679,17 +3403,11 @@ function drawPlayer(){
   ctx.fill();
 
 
-  /* PELO FRENCH CROP */
-
-  ctx.fillStyle =
-    '#171717';
+  ctx.fillStyle='#171717';
 
   ctx.beginPath();
 
-  ctx.moveTo(
-    7,
-    16
-  );
+  ctx.moveTo(7,16);
 
   ctx.quadraticCurveTo(
     6,
@@ -4705,123 +3423,47 @@ function drawPlayer(){
     14
   );
 
-  ctx.lineTo(
-    34,
-    18
-  );
-
-  ctx.lineTo(
-    29,
-    11
-  );
-
-  ctx.lineTo(
-    25,
-    17
-  );
-
-  ctx.lineTo(
-    20,
-    11
-  );
-
-  ctx.lineTo(
-    15,
-    17
-  );
-
-  ctx.lineTo(
-    10,
-    12
-  );
+  ctx.lineTo(34,18);
+  ctx.lineTo(29,11);
+  ctx.lineTo(25,17);
+  ctx.lineTo(20,11);
+  ctx.lineTo(15,17);
+  ctx.lineTo(10,12);
 
   ctx.closePath();
-
   ctx.fill();
 
 
-  /* GAFAS */
-
-  ctx.strokeStyle =
-    '#222';
-
-  ctx.lineWidth =
-    2;
-
-  ctx.fillStyle =
-    'rgba(255,255,255,.28)';
+  ctx.strokeStyle='#222';
+  ctx.lineWidth=2;
+  ctx.fillStyle='rgba(255,255,255,.28)';
 
   ctx.beginPath();
 
-  ctx.roundRect(
-    8,
-    17,
-    11,
-    8,
-    2
-  );
-
-  ctx.roundRect(
-    24,
-    17,
-    11,
-    8,
-    2
-  );
+  ctx.roundRect(8,17,11,8,2);
+  ctx.roundRect(24,17,11,8,2);
 
   ctx.fill();
+  ctx.stroke();
 
+  ctx.beginPath();
+  ctx.moveTo(19,20);
+  ctx.lineTo(24,20);
   ctx.stroke();
 
 
-  ctx.beginPath();
-
-  ctx.moveTo(
-    19,
-    20
-  );
-
-  ctx.lineTo(
-    24,
-    20
-  );
-
-  ctx.stroke();
-
-
-  /* OJOS */
-
-  ctx.fillStyle =
-    '#5b3b2d';
+  ctx.fillStyle='#5b3b2d';
 
   ctx.beginPath();
 
-  ctx.arc(
-    14,
-    21,
-    1.5,
-    0,
-    Math.PI * 2
-  );
-
-  ctx.arc(
-    29,
-    21,
-    1.5,
-    0,
-    Math.PI * 2
-  );
+  ctx.arc(14,21,1.5,0,Math.PI*2);
+  ctx.arc(29,21,1.5,0,Math.PI*2);
 
   ctx.fill();
 
 
-  /* SONRISA */
-
-  ctx.strokeStyle =
-    '#9e4b52';
-
-  ctx.lineWidth =
-    1.4;
+  ctx.strokeStyle='#9e4b52';
+  ctx.lineWidth=1.4;
 
   ctx.beginPath();
 
@@ -4829,103 +3471,62 @@ function drawPlayer(){
     21.5,
     26,
     4,
-    0.15,
-    Math.PI - .15
+    .15,
+    Math.PI-.15
   );
 
   ctx.stroke();
 
 
-  /* PIERNAS */
+  ctx.strokeStyle='#202124';
+  ctx.lineWidth=6;
+  ctx.lineCap='round';
 
-  ctx.strokeStyle =
-    '#202124';
-
-  ctx.lineWidth =
-    6;
-
-  ctx.lineCap =
-    'round';
-
-  const running =
-    Math.sin(
-      performance.now() * .018
-    ) * 4;
+  const running=
+    Math.sin(performance.now()*.018)*4;
 
   ctx.beginPath();
 
-  ctx.moveTo(
-    16,
-    62
-  );
+  ctx.moveTo(16,62);
+  ctx.lineTo(13-running,68);
 
-  ctx.lineTo(
-    13 - running,
-    68
-  );
-
-  ctx.moveTo(
-    27,
-    62
-  );
-
-  ctx.lineTo(
-    30 + running,
-    68
-  );
+  ctx.moveTo(27,62);
+  ctx.lineTo(30+running,68);
 
   ctx.stroke();
-
 
   ctx.restore();
 
 }
 
 
-/* =====================================================
-   VIVI
-====================================================== */
-
 function drawVivi(){
 
-  const x =
-    vivi.x;
-
-  const y =
-    vivi.y;
+  const x=vivi.x;
+  const y=vivi.y;
 
   ctx.save();
 
-  ctx.translate(
-    x,
-    y
-  );
+  ctx.translate(x,y);
 
-
-  /* SOMBRA */
-
-  ctx.fillStyle =
-    'rgba(0,0,0,.09)';
+  ctx.fillStyle='rgba(0,0,0,.09)';
 
   ctx.beginPath();
 
   ctx.ellipse(
-    vivi.width / 2,
-    vivi.height + 2,
+    vivi.width/2,
+    vivi.height+2,
     21,
     5,
     0,
     0,
-    Math.PI * 2
+    Math.PI*2
   );
 
   ctx.fill();
 
 
-  /* CUERPO */
-
-  ctx.fillStyle =
-    '#b96c86';
+  ctx.fillStyle='#b96c86';
 
   roundRect(
     ctx,
@@ -4939,30 +3540,15 @@ function drawVivi(){
   ctx.fill();
 
 
-  /* CUELLO */
-
-  ctx.fillStyle =
-    '#f5c9b8';
-
-  ctx.fillRect(
-    17,
-    30,
-    9,
-    9
-  );
+  ctx.fillStyle='#f5c9b8';
+  ctx.fillRect(17,30,9,9);
 
 
-  /* CABELLO ROJIZO DETRÁS */
-
-  ctx.fillStyle =
-    '#a94d38';
+  ctx.fillStyle='#a94d38';
 
   ctx.beginPath();
 
-  ctx.moveTo(
-    6,
-    13
-  );
+  ctx.moveTo(6,13);
 
   ctx.quadraticCurveTo(
     4,
@@ -4978,10 +3564,7 @@ function drawVivi(){
     16
   );
 
-  ctx.lineTo(
-    37,
-    39
-  );
+  ctx.lineTo(37,39);
 
   ctx.quadraticCurveTo(
     31,
@@ -4990,10 +3573,7 @@ function drawVivi(){
     37
   );
 
-  ctx.lineTo(
-    10,
-    39
-  );
+  ctx.lineTo(10,39);
 
   ctx.quadraticCurveTo(
     4,
@@ -5003,14 +3583,10 @@ function drawVivi(){
   );
 
   ctx.closePath();
-
   ctx.fill();
 
 
-  /* CARA */
-
-  ctx.fillStyle =
-    '#f5c9b8';
+  ctx.fillStyle='#f5c9b8';
 
   ctx.beginPath();
 
@@ -5025,43 +3601,19 @@ function drawVivi(){
   ctx.fill();
 
 
-  /* MECHONES NARANJAS */
-
-  ctx.fillStyle =
-    '#b9573b';
+  ctx.fillStyle='#b9573b';
 
   ctx.beginPath();
 
-  ctx.arc(
-    8,
-    18,
-    7,
-    0,
-    Math.PI * 2
-  );
-
-  ctx.arc(
-    36,
-    18,
-    7,
-    0,
-    Math.PI * 2
-  );
+  ctx.arc(8,18,7,0,Math.PI*2);
+  ctx.arc(36,18,7,0,Math.PI*2);
 
   ctx.fill();
 
 
-  /* PARTE SUPERIOR DEL PELO */
-
-  ctx.fillStyle =
-    '#b9573b';
-
   ctx.beginPath();
 
-  ctx.moveTo(
-    7,
-    14
-  );
+  ctx.moveTo(7,14);
 
   ctx.quadraticCurveTo(
     7,
@@ -5099,120 +3651,50 @@ function drawVivi(){
   );
 
   ctx.closePath();
-
   ctx.fill();
 
 
-  /* GAFAS */
-
-  ctx.strokeStyle =
-    '#4a3432';
-
-  ctx.lineWidth =
-    2;
-
-  ctx.fillStyle =
-    'rgba(255,255,255,.32)';
+  ctx.strokeStyle='#4a3432';
+  ctx.lineWidth=2;
+  ctx.fillStyle='rgba(255,255,255,.32)';
 
   ctx.beginPath();
 
-  ctx.roundRect(
-    8,
-    17,
-    11,
-    8,
-    3
-  );
-
-  ctx.roundRect(
-    25,
-    17,
-    11,
-    8,
-    3
-  );
+  ctx.roundRect(8,17,11,8,3);
+  ctx.roundRect(25,17,11,8,3);
 
   ctx.fill();
+  ctx.stroke();
 
+  ctx.beginPath();
+
+  ctx.moveTo(19,20);
+  ctx.lineTo(25,20);
   ctx.stroke();
 
 
-  /* PUENTE */
+  ctx.fillStyle='#5b3a2d';
 
   ctx.beginPath();
 
-  ctx.moveTo(
-    19,
-    20
-  );
-
-  ctx.lineTo(
-    25,
-    20
-  );
-
-  ctx.stroke();
-
-
-  /* OJOS */
-
-  ctx.fillStyle =
-    '#5b3a2d';
-
-  ctx.beginPath();
-
-  ctx.arc(
-    14,
-    21,
-    1.5,
-    0,
-    Math.PI * 2
-  );
-
-  ctx.arc(
-    30,
-    21,
-    1.5,
-    0,
-    Math.PI * 2
-  );
+  ctx.arc(14,21,1.5,0,Math.PI*2);
+  ctx.arc(30,21,1.5,0,Math.PI*2);
 
   ctx.fill();
 
 
-  /* MEJILLAS */
-
-  ctx.fillStyle =
-    'rgba(236,125,129,.35)';
+  ctx.fillStyle='rgba(236,125,129,.35)';
 
   ctx.beginPath();
 
-  ctx.arc(
-    12,
-    27,
-    3,
-    0,
-    Math.PI * 2
-  );
-
-  ctx.arc(
-    32,
-    27,
-    3,
-    0,
-    Math.PI * 2
-  );
+  ctx.arc(12,27,3,0,Math.PI*2);
+  ctx.arc(32,27,3,0,Math.PI*2);
 
   ctx.fill();
 
 
-  /* SONRISA */
-
-  ctx.strokeStyle =
-    '#a84d55';
-
-  ctx.lineWidth =
-    1.4;
+  ctx.strokeStyle='#a84d55';
+  ctx.lineWidth=1.4;
 
   ctx.beginPath();
 
@@ -5221,65 +3703,35 @@ function drawVivi(){
     26,
     4,
     .15,
-    Math.PI - .15
+    Math.PI-.15
   );
 
   ctx.stroke();
 
 
-  /* PIERNAS */
+  ctx.strokeStyle='#7c465b';
+  ctx.lineWidth=6;
+  ctx.lineCap='round';
 
-  ctx.strokeStyle =
-    '#7c465b';
-
-  ctx.lineWidth =
-    6;
-
-  ctx.lineCap =
-    'round';
-
-  const running =
-    Math.sin(
-      performance.now() * .018 + 1
-    ) * 4;
+  const running=
+    Math.sin(performance.now()*.018+1)*4;
 
   ctx.beginPath();
 
-  ctx.moveTo(
-    16,
-    62
-  );
+  ctx.moveTo(16,62);
+  ctx.lineTo(13-running,68);
 
-  ctx.lineTo(
-    13 - running,
-    68
-  );
-
-  ctx.moveTo(
-    27,
-    62
-  );
-
-  ctx.lineTo(
-    30 + running,
-    68
-  );
+  ctx.moveTo(27,62);
+  ctx.lineTo(30+running,68);
 
   ctx.stroke();
-
 
   ctx.restore();
 
 }
 
 
-/* =====================================================
-   OBSTÁCULO
-====================================================== */
-
-function drawObstacle(
-  obstacle
-){
+function drawObstacle(obstacle){
 
   ctx.save();
 
@@ -5288,9 +3740,7 @@ function drawObstacle(
     obstacle.y
   );
 
-
-  ctx.fillStyle =
-    '#d95b73';
+  ctx.fillStyle='#d95b73';
 
   roundRect(
     ctx,
@@ -5303,109 +3753,77 @@ function drawObstacle(
 
   ctx.fill();
 
-
-  ctx.fillStyle =
-    'rgba(255,255,255,.32)';
+  ctx.fillStyle='rgba(255,255,255,.32)';
 
   ctx.beginPath();
 
   ctx.arc(
-    obstacle.width * .35,
-    obstacle.height * .28,
+    obstacle.width*.35,
+    obstacle.height*.28,
     3,
     0,
-    Math.PI * 2
+    Math.PI*2
   );
 
   ctx.arc(
-    obstacle.width * .68,
-    obstacle.height * .52,
+    obstacle.width*.68,
+    obstacle.height*.52,
     2.5,
     0,
-    Math.PI * 2
+    Math.PI*2
   );
 
   ctx.fill();
 
-
-  ctx.fillStyle =
-    '#a83d55';
+  ctx.fillStyle='#a83d55';
 
   ctx.fillRect(
-    obstacle.width * .43,
+    obstacle.width*.43,
     -6,
     3,
     7
   );
 
-
   ctx.restore();
 
 }
 
 
-/* =====================================================
-   CORAZÓN COLECCIONABLE
-====================================================== */
-
-function drawCollectible(
-  heart
-){
+function drawCollectible(heart){
 
   ctx.save();
 
   ctx.translate(
-    heart.x + heart.size / 2,
-    heart.y + heart.size / 2
+    heart.x+heart.size/2,
+    heart.y+heart.size/2
   );
 
-  ctx.rotate(
-    heart.rotation
-  );
-
-  ctx.scale(
-    .75,
-    .75
-  );
+  ctx.rotate(heart.rotation);
+  ctx.scale(.75,.75);
 
   ctx.beginPath();
 
-  ctx.moveTo(
-    0,
-    8
+  ctx.moveTo(0,8);
+
+  ctx.bezierCurveTo(
+    -19,-4,
+    -10,-17,
+    0,-10
   );
 
   ctx.bezierCurveTo(
-    -19,
-    -4,
-    -10,
-    -17,
-    0,
-    -10
+    10,-17,
+    19,-4,
+    0,8
   );
 
-  ctx.bezierCurveTo(
-    10,
-    -17,
-    19,
-    -4,
-    0,
-    8
-  );
-
-  ctx.fillStyle =
-    '#ff2d55';
-
+  ctx.fillStyle='#ff2d55';
   ctx.fill();
 
   ctx.restore();
 
 }
 
-
-/* =====================================================
-   RECTÁNGULO REDONDEADO
-====================================================== */
 
 function roundRect(
   context,
@@ -5416,39 +3834,35 @@ function roundRect(
   radius
 ){
 
-  const r =
-    Math.min(
-      radius,
-      width / 2,
-      height / 2
-    );
+  const r=Math.min(
+    radius,
+    width/2,
+    height/2
+  );
 
   context.beginPath();
 
-  context.moveTo(
-    x + r,
-    y
-  );
+  context.moveTo(x+r,y);
 
   context.arcTo(
-    x + width,
+    x+width,
     y,
-    x + width,
-    y + height,
+    x+width,
+    y+height,
     r
   );
 
   context.arcTo(
-    x + width,
-    y + height,
+    x+width,
+    y+height,
     x,
-    y + height,
+    y+height,
     r
   );
 
   context.arcTo(
     x,
-    y + height,
+    y+height,
     x,
     y,
     r
@@ -5457,7 +3871,7 @@ function roundRect(
   context.arcTo(
     x,
     y,
-    x + width,
+    x+width,
     y,
     r
   );
@@ -5468,12 +3882,12 @@ function roundRect(
 
 
 /* =====================================================
-   BOTÓN REINICIAR
+   REINICIAR
 ====================================================== */
 
 restartGame.addEventListener(
   'click',
-  event => {
+  event=>{
 
     event.stopPropagation();
 
@@ -5484,42 +3898,31 @@ restartGame.addEventListener(
 
 
 /* =====================================================
-   TECLADO
+   ESCAPE / VISOR
 ====================================================== */
 
 document.addEventListener(
   'keydown',
-  event => {
+  event=>{
 
-    if(
-      event.key === 'Escape'
-    ){
+    if(event.key==='Escape'){
 
       $('#image-viewer')
         .classList.remove('show');
 
     }
 
-
     if(
       $('#image-viewer')
         .classList.contains('show')
     ){
 
-      if(
-        event.key === 'ArrowLeft'
-      ){
-
+      if(event.key==='ArrowLeft'){
         $('#viewer-prev').click();
-
       }
 
-      if(
-        event.key === 'ArrowRight'
-      ){
-
+      if(event.key==='ArrowRight'){
         $('#viewer-next').click();
-
       }
 
     }
@@ -5532,28 +3935,20 @@ document.addEventListener(
    ARRANQUE DE VIVIOS
 ====================================================== */
 
-let bootDone = false;
+let bootDone=false;
 
-const INTRO_DURATION = 4200;
+const INTRO_DURATION=4200;
 
-
-/* =====================================================
-   LANZAR SISTEMA
-====================================================== */
 
 function launchOS(){
 
-  if(bootDone){
-    return;
-  }
+  if(bootDone)return;
 
-  bootDone = true;
-
+  bootDone=true;
 
   try{
 
     renderApp();
-
     preloadPhotos();
 
   }catch(error){
@@ -5565,61 +3960,32 @@ function launchOS(){
 
   }
 
-
-  const boot =
-    $('#boot');
+  const boot=$('#boot');
 
   if(boot){
-
-    boot.classList.add(
-      'hide'
-    );
-
+    boot.classList.add('hide');
   }
 
-
-  const login =
-    $('#login');
-
-  if(login){
-
-    login.classList.add(
-      'show'
-    );
-
-  }
+  $('#login').classList.add('show');
 
 }
 
 
-/* =====================================================
-   ARRANCAR BOOT
-====================================================== */
-
 function startBootSequence(){
 
-  const boot =
-    $('#boot');
+  const boot=$('#boot');
 
   if(!boot){
-
     launchOS();
-
     return;
-
   }
 
-
-  boot.classList.add(
-    'boot-ready'
-  );
-
+  boot.classList.add('boot-ready');
 
   setTimeout(
     launchOS,
     1800
   );
-
 
   setTimeout(
     ()=>{
@@ -5633,74 +3999,47 @@ function startBootSequence(){
 }
 
 
-/* =====================================================
-   INTRO DEL PORTÁTIL
-====================================================== */
-
 function startViviOSIntro(){
 
-  const intro =
-    $('#laptop-intro');
+  const intro=$('#laptop-intro');
 
   if(!intro){
 
     startBootSequence();
-
     return;
 
   }
 
+  requestAnimationFrame(()=>{
 
-  requestAnimationFrame(
-    ()=>{
-      requestAnimationFrame(
-        ()=>{
-          intro.classList.add(
-            'play'
-          );
-        }
-      );
-    }
-  );
+    requestAnimationFrame(()=>{
+
+      intro.classList.add('play');
+
+    });
+
+  });
 
 
-  setTimeout(
-    ()=>{
+  setTimeout(()=>{
 
-      intro.classList.add(
-        'finish'
-      );
+    intro.classList.add('finish');
 
+    setTimeout(()=>{
 
-      setTimeout(
-        ()=>{
+      intro.remove();
 
-          if(intro){
+    },900);
 
-            intro.remove();
+    startBootSequence();
 
-          }
-
-        },
-        900
-      );
-
-
-      startBootSequence();
-
-    },
-    INTRO_DURATION
-  );
+  },INTRO_DURATION);
 
 }
 
 
-/* =====================================================
-   INICIAR CUANDO EL DOM ESTÉ LISTO
-====================================================== */
-
 if(
-  document.readyState === 'loading'
+  document.readyState==='loading'
 ){
 
   document.addEventListener(
@@ -5716,32 +4055,24 @@ if(
 }
 
 
-/* =====================================================
-   SEGURIDAD CONTRA INTRO / BOOT CONGELADO
-====================================================== */
+setTimeout(()=>{
 
-setTimeout(
-  ()=>{
+  if(!bootDone){
 
-    if(!bootDone){
+    const boot=$('#boot');
 
-      const boot =
-        $('#boot');
+    if(
+      boot &&
+      !boot.classList.contains('hide')
+    ){
 
-      if(
-        boot &&
-        !boot.classList.contains('hide')
-      ){
-
-        launchOS();
-
-      }
+      launchOS();
 
     }
 
-  },
-  7000
-);
+  }
+
+},7000);
 
 
 /* =====================================================
@@ -5752,22 +4083,17 @@ $('#login-btn').addEventListener(
   'click',
   ()=>{
 
-    $('#login').style.opacity =
-      '0';
+    $('#login').style.opacity='0';
 
-    setTimeout(
-      ()=>{
+    setTimeout(()=>{
 
-        $('#login').style.display =
-          'none';
+      $('#login').style.display='none';
 
-        showToast(
-          'Bienvenida a ViviOS ❤️'
-        );
+      showToast(
+        'Bienvenida a ViviOS ❤️'
+      );
 
-      },
-      700
-    );
+    },700);
 
   }
 );
