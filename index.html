@@ -6,1452 +6,797 @@
 <title>ViviOS - Para Mi Amor ❤️</title>
 
 <style>
-
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-html,body{
-  width:100%;
-  height:100%;
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 }
 
-body{
-  overflow:hidden;
-  background:#111;
-  color:#fff;
-}
-
-/* =========================
-   DESKTOP
-========================= */
-
-#desktop{
-  width:100vw;
-  height:100vh;
-
-  background:
-    linear-gradient(
-      rgba(0,0,0,.12),
-      rgba(0,0,0,.12)
-    ),
-    url("assets/fondo.jpg");
-
-  background-size:cover;
-  background-position:center;
-
-  position:relative;
+body {
+    background: #111;
 }
 
 /* =========================
-   BOOT
+   PANTALLA DE CARGA
 ========================= */
 
-#boot{
-  position:fixed;
-  inset:0;
-
-  background:#050505;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-
-  z-index:99999;
-
-  transition:opacity .6s ease;
+#boot {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: linear-gradient(135deg, #17121d, #25152a, #35152d);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity .6s ease;
 }
 
-.boot-logo{
-  font-size:48px;
-  margin-bottom:25px;
+.boot-content {
+    text-align: center;
 }
 
-.boot-text{
-  color:#aaa;
-  font-size:14px;
+.boot-heart {
+    font-size: 65px;
+    margin-bottom: 20px;
+    animation: heartbeat 1.3s infinite;
 }
 
-.boot-bar{
-  width:220px;
-  height:5px;
-
-  background:#333;
-
-  border-radius:10px;
-
-  overflow:hidden;
-
-  margin-top:20px;
+.boot-title {
+    font-size: 30px;
+    font-weight: 700;
 }
 
-.boot-progress{
-  height:100%;
-  width:0%;
-
-  background:#fff;
-
-  animation:loading 1.5s forwards;
+.boot-subtitle {
+    opacity: .65;
+    margin-top: 10px;
+    font-size: 14px;
 }
 
-@keyframes loading{
+.boot-loading {
+    width: 180px;
+    height: 5px;
+    background: rgba(255,255,255,.15);
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 25px auto 0;
+}
 
-  from{
-    width:0%;
-  }
+.boot-loading div {
+    width: 50%;
+    height: 100%;
+    background: #ff4f91;
+    border-radius: 20px;
+    animation: loading 1.5s infinite ease-in-out;
+}
 
-  to{
-    width:100%;
-  }
+@keyframes loading {
+    0% { transform: translateX(-180px); }
+    100% { transform: translateX(180px); }
+}
 
+@keyframes heartbeat {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.12); }
 }
 
 /* =========================
    LOGIN
 ========================= */
 
-#login{
-  position:fixed;
-  inset:0;
-
-  z-index:9998;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  background:
-    linear-gradient(
-      rgba(0,0,0,.35),
-      rgba(0,0,0,.45)
-    ),
-    url("assets/fondo.jpg");
-
-  background-size:cover;
-  background-position:center;
-
-  transition:opacity .6s ease;
+#login {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        linear-gradient(rgba(20,10,20,.5), rgba(20,10,20,.7)),
+        url("assets/fondo.jpg") center/cover;
+    transition: opacity .6s ease;
 }
 
-.login-box{
-  width:330px;
-
-  padding:35px;
-
-  border-radius:24px;
-
-  background:rgba(255,255,255,.14);
-
-  backdrop-filter:blur(25px);
-  -webkit-backdrop-filter:blur(25px);
-
-  border:1px solid rgba(255,255,255,.25);
-
-  text-align:center;
-
-  box-shadow:
-    0 20px 60px rgba(0,0,0,.35);
+.login-card {
+    width: min(90%, 380px);
+    padding: 35px;
+    text-align: center;
+    color: white;
+    border-radius: 25px;
+    background: rgba(20,20,25,.65);
+    border: 1px solid rgba(255,255,255,.2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 25px 80px rgba(0,0,0,.45);
 }
 
-.login-avatar{
-  width:90px;
-  height:90px;
-
-  margin:0 auto 18px;
-
-  border-radius:50%;
-
-  overflow:hidden;
-
-  border:3px solid rgba(255,255,255,.7);
+.login-heart {
+    font-size: 55px;
+    margin-bottom: 15px;
 }
 
-.login-avatar img{
-  width:100%;
-  height:100%;
-
-  object-fit:cover;
+.login-card h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
 }
 
-.login-title{
-  font-size:24px;
-  font-weight:600;
+.login-card p {
+    opacity: .75;
+    margin-bottom: 25px;
 }
 
-.login-subtitle{
-  color:#ddd;
-
-  font-size:13px;
-
-  margin-top:7px;
-  margin-bottom:25px;
-}
-
-#login-btn{
-  width:100%;
-
-  border:0;
-
-  padding:12px;
-
-  border-radius:12px;
-
-  background:#fff;
-  color:#222;
-
-  font-size:15px;
-  font-weight:600;
-
-  cursor:pointer;
-
-  transition:.2s;
-}
-
-#login-btn:hover{
-  transform:scale(1.03);
+#login-btn {
+    border: 0;
+    color: white;
+    background: linear-gradient(135deg, #ff4f91, #ff286f);
+    padding: 13px 28px;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(255,45,110,.3);
 }
 
 /* =========================
-   TOP BAR
+   ESCRITORIO
 ========================= */
 
-.topbar{
-  position:absolute;
+#desktop {
+    position: fixed;
+    inset: 0;
+    background:
+        linear-gradient(rgba(10,5,15,.15), rgba(10,5,15,.35)),
+        url("assets/fondo.jpg") center/cover no-repeat;
+    color: white;
+}
 
-  top:0;
-  left:0;
-
-  width:100%;
-  height:32px;
-
-  background:rgba(20,20,20,.55);
-
-  backdrop-filter:blur(15px);
-
-  display:flex;
-
-  align-items:center;
-  justify-content:space-between;
-
-  padding:0 14px;
-
-  z-index:100;
-
-  font-size:13px;
+#topbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    background: rgba(15,15,18,.42);
+    backdrop-filter: blur(15px);
+    font-size: 13px;
+    z-index: 100;
 }
 
 .top-left,
-.top-right{
-  display:flex;
-
-  align-items:center;
-
-  gap:15px;
+.top-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
 }
 
-.apple{
-  font-size:17px;
+.apple {
+    font-size: 17px;
 }
 
-/* =========================
-   ICONOS
-========================= */
-
-.desktop-icons{
-  position:absolute;
-
-  top:55px;
-  left:20px;
-
-  display:flex;
-
-  flex-direction:column;
-
-  gap:20px;
-
-  z-index:5;
+.desktop-icons {
+    position: absolute;
+    top: 55px;
+    left: 20px;
+    display: grid;
+    gap: 20px;
 }
 
-.desktop-icon{
-  width:75px;
-
-  text-align:center;
-
-  cursor:pointer;
-
-  user-select:none;
+.desktop-icon {
+    width: 85px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
 }
 
-.desktop-icon .icon{
-  font-size:38px;
-
-  margin-bottom:5px;
-
-  filter:
-    drop-shadow(
-      0 2px 4px rgba(0,0,0,.4)
-    );
+.desktop-icon .icon {
+    width: 58px;
+    height: 58px;
+    margin: auto;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 31px;
+    background: rgba(255,255,255,.14);
+    border: 1px solid rgba(255,255,255,.15);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,.2);
 }
 
-.desktop-icon span{
-  font-size:12px;
-
-  text-shadow:
-    0 2px 4px #000;
+.desktop-icon span {
+    display: block;
+    margin-top: 7px;
+    font-size: 12px;
+    text-shadow: 0 2px 4px #000;
 }
 
 /* =========================
    VENTANAS
 ========================= */
 
-.window{
-  position:absolute;
-
-  width:650px;
-
-  max-width:90vw;
-  max-height:75vh;
-
-  left:50%;
-  top:50%;
-
-  transform:
-    translate(-50%,-50%);
-
-  background:rgba(30,30,30,.82);
-
-  backdrop-filter:blur(25px);
-  -webkit-backdrop-filter:blur(25px);
-
-  border:
-    1px solid rgba(255,255,255,.18);
-
-  border-radius:14px;
-
-  overflow:hidden;
-
-  box-shadow:
-    0 30px 80px rgba(0,0,0,.5);
-
-  z-index:50;
-
-  display:none;
+.window {
+    position: absolute;
+    width: min(850px, 90vw);
+    height: min(600px, 75vh);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 16px;
+    background: rgba(25,25,30,.9);
+    border: 1px solid rgba(255,255,255,.16);
+    box-shadow: 0 30px 100px rgba(0,0,0,.55);
+    backdrop-filter: blur(25px);
+    z-index: 500;
 }
 
-.window-header{
-  height:42px;
-
-  display:flex;
-
-  align-items:center;
-
-  padding:0 14px;
-
-  background:
-    rgba(255,255,255,.08);
-
-  border-bottom:
-    1px solid rgba(255,255,255,.08);
+.window.active {
+    display: flex;
 }
 
-.window-buttons{
-  display:flex;
-
-  gap:7px;
+.window-header {
+    height: 46px;
+    min-height: 46px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0 15px;
+    background: rgba(255,255,255,.07);
+    border-bottom: 1px solid rgba(255,255,255,.08);
 }
 
-.window-button{
-  width:12px;
-  height:12px;
-
-  border-radius:50%;
-
-  cursor:pointer;
+.window-buttons {
+    display: flex;
+    gap: 8px;
 }
 
-.close{
-  background:#ff5f57;
+.window-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
 }
 
-.minimize{
-  background:#febc2e;
+.close {
+    background: #ff5f57;
+    cursor: pointer;
 }
 
-.maximize{
-  background:#28c840;
+.minimize {
+    background: #febc2e;
 }
 
-.window-title{
-  position:absolute;
-
-  left:50%;
-
-  transform:
-    translateX(-50%);
-
-  font-size:13px;
-
-  color:#ddd;
+.maximize {
+    background: #28c840;
 }
 
-.window-content{
-  padding:25px;
+.window-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 13px;
+    font-weight: 600;
+    opacity: .9;
+}
 
-  overflow:auto;
-
-  max-height:
-    calc(75vh - 42px);
+.window-content {
+    flex: 1;
+    overflow: auto;
+    padding: 25px;
 }
 
 /* =========================
    CARTA
 ========================= */
 
-.letter{
-  background:
-    rgba(255,255,255,.96);
-
-  color:#333;
-
-  border-radius:12px;
-
-  padding:30px;
-
-  line-height:1.8;
-
-  white-space:pre-line;
-
-  box-shadow:
-    0 8px 25px rgba(0,0,0,.25);
+.letter {
+    max-width: 680px;
+    margin: auto;
+    padding: 35px;
+    border-radius: 20px;
+    background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+    border: 1px solid rgba(255,255,255,.1);
 }
 
-.letter h2{
-  text-align:center;
+.letter h2 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 25px;
+}
 
-  margin-bottom:20px;
+.letter-text {
+    white-space: pre-line;
+    line-height: 1.9;
+    font-size: 16px;
+    color: rgba(255,255,255,.9);
+}
 
-  color:#d94f70;
+.signature {
+    text-align: right;
+    margin-top: 30px;
+    font-size: 19px;
+    color: #ff78a9;
 }
 
 /* =========================
    GALERÍA
 ========================= */
 
-.gallery{
-  display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
-  gap:12px;
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 15px;
 }
 
-.gallery img{
-  width:100%;
-
-  aspect-ratio:1/1;
-
-  object-fit:cover;
-
-  border-radius:10px;
-
-  cursor:pointer;
-
-  transition:.25s;
-
-  background:#222;
+.gallery img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform .25s, filter .25s;
+    background: rgba(255,255,255,.08);
 }
 
-.gallery img:hover{
-  transform:scale(1.04);
+.gallery img:hover {
+    transform: scale(1.03);
+    filter: brightness(1.1);
 }
 
 /* =========================
-   MUSICA
+   MÚSICA
 ========================= */
 
-.music-player{
-  text-align:center;
+.music-card {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    text-align: center;
+    border-radius: 25px;
+    background: rgba(255,255,255,.07);
 }
 
-.album{
-  width:210px;
-  height:210px;
-
-  margin:
-    10px auto 20px;
-
-  border-radius:15px;
-
-  overflow:hidden;
-
-  box-shadow:
-    0 15px 40px rgba(0,0,0,.4);
+.music-cover {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,.4);
+    margin-bottom: 20px;
 }
 
-.album img{
-  width:100%;
-  height:100%;
-
-  object-fit:cover;
+.music-card h2 {
+    margin-bottom: 7px;
 }
 
-.music-title{
-  font-size:21px;
-  font-weight:600;
+.music-card p {
+    opacity: .65;
+    margin-bottom: 20px;
 }
 
-.music-artist{
-  color:#bbb;
-
-  font-size:14px;
-
-  margin-top:5px;
-  margin-bottom:20px;
-}
-
-#audio-player{
-  width:100%;
+.music-card audio {
+    width: 100%;
 }
 
 /* =========================
    RAZONES
 ========================= */
 
-.reasons{
-  display:grid;
-
-  gap:12px;
+.reasons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 15px;
 }
 
-.reason{
-  padding:18px;
-
-  background:
-    rgba(255,255,255,.08);
-
-  border-radius:12px;
-
-  border:
-    1px solid rgba(255,255,255,.08);
+.reason {
+    padding: 22px;
+    border-radius: 18px;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.08);
 }
 
-.reason-number{
-  font-size:12px;
-
-  color:#ff8fa8;
-
-  margin-bottom:5px;
+.reason .number {
+    color: #ff619a;
+    font-size: 13px;
+    margin-bottom: 10px;
 }
 
-.reason-text{
-  font-size:15px;
+.reason p {
+    line-height: 1.6;
 }
 
 /* =========================
    VALES
 ========================= */
 
-.coupons{
-  display:grid;
-
-  grid-template-columns:
-    repeat(2,1fr);
-
-  gap:15px;
+.coupons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
 }
 
-.coupon{
-  padding:20px;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,100,140,.25),
-      rgba(255,255,255,.08)
-    );
-
-  border:
-    1px dashed rgba(255,255,255,.4);
-
-  border-radius:14px;
-
-  text-align:center;
+.coupon {
+    padding: 25px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(255,80,140,.18), rgba(255,255,255,.05));
+    border: 1px dashed rgba(255,120,170,.45);
+    text-align: center;
 }
 
-.coupon-icon{
-  font-size:35px;
-
-  margin-bottom:8px;
+.coupon .coupon-icon {
+    font-size: 40px;
+    margin-bottom: 12px;
 }
 
-.coupon-title{
-  font-weight:600;
-
-  margin-bottom:6px;
+.coupon h3 {
+    margin-bottom: 8px;
 }
 
-.coupon-description{
-  color:#ccc;
-
-  font-size:13px;
+.coupon p {
+    opacity: .7;
+    line-height: 1.5;
 }
 
 /* =========================
    SORPRESA
 ========================= */
 
-.surprise{
-  text-align:center;
-
-  padding:30px 15px;
+.surprise {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
-.surprise-icon{
-  font-size:75px;
-
-  margin-bottom:20px;
+.surprise-box {
+    max-width: 600px;
 }
 
-.surprise h2{
-  margin-bottom:12px;
+.big-heart {
+    font-size: 90px;
+    animation: heartbeat 1.4s infinite;
+    margin-bottom: 20px;
 }
 
-.surprise p{
-  color:#ccc;
-
-  line-height:1.7;
+.surprise-box h2 {
+    font-size: 34px;
+    margin-bottom: 20px;
 }
 
-.surprise-button{
-  margin-top:25px;
-
-  padding:12px 25px;
-
-  border:0;
-
-  border-radius:10px;
-
-  background:#ff5c7c;
-
-  color:#fff;
-
-  cursor:pointer;
-
-  font-weight:600;
+.surprise-box p {
+    line-height: 1.8;
+    opacity: .8;
 }
 
 /* =========================
    DOCK
 ========================= */
 
-.dock{
-  position:absolute;
-
-  bottom:12px;
-
-  left:50%;
-
-  transform:
-    translateX(-50%);
-
-  display:flex;
-
-  align-items:flex-end;
-
-  gap:10px;
-
-  padding:8px 13px;
-
-  border-radius:20px;
-
-  background:
-    rgba(30,30,30,.5);
-
-  backdrop-filter:blur(20px);
-
-  -webkit-backdrop-filter:blur(20px);
-
-  border:
-    1px solid rgba(255,255,255,.18);
-
-  z-index:200;
+#dock {
+    position: absolute;
+    bottom: 13px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 20px;
+    background: rgba(30,30,35,.55);
+    border: 1px solid rgba(255,255,255,.15);
+    backdrop-filter: blur(20px);
+    z-index: 900;
 }
 
-.dock-item{
-  width:50px;
-  height:50px;
-
-  border-radius:12px;
-
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-
-  font-size:28px;
-
-  cursor:pointer;
-
-  transition:.2s;
-
-  background:
-    rgba(255,255,255,.12);
+.dock-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    border-radius: 13px;
+    cursor: pointer;
+    transition: transform .2s;
 }
 
-.dock-item:hover{
-  transform:
-    translateY(-8px)
-    scale(1.08);
+.dock-icon:hover {
+    transform: translateY(-8px) scale(1.1);
+    background: rgba(255,255,255,.12);
 }
 
 /* =========================
    TOAST
 ========================= */
 
-#toast{
-  position:fixed;
-
-  bottom:85px;
-
-  left:50%;
-
-  transform:
-    translateX(-50%)
-    translateY(20px);
-
-  background:
-    rgba(20,20,20,.85);
-
-  padding:12px 20px;
-
-  border-radius:12px;
-
-  opacity:0;
-
-  pointer-events:none;
-
-  transition:.3s;
-
-  z-index:500;
-
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.3);
+#toast {
+    position: fixed;
+    left: 50%;
+    top: 55px;
+    transform: translateX(-50%) translateY(-20px);
+    opacity: 0;
+    pointer-events: none;
+    padding: 12px 20px;
+    border-radius: 13px;
+    background: rgba(20,20,25,.9);
+    color: white;
+    box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    transition: .3s;
+    z-index: 99999;
 }
 
-#toast.show{
-  opacity:1;
-
-  transform:
-    translateX(-50%)
-    translateY(0);
+#toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
 }
 
 /* =========================
-   VISOR
+   VISOR DE IMAGEN
 ========================= */
 
-#image-viewer{
-  position:fixed;
-
-  inset:0;
-
-  background:
-    rgba(0,0,0,.88);
-
-  display:none;
-
-  align-items:center;
-  justify-content:center;
-
-  z-index:1000;
+#image-viewer {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,.9);
+    z-index: 10000;
 }
 
-#image-viewer img{
-  max-width:90%;
-  max-height:90%;
-
-  object-fit:contain;
-
-  border-radius:10px;
+#image-viewer.active {
+    display: flex;
 }
 
-.viewer-close{
-  position:absolute;
+#viewer-image {
+    max-width: 90vw;
+    max-height: 88vh;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 20px 80px #000;
+}
 
-  top:25px;
-  right:30px;
-
-  font-size:35px;
-
-  cursor:pointer;
-
-  color:white;
+#viewer-close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
 }
 
 /* =========================
    SCROLLBAR
 ========================= */
 
-::-webkit-scrollbar{
-  width:7px;
+::-webkit-scrollbar {
+    width: 8px;
 }
 
-::-webkit-scrollbar-track{
-  background:transparent;
+::-webkit-scrollbar-track {
+    background: transparent;
 }
 
-::-webkit-scrollbar-thumb{
-  background:
-    rgba(255,255,255,.25);
-
-  border-radius:10px;
+::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,.2);
+    border-radius: 20px;
 }
 
 /* =========================
-   MOBILE
+   MÓVIL
 ========================= */
 
-@media(max-width:700px){
+@media (max-width: 600px) {
 
-  .topbar{
-    font-size:11px;
-    padding:0 9px;
-  }
+    .desktop-icons {
+        grid-template-columns: repeat(2, 85px);
+    }
 
-  .top-left,
-  .top-right{
-    gap:7px;
-  }
+    .window {
+        width: 94vw;
+        height: 72vh;
+    }
 
-  .desktop-icons{
-    top:50px;
-    left:10px;
-    gap:12px;
-  }
+    .window-content {
+        padding: 15px;
+    }
 
-  .desktop-icon{
-    width:60px;
-  }
+    .letter {
+        padding: 22px;
+    }
 
-  .desktop-icon .icon{
-    font-size:30px;
-  }
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
 
-  .desktop-icon span{
-    font-size:10px;
-  }
+    .dock-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 22px;
+    }
 
-  .window{
-    width:94vw;
-    max-height:72vh;
-  }
+    #dock {
+        max-width: 95vw;
+        overflow-x: auto;
+    }
 
-  .window-content{
-    padding:17px;
-  }
-
-  .gallery{
-    grid-template-columns:
-      repeat(2,1fr);
-  }
-
-  .coupons{
-    grid-template-columns:1fr;
-  }
-
-  .dock{
-    gap:6px;
-    padding:7px;
-    bottom:8px;
-  }
-
-  .dock-item{
-    width:43px;
-    height:43px;
-    font-size:23px;
-  }
-
-  .album{
-    width:180px;
-    height:180px;
-  }
-
-  .login-box{
-    width:90%;
-    max-width:330px;
-  }
-
+    .top-left span {
+        display: none;
+    }
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     BOOT
-========================= -->
+<!-- ==================================================
+     PANTALLA DE CARGA
+================================================== -->
 
 <div id="boot">
+    <div class="boot-content">
+        <div class="boot-heart">❤️</div>
+        <div class="boot-title">ViviOS</div>
+        <div class="boot-subtitle">Preparando un pequeño lugar para ti...</div>
 
-  <div class="boot-logo">
-    ❤️
-  </div>
-
-  <div class="boot-text">
-    Iniciando ViviOS...
-  </div>
-
-  <div class="boot-bar">
-    <div class="boot-progress"></div>
-  </div>
-
+        <div class="boot-loading">
+            <div></div>
+        </div>
+    </div>
 </div>
 
+<!-- ==================================================
+     ESTE SCRIPT ESTÁ AQUÍ A PROPÓSITO.
+     NO DEPENDE DEL RESTO DEL JAVASCRIPT.
+================================================== -->
 
-<!-- =========================
+<script>
+setTimeout(function () {
+
+    var boot = document.getElementById("boot");
+
+    if (boot) {
+
+        boot.style.opacity = "0";
+
+        setTimeout(function () {
+            boot.style.display = "none";
+        }, 600);
+
+    }
+
+}, 2000);
+</script>
+
+
+<!-- ==================================================
      LOGIN
-========================= -->
+================================================== -->
 
 <div id="login">
 
-  <div class="login-box">
+    <div class="login-card">
 
-    <div class="login-avatar">
+        <div class="login-heart">💗</div>
 
-      <img
-        src="assets/fondo.jpg"
-        alt="Viviana"
-      >
+        <h1>Bienvenida, Viviana</h1>
+
+        <p>
+            Preparé este pequeño lugar especialmente para ti.
+        </p>
+
+        <button id="login-btn">
+            Entrar ❤️
+        </button>
 
     </div>
-
-    <div class="login-title">
-      ViviOS ❤️
-    </div>
-
-    <div class="login-subtitle">
-      Un pequeño lugar hecho especialmente para ti
-    </div>
-
-    <button id="login-btn">
-      Entrar
-    </button>
-
-  </div>
 
 </div>
 
 
-<!-- =========================
-     DESKTOP
-========================= -->
+<!-- ==================================================
+     ESCRITORIO
+================================================== -->
 
 <div id="desktop">
 
-  <div class="topbar">
+    <div id="topbar">
 
-    <div class="top-left">
+        <div class="top-left">
+            <span class="apple">♥</span>
+            <span>ViviOS</span>
+            <span>Archivo</span>
+            <span>Ventana</span>
+            <span>Ayuda</span>
+        </div>
 
-      <div class="apple">
-        ❤️
-      </div>
-
-      <strong>
-        ViviOS
-      </strong>
-
-      <span>
-        Para Mi Amor
-      </span>
-
-    </div>
-
-    <div class="top-right">
-
-      <span>
-        ♡
-      </span>
-
-      <span id="clock">
-        00:00
-      </span>
-
-    </div>
-
-  </div>
-
-
-  <!-- ICONOS -->
-
-  <div class="desktop-icons">
-
-    <div
-      class="desktop-icon"
-      onclick="openWindow('letter-window')"
-    >
-
-      <div class="icon">
-        💌
-      </div>
-
-      <span>
-        Carta
-      </span>
+        <div class="top-right">
+            <span id="clock">00:00</span>
+            <span>❤️</span>
+        </div>
 
     </div>
 
 
-    <div
-      class="desktop-icon"
-      onclick="openWindow('photos-window')"
-    >
+    <!-- ICONOS DEL ESCRITORIO -->
 
-      <div class="icon">
-        🖼️
-      </div>
+    <div class="desktop-icons">
 
-      <span>
-        Fotos
-      </span>
+        <div class="desktop-icon" onclick="openWindow('letter-window')">
+            <div class="icon">💌</div>
+            <span>Carta</span>
+        </div>
 
-    </div>
+        <div class="desktop-icon" onclick="openWindow('photos-window')">
+            <div class="icon">📷</div>
+            <span>Fotos</span>
+        </div>
 
+        <div class="desktop-icon" onclick="openWindow('music-window')">
+            <div class="icon">🎵</div>
+            <span>Música</span>
+        </div>
 
-    <div
-      class="desktop-icon"
-      onclick="openWindow('music-window')"
-    >
+        <div class="desktop-icon" onclick="openWindow('reasons-window')">
+            <div class="icon">💗</div>
+            <span>Razones</span>
+        </div>
 
-      <div class="icon">
-        🎵
-      </div>
+        <div class="desktop-icon" onclick="openWindow('coupons-window')">
+            <div class="icon">🎟️</div>
+            <span>Vales</span>
+        </div>
 
-      <span>
-        Canciones
-      </span>
-
-    </div>
-
-  </div>
-
-
-  <!-- =========================
-       CARTA
-  ========================== -->
-
-  <div
-    class="window"
-    id="letter-window"
-  >
-
-    <div class="window-header">
-
-      <div class="window-buttons">
-
-        <div
-          class="window-button close"
-          onclick="closeWindow('letter-window')"
-        ></div>
-
-        <div class="window-button minimize"></div>
-        <div class="window-button maximize"></div>
-
-      </div>
-
-      <div class="window-title">
-        Carta para mi amor ❤️
-      </div>
+        <div class="desktop-icon" onclick="openWindow('surprise-window')">
+            <div class="icon">🎁</div>
+            <span>Sorpresa</span>
+        </div>
 
     </div>
 
-    <div class="window-content">
 
-      <div class="letter">
+    <!-- ==================================================
+         CARTA
+    ================================================== -->
 
-        <h2>
-          Para ti, Viviana ❤️
-        </h2>
+    <div class="window" id="letter-window">
 
-        <div id="letter-text"></div>
+        <div class="window-header">
 
-      </div>
+            <div class="window-buttons">
+                <div class="window-button close"
+                     onclick="closeWindow('letter-window')"></div>
 
-    </div>
+                <div class="window-button minimize"></div>
+                <div class="window-button maximize"></div>
+            </div>
 
-  </div>
-
-
-  <!-- =========================
-       FOTOS
-  ========================== -->
-
-  <div
-    class="window"
-    id="photos-window"
-  >
-
-    <div class="window-header">
-
-      <div class="window-buttons">
-
-        <div
-          class="window-button close"
-          onclick="closeWindow('photos-window')"
-        ></div>
-
-        <div class="window-button minimize"></div>
-        <div class="window-button maximize"></div>
-
-      </div>
-
-      <div class="window-title">
-        Nuestros recuerdos 📸
-      </div>
-
-    </div>
-
-    <div class="window-content">
-
-      <div
-        class="gallery"
-        id="gallery"
-      ></div>
-
-    </div>
-
-  </div>
-
-
-  <!-- =========================
-       MUSICA
-  ========================== -->
-
-  <div
-    class="window"
-    id="music-window"
-  >
-
-    <div class="window-header">
-
-      <div class="window-buttons">
-
-        <div
-          class="window-button close"
-          onclick="closeWindow('music-window')"
-        ></div>
-
-        <div class="window-button minimize"></div>
-        <div class="window-button maximize"></div>
-
-      </div>
-
-      <div class="window-title">
-        Nuestra canción 🎵
-      </div>
-
-    </div>
-
-    <div class="window-content">
-
-      <div class="music-player">
-
-        <div class="album">
-
-          <img
-            id="album-cover"
-            src="assets/fondo.jpg"
-            alt="Portada"
-          >
+            <div class="window-title">
+                Carta para ti 💌
+            </div>
 
         </div>
 
-        <div
-          class="music-title"
-          id="music-title"
-        >
-          Nuestra canción especial
-        </div>
+        <div class="window-content">
 
-        <div
-          class="music-artist"
-          id="music-artist"
-        >
-          Para mi persona favorita ❤️
-        </div>
+            <div class="letter">
 
-        <audio
-          controls
-          id="audio-player"
-          preload="metadata"
-        >
+                <h2>Para mi amor ❤️</h2>
 
-          <source
-            src="assets/musica/nuestra-cancion.mp3"
-            type="audio/mpeg"
-          >
-
-          Tu navegador no puede reproducir este audio.
-
-        </audio>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- =========================
-       RAZONES
-  ========================== -->
-
-  <div
-    class="window"
-    id="reasons-window"
-  >
-
-    <div class="window-header">
-
-      <div class="window-buttons">
-
-        <div
-          class="window-button close"
-          onclick="closeWindow('reasons-window')"
-        ></div>
-
-        <div class="window-button minimize"></div>
-        <div class="window-button maximize"></div>
-
-      </div>
-
-      <div class="window-title">
-        Razones por las que te amo ❤️
-      </div>
-
-    </div>
-
-    <div class="window-content">
-
-      <div
-        class="reasons"
-        id="reasons-list"
-      ></div>
-
-    </div>
-
-  </div>
-
-
-  <!-- =========================
-       VALES
-  ========================== -->
-
-  <div
-    class="window"
-    id="coupons-window"
-  >
-
-    <div class="window-header">
-
-      <div class="window-buttons">
-
-        <div
-          class="window-button close"
-          onclick="closeWindow('coupons-window')"
-        ></div>
-
-        <div class="window-button minimize"></div>
-        <div class="window-button maximize"></div>
-
-      </div>
-
-      <div class="window-title">
-        Vales para ti 🎟️
-      </div>
-
-    </div>
-
-    <div class="window-content">
-
-      <div
-        class="coupons"
-        id="coupons-list"
-      ></div>
-
-    </div>
-
-  </div>
-
-
-  <!-- =========================
-       SORPRESA
-  ========================== -->
-
-  <div
-    class="window"
-    id="surprise-window"
-  >
-
-    <div class="window-header">
-
-      <div class="window-buttons">
-
-        <div
-          class="window-button close"
-          onclick="closeWindow('surprise-window')"
-        ></div>
-
-        <div class="window-button minimize"></div>
-        <div class="window-button maximize"></div>
-
-      </div>
-
-      <div class="window-title">
-        Una sorpresa ❤️
-      </div>
-
-    </div>
-
-    <div class="window-content">
-
-      <div class="surprise">
-
-        <div class="surprise-icon">
-          🎁
-        </div>
-
-        <h2>
-          Tengo algo que decirte...
-        </h2>
-
-        <p>
-          Si llegaste hasta aquí significa que exploraste
-          este pequeño mundo que hice para ti.
-
-          <br><br>
-
-          Y aunque no existe una página capaz de explicar
-          todo lo que siento por ti, espero que cada pequeño
-          detalle te recuerde cuánto te amo.
-        </p>
-
-        <button
-          class="surprise-button"
-          onclick="showLoveMessage()"
-        >
-          Abrir sorpresa ❤️
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- =========================
-       DOCK
-  ========================== -->
-
-  <div class="dock">
-
-    <div
-      class="dock-item"
-      title="Carta"
-      onclick="openWindow('letter-window')"
-    >
-      💌
-    </div>
-
-    <div
-      class="dock-item"
-      title="Fotos"
-      onclick="openWindow('photos-window')"
-    >
-      🖼️
-    </div>
-
-    <div
-      class="dock-item"
-      title="Canciones"
-      onclick="openWindow('music-window')"
-    >
-      🎵
-    </div>
-
-    <div
-      class="dock-item"
-      title="Razones"
-      onclick="openWindow('reasons-window')"
-    >
-      ❤️
-    </div>
-
-    <div
-      class="dock-item"
-      title="Vales"
-      onclick="openWindow('coupons-window')"
-    >
-      🎟️
-    </div>
-
-    <div
-      class="dock-item"
-      title="Sorpresa"
-      onclick="openWindow('surprise-window')"
-    >
-      🎁
-    </div>
-
-  </div>
-
-</div>
-
-
-<!-- =========================
-     TOAST
-========================= -->
-
-<div id="toast"></div>
-
-
-<!-- =========================
-     IMAGE VIEWER
-========================= -->
-
-<div id="image-viewer">
-
-  <div
-    class="viewer-close"
-    onclick="closeImageViewer()"
-  >
-    ×
-  </div>
-
-  <img
-    id="viewer-image"
-    src=""
-    alt="Imagen"
-  >
-
-</div>
-
-
-<script>
-
-/* =========================
-   DATOS
-========================= */
-
-const appData = {
-
-  carta: `Hola mi amor ❤️
+                <div class="letter-text">
+Hola mi amor ❤️
 
 Quise crear este pequeño lugar solo para ti, Viviana.
 
@@ -1459,185 +804,662 @@ No es simplemente una página. Quería que cada carpeta, cada ventana y cada peq
 
 Gracias por cada sonrisa, por cada momento y por hacer que mi vida tenga recuerdos que quiero guardar para siempre.
 
-Te amo muchísimo. 💕`,
+Te amo muchísimo. 💕
+                </div>
 
-  fondo:
-    "assets/fondo.jpg",
+                <div class="signature">
+                    Con todo mi amor ❤️
+                </div>
 
-  fotos: [
+            </div>
 
-    "assets/fotos/foto01.jpg",
-    "assets/fotos/foto02.jpg",
-    "assets/fotos/foto03.jpg",
-    "assets/fotos/foto04.jpg",
-    "assets/fotos/foto05.jpg",
-    "assets/fotos/foto06.jpg",
-    "assets/fotos/foto07.jpg",
-    "assets/fotos/foto08.jpg",
-    "assets/fotos/foto09.jpg",
-    "assets/fotos/foto10.jpg",
-    "assets/fotos/foto11.jpg",
-    "assets/fotos/foto12.jpg",
-    "assets/fotos/foto13.jpg",
-    "assets/fotos/foto14.jpg",
-    "assets/fotos/foto15.jpg",
-    "assets/fotos/foto16.jpg",
-    "assets/fotos/foto17.jpg",
-    "assets/fotos/foto18.jpg",
-    "assets/fotos/foto19.jpg",
-    "assets/fotos/foto20.jpg",
-    "assets/fotos/foto21.jpg",
-    "assets/fotos/foto22.jpg",
-    "assets/fotos/foto23.jpg",
-    "assets/fotos/foto24.jpg",
-    "assets/fotos/foto25.jpg",
-    "assets/fotos/foto26.jpg",
-    "assets/fotos/foto27.jpg",
-    "assets/fotos/foto28.jpg",
-    "assets/fotos/foto29.jpg",
-    "assets/fotos/foto30.jpg",
-    "assets/fotos/foto31.jpg"
+        </div>
 
-  ],
+    </div>
 
-  musica:
-    "assets/musica/nuestra-cancion.mp3",
 
-  titulo:
-    "Nuestra canción especial",
+    <!-- ==================================================
+         FOTOS
+    ================================================== -->
 
-  artista:
-    "Para mi persona favorita ❤️",
+    <div class="window" id="photos-window">
 
-  portada:
-    "assets/fondo.jpg"
+        <div class="window-header">
+
+            <div class="window-buttons">
+
+                <div class="window-button close"
+                     onclick="closeWindow('photos-window')"></div>
+
+                <div class="window-button minimize"></div>
+                <div class="window-button maximize"></div>
+
+            </div>
+
+            <div class="window-title">
+                Nuestros recuerdos 📷
+            </div>
+
+        </div>
+
+        <div class="window-content">
+
+            <div class="gallery" id="gallery"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         MÚSICA
+    ================================================== -->
+
+    <div class="window" id="music-window">
+
+        <div class="window-header">
+
+            <div class="window-buttons">
+
+                <div class="window-button close"
+                     onclick="closeWindow('music-window')"></div>
+
+                <div class="window-button minimize"></div>
+                <div class="window-button maximize"></div>
+
+            </div>
+
+            <div class="window-title">
+                Nuestra canción 🎵
+            </div>
+
+        </div>
+
+        <div class="window-content">
+
+            <div class="music-card">
+
+                <img
+                    class="music-cover"
+                    src="assets/fondo.jpg"
+                    alt="Nuestra canción"
+                >
+
+                <h2>Nuestra canción especial</h2>
+
+                <p>Para mi persona favorita ❤️</p>
+
+                <audio controls preload="metadata" id="audio-player">
+                    <source
+                        src="assets/musica/nuestra-cancion.mp3"
+                        type="audio/mpeg"
+                    >
+
+                    Tu navegador no puede reproducir este audio.
+
+                </audio>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         RAZONES
+    ================================================== -->
+
+    <div class="window" id="reasons-window">
+
+        <div class="window-header">
+
+            <div class="window-buttons">
+
+                <div class="window-button close"
+                     onclick="closeWindow('reasons-window')"></div>
+
+                <div class="window-button minimize"></div>
+                <div class="window-button maximize"></div>
+
+            </div>
+
+            <div class="window-title">
+                Razones por las que te amo 💗
+            </div>
+
+        </div>
+
+        <div class="window-content">
+
+            <div class="reasons" id="reasons"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         VALES
+    ================================================== -->
+
+    <div class="window" id="coupons-window">
+
+        <div class="window-header">
+
+            <div class="window-buttons">
+
+                <div class="window-button close"
+                     onclick="closeWindow('coupons-window')"></div>
+
+                <div class="window-button minimize"></div>
+                <div class="window-button maximize"></div>
+
+            </div>
+
+            <div class="window-title">
+                Vales para ti 🎟️
+            </div>
+
+        </div>
+
+        <div class="window-content">
+
+            <div class="coupons" id="coupons"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         SORPRESA
+    ================================================== -->
+
+    <div class="window" id="surprise-window">
+
+        <div class="window-header">
+
+            <div class="window-buttons">
+
+                <div class="window-button close"
+                     onclick="closeWindow('surprise-window')"></div>
+
+                <div class="window-button minimize"></div>
+                <div class="window-button maximize"></div>
+
+            </div>
+
+            <div class="window-title">
+                Una sorpresa 🎁
+            </div>
+
+        </div>
+
+        <div class="window-content">
+
+            <div class="surprise">
+
+                <div class="surprise-box">
+
+                    <div class="big-heart">
+                        ❤️
+                    </div>
+
+                    <h2>Te amo, Viviana</h2>
+
+                    <p>
+                        Entre millones de personas, coincidimos nosotros.
+                        Y de todos los recuerdos que podría guardar,
+                        quiero seguir construyendo muchos más contigo.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         DOCK
+    ================================================== -->
+
+    <div id="dock">
+
+        <div class="dock-icon"
+             onclick="openWindow('letter-window')"
+             title="Carta">
+            💌
+        </div>
+
+        <div class="dock-icon"
+             onclick="openWindow('photos-window')"
+             title="Fotos">
+            📷
+        </div>
+
+        <div class="dock-icon"
+             onclick="openWindow('music-window')"
+             title="Música">
+            🎵
+        </div>
+
+        <div class="dock-icon"
+             onclick="openWindow('reasons-window')"
+             title="Razones">
+            💗
+        </div>
+
+        <div class="dock-icon"
+             onclick="openWindow('coupons-window')"
+             title="Vales">
+            🎟️
+        </div>
+
+        <div class="dock-icon"
+             onclick="openWindow('surprise-window')"
+             title="Sorpresa">
+            🎁
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     TOAST
+================================================== -->
+
+<div id="toast"></div>
+
+
+<!-- ==================================================
+     VISOR DE FOTOS
+================================================== -->
+
+<div id="image-viewer">
+
+    <div id="viewer-close"
+         onclick="closeImageViewer()">
+        ×
+    </div>
+
+    <img id="viewer-image" src="" alt="Foto">
+
+</div>
+
+
+<!-- ==================================================
+     JAVASCRIPT
+================================================== -->
+
+<script>
+
+"use strict";
+
+
+/* =========================
+   DATOS
+========================= */
+
+var appData = {
+
+    fotos: [
+        "assets/fotos/foto01.jpg",
+        "assets/fotos/foto02.jpg",
+        "assets/fotos/foto03.jpg",
+        "assets/fotos/foto04.jpg",
+        "assets/fotos/foto05.jpg",
+        "assets/fotos/foto06.jpg",
+        "assets/fotos/foto07.jpg",
+        "assets/fotos/foto08.jpg",
+        "assets/fotos/foto09.jpg",
+        "assets/fotos/foto10.jpg",
+        "assets/fotos/foto11.jpg",
+        "assets/fotos/foto12.jpg",
+        "assets/fotos/foto13.jpg",
+        "assets/fotos/foto14.jpg",
+        "assets/fotos/foto15.jpg",
+        "assets/fotos/foto16.jpg",
+        "assets/fotos/foto17.jpg",
+        "assets/fotos/foto18.jpg",
+        "assets/fotos/foto19.jpg",
+        "assets/fotos/foto20.jpg",
+        "assets/fotos/foto21.jpg",
+        "assets/fotos/foto22.jpg",
+        "assets/fotos/foto23.jpg",
+        "assets/fotos/foto24.jpg",
+        "assets/fotos/foto25.jpg",
+        "assets/fotos/foto26.jpg",
+        "assets/fotos/foto27.jpg",
+        "assets/fotos/foto28.jpg",
+        "assets/fotos/foto29.jpg",
+        "assets/fotos/foto30.jpg",
+        "assets/fotos/foto31.jpg"
+    ],
+
+    musica: "assets/musica/nuestra-cancion.mp3",
+
+    fondo: "assets/fondo.jpg"
 
 };
 
 
 /* =========================
-   RAZONES
+   ABRIR VENTANA
 ========================= */
 
-const reasons = [
+function openWindow(id) {
 
-  "Porque contigo puedo ser yo mismo. ❤️",
+    var windows = document.querySelectorAll(".window");
 
-  "Porque haces que incluso los días normales tengan algo especial.",
+    for (var i = 0; i < windows.length; i++) {
+        windows[i].classList.remove("active");
+    }
 
-  "Porque tu sonrisa tiene una forma absurda de mejorar mi día.",
+    var windowElement = document.getElementById(id);
 
-  "Porque me encanta compartir momentos contigo.",
+    if (windowElement) {
+        windowElement.classList.add("active");
+    }
 
-  "Porque eres una de las personas más importantes de mi vida.",
-
-  "Porque contigo he creado recuerdos que quiero guardar para siempre.",
-
-  "Porque incluso cuando estamos lejos sigues estando presente.",
-
-  "Porque simplemente eres tú. Y eso me basta. ❤️"
-
-];
+}
 
 
 /* =========================
-   VALES
+   CERRAR VENTANA
 ========================= */
 
-const coupons = [
+function closeWindow(id) {
 
-  {
-    icon:"💋",
-    title:"Vale por un beso",
-    description:"Canjeable cuando quieras."
-  },
+    var windowElement = document.getElementById(id);
 
-  {
-    icon:"🤗",
-    title:"Vale por un abrazo",
-    description:"Un abrazo largo y obligatorio."
-  },
+    if (windowElement) {
+        windowElement.classList.remove("active");
+    }
 
-  {
-    icon:"🍕",
-    title:"Vale por una comida",
-    description:"Yo invito."
-  },
-
-  {
-    icon:"🎬",
-    title:"Vale por una película",
-    description:"Tú eliges qué vemos."
-  },
-
-  {
-    icon:"❤️",
-    title:"Vale por una cita",
-    description:"Una cita hecha especialmente para nosotros."
-  },
-
-  {
-    icon:"🥰",
-    title:"Vale por mimos",
-    description:"Cantidad ilimitada."
-  }
-
-];
+}
 
 
 /* =========================
    TOAST
 ========================= */
 
-function showToast(message){
+function showToast(message) {
 
-  const toast =
-    document.getElementById("toast");
+    var toast = document.getElementById("toast");
 
-  toast.textContent =
-    message;
+    if (!toast) {
+        return;
+    }
 
-  toast.classList.add("show");
+    toast.textContent = message;
+    toast.classList.add("show");
 
-  setTimeout(()=>{
-
-    toast.classList.remove("show");
-
-  },2500);
+    setTimeout(function () {
+        toast.classList.remove("show");
+    }, 2500);
 
 }
 
 
 /* =========================
-   WINDOWS
+   LOGIN
 ========================= */
 
-function openWindow(id){
+var loginButton = document.getElementById("login-btn");
 
-  const element =
-    document.getElementById(id);
+if (loginButton) {
 
-  if(!element){
-    return;
-  }
+    loginButton.addEventListener("click", function () {
 
-  element.style.display =
-    "block";
+        var login = document.getElementById("login");
+
+        if (!login) {
+            return;
+        }
+
+        login.style.opacity = "0";
+
+        setTimeout(function () {
+
+            login.style.display = "none";
+
+            showToast("Bienvenida a ViviOS ❤️");
+
+        }, 600);
+
+    });
 
 }
 
 
-function closeWindow(id){
+/* =========================
+   GALERÍA
+========================= */
 
-  const element =
-    document.getElementById(id);
+function renderGallery() {
 
-  if(!element){
-    return;
-  }
+    var gallery = document.getElementById("gallery");
 
-  element.style.display =
-    "none";
+    if (!gallery) {
+        return;
+    }
+
+    gallery.innerHTML = "";
+
+    for (var i = 0; i < appData.fotos.length; i++) {
+
+        (function (photo, index) {
+
+            var img = document.createElement("img");
+
+            img.src = photo;
+            img.alt = "Recuerdo " + (index + 1);
+            img.loading = "lazy";
+
+            img.onerror = function () {
+
+                this.style.display = "none";
+
+            };
+
+            img.onclick = function () {
+
+                openImageViewer(photo);
+
+            };
+
+            gallery.appendChild(img);
+
+        })(appData.fotos[i], i);
+
+    }
+
+}
+
+
+/* =========================
+   VISOR DE IMAGEN
+========================= */
+
+function openImageViewer(src) {
+
+    var viewer = document.getElementById("image-viewer");
+    var image = document.getElementById("viewer-image");
+
+    if (!viewer || !image) {
+        return;
+    }
+
+    image.src = src;
+
+    viewer.classList.add("active");
+
+}
+
+
+function closeImageViewer() {
+
+    var viewer = document.getElementById("image-viewer");
+
+    if (viewer) {
+        viewer.classList.remove("active");
+    }
+
+}
+
+
+/* =========================
+   CERRAR VISOR AL HACER CLICK
+========================= */
+
+var imageViewer = document.getElementById("image-viewer");
+
+if (imageViewer) {
+
+    imageViewer.addEventListener("click", function (event) {
+
+        if (event.target === imageViewer) {
+            closeImageViewer();
+        }
+
+    });
+
+}
+
+
+/* =========================
+   RAZONES
+========================= */
+
+var reasons = [
+
+    "Porque contigo puedo ser yo mismo. ❤️",
+
+    "Porque haces que los momentos simples sean especiales.",
+
+    "Porque tu sonrisa puede cambiar completamente mi día.",
+
+    "Porque me encanta compartir mis cosas contigo.",
+
+    "Porque tienes una forma única de hacerme sentir querido.",
+
+    "Porque cada recuerdo contigo significa muchísimo para mí.",
+
+    "Porque incluso estando lejos, sigues siendo importante para mí.",
+
+    "Porque me haces querer construir nuevos recuerdos contigo.",
+
+    "Porque amo la persona que eres.",
+
+    "Porque simplemente eres tú. Y eso me basta. ❤️"
+
+];
+
+
+function renderReasons() {
+
+    var container = document.getElementById("reasons");
+
+    if (!container) {
+        return;
+    }
+
+    for (var i = 0; i < reasons.length; i++) {
+
+        var card = document.createElement("div");
+
+        card.className = "reason";
+
+        card.innerHTML =
+            '<div class="number">RAZÓN ' +
+            String(i + 1).padStart(2, "0") +
+            '</div>' +
+            '<p>' +
+            reasons[i] +
+            '</p>';
+
+        container.appendChild(card);
+
+    }
+
+}
+
+
+/* =========================
+   VALES
+========================= */
+
+var coupons = [
+
+    {
+        icon: "🤗",
+        title: "Vale por un abrazo",
+        text: "Canjeable por un abrazo largo y sin límite de tiempo."
+    },
+
+    {
+        icon: "🎬",
+        title: "Vale por una película",
+        text: "Una película juntos, aunque tengamos que verla a distancia."
+    },
+
+    {
+        icon: "🍕",
+        title: "Vale por una comida",
+        text: "Una comida preparada especialmente para ti."
+    },
+
+    {
+        icon: "💋",
+        title: "Vale por un beso",
+        text: "Un beso pendiente que tendrás que cobrar algún día."
+    },
+
+    {
+        icon: "❤️",
+        title: "Vale infinito",
+        text: "Válido para recordarte cuánto te amo."
+    }
+
+];
+
+
+function renderCoupons() {
+
+    var container = document.getElementById("coupons");
+
+    if (!container) {
+        return;
+    }
+
+    for (var i = 0; i < coupons.length; i++) {
+
+        var coupon = coupons[i];
+
+        var card = document.createElement("div");
+
+        card.className = "coupon";
+
+        card.innerHTML =
+            '<div class="coupon-icon">' +
+            coupon.icon +
+            '</div>' +
+            '<h3>' +
+            coupon.title +
+            '</h3>' +
+            '<p>' +
+            coupon.text +
+            '</p>';
+
+        container.appendChild(card);
+
+    }
 
 }
 
@@ -1646,357 +1468,37 @@ function closeWindow(id){
    RELOJ
 ========================= */
 
-function updateClock(){
+function updateClock() {
 
-  const now =
-    new Date();
+    var clock = document.getElementById("clock");
 
-  const hours =
-    String(
-      now.getHours()
-    ).padStart(2,"0");
+    if (!clock) {
+        return;
+    }
 
-  const minutes =
-    String(
-      now.getMinutes()
-    ).padStart(2,"0");
+    var now = new Date();
 
-  const clock =
-    document.getElementById("clock");
+    var hours = String(now.getHours()).padStart(2, "0");
+    var minutes = String(now.getMinutes()).padStart(2, "0");
 
-  if(clock){
-
-    clock.textContent =
-      hours + ":" + minutes;
-
-  }
+    clock.textContent = hours + ":" + minutes;
 
 }
+
 
 updateClock();
 
-setInterval(
-  updateClock,
-  1000
-);
+setInterval(updateClock, 1000);
 
 
 /* =========================
-   RENDER
+   INICIALIZAR
 ========================= */
 
-function renderApp(){
+renderGallery();
+renderReasons();
+renderCoupons();
 
-  /* CARTA */
-
-  document.getElementById(
-    "letter-text"
-  ).textContent =
-    appData.carta;
-
-
-  /* GALERÍA */
-
-  const gallery =
-    document.getElementById(
-      "gallery"
-    );
-
-  gallery.innerHTML =
-    "";
-
-
-  appData.fotos.forEach(
-    function(photo,index){
-
-      const img =
-        document.createElement(
-          "img"
-        );
-
-      img.src =
-        photo;
-
-      img.alt =
-        "Recuerdo " +
-        (index + 1);
-
-      img.loading =
-        "lazy";
-
-      img.onerror =
-        function(){
-
-          this.style.display =
-            "none";
-
-        };
-
-      img.onclick =
-        function(){
-
-          openImageViewer(
-            photo
-          );
-
-        };
-
-      gallery.appendChild(
-        img
-      );
-
-    }
-  );
-
-
-  /* MUSICA */
-
-  const audio =
-    document.getElementById(
-      "audio-player"
-    );
-
-  audio.src =
-    appData.musica;
-
-  audio.load();
-
-  document.getElementById(
-    "music-title"
-  ).textContent =
-    appData.titulo;
-
-  document.getElementById(
-    "music-artist"
-  ).textContent =
-    appData.artista;
-
-  document.getElementById(
-    "album-cover"
-  ).src =
-    appData.portada;
-
-
-  /* RAZONES */
-
-  const reasonsList =
-    document.getElementById(
-      "reasons-list"
-    );
-
-  reasonsList.innerHTML =
-    "";
-
-  reasons.forEach(
-    function(reason,index){
-
-      const element =
-        document.createElement(
-          "div"
-        );
-
-      element.className =
-        "reason";
-
-      element.innerHTML =
-
-        '<div class="reason-number">' +
-        'RAZÓN ' +
-        (index + 1) +
-        '</div>' +
-
-        '<div class="reason-text">' +
-        reason +
-        '</div>';
-
-      reasonsList.appendChild(
-        element
-      );
-
-    }
-  );
-
-
-  /* VALES */
-
-  const couponsList =
-    document.getElementById(
-      "coupons-list"
-    );
-
-  couponsList.innerHTML =
-    "";
-
-  coupons.forEach(
-    function(coupon){
-
-      const element =
-        document.createElement(
-          "div"
-        );
-
-      element.className =
-        "coupon";
-
-      element.innerHTML =
-
-        '<div class="coupon-icon">' +
-        coupon.icon +
-        '</div>' +
-
-        '<div class="coupon-title">' +
-        coupon.title +
-        '</div>' +
-
-        '<div class="coupon-description">' +
-        coupon.description +
-        '</div>';
-
-      couponsList.appendChild(
-        element
-      );
-
-    }
-  );
-
-}
-
-
-/* =========================
-   VISOR
-========================= */
-
-function openImageViewer(src){
-
-  const viewer =
-    document.getElementById(
-      "image-viewer"
-    );
-
-  const image =
-    document.getElementById(
-      "viewer-image"
-    );
-
-  image.src =
-    src;
-
-  viewer.style.display =
-    "flex";
-
-}
-
-
-function closeImageViewer(){
-
-  document.getElementById(
-    "image-viewer"
-  ).style.display =
-    "none";
-
-}
-
-
-/* =========================
-   SORPRESA
-========================= */
-
-function showLoveMessage(){
-
-  showToast(
-    "Te amo muchísimo, Viviana. ❤️"
-  );
-
-}
-
-
-/* =========================
-   LOGIN
-========================= */
-
-document.getElementById(
-  "login-btn"
-).addEventListener(
-  "click",
-  function(){
-
-    const login =
-      document.getElementById(
-        "login"
-      );
-
-    login.style.opacity =
-      "0";
-
-    setTimeout(
-      function(){
-
-        login.style.display =
-          "none";
-
-        showToast(
-          "Bienvenida a ViviOS ❤️"
-        );
-
-      },
-      600
-    );
-
-  }
-);
-
-
-/* =========================
-   INICIAR APP
-========================= */
-
-/*
-   Renderizamos inmediatamente.
-   Las fotos usan lazy loading,
-   por lo que no bloquean el inicio.
-*/
-
-renderApp();
-
-
-/*
-   MUY IMPORTANTE:
-
-   No esperamos a que todas las
-   imágenes terminen de cargar.
-
-   ViviOS desaparece después
-   de 2 segundos sí o sí.
-*/
-
-setTimeout(
-  function(){
-
-    const boot =
-      document.getElementById(
-        "boot"
-      );
-
-    if(!boot){
-      return;
-    }
-
-    boot.style.opacity =
-      "0";
-
-    setTimeout(
-      function(){
-
-        boot.style.display =
-          "none";
-
-      },
-      600
-    );
-
-  },
-  2000
-);
 
 </script>
 
