@@ -39,6 +39,368 @@ body{
 }
 
 /* =========================
+   LAPTOP INTRO
+========================= */
+
+#laptop-intro{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      #39223d 0%,
+      #19131e 45%,
+      #09080c 100%
+    );
+  opacity:1;
+  visibility:visible;
+}
+
+#laptop-intro.hide{
+  animation:introFade .9s ease forwards;
+  pointer-events:none;
+}
+
+.laptop-scene{
+  position:relative;
+  perspective:1400px;
+  transform:scale(.9);
+}
+
+.laptop{
+  position:relative;
+  width:560px;
+  height:330px;
+  transform-style:preserve-3d;
+}
+
+.laptop::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:-35px;
+  width:500px;
+  height:30px;
+  transform:translateX(-50%);
+  border-radius:50%;
+  background:rgba(0,0,0,.48);
+  filter:blur(16px);
+}
+
+.laptop-base{
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:100%;
+  height:38px;
+  border-radius:0 0 18px 18px;
+  background:
+    linear-gradient(
+      180deg,
+      #d9d9df 0%,
+      #aaaab2 55%,
+      #7f7f88 100%
+    );
+  border:1px solid rgba(255,255,255,.38);
+  box-shadow:
+    0 18px 30px rgba(0,0,0,.35),
+    inset 0 1px 1px rgba(255,255,255,.8);
+  transform:rotateX(12deg);
+  transform-origin:bottom center;
+  z-index:2;
+}
+
+.laptop-base::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:-2px;
+  width:100px;
+  height:5px;
+  transform:translateX(-50%);
+  border-radius:0 0 8px 8px;
+  background:rgba(70,70,75,.55);
+}
+
+.keyboard{
+  position:absolute;
+  left:38px;
+  right:38px;
+  top:-22px;
+  height:25px;
+  padding:4px 7px;
+  display:grid;
+  grid-template-rows:repeat(2,1fr);
+  grid-template-columns:repeat(12,1fr);
+  gap:3px;
+  border-radius:5px 5px 2px 2px;
+  background:linear-gradient(
+    145deg,
+    #a8a8b0,
+    #888890
+  );
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,.55),
+    0 2px 5px rgba(0,0,0,.22);
+}
+
+.keyboard span{
+  display:block;
+  border-radius:2px;
+  background:linear-gradient(
+    145deg,
+    #eeeeF2,
+    #c7c7cd
+  );
+  box-shadow:
+    0 1px 1px rgba(0,0,0,.22),
+    inset 0 1px rgba(255,255,255,.8);
+}
+
+.trackpad{
+  position:absolute;
+  left:50%;
+  bottom:-17px;
+  width:145px;
+  height:24px;
+  transform:translateX(-50%);
+  border-radius:5px;
+  background:linear-gradient(
+    145deg,
+    #c7c7cd,
+    #aaaab2
+  );
+  border:1px solid rgba(255,255,255,.35);
+  box-shadow:
+    inset 0 1px 2px rgba(0,0,0,.13);
+}
+
+.laptop-lid{
+  position:absolute;
+  left:0;
+  bottom:29px;
+  width:100%;
+  height:300px;
+  transform-origin:bottom center;
+  transform-style:preserve-3d;
+  transform:rotateX(-88deg);
+  animation:
+    openLaptop
+    1.8s
+    cubic-bezier(.2,.8,.2,1)
+    .35s
+    forwards;
+  backface-visibility:hidden;
+  z-index:3;
+}
+
+.laptop-lid::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:18px 18px 5px 5px;
+  background:linear-gradient(
+    145deg,
+    rgba(255,255,255,.16),
+    transparent 35%,
+    rgba(0,0,0,.18)
+  );
+  pointer-events:none;
+}
+
+.laptop-screen{
+  position:absolute;
+  inset:0;
+  padding:13px;
+  border-radius:18px 18px 5px 5px;
+  background:
+    linear-gradient(
+      145deg,
+      #202126,
+      #090a0d
+    );
+  border:2px solid #494a50;
+  box-shadow:
+    0 18px 35px rgba(0,0,0,.45),
+    inset 0 1px 2px rgba(255,255,255,.18);
+  overflow:hidden;
+}
+
+.laptop-screen::before{
+  content:"";
+  position:absolute;
+  top:5px;
+  left:50%;
+  width:6px;
+  height:6px;
+  transform:translateX(-50%);
+  border-radius:50%;
+  background:#111;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.08);
+  z-index:3;
+}
+
+.laptop-screen::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(255,45,85,.28),
+      transparent 42%
+    ),
+    linear-gradient(
+      125deg,
+      rgba(255,255,255,.12),
+      transparent 30%,
+      transparent 70%,
+      rgba(255,255,255,.04)
+    );
+  opacity:0;
+  animation:screenGlow .9s ease 2.05s forwards;
+  pointer-events:none;
+}
+
+.laptop-screen-content{
+  position:absolute;
+  inset:13px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  border-radius:9px;
+  background:
+    radial-gradient(
+      circle at center,
+      #341b2e,
+      #100d15 75%
+    );
+  color:white;
+  opacity:0;
+  transform:translateY(10px) scale(.96);
+  animation:
+    screenOn
+    .9s
+    ease
+    2.15s
+    forwards;
+  overflow:hidden;
+}
+
+.laptop-screen-content::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(255,255,255,.07),
+      transparent 55%
+    );
+}
+
+.intro-heart{
+  position:relative;
+  font-size:48px;
+  color:#ff2d55;
+  text-shadow:
+    0 0 18px rgba(255,45,85,.65),
+    0 0 45px rgba(255,45,85,.28);
+  animation:introPulse 1.5s ease-in-out infinite;
+}
+
+.intro-name{
+  position:relative;
+  margin-top:7px;
+  font-size:25px;
+  font-weight:600;
+  letter-spacing:.6px;
+}
+
+.intro-sub{
+  position:relative;
+  margin-top:4px;
+  font-size:11px;
+  opacity:.62;
+  letter-spacing:.8px;
+}
+
+@keyframes openLaptop{
+  0%{
+    transform:rotateX(-88deg);
+  }
+
+  100%{
+    transform:rotateX(0deg);
+  }
+}
+
+@keyframes screenOn{
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+@keyframes screenGlow{
+  to{
+    opacity:1;
+  }
+}
+
+@keyframes introPulse{
+  50%{
+    transform:scale(1.08);
+  }
+}
+
+@keyframes introFade{
+  to{
+    opacity:0;
+    visibility:hidden;
+  }
+}
+
+@media(max-width:600px){
+
+  .laptop-scene{
+    transform:scale(.58);
+  }
+
+}
+
+@media(prefers-reduced-motion:reduce){
+
+  .laptop-lid{
+    animation-duration:.01ms;
+    animation-delay:0s;
+    transform:rotateX(0deg);
+  }
+
+  .laptop-screen-content{
+    animation-duration:.01ms;
+    animation-delay:.01ms;
+  }
+
+  .laptop-screen::after{
+    animation-duration:.01ms;
+    animation-delay:.01ms;
+  }
+
+  .laptop-intro.hide{
+    animation-duration:.01ms;
+  }
+
+}
+
+/* =========================
    BOOT
 ========================= */
 
@@ -94,6 +456,10 @@ body{
   width:0;
   background:white;
   border-radius:10px;
+  animation:none;
+}
+
+#boot.boot-ready .boot-progress span{
   animation:load 1.8s ease forwards;
 }
 
@@ -1356,6 +1722,80 @@ body{
 </head>
 
 <body>
+
+<!-- =========================
+     LAPTOP INTRO
+========================= -->
+
+<div id="laptop-intro" class="laptop-intro">
+
+  <div class="laptop-scene">
+
+    <div class="laptop">
+
+      <div class="laptop-lid">
+
+        <div class="laptop-screen">
+
+          <div class="laptop-screen-content">
+
+            <div class="intro-heart">♥</div>
+
+            <div class="intro-name">
+              ViviOS
+            </div>
+
+            <div class="intro-sub">
+              Para mi amor
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="laptop-base">
+
+        <div class="keyboard">
+
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+
+        </div>
+
+        <div class="trackpad"></div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
 
 <div id="boot">
   <div class="boot-logo">❤️</div>
@@ -4332,19 +4772,57 @@ function launchOS(){
 }
 
 
-setTimeout(
-  launchOS,
-  1800
-);
+function beginBootSequence(){
 
+  const boot=$('#boot');
+
+  if(!boot)return;
+
+  boot.classList.add('boot-ready');
+
+  setTimeout(
+    launchOS,
+    1800
+  );
+
+  setTimeout(
+    ()=>{
+      if(!bootDone){
+        launchOS();
+      }
+    },
+    2500
+  );
+
+}
+
+
+const laptopIntro=$('#laptop-intro');
 
 setTimeout(
   ()=>{
-    if(!bootDone){
-      launchOS();
+
+    if(laptopIntro){
+
+      laptopIntro.classList.add('hide');
+
+      setTimeout(
+        ()=>{
+
+          if(laptopIntro){
+            laptopIntro.remove();
+          }
+
+        },
+        900
+      );
+
     }
+
+    beginBootSequence();
+
   },
-  2500
+  4200
 );
 
 
