@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>ViviOS - Para Mi Amor ❤️</title>
 
 <style>
@@ -37,309 +37,277 @@ body{
   background-attachment:fixed;
 }
 
-/* =========================================================
+/* =========================
    BOOT
-========================================================= */
+========================= */
 
 #boot{
   position:fixed;
   inset:0;
   z-index:99999;
+  background:#050505;
+  color:white;
   display:flex;
-  flex-direction:column;
   align-items:center;
   justify-content:center;
-  background:#111;
-  color:white;
-  transition:opacity .7s ease,visibility .7s ease;
-}
-
-#boot.hide{
-  opacity:0;
-  visibility:hidden;
+  flex-direction:column;
 }
 
 .boot-logo{
-  font-size:60px;
-  animation:bootPulse 1.2s infinite;
+  font-size:58px;
+  margin-bottom:18px;
+  animation:pulse 1.5s infinite;
 }
 
 .boot-title{
-  font-size:27px;
+  font-size:22px;
   font-weight:700;
-  margin-top:10px;
 }
 
 .boot-sub{
-  opacity:.65;
+  margin-top:8px;
+  opacity:.55;
   font-size:13px;
-  margin-top:6px;
+}
+
+.boot-bar{
+  width:220px;
+  height:5px;
+  border-radius:10px;
+  background:#292929;
+  margin-top:28px;
+  overflow:hidden;
 }
 
 .boot-progress{
-  width:190px;
-  height:4px;
-  margin-top:25px;
-  border-radius:20px;
-  overflow:hidden;
-  background:rgba(255,255,255,.15);
-}
-
-.boot-progress span{
-  display:block;
-  height:100%;
   width:0;
-  background:white;
-  animation:bootLoad 1.8s ease forwards;
+  height:100%;
+  background:#fff;
+  border-radius:10px;
+  animation:bootProgress 2.3s forwards;
 }
 
-@keyframes bootLoad{
+@keyframes bootProgress{
   to{width:100%}
 }
 
-@keyframes bootPulse{
-  50%{transform:scale(1.12)}
+@keyframes pulse{
+  50%{transform:scale(1.08)}
 }
 
-/* =========================================================
+/* =========================
    LOGIN
-========================================================= */
+========================= */
 
 #login{
   position:fixed;
   inset:0;
-  z-index:9999;
+  z-index:99998;
   display:none;
-  flex-direction:column;
   align-items:center;
   justify-content:center;
-  background:rgba(0,0,0,.30);
+  background:rgba(0,0,0,.22);
+  backdrop-filter:blur(20px);
+}
+
+.login-card{
+  width:min(360px,90vw);
+  padding:35px 30px;
+  text-align:center;
+  border:1px solid rgba(255,255,255,.5);
+  background:rgba(255,255,255,.35);
   backdrop-filter:blur(25px);
-  -webkit-backdrop-filter:blur(25px);
-  color:white;
+  border-radius:28px;
+  box-shadow:0 25px 80px rgba(0,0,0,.25);
 }
 
 .login-avatar{
   width:90px;
   height:90px;
   border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:43px;
-  background:rgba(255,255,255,.20);
-  border:1px solid rgba(255,255,255,.4);
-  box-shadow:0 15px 40px rgba(0,0,0,.20);
-}
-
-.login-name{
-  margin-top:15px;
-  font-size:22px;
-  font-weight:600;
-}
-
-.login-hint{
-  margin-top:6px;
-  font-size:13px;
-  opacity:.75;
-}
-
-.login-btn{
-  margin-top:25px;
-  border:0;
-  border-radius:12px;
-  padding:10px 24px;
-  background:white;
-  color:#222;
-  font-weight:600;
-  cursor:pointer;
-  box-shadow:0 8px 25px rgba(0,0,0,.20);
-}
-
-/* =========================================================
-   TOP BAR
-========================================================= */
-
-#top-bar{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  height:30px;
-  z-index:5000;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 13px;
-  background:rgba(255,255,255,.40);
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
-  border-bottom:1px solid rgba(255,255,255,.35);
-  font-size:12px;
-  font-weight:500;
-}
-
-.top-left{
-  display:flex;
-  align-items:center;
-  gap:13px;
-}
-
-.apple{
-  font-size:15px;
-}
-
-.menu{
-  opacity:.8;
-}
-
-#mac-clock{
-  font-variant-numeric:tabular-nums;
-}
-
-/* =========================================================
-   DESKTOP
-========================================================= */
-
-#desktop{
-  position:fixed;
-  inset:30px 0 0 0;
-  z-index:1;
-  padding:18px;
-  pointer-events:none;
-}
-
-.desktop-item{
-  width:76px;
-  margin-bottom:17px;
-  text-align:center;
-  pointer-events:auto;
-  cursor:pointer;
-  user-select:none;
-}
-
-.desktop-icon{
-  width:56px;
-  height:56px;
   margin:auto;
   display:flex;
   align-items:center;
   justify-content:center;
-  border-radius:13px;
-  font-size:35px;
-  background:rgba(255,255,255,.34);
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
-  border:1px solid rgba(255,255,255,.45);
-  box-shadow:0 8px 20px rgba(0,0,0,.10);
+  font-size:45px;
+  background:rgba(255,255,255,.65);
+  box-shadow:0 10px 30px rgba(0,0,0,.12);
 }
 
-.desktop-label{
+.login-card h1{
+  margin:17px 0 4px;
+  font-size:25px;
+}
+
+.login-card p{
+  margin:0 0 22px;
+  opacity:.65;
+}
+
+.login-btn{
+  border:0;
+  padding:12px 25px;
+  border-radius:999px;
+  background:var(--accent);
   color:white;
-  text-shadow:0 1px 4px rgba(0,0,0,.7);
-  font-size:11px;
-  margin-top:5px;
+  font-size:15px;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(255,45,85,.3);
 }
 
-/* =========================================================
-   DOCK
-========================================================= */
+/* =========================
+   DESKTOP
+========================= */
 
-#dock-container{
+#desktop{
+  display:none;
   position:fixed;
-  left:50%;
-  bottom:12px;
-  transform:translateX(-50%);
-  z-index:6000;
+  inset:0;
 }
 
-#dock{
+.topbar{
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  height:34px;
+  z-index:1000;
   display:flex;
   align-items:center;
-  gap:8px;
-  padding:8px 10px;
-  border-radius:20px;
-  background:rgba(255,255,255,.35);
-  backdrop-filter:blur(22px);
-  -webkit-backdrop-filter:blur(22px);
-  border:1px solid rgba(255,255,255,.48);
-  box-shadow:0 12px 35px rgba(0,0,0,.18);
+  justify-content:space-between;
+  padding:0 14px;
+  background:rgba(255,255,255,.38);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,.3);
+  font-size:13px;
+  font-weight:600;
 }
 
-.dock-icon{
-  width:45px;
-  height:45px;
+.top-left,
+.top-right{
+  display:flex;
+  gap:15px;
+  align-items:center;
+}
+
+.desktop-icons{
+  position:absolute;
+  top:55px;
+  right:20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:20px;
+}
+
+.desktop-icon{
+  width:82px;
+  padding:5px;
+  border-radius:12px;
+  text-align:center;
+  color:white;
+  text-shadow:0 1px 4px rgba(0,0,0,.8);
+  cursor:pointer;
+  user-select:none;
+}
+
+.desktop-icon:hover{
+  background:rgba(255,255,255,.18);
+}
+
+.desktop-icon .icon{
+  width:55px;
+  height:55px;
+  margin:auto;
   display:flex;
   align-items:center;
   justify-content:center;
-  border-radius:13px;
-  font-size:26px;
+  font-size:40px;
+  filter:drop-shadow(0 5px 8px rgba(0,0,0,.2));
+}
+
+.desktop-icon span{
+  display:block;
+  margin-top:5px;
+  font-size:12px;
+  line-height:15px;
+}
+
+/* =========================
+   DOCK
+========================= */
+
+.dock{
+  position:absolute;
+  z-index:2000;
+  left:50%;
+  bottom:15px;
+  transform:translateX(-50%);
+  display:flex;
+  align-items:flex-end;
+  gap:8px;
+  padding:8px 12px;
+  border-radius:22px;
+  background:rgba(255,255,255,.48);
+  backdrop-filter:blur(22px);
+  border:1px solid rgba(255,255,255,.55);
+  box-shadow:0 12px 35px rgba(0,0,0,.22);
+}
+
+.dock-item{
+  width:49px;
+  height:49px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:14px;
+  font-size:28px;
   cursor:pointer;
-  user-select:none;
-  transition:transform .18s ease,background .18s ease;
+  transition:.18s;
 }
 
-.dock-icon:hover{
-  transform:translateY(-7px) scale(1.12);
-  background:rgba(255,255,255,.30);
+.dock-item:hover{
+  transform:translateY(-8px) scale(1.1);
+  background:rgba(255,255,255,.35);
 }
 
-.dock-icon.open{
-  background:rgba(255,255,255,.32);
+.dock-separator{
+  width:1px;
+  height:35px;
+  background:rgba(0,0,0,.15);
 }
 
-/* =========================================================
+/* =========================
    WINDOWS
-========================================================= */
+========================= */
 
 .window{
-  position:fixed;
+  position:absolute;
+  z-index:100;
   display:none;
-  flex-direction:column;
-  width:min(650px,calc(100vw - 30px));
-  height:min(570px,calc(100vh - 105px));
+  width:min(720px,90vw);
+  height:min(560px,75vh);
   left:50%;
   top:50%;
   transform:translate(-50%,-50%);
-  z-index:3000;
-  overflow:hidden;
   border-radius:15px;
-  background:rgba(245,245,247,.78);
-  border:1px solid rgba(255,255,255,.7);
-  box-shadow:
-    0 25px 80px rgba(0,0,0,.25),
-    0 5px 20px rgba(0,0,0,.10);
+  overflow:hidden;
+  background:rgba(255,255,255,.78);
   backdrop-filter:blur(28px);
-  -webkit-backdrop-filter:blur(28px);
+  border:1px solid rgba(255,255,255,.7);
+  box-shadow:0 25px 80px rgba(0,0,0,.28);
 }
 
 .window.active{
-  display:flex;
-  animation:windowOpen .20s ease;
-}
-
-.window.closing{
-  animation:windowClose .20s ease forwards;
-}
-
-.window.minimized{
-  display:none;
-}
-
-.window.maximized{
-  inset:30px 0 0 0;
-  width:auto;
-  height:auto;
-  left:0;
-  top:0;
-  transform:none;
-  border-radius:0;
+  display:block;
+  animation:windowOpen .18s ease-out;
 }
 
 @keyframes windowOpen{
   from{
     opacity:0;
-    transform:translate(-50%,-48%) scale(.96);
+    transform:translate(-50%,-48%) scale(.97);
   }
   to{
     opacity:1;
@@ -347,36 +315,30 @@ body{
   }
 }
 
-@keyframes windowClose{
-  to{
-    opacity:0;
-    transform:translate(-50%,-48%) scale(.96);
-  }
+.window.maximized{
+  left:0!important;
+  top:34px!important;
+  width:100%!important;
+  height:calc(100% - 34px)!important;
+  transform:none!important;
+  border-radius:0;
 }
 
 .window-header{
-  height:42px;
-  min-height:42px;
+  height:43px;
   display:flex;
   align-items:center;
-  justify-content:center;
-  position:relative;
-  cursor:grab;
-  background:rgba(255,255,255,.52);
+  padding:0 13px;
+  background:rgba(245,245,245,.72);
   border-bottom:1px solid rgba(0,0,0,.08);
+  cursor:move;
   user-select:none;
 }
 
-.window-header:active{
-  cursor:grabbing;
-}
-
-.window-dots{
-  position:absolute;
-  left:13px;
-  top:14px;
+.traffic{
   display:flex;
   gap:7px;
+  margin-right:14px;
 }
 
 .dot{
@@ -393,408 +355,360 @@ body{
 .dot-max{background:#28c840}
 
 .window-title{
-  font-size:13px;
-  font-weight:600;
-}
-
-.window-body{
-  flex:1;
-  overflow:auto;
-  padding:20px;
-}
-
-/* =========================================================
-   CARTA
-========================================================= */
-
-.letter-paper{
-  max-width:560px;
-  margin:auto;
-  min-height:100%;
-  padding:25px;
-  border-radius:14px;
-  background:rgba(255,255,255,.82);
-  box-shadow:0 8px 30px rgba(0,0,0,.08);
-}
-
-.letter-heading{
-  font-size:21px;
   font-weight:700;
-  margin-bottom:20px;
+  font-size:13px;
+  flex:1;
+  text-align:center;
+  margin-right:55px;
+}
+
+.window-content{
+  height:calc(100% - 43px);
+  overflow:auto;
+  padding:25px;
+}
+
+/* =========================
+   CARTA
+========================= */
+
+.letter{
+  max-width:600px;
+  margin:auto;
+  padding:35px;
+  background:rgba(255,255,255,.7);
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  white-space:pre-line;
+  line-height:1.8;
+  font-size:16px;
+}
+
+.letter-title{
+  text-align:center;
+  font-size:26px;
   color:var(--accent);
+  margin-bottom:20px;
 }
 
-#display-carta{
-  white-space:pre-wrap;
-  font-size:14px;
-  line-height:1.75;
-}
+/* =========================
+   GALERIA
+========================= */
 
-.letter-sign{
-  margin-top:30px;
-  text-align:right;
-  color:#555;
-  font-style:italic;
-}
-
-/* =========================================================
-   GALLERY
-========================================================= */
-
-.gallery-grid{
+.gallery{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
+  grid-template-columns:repeat(auto-fill,minmax(145px,1fr));
+  gap:15px;
 }
 
-.gallery-card{
-  position:relative;
-  aspect-ratio:1;
+.photo-card{
+  height:145px;
   overflow:hidden;
-  border-radius:12px;
+  border-radius:15px;
+  background:#eee;
   cursor:pointer;
-  background:rgba(255,255,255,.4);
+  box-shadow:0 7px 20px rgba(0,0,0,.12);
 }
 
-.gallery-card img{
+.photo-card img{
   width:100%;
   height:100%;
   object-fit:cover;
-  display:block;
-  transition:transform .3s ease;
+  transition:.25s;
 }
 
-.gallery-card:hover img{
-  transform:scale(1.07);
+.photo-card:hover img{
+  transform:scale(1.06);
 }
 
-/* =========================================================
+/* =========================
    MUSIC
-========================================================= */
+========================= */
 
-.music-card{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
+.music-box{
+  max-width:480px;
+  margin:30px auto;
+  padding:30px;
   text-align:center;
+  background:rgba(255,255,255,.7);
+  border-radius:25px;
 }
 
-.album{
-  width:min(240px,70vw);
-  aspect-ratio:1;
-  object-fit:cover;
-  border-radius:18px;
-  box-shadow:0 20px 40px rgba(0,0,0,.18);
-}
-
-.music-title{
-  margin-top:20px;
-  font-size:20px;
-  font-weight:700;
-}
-
-.music-artist{
-  margin-top:5px;
-  color:#777;
-  font-size:13px;
+.music-icon{
+  font-size:75px;
+  margin-bottom:15px;
 }
 
 .local-audio{
-  width:min(450px,100%);
-  margin-top:25px;
+  width:100%;
+  margin-top:20px;
 }
 
-/* =========================================================
+/* =========================
    RAZONES
-========================================================= */
+========================= */
 
-.reason-item{
-  padding:17px;
-  margin-bottom:11px;
-  border-radius:13px;
-  background:rgba(255,255,255,.68);
-  border:1px solid rgba(255,255,255,.65);
-  box-shadow:0 5px 18px rgba(0,0,0,.05);
-  font-size:14px;
+.reasons{
+  display:grid;
+  gap:15px;
 }
 
-/* =========================================================
+.reason{
+  padding:20px;
+  border-radius:17px;
+  background:rgba(255,255,255,.68);
+  box-shadow:0 7px 20px rgba(0,0,0,.06);
+}
+
+.reason b{
+  color:var(--accent);
+}
+
+/* =========================
    VALES
-========================================================= */
+========================= */
+
+.coupons{
+  display:grid;
+  gap:18px;
+}
 
 .coupon{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
-  padding:17px;
-  margin-bottom:12px;
-  border-radius:14px;
+  padding:25px;
+  border:2px dashed var(--accent);
+  border-radius:18px;
   background:rgba(255,255,255,.72);
-  border:1px dashed rgba(255,45,85,.35);
+  text-align:center;
 }
 
-.claim-btn{
-  border:0;
-  padding:8px 13px;
-  border-radius:10px;
-  color:white;
-  background:var(--accent);
-  cursor:pointer;
-  font-size:11px;
-  font-weight:600;
+.coupon h3{
+  margin:5px 0;
+  color:var(--accent);
 }
 
-/* =========================================================
+/* =========================
    SORPRESA
-========================================================= */
+========================= */
 
 .surprise{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
   text-align:center;
+  padding:30px;
 }
 
 .gift{
-  font-size:90px;
+  font-size:100px;
   cursor:pointer;
-  user-select:none;
-  transition:transform .2s ease;
+  transition:.25s;
 }
 
 .gift:hover{
-  transform:scale(1.12) rotate(-4deg);
+  transform:scale(1.1) rotate(-5deg);
 }
 
-#gift-text{
-  margin-top:20px;
-  font-weight:600;
-  color:var(--accent);
-}
-
-/* =========================================================
-   IMAGE VIEWER
-========================================================= */
-
-#image-viewer{
-  position:fixed;
-  inset:0;
-  z-index:20000;
+.surprise-message{
   display:none;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  padding:50px 20px 90px;
-  background:rgba(0,0,0,.88);
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
+  margin-top:20px;
+  padding:25px;
+  background:rgba(255,255,255,.7);
+  border-radius:20px;
+  font-size:20px;
+  line-height:1.6;
 }
 
-#image-viewer.active{
-  display:flex;
+/* =========================
+   JUEGO
+========================= */
+
+.game-window{
+  width:min(900px,94vw);
+  height:min(560px,82vh);
 }
 
-#viewer-img{
-  max-width:92vw;
-  max-height:75vh;
-  object-fit:contain;
-  border-radius:12px;
-  box-shadow:0 20px 70px rgba(0,0,0,.5);
-  user-select:none;
-}
-
-#viewer-caption{
-  color:white;
-  font-size:13px;
-  margin-top:12px;
-  opacity:.8;
-}
-
-.viewer-close{
-  position:absolute;
-  top:15px;
-  right:18px;
-  border:0;
-  background:rgba(255,255,255,.15);
-  color:white;
-  width:42px;
-  height:42px;
-  border-radius:50%;
-  font-size:28px;
-  cursor:pointer;
-}
-
-.viewer-nav{
-  position:absolute;
-  bottom:20px;
-  display:flex;
-  gap:10px;
-}
-
-.viewer-nav button{
-  border:1px solid rgba(255,255,255,.3);
-  background:rgba(255,255,255,.15);
-  color:white;
-  border-radius:10px;
-  padding:9px 14px;
-  cursor:pointer;
-}
-
-/* =========================================================
-   GAME
-========================================================= */
-
-#win-juego{
-  width:min(850px,calc(100vw - 20px));
-  height:min(570px,calc(100vh - 75px));
-}
-
-.game-body{
-  padding:14px;
+.game-content{
+  padding:0;
+  overflow:hidden;
   background:
     linear-gradient(
       to bottom,
-      rgba(255,255,255,.25),
-      rgba(255,220,230,.28)
+      rgba(255,238,244,.95),
+      rgba(255,255,255,.98)
     );
+  position:relative;
+}
+
+.game-top{
+  height:58px;
   display:flex;
-  flex-direction:column;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 18px;
+  background:rgba(255,255,255,.62);
+  border-bottom:1px solid rgba(255,45,85,.12);
 }
 
-.game-intro{
-  text-align:center;
-  margin-bottom:10px;
-}
-
-.game-intro-title{
-  font-size:20px;
+.game-title{
   font-weight:800;
   color:var(--accent);
-}
-
-.game-intro-sub{
-  margin-top:3px;
-  font-size:11px;
-  color:#666;
-}
-
-.game-hud{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:7px 11px;
-  margin-bottom:8px;
-  border-radius:10px;
-  background:rgba(255,255,255,.62);
-  border:1px solid rgba(255,255,255,.7);
-  font-size:12px;
-  font-weight:700;
 }
 
 .game-score{
-  color:var(--accent);
+  font-family:monospace;
+  font-weight:700;
 }
 
-#game-wrap{
-  position:relative;
-  width:100%;
-  flex:1;
-  min-height:250px;
-  overflow:hidden;
-  border-radius:14px;
-  background:
-    linear-gradient(
-      to bottom,
-      #fceef3 0%,
-      #ffe7ed 68%,
-      #f7d8df 68%,
-      #f7d8df 100%
-    );
-  border:1px solid rgba(255,255,255,.8);
-  box-shadow:inset 0 0 35px rgba(255,255,255,.35);
-  touch-action:none;
-  user-select:none;
+.game-help{
+  font-size:12px;
+  opacity:.6;
 }
 
-#game-canvas{
-  width:100%;
-  height:100%;
+#gameCanvas{
   display:block;
+  width:100%;
+  height:calc(100% - 58px);
   touch-action:none;
+  cursor:pointer;
 }
 
-.game-message{
+.game-overlay{
   position:absolute;
-  inset:0;
+  inset:58px 0 0;
   display:flex;
-  flex-direction:column;
   align-items:center;
   justify-content:center;
-  background:rgba(255,255,255,.35);
-  backdrop-filter:blur(4px);
-  -webkit-backdrop-filter:blur(4px);
+  flex-direction:column;
   text-align:center;
-  pointer-events:none;
+  background:rgba(255,255,255,.58);
+  backdrop-filter:blur(5px);
+  z-index:5;
 }
 
-.game-message.hidden{
+.game-overlay.hidden{
   display:none;
 }
 
-.game-message-title{
-  font-size:29px;
-  font-weight:800;
-  color:#ff2d55;
-  text-shadow:0 2px 8px rgba(255,45,85,.18);
+.game-over-title{
+  font-size:35px;
+  font-weight:900;
+  color:var(--accent);
+  margin-bottom:7px;
 }
 
-.game-message-text{
-  margin-top:5px;
-  color:#555;
-  font-size:13px;
+.game-over-score{
+  font-size:17px;
+  margin-bottom:18px;
 }
 
-.game-start-btn{
-  margin-top:15px;
+.game-btn{
   border:0;
-  border-radius:12px;
-  padding:10px 20px;
-  color:white;
   background:var(--accent);
-  font-weight:700;
+  color:white;
+  padding:12px 25px;
+  border-radius:999px;
+  font-size:15px;
+  font-weight:800;
   cursor:pointer;
-  pointer-events:auto;
-  box-shadow:0 7px 18px rgba(255,45,85,.25);
+  box-shadow:0 8px 20px rgba(255,45,85,.28);
 }
 
-.game-controls{
-  margin-top:8px;
-  text-align:center;
-  font-size:10px;
-  color:#777;
+.game-mobile-help{
+  display:none;
+  position:absolute;
+  left:50%;
+  bottom:12px;
+  transform:translateX(-50%);
+  padding:7px 13px;
+  border-radius:999px;
+  background:rgba(255,255,255,.7);
+  font-size:11px;
+  opacity:.65;
+  z-index:3;
 }
 
-/* =========================================================
+/* =========================
+   VIEWER
+========================= */
+
+#viewer{
+  position:fixed;
+  inset:0;
+  z-index:5000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,.9);
+  touch-action:none;
+}
+
+#viewer.active{
+  display:flex;
+}
+
+.viewer-image{
+  max-width:92vw;
+  max-height:88vh;
+  object-fit:contain;
+  border-radius:8px;
+  user-select:none;
+}
+
+.viewer-close,
+.viewer-prev,
+.viewer-next{
+  position:absolute;
+  border:0;
+  color:white;
+  background:rgba(255,255,255,.13);
+  backdrop-filter:blur(10px);
+  cursor:pointer;
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  font-size:25px;
+}
+
+.viewer-close{
+  top:20px;
+  right:20px;
+}
+
+.viewer-prev{
+  left:20px;
+  top:50%;
+  transform:translateY(-50%);
+}
+
+.viewer-next{
+  right:20px;
+  top:50%;
+  transform:translateY(-50%);
+}
+
+.viewer-counter{
+  position:absolute;
+  bottom:20px;
+  color:white;
+  background:rgba(0,0,0,.35);
+  padding:7px 14px;
+  border-radius:999px;
+}
+
+/* =========================
    TOAST
-========================================================= */
+========================= */
 
 #toast{
   position:fixed;
   left:50%;
   bottom:90px;
-  transform:translateX(-50%) translateY(15px);
-  z-index:30000;
+  transform:translateX(-50%) translateY(20px);
+  z-index:10000;
+  padding:11px 18px;
+  border-radius:999px;
+  color:white;
+  background:rgba(20,20,20,.78);
   opacity:0;
   pointer-events:none;
-  padding:10px 16px;
-  border-radius:12px;
-  color:white;
-  background:rgba(20,20,20,.82);
-  font-size:12px;
-  transition:.25s ease;
+  transition:.25s;
 }
 
 #toast.show{
@@ -802,22 +716,22 @@ body{
   transform:translateX(-50%) translateY(0);
 }
 
-/* =========================================================
+/* =========================
    HEARTS
-========================================================= */
+========================= */
 
 .heart{
   position:fixed;
-  z-index:10000;
   pointer-events:none;
+  z-index:9999;
   font-size:20px;
-  animation:heartFloat 1.6s ease forwards;
+  animation:heartFloat 1.5s forwards;
 }
 
 @keyframes heartFloat{
   0%{
     opacity:1;
-    transform:translateY(0) scale(.7);
+    transform:translateY(0) scale(.8);
   }
   100%{
     opacity:0;
@@ -825,127 +739,77 @@ body{
   }
 }
 
-/* =========================================================
-   SCROLLBAR
-========================================================= */
+/* =========================
+   RESPONSIVE
+========================= */
 
-::-webkit-scrollbar{
-  width:7px;
-}
+@media(max-width:700px){
 
-::-webkit-scrollbar-thumb{
-  background:rgba(0,0,0,.18);
-  border-radius:10px;
-}
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media(max-width:600px){
-
-  #top-bar{
-    height:29px;
-  }
-
-  .top-left{
-    gap:8px;
-  }
-
-  .menu{
+  .top-left span:not(:first-child){
     display:none;
   }
 
-  #desktop{
-    padding:12px;
+  .desktop-icons{
+    right:8px;
+    top:50px;
+    gap:10px;
   }
 
-  .desktop-item{
-    margin-bottom:12px;
+  .desktop-icon{
+    width:70px;
   }
 
-  #dock-container{
-    bottom:7px;
-    max-width:calc(100vw - 12px);
+  .desktop-icon .icon{
+    width:45px;
+    height:45px;
+    font-size:32px;
   }
 
-  #dock{
-    gap:2px;
-    padding:6px;
-    border-radius:17px;
+  .dock{
+    bottom:8px;
+    gap:3px;
+    padding:7px;
   }
 
-  .dock-icon{
-    width:42px;
-    height:42px;
-    font-size:23px;
+  .dock-item{
+    width:43px;
+    height:43px;
+    font-size:24px;
   }
 
   .window{
-    width:calc(100vw - 12px);
-    height:calc(100vh - 80px);
-    border-radius:14px;
+    width:94vw;
+    height:76vh;
   }
 
-  .window-header{
-    height:40px;
-    min-height:40px;
+  .window-content{
+    padding:16px;
   }
 
-  .window-body{
-    padding:12px;
+  .letter{
+    padding:22px;
   }
 
-  .gallery-grid{
+  .gallery{
     grid-template-columns:repeat(2,1fr);
-    gap:7px;
+    gap:10px;
   }
 
-  .letter-paper{
-    padding:18px;
+  .photo-card{
+    height:150px;
   }
 
-  #win-juego{
-    width:calc(100vw - 12px);
-    height:calc(100vh - 70px);
+  .game-window{
+    width:96vw;
+    height:70vh;
   }
 
-  .game-body{
-    padding:8px;
-  }
-
-  #game-wrap{
-    min-height:220px;
-  }
-
-  .game-intro{
-    margin-bottom:6px;
-  }
-
-  .game-intro-title{
-    font-size:17px;
-  }
-
-  .game-intro-sub{
-    font-size:10px;
-  }
-
-  .game-controls{
-    font-size:9px;
-  }
-}
-
-@media(max-height:600px){
-  #win-juego{
-    height:calc(100vh - 45px);
-  }
-
-  .game-intro{
+  .game-help{
     display:none;
   }
 
-  .game-controls{
-    display:none;
+  .game-mobile-help{
+    display:block;
   }
 }
 </style>
@@ -953,569 +817,565 @@ body{
 
 <body>
 
-<!-- =======================================================
+<!-- =========================
      BOOT
-======================================================= -->
+========================= -->
 
 <div id="boot">
   <div class="boot-logo">❤️</div>
   <div class="boot-title">ViviOS</div>
-  <div class="boot-sub">Preparando algo especial...</div>
-  <div class="boot-progress"><span></span></div>
+  <div class="boot-sub">Preparando un pequeño lugar para ti...</div>
+  <div class="boot-bar">
+    <div class="boot-progress"></div>
+  </div>
 </div>
 
-<!-- =======================================================
+<!-- =========================
      LOGIN
-======================================================= -->
+========================= -->
 
 <div id="login">
-  <div class="login-avatar">❤️</div>
-  <div class="login-name">Viviana</div>
-  <div class="login-hint">Una pequeña sorpresa te está esperando</div>
-  <button class="login-btn" id="login-btn">
-    Iniciar sesión
-  </button>
-</div>
-
-<!-- =======================================================
-     TOP BAR
-======================================================= -->
-
-<div id="top-bar">
-  <div class="top-left">
-    <span class="apple"></span>
-    <span>ViviOS</span>
-    <span class="menu">Archivo</span>
-    <span class="menu">Ventana</span>
+  <div class="login-card">
+    <div class="login-avatar">💖</div>
+    <h1>Hola, Viviana ❤️</h1>
+    <p>Este pequeño mundo fue hecho para ti.</p>
+    <button class="login-btn" id="loginBtn">Entrar</button>
   </div>
-
-  <div id="mac-clock"></div>
 </div>
 
-<!-- =======================================================
+<!-- =========================
      DESKTOP
-======================================================= -->
+========================= -->
 
 <div id="desktop">
 
-  <div class="desktop-item" data-open="win-carta">
-    <div class="desktop-icon">💌</div>
-    <div class="desktop-label">Carta.pdf</div>
-  </div>
-
-  <div class="desktop-item" data-open="win-momentos">
-    <div class="desktop-icon">🖼️</div>
-    <div class="desktop-label">Fotos</div>
-  </div>
-
-  <div class="desktop-item" data-open="win-razones">
-    <div class="desktop-icon">📝</div>
-    <div class="desktop-label">Razones.txt</div>
-  </div>
-
-  <div class="desktop-item" data-open="win-juego">
-    <div class="desktop-icon">🎮</div>
-    <div class="desktop-label">Nuestro Juego</div>
-  </div>
-
-  <div class="desktop-item" data-open="win-papelera">
-    <div class="desktop-icon">🗑️</div>
-    <div class="desktop-label">Papelera</div>
-  </div>
-
-</div>
-
-<!-- =======================================================
-     DOCK
-======================================================= -->
-
-<div id="dock-container">
-  <div id="dock">
-
-    <div class="dock-icon" data-open="win-carta">💌</div>
-
-    <div class="dock-icon" data-open="win-momentos">📸</div>
-
-    <div class="dock-icon" data-open="win-canciones">🎵</div>
-
-    <div class="dock-icon" data-open="win-razones">💖</div>
-
-    <div class="dock-icon" data-open="win-vales">🎟️</div>
-
-    <div class="dock-icon" data-open="win-sorpresa">🎁</div>
-
-    <div class="dock-icon" data-open="win-juego">🎮</div>
-
-  </div>
-</div>
-
-<!-- =======================================================
-     CARTA
-======================================================= -->
-
-<div id="win-carta" class="window">
-
-  <div class="window-header">
-
-    <div class="window-dots">
-      <button class="dot dot-close" data-close="win-carta"></button>
-      <button class="dot dot-min" data-min="win-carta"></button>
-      <button class="dot dot-max" data-max="win-carta"></button>
+  <div class="topbar">
+    <div class="top-left">
+      <span>❤️ ViviOS</span>
+      <span>Archivo</span>
+      <span>Editar</span>
+      <span>Ver</span>
     </div>
 
-    <div class="window-title">
-      Carta para ti
+    <div class="top-right">
+      <span id="clock">00:00</span>
+      <span>🔋</span>
+    </div>
+  </div>
+
+  <!-- DESKTOP ICONS -->
+
+  <div class="desktop-icons">
+
+    <div class="desktop-icon" data-open="win-carta">
+      <div class="icon">💌</div>
+      <span>Carta.pdf</span>
+    </div>
+
+    <div class="desktop-icon" data-open="win-momentos">
+      <div class="icon">📸</div>
+      <span>Fotos</span>
+    </div>
+
+    <div class="desktop-icon" data-open="win-razones">
+      <div class="icon">💖</div>
+      <span>Razones.txt</span>
+    </div>
+
+    <div class="desktop-icon" data-open="win-juego">
+      <div class="icon">🎮</div>
+      <span>Vivi Runner</span>
+    </div>
+
+    <div class="desktop-icon" data-open="win-papelera">
+      <div class="icon">🗑️</div>
+      <span>Papelera</span>
     </div>
 
   </div>
 
-  <div class="window-body">
+  <!-- =========================
+       CARTA
+  ========================= -->
 
-    <div class="letter-paper">
+  <div class="window" id="win-carta">
 
-      <div class="letter-heading">
-        Para la persona que amo ❤️
+    <div class="window-header">
+      <div class="traffic">
+        <button class="dot dot-close" data-close="win-carta"></button>
+        <button class="dot dot-min" data-min="win-carta"></button>
+        <button class="dot dot-max" data-max="win-carta"></button>
       </div>
 
-      <div id="display-carta"></div>
-
-      <div class="letter-sign">
-        Con todo mi amor,<br>
-        para siempre ❤️
-      </div>
-
+      <div class="window-title">Carta.pdf</div>
     </div>
 
-  </div>
+    <div class="window-content">
 
-</div>
+      <div class="letter">
 
-<!-- =======================================================
-     MOMENTOS
-======================================================= -->
-
-<div id="win-momentos" class="window">
-
-  <div class="window-header">
-
-    <div class="window-dots">
-      <button class="dot dot-close" data-close="win-momentos"></button>
-      <button class="dot dot-min" data-min="win-momentos"></button>
-      <button class="dot dot-max" data-max="win-momentos"></button>
-    </div>
-
-    <div class="window-title">
-      Nuestros Momentos
-    </div>
-
-  </div>
-
-  <div class="window-body">
-
-    <div
-      class="gallery-grid"
-      id="display-galeria"
-    ></div>
-
-  </div>
-
-</div>
-
-<!-- =======================================================
-     CANCIONES
-======================================================= -->
-
-<div id="win-canciones" class="window">
-
-  <div class="window-header">
-
-    <div class="window-dots">
-      <button class="dot dot-close" data-close="win-canciones"></button>
-      <button class="dot dot-min" data-min="win-canciones"></button>
-      <button class="dot dot-max" data-max="win-canciones"></button>
-    </div>
-
-    <div class="window-title">
-      Nuestra Canción
-    </div>
-
-  </div>
-
-  <div class="window-body music-card">
-
-    <img
-      id="album-cover"
-      class="album"
-      src="assets/fondo.jpg"
-      alt="Nuestra canción"
-    >
-
-    <div
-      class="music-title"
-      id="music-title"
-    >
-      Nuestra canción especial
-    </div>
-
-    <div
-      class="music-artist"
-      id="music-artist"
-    >
-      Para mi persona favorita ❤️
-    </div>
-
-    <audio
-      id="local-audio"
-      class="local-audio"
-      controls
-      preload="metadata"
-    >
-      <source
-        src="assets/musica/nuestra-cancion.mp3"
-        type="audio/mpeg"
-      >
-
-      Tu navegador no puede reproducir este audio.
-    </audio>
-
-  </div>
-
-</div>
-
-<!-- =======================================================
-     RAZONES
-======================================================= -->
-
-<div id="win-razones" class="window">
-
-  <div class="window-header">
-
-    <div class="window-dots">
-      <button class="dot dot-close" data-close="win-razones"></button>
-      <button class="dot dot-min" data-min="win-razones"></button>
-      <button class="dot dot-max" data-max="win-razones"></button>
-    </div>
-
-    <div class="window-title">
-      Razones para amarte
-    </div>
-
-  </div>
-
-  <div class="window-body">
-
-    <div class="reason-item">
-      1. Por tu forma tan bonita de sonreír. ❤️
-    </div>
-
-    <div class="reason-item">
-      2. Por cómo haces que incluso un día normal se sienta especial.
-    </div>
-
-    <div class="reason-item">
-      3. Por la paz que siento cuando estoy contigo.
-    </div>
-
-    <div class="reason-item">
-      4. Por cada recuerdo que hemos construido.
-    </div>
-
-    <div class="reason-item">
-      5. Por ser tú, sin tener que cambiar nada.
-    </div>
-
-  </div>
-
-</div>
-
-<!-- =======================================================
-     VALES
-======================================================= -->
-
-<div id="win-vales" class="window">
-
-  <div class="window-header">
-
-    <div class="window-dots">
-      <button class="dot dot-close" data-close="win-vales"></button>
-      <button class="dot dot-min" data-min="win-vales"></button>
-      <button class="dot dot-max" data-max="win-vales"></button>
-    </div>
-
-    <div class="window-title">
-      Vales Canjeables
-    </div>
-
-  </div>
-
-  <div class="window-body">
-
-    <div class="coupon">
-
-      <div>
-        <strong>Cena especial 🍝</strong>
-
-        <p style="font-size:11px;color:#777;margin-top:4px">
-          Canjeable por tu comida favorita.
-        </p>
-      </div>
-
-      <button class="claim-btn">
-        Canjear
-      </button>
-
-    </div>
-
-    <div class="coupon">
-
-      <div>
-        <strong>Tarde de películas 🎬</strong>
-
-        <p style="font-size:11px;color:#777;margin-top:4px">
-          Tú eliges la película y el postre.
-        </p>
-      </div>
-
-      <button class="claim-btn">
-        Canjear
-      </button>
-
-    </div>
-
-    <div class="coupon">
-
-      <div>
-        <strong>Abrazo infinito 🤗</strong>
-
-        <p style="font-size:11px;color:#777;margin-top:4px">
-          Sin fecha de vencimiento.
-        </p>
-      </div>
-
-      <button class="claim-btn">
-        Canjear
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-
-<!-- =======================================================
-     SORPRESA
-======================================================= -->
-
-<div id="win-sorpresa" class="window">
-
-  <div class="window-header">
-
-    <div class="window-dots">
-      <button class="dot dot-close" data-close="win-sorpresa"></button>
-      <button class="dot dot-min" data-min="win-sorpresa"></button>
-      <button class="dot dot-max" data-max="win-sorpresa"></button>
-    </div>
-
-    <div class="window-title">
-      Regalito Sorpresa
-    </div>
-
-  </div>
-
-  <div class="window-body surprise">
-
-    <p style="font-weight:600;margin-bottom:18px">
-      Hay algo escondido aquí...
-    </p>
-
-    <div class="gift" id="gift-btn">
-      🎁
-    </div>
-
-    <div id="gift-text">
-      ¡Vale por un postre juntos! 🍦❤️
-    </div>
-
-  </div>
-
-</div>
-
-<!-- =======================================================
-     JUEGO
-======================================================= -->
-
-<div id="win-juego" class="window">
-
-  <div class="window-header">
-
-    <div class="window-dots">
-      <button class="dot dot-close" data-close="win-juego"></button>
-      <button class="dot dot-min" data-min="win-juego"></button>
-      <button class="dot dot-max" data-max="win-juego"></button>
-    </div>
-
-    <div class="window-title">
-      Nosotros ❤️ - Runner
-    </div>
-
-  </div>
-
-  <div class="window-body game-body">
-
-    <div class="game-intro">
-
-      <div class="game-intro-title">
-        Tú + Viviana ❤️
-      </div>
-
-      <div class="game-intro-sub">
-        Corran juntos y no dejen que nada los detenga.
-      </div>
-
-    </div>
-
-    <div class="game-hud">
-
-      <span>
-        Puntos:
-        <span
-          class="game-score"
-          id="game-score"
-        >
-          0
-        </span>
-      </span>
-
-      <span>
-        Récord:
-        <span
-          class="game-score"
-          id="game-best"
-        >
-          0
-        </span>
-      </span>
-
-    </div>
-
-    <div id="game-wrap">
-
-      <canvas id="game-canvas"></canvas>
-
-      <div
-        id="game-message"
-        class="game-message"
-      >
-
-        <div
-          id="game-message-title"
-          class="game-message-title"
-        >
-          Nuestro Runner ❤️
+        <div class="letter-title">
+          Para mi amor, Viviana ❤️
         </div>
 
-        <div
-          id="game-message-text"
-          class="game-message-text"
+        <div id="letterText"></div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================
+       GALERIA
+  ========================= -->
+
+  <div class="window" id="win-momentos">
+
+    <div class="window-header">
+      <div class="traffic">
+        <button class="dot dot-close" data-close="win-momentos"></button>
+        <button class="dot dot-min" data-min="win-momentos"></button>
+        <button class="dot dot-max" data-max="win-momentos"></button>
+      </div>
+
+      <div class="window-title">Fotos</div>
+    </div>
+
+    <div class="window-content">
+
+      <div class="gallery" id="gallery"></div>
+
+    </div>
+  </div>
+
+  <!-- =========================
+       CANCIONES
+  ========================= -->
+
+  <div class="window" id="win-canciones">
+
+    <div class="window-header">
+      <div class="traffic">
+        <button class="dot dot-close" data-close="win-canciones"></button>
+        <button class="dot dot-min" data-min="win-canciones"></button>
+        <button class="dot dot-max" data-max="win-canciones"></button>
+      </div>
+
+      <div class="window-title">Nuestra canción</div>
+    </div>
+
+    <div class="window-content">
+
+      <div class="music-box">
+
+        <div class="music-icon">🎵</div>
+
+        <h2>Nuestra canción ❤️</h2>
+
+        <p>
+          Una canción para escuchar mientras recorres
+          este pequeño rincón.
+        </p>
+
+        <audio
+          id="local-audio"
+          class="local-audio"
+          controls
+          preload="metadata"
         >
-          Toca, haz clic o presiona ESPACIO para saltar
+          <source
+            src="assets/musica/nuestra-cancion.mp3"
+            type="audio/mpeg"
+          >
+          Tu navegador no puede reproducir este audio.
+        </audio>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================
+       RAZONES
+  ========================= -->
+
+  <div class="window" id="win-razones">
+
+    <div class="window-header">
+      <div class="traffic">
+        <button class="dot dot-close" data-close="win-razones"></button>
+        <button class="dot dot-min" data-min="win-razones"></button>
+        <button class="dot dot-max" data-max="win-razones"></button>
+      </div>
+
+      <div class="window-title">Razones.txt</div>
+    </div>
+
+    <div class="window-content">
+
+      <h2 style="text-align:center;color:#ff2d55;">
+        Algunas razones por las que te amo ❤️
+      </h2>
+
+      <div class="reasons">
+
+        <div class="reason">
+          <b>01.</b>
+          Porque contigo hasta las cosas más pequeñas
+          pueden convertirse en recuerdos especiales.
+        </div>
+
+        <div class="reason">
+          <b>02.</b>
+          Porque tu forma de ser tiene algo que siempre
+          consigue hacerme sonreír.
+        </div>
+
+        <div class="reason">
+          <b>03.</b>
+          Porque me encanta compartir momentos contigo,
+          incluso cuando no estamos haciendo nada especial.
+        </div>
+
+        <div class="reason">
+          <b>04.</b>
+          Porque eres una persona que ocupa un lugar
+          enorme en mi corazón.
+        </div>
+
+        <div class="reason">
+          <b>05.</b>
+          Porque simplemente eres tú.
+          Y eso ya es suficiente. ❤️
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================
+       VALES
+  ========================= -->
+
+  <div class="window" id="win-vales">
+
+    <div class="window-header">
+      <div class="traffic">
+        <button class="dot dot-close" data-close="win-vales"></button>
+        <button class="dot dot-min" data-min="win-vales"></button>
+        <button class="dot dot-max" data-max="win-vales"></button>
+      </div>
+
+      <div class="window-title">Vales</div>
+    </div>
+
+    <div class="window-content">
+
+      <h2 style="text-align:center;color:#ff2d55;">
+        Vales para mi amor 🎟️
+      </h2>
+
+      <div class="coupons">
+
+        <div class="coupon">
+          <h3>🎟️ Vale por un abrazo</h3>
+          <p>Canjeable cuando quieras.</p>
+        </div>
+
+        <div class="coupon">
+          <h3>🎟️ Vale por una cita</h3>
+          <p>Una cita para nosotros dos.</p>
+        </div>
+
+        <div class="coupon">
+          <h3>🎟️ Vale infinito</h3>
+          <p>Un "te amo" que nunca caduca. ❤️</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================
+       SORPRESA
+  ========================= -->
+
+  <div class="window" id="win-sorpresa">
+
+    <div class="window-header">
+      <div class="traffic">
+        <button class="dot dot-close" data-close="win-sorpresa"></button>
+        <button class="dot dot-min" data-min="win-sorpresa"></button>
+        <button class="dot dot-max" data-max="win-sorpresa"></button>
+      </div>
+
+      <div class="window-title">Sorpresa 🎁</div>
+    </div>
+
+    <div class="window-content">
+
+      <div class="surprise">
+
+        <h2>Hay algo escondido aquí...</h2>
+
+        <div class="gift" id="gift">🎁</div>
+
+        <div
+          class="surprise-message"
+          id="surpriseMessage"
+        >
+          Te amo muchísimo, Viviana. ❤️
+          <br><br>
+          Gracias por existir y por formar parte
+          de tantos momentos importantes de mi vida.
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================
+       PAPELERA
+  ========================= -->
+
+  <div class="window" id="win-papelera">
+
+    <div class="window-header">
+      <div class="traffic">
+        <button class="dot dot-close" data-close="win-papelera"></button>
+        <button class="dot dot-min" data-min="win-papelera"></button>
+        <button class="dot dot-max" data-max="win-papelera"></button>
+      </div>
+
+      <div class="window-title">Papelera</div>
+    </div>
+
+    <div class="window-content">
+
+      <div style="text-align:center;padding:60px 20px;">
+
+        <div style="font-size:80px;">🗑️</div>
+
+        <h2>La papelera está vacía</h2>
+
+        <p style="opacity:.6;">
+          Por una vez, algo en este sistema no tiene
+          absolutamente ningún problema.
+        </p>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================
+       VIVI RUNNER
+  ========================= -->
+
+  <div
+    class="window game-window"
+    id="win-juego"
+  >
+
+    <div class="window-header">
+
+      <div class="traffic">
+
+        <button
+          class="dot dot-close"
+          data-close="win-juego"
+        ></button>
+
+        <button
+          class="dot dot-min"
+          data-min="win-juego"
+        ></button>
+
+        <button
+          class="dot dot-max"
+          data-max="win-juego"
+        ></button>
+
+      </div>
+
+      <div class="window-title">
+        Vivi Runner
+      </div>
+
+    </div>
+
+    <div class="game-content">
+
+      <div class="game-top">
+
+        <div class="game-title">
+          ❤️ Vivi Runner
+        </div>
+
+        <div class="game-score">
+          ❤️ <span id="heartScore">0</span>
+          &nbsp;&nbsp;
+          ⭐ <span id="gameScore">0</span>
+        </div>
+
+        <div class="game-help">
+          ESPACIO / ↑ / TOCAR
+        </div>
+
+      </div>
+
+      <canvas id="gameCanvas"></canvas>
+
+      <div
+        class="game-mobile-help"
+        id="mobileGameHelp"
+      >
+        Toca la pantalla para saltar ❤️
+      </div>
+
+      <div
+        class="game-overlay"
+        id="gameOverlay"
+      >
+
+        <div class="game-over-title">
+          ¡Game Over! 💔
+        </div>
+
+        <div class="game-over-score">
+          Puntuación:
+          <b id="finalScore">0</b>
+          <br>
+          Corazones:
+          <b id="finalHearts">0</b>
         </div>
 
         <button
-          id="game-start-btn"
-          class="game-start-btn"
+          class="game-btn"
+          id="restartGame"
         >
-          Jugar ❤️
+          Volver a jugar ❤️
         </button>
 
       </div>
 
     </div>
 
-    <div class="game-controls">
-      Android: toca la pantalla · PC: ESPACIO / ↑ / clic
+  </div>
+
+  <!-- =========================
+       DOCK
+  ========================= -->
+
+  <div class="dock">
+
+    <div
+      class="dock-item"
+      data-open="win-carta"
+      title="Carta"
+    >
+      💌
+    </div>
+
+    <div
+      class="dock-item"
+      data-open="win-momentos"
+      title="Fotos"
+    >
+      📸
+    </div>
+
+    <div
+      class="dock-item"
+      data-open="win-canciones"
+      title="Música"
+    >
+      🎵
+    </div>
+
+    <div
+      class="dock-item"
+      data-open="win-razones"
+      title="Razones"
+    >
+      💖
+    </div>
+
+    <div
+      class="dock-item"
+      data-open="win-vales"
+      title="Vales"
+    >
+      🎟️
+    </div>
+
+    <div
+      class="dock-item"
+      data-open="win-sorpresa"
+      title="Sorpresa"
+    >
+      🎁
+    </div>
+
+    <div class="dock-separator"></div>
+
+    <div
+      class="dock-item"
+      data-open="win-juego"
+      title="Vivi Runner"
+    >
+      🎮
     </div>
 
   </div>
 
 </div>
 
-<!-- =======================================================
-     PAPELERA
-======================================================= -->
-
-<div id="win-papelera" class="window">
-
-  <div class="window-header">
-
-    <div class="window-dots">
-      <button class="dot dot-close" data-close="win-papelera"></button>
-      <button class="dot dot-min" data-min="win-papelera"></button>
-      <button class="dot dot-max" data-max="win-papelera"></button>
-    </div>
-
-    <div class="window-title">
-      Papelera
-    </div>
-
-  </div>
-
-  <div class="window-body surprise">
-
-    <div style="font-size:60px">
-      🗑️
-    </div>
-
-    <p>
-      No hay nada aquí.
-    </p>
-
-    <small style="color:#777">
-      Todo lo importante decidimos conservarlo. ❤️
-    </small>
-
-  </div>
-
-</div>
-
-<!-- =======================================================
+<!-- =========================
      IMAGE VIEWER
-======================================================= -->
+========================= -->
 
-<div id="image-viewer">
+<div id="viewer">
 
   <button
     class="viewer-close"
-    id="viewer-close"
+    id="viewerClose"
   >
     ×
   </button>
 
+  <button
+    class="viewer-prev"
+    id="viewerPrev"
+  >
+    ‹
+  </button>
+
   <img
-    id="viewer-img"
+    class="viewer-image"
+    id="viewerImage"
     src=""
-    alt="Foto ampliada"
+    alt="Foto"
   >
 
-  <div id="viewer-caption"></div>
+  <button
+    class="viewer-next"
+    id="viewerNext"
+  >
+    ›
+  </button>
 
-  <div class="viewer-nav">
-
-    <button id="viewer-prev">
-      ← Anterior
-    </button>
-
-    <button id="viewer-next">
-      Siguiente →
-    </button>
-
+  <div
+    class="viewer-counter"
+    id="viewerCounter"
+  >
+    1 / 31
   </div>
 
 </div>
-
-<!-- =======================================================
-     TOAST
-======================================================= -->
 
 <div id="toast"></div>
 
@@ -1537,11 +1397,11 @@ Gracias por cada sonrisa, por cada momento y por hacer que mi vida tenga recuerd
 
 Te amo muchísimo. 💕`,
 
-  fondo: 'assets/fondo.jpg',
+  fondo:'assets/fondo.jpg',
 
-  fotos: Array.from(
+  fotos:Array.from(
     {length:31},
-    (_,i) =>
+    (_,i)=>
       'assets/fotos/foto' +
       String(i+1).padStart(2,'0') +
       '.jpg'
@@ -1549,896 +1409,70 @@ Te amo muchísimo. 💕`,
 
 };
 
-/* =========================================================
-   HELPERS
-========================================================= */
-
-const $ = selector =>
-  document.querySelector(selector);
-
-const $$ = selector =>
-  document.querySelectorAll(selector);
-
-let zIndex = 3000;
-let viewerIndex = 0;
 
 /* =========================================================
-   CLOCK
+   ELEMENTOS
 ========================================================= */
 
-function updateClock(){
+const boot =
+  document.getElementById('boot');
 
-  const now = new Date();
+const login =
+  document.getElementById('login');
 
-  const time =
-    now.toLocaleTimeString(
-      'es-ES',
-      {
-        hour:'2-digit',
-        minute:'2-digit'
-      }
-    );
+const desktop =
+  document.getElementById('desktop');
 
-  const date =
-    now.toLocaleDateString(
-      'es-ES',
-      {
-        weekday:'short',
-        day:'numeric',
-        month:'short'
-      }
-    );
+const loginBtn =
+  document.getElementById('loginBtn');
 
-  $('#mac-clock').textContent =
-    date + '  ' + time;
-}
+const gallery =
+  document.getElementById('gallery');
 
-updateClock();
+const letterText =
+  document.getElementById('letterText');
 
-setInterval(updateClock,1000);
+const clock =
+  document.getElementById('clock');
+
+const toast =
+  document.getElementById('toast');
+
 
 /* =========================================================
-   WINDOWS
+   BOOT
 ========================================================= */
 
-function abrirVentana(id){
+setTimeout(()=>{
 
-  const w =
-    document.getElementById(id);
+  boot.style.display='none';
+  login.style.display='flex';
 
-  if(!w) return;
+},2500);
 
-  if(w.classList.contains('minimized')){
-    w.classList.remove('minimized');
-  }
 
-  w.classList.add('active');
-  w.classList.remove('closing');
+/* =========================================================
+   LOGIN
+========================================================= */
 
-  w.style.zIndex = ++zIndex;
+loginBtn.addEventListener('click',()=>{
 
-  $$('.dock-icon')
-    .forEach(x =>
-      x.classList.remove('open')
-    );
+  login.style.display='none';
+  desktop.style.display='block';
 
-  $$(
-    '.dock-icon[data-open="' +
-    id +
-    '"]'
-  ).forEach(x =>
-    x.classList.add('open')
-  );
+  renderApp();
 
-  if(id === 'win-carta'){
-    typeLetter();
-  }
-
-  if(id === 'win-juego'){
-    resizeGameCanvas();
-  }
-}
-
-function cerrarVentana(id){
-
-  const w =
-    document.getElementById(id);
-
-  if(!w) return;
-
-  w.classList.add('closing');
+  showToast('Bienvenida a ViviOS ❤️');
 
   setTimeout(()=>{
-
-    w.classList.remove(
-      'active',
-      'closing'
-    );
-
-    updateDock(id);
-
-  },210);
-}
-
-function minimizarVentana(id){
-
-  const w =
-    document.getElementById(id);
-
-  if(!w) return;
-
-  w.classList.remove('active');
-  w.classList.add('minimized');
-
-  updateDock(id);
-}
-
-function updateDock(id){
-
-  $$(
-    '.dock-icon[data-open="' +
-    id +
-    '"]'
-  ).forEach(x =>
-    x.classList.remove('open')
-  );
-}
-
-function maximizarVentana(id){
-
-  const w =
-    document.getElementById(id);
-
-  if(!w) return;
-
-  w.classList.toggle('maximized');
-}
-
-/* =========================================================
-   WINDOW EVENTS
-========================================================= */
-
-$$('[data-open]')
-.forEach(el => {
-
-  el.addEventListener(
-    'click',
-    e => {
-
-      e.stopPropagation();
-
-      abrirVentana(
-        el.dataset.open
-      );
-
-    }
-  );
+    openWindow('win-carta');
+  },350);
 
 });
 
-$$('[data-close]')
-.forEach(el => {
-
-  el.addEventListener(
-    'click',
-    e => {
-
-      e.stopPropagation();
-
-      cerrarVentana(
-        el.dataset.close
-      );
-
-    }
-  );
-
-});
-
-$$('[data-min]')
-.forEach(el => {
-
-  el.addEventListener(
-    'click',
-    e => {
-
-      e.stopPropagation();
-
-      minimizarVentana(
-        el.dataset.min
-      );
-
-    }
-  );
-
-});
-
-$$('[data-max]')
-.forEach(el => {
-
-  el.addEventListener(
-    'click',
-    e => {
-
-      e.stopPropagation();
-
-      maximizarVentana(
-        el.dataset.max
-      );
-
-    }
-  );
-
-});
-
-$$('.window')
-.forEach(w => {
-
-  w.addEventListener(
-    'mousedown',
-    () => {
-      w.style.zIndex = ++zIndex;
-    }
-  );
-
-  w.addEventListener(
-    'touchstart',
-    () => {
-      w.style.zIndex = ++zIndex;
-    },
-    {passive:true}
-  );
-
-});
 
 /* =========================================================
-   DRAG WINDOWS
-========================================================= */
-
-let drag = null;
-
-$$('.window-header')
-.forEach(header => {
-
-  const start = (
-    clientX,
-    clientY
-  ) => {
-
-    const w =
-      header.closest('.window');
-
-    if(
-      w.classList.contains(
-        'maximized'
-      )
-    ){
-      return;
-    }
-
-    const r =
-      w.getBoundingClientRect();
-
-    drag = {
-      w,
-      startX:clientX,
-      startY:clientY,
-      left:r.left,
-      top:r.top
-    };
-
-    w.style.transform = 'none';
-
-    w.style.left =
-      r.left + 'px';
-
-    w.style.top =
-      r.top + 'px';
-  };
-
-  const move = (
-    x,
-    y
-  ) => {
-
-    if(!drag) return;
-
-    drag.w.style.left =
-      (
-        drag.left +
-        x -
-        drag.startX
-      ) + 'px';
-
-    drag.w.style.top =
-      (
-        drag.top +
-        y -
-        drag.startY
-      ) + 'px';
-  };
-
-  header.addEventListener(
-    'mousedown',
-    e => {
-
-      if(
-        e.target.classList.contains(
-          'dot'
-        )
-      ){
-        return;
-      }
-
-      start(
-        e.clientX,
-        e.clientY
-      );
-
-      const mm =
-        e => move(
-          e.clientX,
-          e.clientY
-        );
-
-      const up = () => {
-
-        drag = null;
-
-        document.removeEventListener(
-          'mousemove',
-          mm
-        );
-
-        document.removeEventListener(
-          'mouseup',
-          up
-        );
-
-      };
-
-      document.addEventListener(
-        'mousemove',
-        mm
-      );
-
-      document.addEventListener(
-        'mouseup',
-        up
-      );
-
-    }
-  );
-
-  header.addEventListener(
-    'touchstart',
-    e => {
-
-      if(
-        e.target.classList.contains(
-          'dot'
-        )
-      ){
-        return;
-      }
-
-      const t =
-        e.touches[0];
-
-      start(
-        t.clientX,
-        t.clientY
-      );
-
-      const mm = e => {
-
-        if(!e.touches[0]) return;
-
-        const t =
-          e.touches[0];
-
-        move(
-          t.clientX,
-          t.clientY
-        );
-
-      };
-
-      const up = () => {
-
-        drag = null;
-
-        document.removeEventListener(
-          'touchmove',
-          mm
-        );
-
-        document.removeEventListener(
-          'touchend',
-          up
-        );
-
-      };
-
-      document.addEventListener(
-        'touchmove',
-        mm,
-        {passive:false}
-      );
-
-      document.addEventListener(
-        'touchend',
-        up
-      );
-
-    },
-    {passive:true}
-  );
-
-});
-
-/* =========================================================
-   LETTER
-========================================================= */
-
-let typingTimer;
-
-function typeLetter(){
-
-  clearTimeout(typingTimer);
-
-  const el =
-    $('#display-carta');
-
-  const text =
-    appData.carta;
-
-  if(
-    el.dataset.done === text
-  ){
-    return;
-  }
-
-  el.dataset.done = text;
-
-  el.textContent = '';
-
-  let i = 0;
-
-  function step(){
-
-    if(i < text.length){
-
-      el.textContent +=
-        text[i++];
-
-      typingTimer =
-        setTimeout(
-          step,
-          12
-        );
-
-    }
-
-  }
-
-  step();
-}
-
-/* =========================================================
-   GALLERY
-========================================================= */
-
-function renderGallery(){
-
-  const gallery =
-    $('#display-galeria');
-
-  gallery.innerHTML = '';
-
-  appData.fotos.forEach(
-    (src,index) => {
-
-      const card =
-        document.createElement(
-          'div'
-        );
-
-      card.className =
-        'gallery-card';
-
-      const img =
-        document.createElement(
-          'img'
-        );
-
-      img.src = src;
-
-      img.alt =
-        'Nuestro momento ' +
-        (index+1);
-
-      img.loading = 'lazy';
-
-      img.addEventListener(
-        'error',
-        () => {
-
-          card.style.display =
-            'none';
-
-          console.warn(
-            'No se pudo cargar:',
-            src
-          );
-
-        }
-      );
-
-      card.appendChild(img);
-
-      card.addEventListener(
-        'click',
-        () => openViewer(index)
-      );
-
-      gallery.appendChild(card);
-
-    }
-  );
-
-}
-
-function preloadPhotos(){
-
-  appData.fotos.forEach(
-    src => {
-
-      const img =
-        new Image();
-
-      img.src = src;
-
-    }
-  );
-
-}
-
-/* =========================================================
-   IMAGE VIEWER
-========================================================= */
-
-function openViewer(index){
-
-  if(
-    !appData.fotos.length
-  ){
-    return;
-  }
-
-  viewerIndex =
-    Math.max(
-      0,
-      Math.min(
-        index,
-        appData.fotos.length - 1
-      )
-    );
-
-  updateViewer();
-
-  $('#image-viewer')
-    .classList.add('active');
-}
-
-function updateViewer(){
-
-  $('#viewer-img').src =
-    appData.fotos[
-      viewerIndex
-    ];
-
-  $('#viewer-caption')
-    .textContent =
-      'Foto ' +
-      (viewerIndex + 1) +
-      ' de ' +
-      appData.fotos.length;
-}
-
-function nextPhoto(){
-
-  viewerIndex =
-    (
-      viewerIndex + 1
-    ) %
-    appData.fotos.length;
-
-  updateViewer();
-}
-
-function previousPhoto(){
-
-  viewerIndex =
-    (
-      viewerIndex -
-      1 +
-      appData.fotos.length
-    ) %
-    appData.fotos.length;
-
-  updateViewer();
-}
-
-$('#viewer-close')
-.addEventListener(
-  'click',
-  () => {
-
-    $('#image-viewer')
-      .classList.remove('active');
-
-  }
-);
-
-$('#viewer-next')
-.addEventListener(
-  'click',
-  nextPhoto
-);
-
-$('#viewer-prev')
-.addEventListener(
-  'click',
-  previousPhoto
-);
-
-/* =========================================================
-   GALLERY KEYBOARD + SWIPE
-========================================================= */
-
-document.addEventListener(
-  'keydown',
-  e => {
-
-    if(
-      !$('#image-viewer')
-        .classList.contains('active')
-    ){
-      return;
-    }
-
-    if(e.key === 'ArrowRight'){
-      nextPhoto();
-    }
-
-    if(e.key === 'ArrowLeft'){
-      previousPhoto();
-    }
-
-    if(e.key === 'Escape'){
-      $('#image-viewer')
-        .classList.remove('active');
-    }
-
-  }
-);
-
-let viewerTouchStartX = 0;
-
-$('#image-viewer')
-.addEventListener(
-  'touchstart',
-  e => {
-
-    viewerTouchStartX =
-      e.touches[0].clientX;
-
-  },
-  {passive:true}
-);
-
-$('#image-viewer')
-.addEventListener(
-  'touchend',
-  e => {
-
-    const diff =
-      e.changedTouches[0].clientX -
-      viewerTouchStartX;
-
-    if(
-      Math.abs(diff) < 45
-    ){
-      return;
-    }
-
-    if(diff < 0){
-      nextPhoto();
-    }else{
-      previousPhoto();
-    }
-
-  },
-  {passive:true}
-);
-
-/* =========================================================
-   LOGIN / BOOT
-========================================================= */
-
-function showLogin(){
-
-  $('#login').style.display =
-    'flex';
-
-}
-
-$('#login-btn')
-.addEventListener(
-  'click',
-  () => {
-
-    $('#login').style.display =
-      'none';
-
-    showHearts();
-
-  }
-);
-
-setTimeout(
-  () => {
-
-    $('#boot')
-      .classList.add('hide');
-
-    setTimeout(
-      showLogin,
-      500
-    );
-
-  },
-  2100
-);
-
-/* =========================================================
-   HEARTS
-========================================================= */
-
-function showHearts(){
-
-  for(
-    let i=0;
-    i<14;
-    i++
-  ){
-
-    setTimeout(
-      () => {
-
-        const heart =
-          document.createElement(
-            'div'
-          );
-
-        heart.className =
-          'heart';
-
-        heart.textContent =
-          Math.random() > .25
-            ? '❤️'
-            : '💕';
-
-        heart.style.left =
-          (
-            Math.random() * 100
-          ) + 'vw';
-
-        heart.style.bottom =
-          (
-            20 +
-            Math.random() * 30
-          ) + 'vh';
-
-        document.body
-          .appendChild(heart);
-
-        setTimeout(
-          () => heart.remove(),
-          1700
-        );
-
-      },
-      i * 80
-    );
-
-  }
-
-}
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-let toastTimer;
-
-function showToast(text){
-
-  const toast =
-    $('#toast');
-
-  toast.textContent =
-    text;
-
-  toast.classList.add(
-    'show'
-  );
-
-  clearTimeout(toastTimer);
-
-  toastTimer =
-    setTimeout(
-      () => {
-        toast.classList.remove(
-          'show'
-        );
-      },
-      1800
-    );
-}
-
-/* =========================================================
-   VALES
-========================================================= */
-
-$$('.claim-btn')
-.forEach(button => {
-
-  button.addEventListener(
-    'click',
-    () => {
-
-      button.textContent =
-        'Canjeado ❤️';
-
-      button.style.background =
-        '#777';
-
-      showToast(
-        'Vale guardado para ti ❤️'
-      );
-
-      showHearts();
-
-    }
-  );
-
-});
-
-/* =========================================================
-   SORPRESA
-========================================================= */
-
-$('#gift-btn')
-.addEventListener(
-  'click',
-  () => {
-
-    $('#gift-text')
-      .textContent =
-      '¡Sorpresa! Este vale es por un postre juntos. 🍦❤️';
-
-    $('#gift-btn')
-      .style.transform =
-      'scale(1.15) rotate(5deg)';
-
-    showHearts();
-
-  }
-);
-
-/* =========================================================
-   RENDER
+   RENDER APP
 ========================================================= */
 
 function renderApp(){
@@ -2446,128 +1480,725 @@ function renderApp(){
   document.body.style.backgroundImage =
     'url("assets/fondo.jpg")';
 
-  renderGallery();
+  letterText.textContent =
+    appData.carta;
+
+  gallery.innerHTML='';
+
+  appData.fotos.forEach((src,index)=>{
+
+    const card =
+      document.createElement('div');
+
+    card.className='photo-card';
+
+    const img =
+      document.createElement('img');
+
+    img.src=src;
+    img.loading='lazy';
+    img.alt='Foto '+(index+1);
+
+    img.onerror=()=>{
+
+      card.style.background=
+        'linear-gradient(135deg,#eee,#ddd)';
+
+      card.innerHTML=
+        '<div style="height:100%;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;">Foto '+(index+1)+'</div>';
+
+    };
+
+    card.appendChild(img);
+
+    card.addEventListener(
+      'click',
+      ()=>openViewer(index)
+    );
+
+    gallery.appendChild(card);
+
+  });
 
   preloadPhotos();
 
 }
 
-renderApp();
 
 /* =========================================================
-   =========================================================
-   MINI JUEGO
-   =========================================================
-   ========================================================= */
-
-const gameCanvas =
-  $('#game-canvas');
-
-const gameCtx =
-  gameCanvas.getContext('2d');
-
-const gameWrap =
-  $('#game-wrap');
-
-const gameScoreEl =
-  $('#game-score');
-
-const gameBestEl =
-  $('#game-best');
-
-const gameMessage =
-  $('#game-message');
-
-const gameMessageTitle =
-  $('#game-message-title');
-
-const gameMessageText =
-  $('#game-message-text');
-
-const gameStartBtn =
-  $('#game-start-btn');
-
-/*
-  El récord solamente vive durante esta sesión.
-  No usamos localStorage.
-*/
-
-let gameBest = 0;
-
-let gameRunning = false;
-
-let gameAnimation = 0;
-
-let gameLastTime = 0;
-
-let gameScore = 0;
-
-let gameSpeed = 5;
-
-let gameDistance = 0;
-
-let gameSpawnTimer = 0;
-
-let gameHeartTimer = 0;
-
-let gameGroundY = 0;
-
-let gameScale = 1;
-
-let gamePlayer = null;
-
-let gameObstacles = [];
-
-let gameHearts = [];
-
-let gameClouds = [];
-
-let gameTouchStart = false;
-
-/* =========================================================
-   GAME RESIZE
+   PRELOAD FOTOS
 ========================================================= */
 
-function resizeGameCanvas(){
+function preloadPhotos(){
+
+  appData.fotos.forEach(src=>{
+
+    const img =
+      new Image();
+
+    img.src=src;
+
+  });
+
+}
+
+
+/* =========================================================
+   WINDOWS
+========================================================= */
+
+let highestZ=100;
+
+function openWindow(id){
+
+  const win =
+    document.getElementById(id);
+
+  if(!win)return;
+
+  win.classList.add('active');
+
+  highestZ++;
+
+  win.style.zIndex=highestZ;
+
+  if(id==='win-juego'){
+
+    setTimeout(()=>{
+      resizeGame();
+      startGameIfNeeded();
+    },100);
+
+  }
+
+}
+
+function closeWindow(id){
+
+  const win =
+    document.getElementById(id);
+
+  if(!win)return;
+
+  win.classList.remove('active');
+
+  if(id==='win-juego'){
+    stopGame();
+  }
+
+}
+
+function minimizeWindow(id){
+
+  const win =
+    document.getElementById(id);
+
+  if(!win)return;
+
+  win.classList.remove('active');
+
+}
+
+document.querySelectorAll('[data-open]').forEach(el=>{
+
+  el.addEventListener('click',()=>{
+
+    openWindow(
+      el.dataset.open
+    );
+
+  });
+
+});
+
+
+document.querySelectorAll('[data-close]').forEach(btn=>{
+
+  btn.addEventListener('click',()=>{
+
+    closeWindow(
+      btn.dataset.close
+    );
+
+  });
+
+});
+
+
+document.querySelectorAll('[data-min]').forEach(btn=>{
+
+  btn.addEventListener('click',()=>{
+
+    minimizeWindow(
+      btn.dataset.min
+    );
+
+  });
+
+});
+
+
+document.querySelectorAll('[data-max]').forEach(btn=>{
+
+  btn.addEventListener('click',()=>{
+
+    const win =
+      document.getElementById(
+        btn.dataset.max
+      );
+
+    if(!win)return;
+
+    win.classList.toggle('maximized');
+
+    if(
+      btn.dataset.max==='win-juego'
+    ){
+
+      setTimeout(
+        resizeGame,
+        150
+      );
+
+    }
+
+  });
+
+});
+
+
+document.querySelectorAll('.window').forEach(win=>{
+
+  win.addEventListener('mousedown',()=>{
+
+    highestZ++;
+
+    win.style.zIndex=highestZ;
+
+  });
+
+});
+
+
+/* =========================================================
+   DRAG WINDOWS
+========================================================= */
+
+document.querySelectorAll('.window').forEach(win=>{
+
+  const header =
+    win.querySelector('.window-header');
+
+  let dragging=false;
+  let offsetX=0;
+  let offsetY=0;
+
+  header.addEventListener(
+    'mousedown',
+    e=>{
+
+      if(
+        e.target.classList.contains('dot')
+      )return;
+
+      if(
+        win.classList.contains('maximized')
+      )return;
+
+      dragging=true;
+
+      const rect =
+        win.getBoundingClientRect();
+
+      offsetX =
+        e.clientX-rect.left;
+
+      offsetY =
+        e.clientY-rect.top;
+
+    }
+  );
+
+  document.addEventListener(
+    'mousemove',
+    e=>{
+
+      if(!dragging)return;
+
+      win.style.left =
+        (e.clientX-offsetX)+'px';
+
+      win.style.top =
+        (e.clientY-offsetY)+'px';
+
+      win.style.transform='none';
+
+    }
+  );
+
+  document.addEventListener(
+    'mouseup',
+    ()=>{
+      dragging=false;
+    }
+  );
+
+});
+
+
+/* =========================================================
+   CARTA
+========================================================= */
+
+function typeLetter(){
+
+  const target =
+    document.getElementById(
+      'letterText'
+    );
+
+  const text =
+    appData.carta;
+
+  target.textContent='';
+
+  let i=0;
+
+  const timer =
+    setInterval(()=>{
+
+      target.textContent +=
+        text[i];
+
+      i++;
+
+      if(i>=text.length){
+
+        clearInterval(timer);
+
+      }
+
+    },18);
+
+}
+
+typeLetter();
+
+
+/* =========================================================
+   IMAGE VIEWER
+========================================================= */
+
+const viewer =
+  document.getElementById('viewer');
+
+const viewerImage =
+  document.getElementById('viewerImage');
+
+const viewerCounter =
+  document.getElementById('viewerCounter');
+
+const viewerClose =
+  document.getElementById('viewerClose');
+
+const viewerPrev =
+  document.getElementById('viewerPrev');
+
+const viewerNext =
+  document.getElementById('viewerNext');
+
+let currentPhoto=0;
+
+
+function openViewer(index){
+
+  currentPhoto=index;
+
+  updateViewer();
+
+  viewer.classList.add('active');
+
+}
+
+
+function updateViewer(){
+
+  viewerImage.src =
+    appData.fotos[currentPhoto];
+
+  viewerCounter.textContent =
+    (currentPhoto+1)+
+    ' / '+
+    appData.fotos.length;
+
+}
+
+
+function nextPhoto(){
+
+  currentPhoto++;
+
+  if(
+    currentPhoto>=appData.fotos.length
+  ){
+
+    currentPhoto=0;
+
+  }
+
+  updateViewer();
+
+}
+
+
+function previousPhoto(){
+
+  currentPhoto--;
+
+  if(currentPhoto<0){
+
+    currentPhoto =
+      appData.fotos.length-1;
+
+  }
+
+  updateViewer();
+
+}
+
+
+viewerClose.addEventListener(
+  'click',
+  ()=>{
+    viewer.classList.remove('active');
+  }
+);
+
+viewerNext.addEventListener(
+  'click',
+  nextPhoto
+);
+
+viewerPrev.addEventListener(
+  'click',
+  previousPhoto
+);
+
+
+document.addEventListener(
+  'keydown',
+  e=>{
+
+    if(!viewer.classList.contains('active'))
+      return;
+
+    if(e.key==='ArrowRight')
+      nextPhoto();
+
+    if(e.key==='ArrowLeft')
+      previousPhoto();
+
+    if(e.key==='Escape')
+      viewer.classList.remove('active');
+
+  }
+);
+
+
+/* =========================================================
+   SWIPE GALERIA
+========================================================= */
+
+let touchStartX=0;
+
+viewer.addEventListener(
+  'touchstart',
+  e=>{
+
+    touchStartX =
+      e.changedTouches[0].screenX;
+
+  },
+  {passive:true}
+);
+
+
+viewer.addEventListener(
+  'touchend',
+  e=>{
+
+    const endX =
+      e.changedTouches[0].screenX;
+
+    const diff =
+      endX-touchStartX;
+
+    if(Math.abs(diff)<50)
+      return;
+
+    if(diff<0)
+      nextPhoto();
+    else
+      previousPhoto();
+
+  },
+  {passive:true}
+);
+
+
+/* =========================================================
+   CLOCK
+========================================================= */
+
+function updateClock(){
+
+  const now =
+    new Date();
+
+  clock.textContent =
+    now.toLocaleTimeString(
+      [],
+      {
+        hour:'2-digit',
+        minute:'2-digit'
+      }
+    );
+
+}
+
+updateClock();
+
+setInterval(
+  updateClock,
+  1000
+);
+
+
+/* =========================================================
+   GIFT
+========================================================= */
+
+const gift =
+  document.getElementById('gift');
+
+const surpriseMessage =
+  document.getElementById(
+    'surpriseMessage'
+  );
+
+gift.addEventListener(
+  'click',
+  ()=>{
+
+    gift.textContent='💝';
+
+    surpriseMessage.style.display='block';
+
+    createHearts();
+
+  }
+);
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer;
+
+function showToast(message){
+
+  toast.textContent=
+    message;
+
+  toast.classList.add('show');
+
+  clearTimeout(toastTimer);
+
+  toastTimer =
+    setTimeout(
+      ()=>{
+        toast.classList.remove('show');
+      },
+      2200
+    );
+
+}
+
+
+/* =========================================================
+   HEARTS
+========================================================= */
+
+function createHearts(){
+
+  for(let i=0;i<15;i++){
+
+    const heart =
+      document.createElement('div');
+
+    heart.className='heart';
+
+    heart.textContent=
+      ['❤️','💕','💗','💖'][
+
+        Math.floor(
+          Math.random()*4
+        )
+
+      ];
+
+    heart.style.left =
+      (30+Math.random()*40)+'%';
+
+    heart.style.bottom =
+      '100px';
+
+    heart.style.animationDelay =
+      (Math.random()*.6)+'s';
+
+    document.body.appendChild(heart);
+
+    setTimeout(
+      ()=>heart.remove(),
+      1700
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   ================= VIVI RUNNER ===========================
+========================================================= */
+
+const canvas =
+  document.getElementById(
+    'gameCanvas'
+  );
+
+const ctx =
+  canvas.getContext('2d');
+
+const gameOverlay =
+  document.getElementById(
+    'gameOverlay'
+  );
+
+const gameScoreEl =
+  document.getElementById(
+    'gameScore'
+  );
+
+const heartScoreEl =
+  document.getElementById(
+    'heartScore'
+  );
+
+const finalScoreEl =
+  document.getElementById(
+    'finalScore'
+  );
+
+const finalHeartsEl =
+  document.getElementById(
+    'finalHearts'
+  );
+
+const restartGame =
+  document.getElementById(
+    'restartGame'
+  );
+
+
+let gameRunning=false;
+let gameAnimation=null;
+let gameStarted=false;
+
+let gameWidth=800;
+let gameHeight=350;
+
+let score=0;
+let heartsCollected=0;
+
+let speed=5;
+
+let groundY=0;
+
+let lastTime=0;
+
+let obstacleTimer=0;
+let heartTimer=0;
+
+let obstacles=[];
+let collectibles=[];
+
+
+/* =========================================================
+   GAME PLAYER
+========================================================= */
+
+const player={
+
+  x:110,
+  y:0,
+
+  width:42,
+  height:68,
+
+  velocityY:0,
+
+  gravity:.72,
+
+  jumpPower:-13,
+
+  grounded:true
+
+};
+
+
+/* =========================================================
+   VIVI
+========================================================= */
+
+const vivi={
+
+  x:55,
+  y:0,
+
+  width:40,
+  height:66,
+
+  bounce:0
+
+};
+
+
+/* =========================================================
+   RESIZE GAME
+========================================================= */
+
+function resizeGame(){
+
+  if(!canvas)return;
 
   const rect =
-    gameWrap.getBoundingClientRect();
-
-  const width =
-    Math.max(
-      320,
-      rect.width
-    );
-
-  const height =
-    Math.max(
-      220,
-      rect.height
-    );
+    canvas.getBoundingClientRect();
 
   const dpr =
     Math.min(
-      window.devicePixelRatio || 1,
+      window.devicePixelRatio||1,
       2
     );
 
-  gameCanvas.width =
-    Math.floor(
-      width * dpr
-    );
+  canvas.width =
+    rect.width*dpr;
 
-  gameCanvas.height =
-    Math.floor(
-      height * dpr
-    );
+  canvas.height =
+    rect.height*dpr;
 
-  gameCanvas.style.width =
-    width + 'px';
-
-  gameCanvas.style.height =
-    height + 'px';
-
-  gameCtx.setTransform(
+  ctx.setTransform(
     dpr,
     0,
     0,
@@ -2576,1042 +2207,80 @@ function resizeGameCanvas(){
     0
   );
 
-  gameScale =
-    Math.max(
-      .72,
-      Math.min(
-        1.15,
-        width / 760
-      )
-    );
+  gameWidth =
+    rect.width;
 
-  gameGroundY =
-    height -
-    48;
+  gameHeight =
+    rect.height;
 
-  if(gamePlayer){
+  groundY =
+    gameHeight-55;
 
-    gamePlayer.ground =
-      gameGroundY;
+  if(player.grounded){
 
-    if(!gameRunning){
-
-      gamePlayer.y =
-        gameGroundY -
-        gamePlayer.h;
-
-    }
+    player.y =
+      groundY-player.height;
 
   }
 
-  createClouds(width,height);
+  vivi.y =
+    groundY-vivi.height;
 
 }
 
 window.addEventListener(
   'resize',
-  resizeGameCanvas
+  resizeGame
 );
 
-/* =========================================================
-   GAME CLOUDS
-========================================================= */
-
-function createClouds(
-  width,
-  height
-){
-
-  gameClouds = [
-
-    {
-      x:width*.16,
-      y:height*.18,
-      s:1
-    },
-
-    {
-      x:width*.54,
-      y:height*.10,
-      s:.72
-    },
-
-    {
-      x:width*.84,
-      y:height*.25,
-      s:.9
-    }
-
-  ];
-
-}
-
-/* =========================================================
-   GAME INIT
-========================================================= */
-
-function initGame(){
-
-  resizeGameCanvas();
-
-  gamePlayer = {
-
-    x:55,
-    y:gameGroundY - 64,
-    w:52,
-    h:64,
-
-    vy:0,
-
-    jumpPower:
-      -12.5,
-
-    gravity:
-      .62,
-
-    ground:
-      gameGroundY,
-
-    onGround:true
-
-  };
-
-  gameObstacles = [];
-
-  gameHearts = [];
-
-  gameScore = 0;
-
-  gameSpeed = 5;
-
-  gameDistance = 0;
-
-  gameSpawnTimer = 0;
-
-  gameHeartTimer = 0;
-
-  gameScoreEl.textContent =
-    '0';
-
-  gameBestEl.textContent =
-    String(gameBest);
-
-}
-
-initGame();
-
-/* =========================================================
-   DRAW HELPERS
-========================================================= */
-
-function roundRect(
-  ctx,
-  x,
-  y,
-  w,
-  h,
-  r
-){
-
-  const radius =
-    Math.min(
-      r,
-      w/2,
-      h/2
-    );
-
-  ctx.beginPath();
-
-  ctx.moveTo(
-    x + radius,
-    y
-  );
-
-  ctx.arcTo(
-    x+w,
-    y,
-    x+w,
-    y+h,
-    radius
-  );
-
-  ctx.arcTo(
-    x+w,
-    y+h,
-    x,
-    y+h,
-    radius
-  );
-
-  ctx.arcTo(
-    x,
-    y+h,
-    x,
-    y,
-    radius
-  );
-
-  ctx.arcTo(
-    x,
-    y,
-    x+w,
-    y,
-    radius
-  );
-
-  ctx.closePath();
-
-}
-
-/* =========================================================
-   DRAW CLOUD
-========================================================= */
-
-function drawCloud(
-  x,
-  y,
-  scale
-){
-
-  const ctx =
-    gameCtx;
-
-  ctx.save();
-
-  ctx.globalAlpha =
-    .38;
-
-  ctx.fillStyle =
-    '#ffffff';
-
-  ctx.beginPath();
-
-  ctx.arc(
-    x,
-    y,
-    15*scale,
-    0,
-    Math.PI*2
-  );
-
-  ctx.arc(
-    x+18*scale,
-    y-5*scale,
-    20*scale,
-    0,
-    Math.PI*2
-  );
-
-  ctx.arc(
-    x+40*scale,
-    y,
-    14*scale,
-    0,
-    Math.PI*2
-  );
-
-  ctx.fill();
-
-  ctx.restore();
-
-}
-
-/* =========================================================
-   DRAW PLAYER COUPLE
-========================================================= */
-
-function drawPlayer(){
-
-  const ctx =
-    gameCtx;
-
-  const p =
-    gamePlayer;
-
-  const x =
-    p.x;
-
-  const y =
-    p.y;
-
-  /*
-    Personaje principal:
-    representación pixel/cartoon
-    de nosotros dos corriendo juntos.
-  */
-
-  ctx.save();
-
-  /*
-    Sombra
-  */
-
-  ctx.fillStyle =
-    'rgba(80,30,45,.16)';
-
-  ctx.beginPath();
-
-  ctx.ellipse(
-    x+28,
-    p.ground+3,
-    35,
-    6,
-    0,
-    0,
-    Math.PI*2
-  );
-
-  ctx.fill();
-
-  /*
-    TU CUERPO
-  */
-
-  ctx.fillStyle =
-    '#20242b';
-
-  roundRect(
-    ctx,
-    x+5,
-    y+28,
-    22,
-    28,
-    6
-  );
-
-  ctx.fill();
-
-  /*
-    Tu cabeza
-  */
-
-  ctx.fillStyle =
-    '#f2c5aa';
-
-  ctx.beginPath();
-
-  ctx.arc(
-    x+16,
-    y+17,
-    13,
-    0,
-    Math.PI*2
-  );
-
-  ctx.fill();
-
-  /*
-    Pelo
-  */
-
-  ctx.fillStyle =
-    '#151515';
-
-  ctx.beginPath();
-
-  ctx.arc(
-    x+16,
-    y+13,
-    13,
-    Math.PI,
-    Math.PI*2
-  );
-
-  ctx.fill();
-
-  ctx.fillRect(
-    x+3,
-    y+12,
-    25,
-    7
-  );
-
-  /*
-    Gafas
-  */
-
-  ctx.strokeStyle =
-    '#333';
-
-  ctx.lineWidth =
-    1.5;
-
-  ctx.strokeRect(
-    x+7,
-    y+16,
-    7,
-    5
-  );
-
-  ctx.strokeRect(
-    x+17,
-    y+16,
-    7,
-    5
-  );
-
-  ctx.beginPath();
-
-  ctx.moveTo(
-    x+14,
-    y+18
-  );
-
-  ctx.lineTo(
-    x+17,
-    y+18
-  );
-
-  ctx.stroke();
-
-  /*
-    Piernas
-  */
-
-  ctx.strokeStyle =
-    '#20242b';
-
-  ctx.lineWidth =
-    5;
-
-  ctx.beginPath();
-
-  const run =
-    Math.sin(
-      gameDistance*.15
-    ) * 5;
-
-  ctx.moveTo(
-    x+11,
-    y+54
-  );
-
-  ctx.lineTo(
-    x+7-run,
-    y+63
-  );
-
-  ctx.moveTo(
-    x+21,
-    y+54
-  );
-
-  ctx.lineTo(
-    x+25+run,
-    y+63
-  );
-
-  ctx.stroke();
-
-  /*
-    Zapatillas
-  */
-
-  ctx.strokeStyle =
-    '#ffffff';
-
-  ctx.lineWidth =
-    4;
-
-  ctx.beginPath();
-
-  ctx.moveTo(
-    x+3-run,
-    y+64
-  );
-
-  ctx.lineTo(
-    x+11-run,
-    y+64
-  );
-
-  ctx.moveTo(
-    x+23+run,
-    y+64
-  );
-
-  ctx.lineTo(
-    x+31+run,
-    y+64
-  );
-
-  ctx.stroke();
-
-  /*
-    VIVIANA
-  */
-
-  const vx =
-    x+29;
-
-  const vy =
-    y+4;
-
-  /*
-    piernas
-  */
-
-  ctx.strokeStyle =
-    '#171717';
-
-  ctx.lineWidth =
-    5;
-
-  ctx.beginPath();
-
-  ctx.moveTo(
-    vx+12,
-    vy+50
-  );
-
-  ctx.lineTo(
-    vx+8+run,
-    vy+63
-  );
-
-  ctx.moveTo(
-    vx+22,
-    vy+50
-  );
-
-  ctx.lineTo(
-    vx+26-run,
-    vy+63
-  );
-
-  ctx.stroke();
-
-  /*
-    zapatos
-  */
-
-  ctx.strokeStyle =
-    '#ffffff';
-
-  ctx.lineWidth =
-    4;
-
-  ctx.beginPath();
-
-  ctx.moveTo(
-    vx+4+run,
-    vy+64
-  );
-
-  ctx.lineTo(
-    vx+13+run,
-    vy+64
-  );
-
-  ctx.moveTo(
-    vx+23-run,
-    vy+64
-  );
-
-  ctx.lineTo(
-    vx+32-run,
-    vy+64
-  );
-
-  ctx.stroke();
-
-  /*
-    cuerpo
-  */
-
-  ctx.fillStyle =
-    '#ff5f7d';
-
-  roundRect(
-    ctx,
-    vx+3,
-    vy+25,
-    23,
-    28,
-    7
-  );
-
-  ctx.fill();
-
-  /*
-    cabeza
-  */
-
-  ctx.fillStyle =
-    '#f1c5ac';
-
-  ctx.beginPath();
-
-  ctx.arc(
-    vx+15,
-    vy+15,
-    14,
-    0,
-    Math.PI*2
-  );
-
-  ctx.fill();
-
-  /*
-    cabello largo
-  */
-
-  ctx.fillStyle =
-    '#171515';
-
-  ctx.beginPath();
-
-  ctx.arc(
-    vx+15,
-    vy+13,
-    15,
-    Math.PI,
-    Math.PI*2
-  );
-
-  ctx.fill();
-
-  roundRect(
-    ctx,
-    vx+1,
-    vy+12,
-    7,
-    25,
-    4
-  );
-
-  ctx.fill();
-
-  roundRect(
-    ctx,
-    vx+22,
-    vy+12,
-    7,
-    25,
-    4
-  );
-
-  ctx.fill();
-
-  /*
-    ojos
-  */
-
-  ctx.fillStyle =
-    '#4d3025';
-
-  ctx.beginPath();
-
-  ctx.arc(
-    vx+10,
-    vy+16,
-    1.4,
-    0,
-    Math.PI*2
-  );
-
-  ctx.arc(
-    vx+20,
-    vy+16,
-    1.4,
-    0,
-    Math.PI*2
-  );
-
-  ctx.fill();
-
-  /*
-    sonrisa
-  */
-
-  ctx.strokeStyle =
-    '#9d4b58';
-
-  ctx.lineWidth =
-    1;
-
-  ctx.beginPath();
-
-  ctx.arc(
-    vx+15,
-    vy+20,
-    4,
-    0,
-    Math.PI
-  );
-
-  ctx.stroke();
-
-  /*
-    Corazón entre ambos
-  */
-
-  ctx.font =
-    '15px Arial';
-
-  ctx.fillStyle =
-    '#ff2d55';
-
-  ctx.fillText(
-    '♥',
-    x+39,
-    y-2
-  );
-
-  ctx.restore();
-
-}
-
-/* =========================================================
-   DRAW OBSTACLE
-========================================================= */
-
-function drawObstacle(
-  obstacle
-){
-
-  const ctx =
-    gameCtx;
-
-  const x =
-    obstacle.x;
-
-  const y =
-    obstacle.y;
-
-  ctx.save();
-
-  /*
-    Obstáculo tipo cactus,
-    pero personalizado para ViviOS.
-  */
-
-  ctx.fillStyle =
-    '#7b8e69';
-
-  roundRect(
-    ctx,
-    x+9,
-    y,
-    18,
-    obstacle.h,
-    7
-  );
-
-  ctx.fill();
-
-  roundRect(
-    ctx,
-    x,
-    y+12,
-    11,
-    25,
-    5
-  );
-
-  ctx.fill();
-
-  roundRect(
-    ctx,
-    x+25,
-    y+20,
-    11,
-    27,
-    5
-  );
-
-  ctx.fill();
-
-  /*
-    pequeñas flores
-  */
-
-  ctx.fillStyle =
-    '#ff5f7d';
-
-  ctx.font =
-    '10px Arial';
-
-  ctx.fillText(
-    '♥',
-    x+12,
-    y+16
-  );
-
-  ctx.restore();
-
-}
-
-/* =========================================================
-   DRAW HEART
-========================================================= */
-
-function drawCollectible(
-  heart
-){
-
-  const ctx =
-    gameCtx;
-
-  ctx.save();
-
-  ctx.font =
-    (18 + heart.pulse) +
-    'px Arial';
-
-  ctx.textAlign =
-    'center';
-
-  ctx.textBaseline =
-    'middle';
-
-  ctx.shadowColor =
-    'rgba(255,45,85,.35)';
-
-  ctx.shadowBlur =
-    10;
-
-  ctx.fillStyle =
-    '#ff2d55';
-
-  ctx.fillText(
-    '♥',
-    heart.x,
-    heart.y
-  );
-
-  ctx.restore();
-
-}
-
-/* =========================================================
-   GAME BACKGROUND
-========================================================= */
-
-function drawGameBackground(
-  width,
-  height
-){
-
-  const ctx =
-    gameCtx;
-
-  /*
-    cielo
-  */
-
-  const gradient =
-    ctx.createLinearGradient(
-      0,
-      0,
-      0,
-      height
-    );
-
-  gradient.addColorStop(
-    0,
-    '#fceef3'
-  );
-
-  gradient.addColorStop(
-    .70,
-    '#ffe7ed'
-  );
-
-  gradient.addColorStop(
-    .70,
-    '#f6d5dc'
-  );
-
-  gradient.addColorStop(
-    1,
-    '#efc8d1'
-  );
-
-  ctx.fillStyle =
-    gradient;
-
-  ctx.fillRect(
-    0,
-    0,
-    width,
-    height
-  );
-
-  /*
-    nubes
-  */
-
-  gameClouds.forEach(
-    cloud =>
-      drawCloud(
-        cloud.x -
-        (
-          gameDistance *
-          .04
-        ) %
-        (
-          width+100
-        ),
-        cloud.y,
-        cloud.s
-      )
-  );
-
-  /*
-    suelo
-  */
-
-  ctx.fillStyle =
-    '#d59eaa';
-
-  ctx.fillRect(
-    0,
-    gameGroundY,
-    width,
-    height-gameGroundY
-  );
-
-  /*
-    línea del suelo
-  */
-
-  ctx.strokeStyle =
-    'rgba(100,50,65,.22)';
-
-  ctx.lineWidth =
-    2;
-
-  ctx.beginPath();
-
-  ctx.moveTo(
-    0,
-    gameGroundY
-  );
-
-  ctx.lineTo(
-    width,
-    gameGroundY
-  );
-
-  ctx.stroke();
-
-  /*
-    pequeñas marcas que se mueven
-  */
-
-  ctx.strokeStyle =
-    'rgba(120,70,80,.18)';
-
-  ctx.lineWidth =
-    2;
-
-  const offset =
-    -(
-      gameDistance %
-      35
-    );
-
-  for(
-    let x=offset;
-    x<width;
-    x+=35
-  ){
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-      x,
-      gameGroundY+15
-    );
-
-    ctx.lineTo(
-      x+15,
-      gameGroundY+15
-    );
-
-    ctx.stroke();
-
-  }
-
-}
-
-/* =========================================================
-   GAME COLLISION
-========================================================= */
-
-function collision(
-  a,
-  b
-){
-
-  const paddingX = 7;
-  const paddingY = 8;
-
-  return (
-    a.x + paddingX <
-      b.x + b.w &&
-    a.x + a.w - paddingX >
-      b.x &&
-    a.y + paddingY <
-      b.y + b.h &&
-    a.y + a.h - paddingY >
-      b.y
-  );
-
-}
-
-/* =========================================================
-   GAME JUMP
-========================================================= */
-
-function gameJump(){
-
-  if(!gameRunning){
-
-    startGame();
-
-    return;
-
-  }
-
-  if(
-    gamePlayer &&
-    gamePlayer.onGround
-  ){
-
-    gamePlayer.vy =
-      gamePlayer.jumpPower;
-
-    gamePlayer.onGround =
-      false;
-
-  }
-
-}
 
 /* =========================================================
    START GAME
 ========================================================= */
 
-function startGame(){
+function startGameIfNeeded(){
 
-  initGame();
+  if(gameStarted)
+    return;
 
-  gameRunning =
-    true;
+  gameStarted=true;
 
-  gameMessage
-    .classList.add(
-      'hidden'
-    );
+  resetGame();
 
-  gameLastTime =
-    performance.now();
+}
+
+
+function resetGame(){
 
   cancelAnimationFrame(
     gameAnimation
   );
+
+  score=0;
+  heartsCollected=0;
+
+  speed=5;
+
+  obstacles=[];
+  collectibles=[];
+
+  obstacleTimer=0;
+  heartTimer=0;
+
+  player.velocityY=0;
+
+  player.grounded=true;
+
+  gameOverlay.classList.add(
+    'hidden'
+  );
+
+  resizeGame();
+
+  gameRunning=true;
+
+  lastTime=
+    performance.now();
 
   gameAnimation =
     requestAnimationFrame(
@@ -3620,299 +2289,264 @@ function startGame(){
 
 }
 
+
+function stopGame(){
+
+  gameRunning=false;
+
+  cancelAnimationFrame(
+    gameAnimation
+  );
+
+  gameAnimation=null;
+
+  gameStarted=false;
+
+}
+
+
 /* =========================================================
-   GAME OVER
+   JUMP
 ========================================================= */
 
-function gameOver(){
-
-  gameRunning =
-    false;
+function jump(){
 
   if(
-    gameScore >
-    gameBest
+    !gameRunning
+  )return;
+
+  if(
+    player.grounded
   ){
 
-    gameBest =
-      gameScore;
+    player.velocityY =
+      player.jumpPower;
+
+    player.grounded=false;
 
   }
 
-  gameBestEl.textContent =
-    String(gameBest);
+}
 
-  gameMessageTitle
-    .textContent =
-    'Game Over 💔';
 
-  gameMessageText
-    .textContent =
-    'Llegaron hasta ' +
-    gameScore +
-    ' puntos.';
+document.addEventListener(
+  'keydown',
+  e=>{
 
-  gameStartBtn
-    .textContent =
-    'Volver a jugar ❤️';
+    if(
+      e.code==='Space' ||
+      e.code==='ArrowUp'
+    ){
 
-  gameMessage
-    .classList.remove(
-      'hidden'
+      const gameWindow =
+        document.getElementById(
+          'win-juego'
+        );
+
+      if(
+        gameWindow.classList.contains(
+          'active'
+        )
+      ){
+
+        e.preventDefault();
+
+        jump();
+
+      }
+
+    }
+
+  }
+);
+
+
+canvas.addEventListener(
+  'pointerdown',
+  e=>{
+
+    e.preventDefault();
+
+    jump();
+
+  }
+);
+
+
+/* =========================================================
+   GAME LOOP
+========================================================= */
+
+function gameLoop(time){
+
+  if(!gameRunning)
+    return;
+
+  const delta =
+    Math.min(
+      (time-lastTime)/16.67,
+      2
+    );
+
+  lastTime=time;
+
+  updateGame(delta);
+
+  drawGame();
+
+  gameAnimation =
+    requestAnimationFrame(
+      gameLoop
     );
 
 }
 
-/* =========================================================
-   SPAWN OBSTACLE
-========================================================= */
-
-function spawnObstacle(){
-
-  const height =
-    35 +
-    Math.random()*32;
-
-  const width =
-    35;
-
-  const canvasWidth =
-    gameCanvas.clientWidth;
-
-  gameObstacles.push({
-
-    x:
-      canvasWidth + 30,
-
-    y:
-      gameGroundY -
-      height,
-
-    w:
-      width,
-
-    h:
-      height
-
-  });
-
-}
 
 /* =========================================================
-   SPAWN HEART
+   UPDATE
 ========================================================= */
 
-function spawnHeart(){
+function updateGame(delta){
 
-  const canvasWidth =
-    gameCanvas.clientWidth;
+  score +=
+    .08*delta;
 
-  const high =
-    Math.random() >
-    .45;
+  speed +=
+    .0008*delta;
 
-  gameHearts.push({
+  if(speed>11)
+    speed=11;
 
-    x:
-      canvasWidth + 30,
 
-    y:
-      high
-        ? gameGroundY - 105
-        : gameGroundY - 65,
+  /* PLAYER PHYSICS */
 
-    baseY:
-      high
-        ? gameGroundY - 105
-        : gameGroundY - 65,
+  player.velocityY +=
+    player.gravity*delta;
 
-    w:
-      20,
+  player.y +=
+    player.velocityY*delta;
 
-    h:
-      20,
-
-    pulse:
-      0,
-
-    phase:
-      Math.random()*10
-
-  });
-
-}
-
-/* =========================================================
-   UPDATE GAME
-========================================================= */
-
-function updateGame(
-  delta
-){
-
-  const dt =
-    Math.min(
-      delta,
-      35
-    ) / 16.67;
-
-  gameDistance +=
-    gameSpeed * dt;
-
-  /*
-    velocidad progresiva
-  */
-
-  gameSpeed =
-    Math.min(
-      11,
-      5 +
-      gameScore /
-      700
-    );
-
-  /*
-    jugador
-  */
-
-  gamePlayer.vy +=
-    gamePlayer.gravity *
-    dt;
-
-  gamePlayer.y +=
-    gamePlayer.vy *
-    dt;
 
   if(
-    gamePlayer.y +
-    gamePlayer.h >=
-    gamePlayer.ground
+    player.y+
+    player.height >=
+    groundY
   ){
 
-    gamePlayer.y =
-      gamePlayer.ground -
-      gamePlayer.h;
+    player.y =
+      groundY-player.height;
 
-    gamePlayer.vy =
-      0;
+    player.velocityY=0;
 
-    gamePlayer.onGround =
-      true;
+    player.grounded=true;
 
   }
 
-  /*
-    obstáculos
-  */
 
-  gameSpawnTimer -=
+  /* VIVI BOUNCE */
+
+  vivi.bounce +=
+    .12*delta;
+
+  vivi.y =
+    groundY-
+    vivi.height+
+    Math.sin(vivi.bounce)*2;
+
+
+  /* OBSTACLES */
+
+  obstacleTimer -=
     delta;
 
   if(
-    gameSpawnTimer <= 0
+    obstacleTimer<=0
   ){
 
     spawnObstacle();
 
-    const difficulty =
-      Math.max(
-        520,
-        1050 -
-        gameScore*1.2
-      );
-
-    gameSpawnTimer =
-      difficulty +
-      Math.random()*450;
+    obstacleTimer =
+      70+
+      Math.random()*80;
 
   }
 
-  gameObstacles.forEach(
-    obstacle => {
+
+  obstacles.forEach(
+    obstacle=>{
 
       obstacle.x -=
-        gameSpeed *
-        dt;
+        speed*delta;
 
     }
   );
 
-  gameObstacles =
-    gameObstacles.filter(
+
+  obstacles =
+    obstacles.filter(
       obstacle =>
-        obstacle.x +
-        obstacle.w >
-        -40
+        obstacle.x+
+        obstacle.width >
+        -30
     );
 
-  /*
-    corazones
-  */
 
-  gameHeartTimer -=
+  /* HEARTS */
+
+  heartTimer -=
     delta;
 
   if(
-    gameHeartTimer <= 0
+    heartTimer<=0
   ){
 
     spawnHeart();
 
-    gameHeartTimer =
-      900 +
-      Math.random()*1200;
+    heartTimer =
+      100+
+      Math.random()*110;
 
   }
 
-  gameHearts.forEach(
-    heart => {
+
+  collectibles.forEach(
+    heart=>{
 
       heart.x -=
-        gameSpeed *
-        dt;
+        speed*delta;
 
-      heart.phase +=
-        .08 * dt;
-
-      heart.pulse =
+      heart.y +=
         Math.sin(
-          heart.phase
-        ) * 2;
-
-      heart.y =
-        heart.baseY +
-        Math.sin(
-          heart.phase
-        ) * 5;
+          (timeNow()/150)+
+          heart.offset
+        )*.5;
 
     }
   );
 
-  gameHearts =
-    gameHearts.filter(
+
+  collectibles =
+    collectibles.filter(
       heart =>
-        heart.x +
-        heart.w >
-        -40
+        heart.x+heart.size>-30
     );
 
-  /*
-    colisión con obstáculos
-  */
+
+  /* COLLISION */
 
   for(
     const obstacle
-    of gameObstacles
+    of obstacles
   ){
 
     if(
       collision(
-        gamePlayer,
+        player,
         obstacle
       )
     ){
 
-      gameOver();
+      endGame();
 
       return;
 
@@ -3920,35 +2554,37 @@ function updateGame(
 
   }
 
-  /*
-    recoger corazones
-  */
 
-  gameHearts =
-    gameHearts.filter(
-      heart => {
+  /* HEART COLLECTION */
+
+  collectibles =
+    collectibles.filter(
+      heart=>{
 
         const hit =
-          collision(
-            gamePlayer,
-            {
-              x:
-                heart.x-10,
-              y:
-                heart.y-10,
-              w:
-                20,
-              h:
-                20
-            }
-          );
+          player.x <
+          heart.x+
+          heart.size &&
+          player.x+
+          player.width >
+          heart.x &&
+          player.y <
+          heart.y+
+          heart.size &&
+          player.y+
+          player.height >
+          heart.y;
 
         if(hit){
 
-          gameScore +=
-            50;
+          heartsCollected++;
 
-          showFloatingHeart();
+          score +=5;
+
+          createGameHeart(
+            heart.x,
+            heart.y
+          );
 
           return false;
 
@@ -3959,79 +2595,162 @@ function updateGame(
       }
     );
 
-  /*
-    puntos por tiempo
-  */
-
-  gameScore +=
-    gameSpeed *
-    dt *
-    .035;
-
-  gameScore =
-    Math.floor(
-      gameScore
-    );
 
   gameScoreEl.textContent =
-    String(gameScore);
+    Math.floor(score);
 
-  if(
-    gameScore >
-    gameBest
-  ){
+  heartScoreEl.textContent =
+    heartsCollected;
 
-    gameBest =
-      gameScore;
+}
 
-    gameBestEl.textContent =
-      String(gameBest);
+
+function timeNow(){
+
+  return performance.now();
+
+}
+
+
+/* =========================================================
+   SPAWN OBSTACLE
+========================================================= */
+
+function spawnObstacle(){
+
+  const type =
+    Math.random();
+
+  let width;
+  let height;
+
+  if(type<.5){
+
+    width=25;
+    height=45;
+
+  }else if(type<.8){
+
+    width=42;
+    height=34;
+
+  }else{
+
+    width=30;
+    height=58;
 
   }
 
+  obstacles.push({
+
+    x:gameWidth+20,
+
+    y:groundY-height,
+
+    width,
+    height,
+
+    type:
+
+      type<.5
+        ? 'flower'
+        : type<.8
+          ? 'box'
+          : 'heart'
+
+  });
+
 }
 
+
 /* =========================================================
-   FLOATING HEART
+   SPAWN HEART
 ========================================================= */
 
-function showFloatingHeart(){
+function spawnHeart(){
 
-  const heart =
-    document.createElement(
-      'div'
-    );
+  const size=22;
 
-  heart.className =
-    'heart';
+  collectibles.push({
 
-  heart.textContent =
-    '❤️';
+    x:gameWidth+20,
 
-  const rect =
-    gameWrap.getBoundingClientRect();
+    y:
+      groundY-
+      75-
+      Math.random()*85,
 
-  heart.style.left =
-    (
-      rect.left +
-      rect.width*.25
-    ) + 'px';
+    size,
 
-  heart.style.top =
-    (
-      rect.top +
-      rect.height*.45
-    ) + 'px';
+    offset:
+      Math.random()*10
 
-  document.body
-    .appendChild(heart);
+  });
 
-  setTimeout(
-    () => heart.remove(),
-    1600
+}
+
+
+/* =========================================================
+   COLLISION
+========================================================= */
+
+function collision(a,b){
+
+  const padding=7;
+
+  return (
+
+    a.x+padding <
+    b.x+b.width &&
+
+    a.x+a.width-padding >
+    b.x &&
+
+    a.y+padding <
+    b.y+b.height &&
+
+    a.y+a.height-padding >
+    b.y
+
   );
 
 }
+
+
+/* =========================================================
+   END GAME
+========================================================= */
+
+function endGame(){
+
+  gameRunning=false;
+
+  cancelAnimationFrame(
+    gameAnimation
+  );
+
+  finalScoreEl.textContent =
+    Math.floor(score);
+
+  finalHeartsEl.textContent =
+    heartsCollected;
+
+  gameOverlay.classList.remove(
+    'hidden'
+  );
+
+}
+
+
+restartGame.addEventListener(
+  'click',
+  ()=>{
+
+    resetGame();
+
+  }
+);
+
 
 /* =========================================================
    DRAW GAME
@@ -4039,189 +2758,974 @@ function showFloatingHeart(){
 
 function drawGame(){
 
-  const width =
-    gameCanvas.clientWidth;
-
-  const height =
-    gameCanvas.clientHeight;
-
-  gameCtx.clearRect(
+  ctx.clearRect(
     0,
     0,
-    width,
-    height
+    gameWidth,
+    gameHeight
   );
 
-  drawGameBackground(
-    width,
-    height
+
+  /* SKY */
+
+  const gradient =
+    ctx.createLinearGradient(
+      0,
+      0,
+      0,
+      gameHeight
+    );
+
+  gradient.addColorStop(
+    0,
+    '#ffe9ef'
   );
 
-  gameObstacles.forEach(
-    drawObstacle
+  gradient.addColorStop(
+    1,
+    '#ffffff'
   );
 
-  gameHearts.forEach(
-    drawCollectible
+  ctx.fillStyle=gradient;
+
+  ctx.fillRect(
+    0,
+    0,
+    gameWidth,
+    gameHeight
   );
 
-  drawPlayer();
 
-}
+  /* CLOUDS */
 
-/* =========================================================
-   GAME LOOP
-========================================================= */
-
-function gameLoop(
-  timestamp
-){
-
-  if(!gameRunning){
-
-    drawGame();
-
-    return;
-
-  }
-
-  const delta =
-    timestamp -
-    gameLastTime;
-
-  gameLastTime =
-    timestamp;
-
-  updateGame(
-    delta
+  drawCloud(
+    gameWidth*.15,
+    55,
+    1
   );
 
-  drawGame();
+  drawCloud(
+    gameWidth*.62,
+    85,
+    .7
+  );
 
-  if(gameRunning){
+  drawCloud(
+    gameWidth*.85,
+    45,
+    .55
+  );
 
-    gameAnimation =
-      requestAnimationFrame(
-        gameLoop
-      );
 
-  }
+  /* DISTANT HILLS */
 
-}
+  ctx.fillStyle='#ffdce5';
 
-/* =========================================================
-   GAME INPUT
-========================================================= */
+  ctx.beginPath();
 
-gameStartBtn
-.addEventListener(
-  'click',
-  e => {
+  ctx.moveTo(0,groundY);
 
-    e.stopPropagation();
+  for(
+    let x=0;
+    x<=gameWidth;
+    x+=80
+  ){
 
-    startGame();
-
-  }
-);
-
-gameCanvas
-.addEventListener(
-  'pointerdown',
-  e => {
-
-    e.preventDefault();
-
-    gameJump();
-
-  }
-);
-
-document.addEventListener(
-  'keydown',
-  e => {
-
-    if(
-      e.code === 'Space' ||
-      e.code === 'ArrowUp'
-    ){
-
-      const gameWindow =
-        $('#win-juego');
-
-      if(
-        gameWindow.classList
-          .contains('active')
-      ){
-
-        e.preventDefault();
-
-        gameJump();
-
-      }
-
-    }
-
-  }
-);
-
-/* =========================================================
-   INITIAL GAME DRAW
-========================================================= */
-
-setTimeout(
-  () => {
-
-    resizeGameCanvas();
-
-    drawGame();
-
-  },
-  300
-);
-
-/* =========================================================
-   OPEN GAME PREPARATION
-========================================================= */
-
-const originalOpen =
-  abrirVentana;
-
-/*
-  Cuando se abra la ventana,
-  aseguramos que el canvas tenga
-  el tamaño correcto.
-*/
-
-document.addEventListener(
-  'click',
-  e => {
-
-    const opener =
-      e.target.closest(
-        '[data-open="win-juego"]'
-      );
-
-    if(!opener){
-      return;
-    }
-
-    setTimeout(
-      () => {
-
-        resizeGameCanvas();
-
-        if(!gameRunning){
-
-          drawGame();
-
-        }
-
-      },
-      50
+    ctx.quadraticCurveTo(
+      x+40,
+      groundY-45-
+        Math.sin(x)*8,
+      x+80,
+      groundY
     );
 
   }
+
+  ctx.lineTo(
+    gameWidth,
+    gameHeight
+  );
+
+  ctx.lineTo(
+    0,
+    gameHeight
+  );
+
+  ctx.fill();
+
+
+  /* GROUND */
+
+  ctx.fillStyle='#4a3d42';
+
+  ctx.fillRect(
+    0,
+    groundY,
+    gameWidth,
+    3
+  );
+
+
+  /* GROUND DETAILS */
+
+  ctx.strokeStyle=
+    'rgba(74,61,66,.25)';
+
+  ctx.lineWidth=2;
+
+  for(
+    let x=0;
+    x<gameWidth;
+    x+=35
+  ){
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+      x,
+      groundY+12
+    );
+
+    ctx.lineTo(
+      x+14,
+      groundY+12
+    );
+
+    ctx.stroke();
+
+  }
+
+
+  /* VIVI */
+
+  drawVivi();
+
+
+  /* PLAYER */
+
+  drawPlayer();
+
+
+  /* OBSTACLES */
+
+  obstacles.forEach(
+    obstacle=>{
+      drawObstacle(obstacle);
+    }
+  );
+
+
+  /* HEARTS */
+
+  collectibles.forEach(
+    heart=>{
+      drawCollectible(heart);
+    }
+  );
+
+}
+
+
+/* =========================================================
+   DRAW CLOUD
+========================================================= */
+
+function drawCloud(x,y,s){
+
+  ctx.save();
+
+  ctx.translate(x,y);
+
+  ctx.scale(s,s);
+
+  ctx.fillStyle=
+    'rgba(255,255,255,.75)';
+
+  ctx.beginPath();
+
+  ctx.arc(0,10,18,0,Math.PI*2);
+
+  ctx.arc(20,0,24,0,Math.PI*2);
+
+  ctx.arc(45,10,17,0,Math.PI*2);
+
+  ctx.fill();
+
+  ctx.restore();
+
+}
+
+
+/* =========================================================
+   DRAW PLAYER
+========================================================= */
+
+function drawPlayer(){
+
+  const x=player.x;
+  const y=player.y;
+
+  ctx.save();
+
+  /* LEGS */
+
+  ctx.strokeStyle='#202020';
+  ctx.lineWidth=7;
+  ctx.lineCap='round';
+
+  ctx.beginPath();
+
+  ctx.moveTo(
+    x+16,
+    y+48
+  );
+
+  ctx.lineTo(
+    x+11,
+    y+65
+  );
+
+  ctx.moveTo(
+    x+29,
+    y+48
+  );
+
+  ctx.lineTo(
+    x+35,
+    y+65
+  );
+
+  ctx.stroke();
+
+
+  /* SHOES */
+
+  ctx.fillStyle='#333';
+
+  ctx.fillRect(
+    x+5,
+    y+63,
+    13,
+    5
+  );
+
+  ctx.fillRect(
+    x+32,
+    y+63,
+    13,
+    5
+  );
+
+
+  /* BODY */
+
+  ctx.fillStyle='#222';
+
+  roundRect(
+    ctx,
+    x+7,
+    y+28,
+    34,
+    29,
+    7
+  );
+
+  ctx.fill();
+
+
+  /* HEAD */
+
+  ctx.fillStyle='#f5c9b7';
+
+  ctx.beginPath();
+
+  ctx.arc(
+    x+24,
+    y+18,
+    17,
+    0,
+    Math.PI*2
+  );
+
+  ctx.fill();
+
+
+  /* HAIR */
+
+  ctx.fillStyle='#111';
+
+  ctx.beginPath();
+
+  ctx.moveTo(
+    x+7,
+    y+15
+  );
+
+  ctx.quadraticCurveTo(
+    x+9,
+    y-4,
+    x+28,
+    y+1
+  );
+
+  ctx.quadraticCurveTo(
+    x+41,
+    y+2,
+    x+42,
+    y+16
+  );
+
+  ctx.lineTo(
+    x+34,
+    y+11
+  );
+
+  ctx.lineTo(
+    x+28,
+    y+16
+  );
+
+  ctx.lineTo(
+    x+23,
+    y+10
+  );
+
+  ctx.lineTo(
+    x+16,
+    y+17
+  );
+
+  ctx.closePath();
+
+  ctx.fill();
+
+
+  /* GLASSES */
+
+  ctx.strokeStyle='#222';
+  ctx.lineWidth=2;
+
+  ctx.strokeRect(
+    x+11,
+    y+15,
+    10,
+    7
+  );
+
+  ctx.strokeRect(
+    x+27,
+    y+15,
+    10,
+    7
+  );
+
+  ctx.beginPath();
+
+  ctx.moveTo(
+    x+21,
+    y+18
+  );
+
+  ctx.lineTo(
+    x+27,
+    y+18
+  );
+
+  ctx.stroke();
+
+
+  /* EYES */
+
+  ctx.fillStyle='#5a3828';
+
+  ctx.fillRect(
+    x+15,
+    y+17,
+    3,
+    3
+  );
+
+  ctx.fillRect(
+    x+30,
+    y+17,
+    3,
+    3
+  );
+
+
+  /* SMILE */
+
+  ctx.strokeStyle='#8b4a48';
+  ctx.lineWidth=1.5;
+
+  ctx.beginPath();
+
+  ctx.arc(
+    x+24,
+    y+23,
+    4,
+    0,
+    Math.PI
+  );
+
+  ctx.stroke();
+
+  ctx.restore();
+
+}
+
+
+/* =========================================================
+   DRAW VIVI
+========================================================= */
+
+function drawVivi(){
+
+  const x=vivi.x;
+  const y=vivi.y;
+
+  ctx.save();
+
+  /* LEGS */
+
+  ctx.strokeStyle='#262626';
+  ctx.lineWidth=7;
+  ctx.lineCap='round';
+
+  ctx.beginPath();
+
+  ctx.moveTo(
+    x+15,
+    y+47
+  );
+
+  ctx.lineTo(
+    x+11,
+    y+63
+  );
+
+  ctx.moveTo(
+    x+27,
+    y+47
+  );
+
+  ctx.lineTo(
+    x+33,
+    y+63
+  );
+
+  ctx.stroke();
+
+
+  /* SHOES */
+
+  ctx.fillStyle='#555';
+
+  ctx.fillRect(
+    x+4,
+    y+61,
+    13,
+    6
+  );
+
+  ctx.fillRect(
+    x+30,
+    y+61,
+    13,
+    6
+  );
+
+
+  /* JEANS */
+
+  ctx.fillStyle='#5977a8';
+
+  ctx.fillRect(
+    x+7,
+    y+39,
+    29,
+    15
+  );
+
+
+  /* SHIRT */
+
+  ctx.fillStyle='#ff6b8a';
+
+  roundRect(
+    ctx,
+    x+8,
+    y+25,
+    27,
+    21,
+    7
+  );
+
+  ctx.fill();
+
+
+  /* HEAD */
+
+  ctx.fillStyle='#f2c7b6';
+
+  ctx.beginPath();
+
+  ctx.arc(
+    x+21,
+    y+17,
+    16,
+    0,
+    Math.PI*2
+  );
+
+  ctx.fill();
+
+
+  /* HAIR */
+
+  ctx.fillStyle='#111';
+
+  ctx.beginPath();
+
+  ctx.moveTo(
+    x+6,
+    y+18
+  );
+
+  ctx.quadraticCurveTo(
+    x+5,
+    y-3,
+    x+23,
+    y
+  );
+
+  ctx.quadraticCurveTo(
+    x+39,
+    y+2,
+    x+38,
+    y+24
+  );
+
+  ctx.lineTo(
+    x+32,
+    y+35
+  );
+
+  ctx.lineTo(
+    x+27,
+    y+24
+  );
+
+  ctx.lineTo(
+    x+10,
+    y+33
+  );
+
+  ctx.closePath();
+
+  ctx.fill();
+
+
+  /* GLASSES */
+
+  ctx.strokeStyle='#222';
+  ctx.lineWidth=2;
+
+  ctx.strokeRect(
+    x+8,
+    y+14,
+    10,
+    7
+  );
+
+  ctx.strokeRect(
+    x+24,
+    y+14,
+    10,
+    7
+  );
+
+  ctx.beginPath();
+
+  ctx.moveTo(
+    x+18,
+    y+17
+  );
+
+  ctx.lineTo(
+    x+24,
+    y+17
+  );
+
+  ctx.stroke();
+
+
+  /* EYES */
+
+  ctx.fillStyle='#5a3828';
+
+  ctx.fillRect(
+    x+12,
+    y+16,
+    3,
+    3
+  );
+
+  ctx.fillRect(
+    x+28,
+    y+16,
+    3,
+    3
+  );
+
+
+  /* SMILE */
+
+  ctx.strokeStyle='#8b4a48';
+  ctx.lineWidth=1.5;
+
+  ctx.beginPath();
+
+  ctx.arc(
+    x+21,
+    y+22,
+    4,
+    0,
+    Math.PI
+  );
+
+  ctx.stroke();
+
+
+  /* HEART ABOVE */
+
+  ctx.fillStyle='#ff2d55';
+
+  ctx.font='15px Arial';
+
+  ctx.fillText(
+    '♥',
+    x+15,
+    y-6
+  );
+
+  ctx.restore();
+
+}
+
+
+/* =========================================================
+   DRAW OBSTACLE
+========================================================= */
+
+function drawObstacle(obstacle){
+
+  const x=obstacle.x;
+  const y=obstacle.y;
+
+  ctx.save();
+
+  if(
+    obstacle.type==='flower'
+  ){
+
+    ctx.strokeStyle='#5a9c57';
+    ctx.lineWidth=7;
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+      x+12,
+      y+obstacle.height
+    );
+
+    ctx.lineTo(
+      x+12,
+      y+18
+    );
+
+    ctx.stroke();
+
+    ctx.fillStyle='#ff6b8a';
+
+    ctx.beginPath();
+
+    ctx.arc(
+      x+12,
+      y+13,
+      10,
+      0,
+      Math.PI*2
+    );
+
+    ctx.fill();
+
+    ctx.fillStyle='#ffd54d';
+
+    ctx.beginPath();
+
+    ctx.arc(
+      x+12,
+      y+13,
+      4,
+      0,
+      Math.PI*2
+    );
+
+    ctx.fill();
+
+  }
+
+  else if(
+    obstacle.type==='box'
+  ){
+
+    ctx.fillStyle='#c58a64';
+
+    roundRect(
+      ctx,
+      x,
+      y,
+      obstacle.width,
+      obstacle.height,
+      5
+    );
+
+    ctx.fill();
+
+    ctx.strokeStyle='#8c5a3d';
+    ctx.lineWidth=2;
+
+    ctx.strokeRect(
+      x+5,
+      y+5,
+      obstacle.width-10,
+      obstacle.height-10
+    );
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+      x+5,
+      y+5
+    );
+
+    ctx.lineTo(
+      x+obstacle.width-5,
+      y+obstacle.height-5
+    );
+
+    ctx.moveTo(
+      x+obstacle.width-5,
+      y+5
+    );
+
+    ctx.lineTo(
+      x+5,
+      y+obstacle.height-5
+    );
+
+    ctx.stroke();
+
+  }
+
+  else{
+
+    ctx.fillStyle='#ff2d55';
+
+    ctx.font=
+      obstacle.height+
+      'px Arial';
+
+    ctx.fillText(
+      '♥',
+      x,
+      y+obstacle.height
+    );
+
+  }
+
+  ctx.restore();
+
+}
+
+
+/* =========================================================
+   DRAW COLLECTIBLE
+========================================================= */
+
+function drawCollectible(heart){
+
+  ctx.save();
+
+  ctx.fillStyle='#ff2d55';
+
+  ctx.font=
+    heart.size+
+    'px Arial';
+
+  ctx.shadowColor=
+    'rgba(255,45,85,.35)';
+
+  ctx.shadowBlur=10;
+
+  ctx.fillText(
+    '♥',
+    heart.x,
+    heart.y+heart.size
+  );
+
+  ctx.restore();
+
+}
+
+
+/* =========================================================
+   ROUND RECT
+========================================================= */
+
+function roundRect(
+  context,
+  x,
+  y,
+  width,
+  height,
+  radius
+){
+
+  context.beginPath();
+
+  context.moveTo(
+    x+radius,
+    y
+  );
+
+  context.lineTo(
+    x+width-radius,
+    y
+  );
+
+  context.quadraticCurveTo(
+    x+width,
+    y,
+    x+width,
+    y+radius
+  );
+
+  context.lineTo(
+    x+width,
+    y+height-radius
+  );
+
+  context.quadraticCurveTo(
+    x+width,
+    y+height,
+    x+width-radius,
+    y+height
+  );
+
+  context.lineTo(
+    x+radius,
+    y+height
+  );
+
+  context.quadraticCurveTo(
+    x,
+    y+height,
+    x,
+    y+height-radius
+  );
+
+  context.lineTo(
+    x,
+    y+radius
+  );
+
+  context.quadraticCurveTo(
+    x,
+    y,
+    x+radius,
+    y
+  );
+
+  context.closePath();
+
+}
+
+
+/* =========================================================
+   GAME HEART EFFECT
+========================================================= */
+
+function createGameHeart(x,y){
+
+  for(let i=0;i<5;i++){
+
+    const particle={
+      x:x,
+      y:y,
+      vx:
+        (Math.random()-.5)*3,
+      vy:
+        -Math.random()*3,
+      life:30
+    };
+
+    animateParticle(
+      particle
+    );
+
+  }
+
+}
+
+
+function animateParticle(p){
+
+  const draw=()=>{
+
+    if(p.life<=0)
+      return;
+
+    p.x+=p.vx;
+    p.y+=p.vy;
+
+    p.vy+=.08;
+
+    p.life--;
+
+    ctx.save();
+
+    ctx.globalAlpha=
+      p.life/30;
+
+    ctx.fillStyle='#ff2d55';
+
+    ctx.font='12px Arial';
+
+    ctx.fillText(
+      '♥',
+      p.x,
+      p.y
+    );
+
+    ctx.restore();
+
+    requestAnimationFrame(draw);
+
+  };
+
+  requestAnimationFrame(draw);
+
+}
+
+
+/* =========================================================
+   FINAL
+========================================================= */
+
+console.log(
+  'ViviOS iniciado correctamente ❤️'
 );
 
 </script>
