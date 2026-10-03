@@ -6,6 +6,7 @@
 <title>ViviOS - Para Mi Amor ❤️</title>
 
 <style>
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -20,20 +21,23 @@ body{
 }
 
 /* =========================
-   FONDO
+   DESKTOP
 ========================= */
 
 #desktop{
   width:100vw;
   height:100vh;
+
   background-image:
     linear-gradient(
       rgba(0,0,0,.12),
       rgba(0,0,0,.12)
     ),
     url("assets/fondo.jpg");
+
   background-size:cover;
   background-position:center;
+
   position:relative;
 }
 
@@ -44,12 +48,16 @@ body{
 #boot{
   position:fixed;
   inset:0;
+
   background:#050505;
+
   display:flex;
   align-items:center;
   justify-content:center;
   flex-direction:column;
+
   z-index:9999;
+
   transition:opacity .8s ease;
 }
 
@@ -66,23 +74,30 @@ body{
 .boot-bar{
   width:220px;
   height:5px;
+
   background:#333;
+
   border-radius:10px;
   overflow:hidden;
+
   margin-top:20px;
 }
 
 .boot-progress{
   height:100%;
   width:0%;
+
   background:#fff;
+
   animation:loading 2s forwards;
 }
 
 @keyframes loading{
+
   to{
     width:100%;
   }
+
 }
 
 /* =========================
@@ -92,46 +107,64 @@ body{
 #login{
   position:fixed;
   inset:0;
+
   z-index:9998;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   background:
     linear-gradient(
       rgba(0,0,0,.35),
       rgba(0,0,0,.45)
     ),
     url("assets/fondo.jpg");
+
   background-size:cover;
   background-position:center;
+
   transition:opacity .7s ease;
 }
 
 .login-box{
   width:330px;
+
   padding:35px;
+
   border-radius:24px;
+
   background:rgba(255,255,255,.14);
+
   backdrop-filter:blur(25px);
   -webkit-backdrop-filter:blur(25px);
+
   border:1px solid rgba(255,255,255,.25);
+
   text-align:center;
-  box-shadow:0 20px 60px rgba(0,0,0,.35);
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.35);
 }
 
 .login-avatar{
   width:90px;
   height:90px;
+
   margin:auto;
-  border-radius:50%;
-  overflow:hidden;
-  border:3px solid rgba(255,255,255,.7);
   margin-bottom:18px;
+
+  border-radius:50%;
+
+  overflow:hidden;
+
+  border:3px solid rgba(255,255,255,.7);
 }
 
 .login-avatar img{
   width:100%;
   height:100%;
+
   object-fit:cover;
 }
 
@@ -142,21 +175,30 @@ body{
 
 .login-subtitle{
   color:#ddd;
+
   font-size:13px;
+
   margin-top:7px;
   margin-bottom:25px;
 }
 
 #login-btn{
   width:100%;
+
   border:0;
+
   padding:12px;
+
   border-radius:12px;
+
   background:#fff;
   color:#222;
+
   font-size:15px;
   font-weight:600;
+
   cursor:pointer;
+
   transition:.2s;
 }
 
@@ -170,17 +212,26 @@ body{
 
 .topbar{
   position:absolute;
+
   top:0;
   left:0;
+
   width:100%;
   height:32px;
+
   background:rgba(20,20,20,.55);
+
   backdrop-filter:blur(15px);
+
   display:flex;
+
   align-items:center;
   justify-content:space-between;
+
   padding:0 14px;
+
   z-index:100;
+
   font-size:13px;
 }
 
@@ -201,30 +252,44 @@ body{
 
 .desktop-icons{
   position:absolute;
+
   top:55px;
   left:20px;
+
   display:flex;
   flex-direction:column;
+
   gap:20px;
+
   z-index:5;
 }
 
 .desktop-icon{
   width:75px;
+
   text-align:center;
+
   cursor:pointer;
+
   user-select:none;
 }
 
 .desktop-icon .icon{
   font-size:38px;
+
   margin-bottom:5px;
-  filter:drop-shadow(0 2px 4px rgba(0,0,0,.4));
+
+  filter:
+    drop-shadow(
+      0 2px 4px rgba(0,0,0,.4)
+    );
 }
 
 .desktop-icon span{
   font-size:12px;
-  text-shadow:0 2px 4px #000;
+
+  text-shadow:
+    0 2px 4px #000;
 }
 
 /* =========================
@@ -233,42 +298,64 @@ body{
 
 .window{
   position:absolute;
+
   width:650px;
   max-width:90vw;
   max-height:75vh;
+
   left:50%;
   top:50%;
-  transform:translate(-50%,-50%);
+
+  transform:
+    translate(-50%,-50%);
+
   background:rgba(30,30,30,.82);
+
   backdrop-filter:blur(25px);
   -webkit-backdrop-filter:blur(25px);
-  border:1px solid rgba(255,255,255,.18);
+
+  border:
+    1px solid rgba(255,255,255,.18);
+
   border-radius:14px;
+
   overflow:hidden;
+
   box-shadow:
     0 30px 80px rgba(0,0,0,.5);
+
   z-index:50;
+
   display:none;
 }
 
 .window-header{
   height:42px;
+
   display:flex;
   align-items:center;
+
   padding:0 14px;
-  background:rgba(255,255,255,.08);
-  border-bottom:1px solid rgba(255,255,255,.08);
+
+  background:
+    rgba(255,255,255,.08);
+
+  border-bottom:
+    1px solid rgba(255,255,255,.08);
 }
 
 .window-buttons{
   display:flex;
+
   gap:7px;
 }
 
 .window-button{
   width:12px;
   height:12px;
+
   border-radius:50%;
+
   cursor:pointer;
 }
 
@@ -286,16 +373,24 @@ body{
 
 .window-title{
   position:absolute;
+
   left:50%;
-  transform:translateX(-50%);
+
+  transform:
+    translateX(-50%);
+
   font-size:13px;
+
   color:#ddd;
 }
 
 .window-content{
   padding:25px;
+
   overflow:auto;
-  max-height:calc(75vh - 42px);
+
+  max-height:
+    calc(75vh - 42px);
 }
 
 /* =========================
@@ -303,37 +398,55 @@ body{
 ========================= */
 
 .letter{
-  background:rgba(255,255,255,.96);
+  background:
+    rgba(255,255,255,.96);
+
   color:#333;
+
   border-radius:12px;
+
   padding:30px;
+
   line-height:1.8;
+
   white-space:pre-line;
-  box-shadow:0 8px 25px rgba(0,0,0,.25);
+
+  box-shadow:
+    0 8px 25px rgba(0,0,0,.25);
 }
 
 .letter h2{
   text-align:center;
+
   margin-bottom:20px;
+
   color:#d94f70;
 }
 
 /* =========================
-   GALLERY
+   GALERÍA
 ========================= */
 
 .gallery{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+
+  grid-template-columns:
+    repeat(3,1fr);
+
   gap:12px;
 }
 
 .gallery img{
   width:100%;
+
   aspect-ratio:1/1;
+
   object-fit:cover;
+
   border-radius:10px;
+
   cursor:pointer;
+
   transition:.25s;
 }
 
@@ -352,15 +465,22 @@ body{
 .album{
   width:210px;
   height:210px;
-  margin:10px auto 20px;
+
+  margin:
+    10px auto 20px;
+
   border-radius:15px;
+
   overflow:hidden;
-  box-shadow:0 15px 40px rgba(0,0,0,.4);
+
+  box-shadow:
+    0 15px 40px rgba(0,0,0,.4);
 }
 
 .album img{
   width:100%;
   height:100%;
+
   object-fit:cover;
 }
 
@@ -371,7 +491,9 @@ body{
 
 .music-artist{
   color:#bbb;
+
   font-size:14px;
+
   margin-top:5px;
   margin-bottom:20px;
 }
@@ -386,19 +508,27 @@ body{
 
 .reasons{
   display:grid;
+
   gap:12px;
 }
 
 .reason{
   padding:18px;
-  background:rgba(255,255,255,.08);
+
+  background:
+    rgba(255,255,255,.08);
+
   border-radius:12px;
-  border:1px solid rgba(255,255,255,.08);
+
+  border:
+    1px solid rgba(255,255,255,.08);
 }
 
 .reason-number{
   font-size:12px;
+
   color:#ff8fa8;
+
   margin-bottom:5px;
 }
 
@@ -412,34 +542,46 @@ body{
 
 .coupons{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+
+  grid-template-columns:
+    repeat(2,1fr);
+
   gap:15px;
 }
 
 .coupon{
   padding:20px;
-  background:linear-gradient(
-    135deg,
-    rgba(255,100,140,.25),
-    rgba(255,255,255,.08)
-  );
-  border:1px dashed rgba(255,255,255,.4);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,100,140,.25),
+      rgba(255,255,255,.08)
+    );
+
+  border:
+    1px dashed rgba(255,255,255,.4);
+
   border-radius:14px;
+
   text-align:center;
 }
 
 .coupon-icon{
   font-size:35px;
+
   margin-bottom:8px;
 }
 
 .coupon-title{
   font-weight:600;
+
   margin-bottom:6px;
 }
 
 .coupon-description{
   color:#ccc;
+
   font-size:13px;
 }
 
@@ -449,11 +591,13 @@ body{
 
 .surprise{
   text-align:center;
+
   padding:30px 15px;
 }
 
 .surprise-icon{
   font-size:75px;
+
   margin-bottom:20px;
 }
 
@@ -463,17 +607,25 @@ body{
 
 .surprise p{
   color:#ccc;
+
   line-height:1.7;
 }
 
 .surprise-button{
   margin-top:25px;
+
   padding:12px 25px;
+
   border:0;
+
   border-radius:10px;
+
   background:#ff5c7c;
+
   color:#fff;
+
   cursor:pointer;
+
   font-weight:600;
 }
 
@@ -483,36 +635,62 @@ body{
 
 .dock{
   position:absolute;
+
   bottom:12px;
+
   left:50%;
-  transform:translateX(-50%);
+
+  transform:
+    translateX(-50%);
+
   display:flex;
+
   align-items:flex-end;
+
   gap:10px;
+
   padding:8px 13px;
+
   border-radius:20px;
-  background:rgba(30,30,30,.5);
+
+  background:
+    rgba(30,30,30,.5);
+
   backdrop-filter:blur(20px);
+
   -webkit-backdrop-filter:blur(20px);
-  border:1px solid rgba(255,255,255,.18);
+
+  border:
+    1px solid rgba(255,255,255,.18);
+
   z-index:200;
 }
 
 .dock-item{
   width:50px;
   height:50px;
+
   border-radius:12px;
+
   display:flex;
+
   align-items:center;
   justify-content:center;
+
   font-size:28px;
+
   cursor:pointer;
+
   transition:.2s;
-  background:rgba(255,255,255,.12);
+
+  background:
+    rgba(255,255,255,.12);
 }
 
 .dock-item:hover{
-  transform:translateY(-8px) scale(1.08);
+  transform:
+    translateY(-8px)
+    scale(1.08);
 }
 
 /* =========================
@@ -521,22 +699,40 @@ body{
 
 #toast{
   position:fixed;
+
   bottom:85px;
+
   left:50%;
-  transform:translateX(-50%) translateY(20px);
-  background:rgba(20,20,20,.85);
+
+  transform:
+    translateX(-50%)
+    translateY(20px);
+
+  background:
+    rgba(20,20,20,.85);
+
   padding:12px 20px;
+
   border-radius:12px;
+
   opacity:0;
+
   pointer-events:none;
+
   transition:.3s;
+
   z-index:500;
-  box-shadow:0 10px 30px rgba(0,0,0,.3);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.3);
 }
 
 #toast.show{
   opacity:1;
-  transform:translateX(-50%) translateY(0);
+
+  transform:
+    translateX(-50%)
+    translateY(0);
 }
 
 /* =========================
@@ -545,27 +741,39 @@ body{
 
 #image-viewer{
   position:fixed;
+
   inset:0;
-  background:rgba(0,0,0,.88);
+
+  background:
+    rgba(0,0,0,.88);
+
   display:none;
+
   align-items:center;
   justify-content:center;
+
   z-index:1000;
 }
 
 #image-viewer img{
   max-width:90%;
   max-height:90%;
+
   object-fit:contain;
+
   border-radius:10px;
 }
 
 .viewer-close{
   position:absolute;
+
   top:25px;
   right:30px;
+
   font-size:35px;
+
   cursor:pointer;
+
   color:white;
 }
 
@@ -582,7 +790,9 @@ body{
 }
 
 ::-webkit-scrollbar-thumb{
-  background:rgba(255,255,255,.25);
+  background:
+    rgba(255,255,255,.25);
+
   border-radius:10px;
 }
 
@@ -630,7 +840,8 @@ body{
   }
 
   .gallery{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:
+      repeat(2,1fr);
   }
 
   .coupons{
@@ -658,15 +869,17 @@ body{
     width:90%;
     max-width:330px;
   }
+
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- =========================================================
+<!-- =====================================================
      BOOT
-========================================================= -->
+====================================================== -->
 
 <div id="boot">
 
@@ -679,25 +892,29 @@ body{
   </div>
 
   <div class="boot-bar">
+
     <div class="boot-progress"></div>
+
   </div>
 
 </div>
 
 
-<!-- =========================================================
+<!-- =====================================================
      LOGIN
-========================================================= -->
+====================================================== -->
 
 <div id="login">
 
   <div class="login-box">
 
     <div class="login-avatar">
+
       <img
         src="assets/fondo.jpg"
         alt="Viviana"
       >
+
     </div>
 
     <div class="login-title">
@@ -717,9 +934,9 @@ body{
 </div>
 
 
-<!-- =========================================================
+<!-- =====================================================
      DESKTOP
-========================================================= -->
+====================================================== -->
 
 <div id="desktop">
 
@@ -812,9 +1029,9 @@ body{
   </div>
 
 
-  <!-- =====================================================
+  <!-- ===================================================
        CARTA
-  ====================================================== -->
+  ==================================================== -->
 
   <div
     class="window"
@@ -831,6 +1048,7 @@ body{
         ></div>
 
         <div class="window-button minimize"></div>
+
         <div class="window-button maximize"></div>
 
       </div>
@@ -858,9 +1076,9 @@ body{
   </div>
 
 
-  <!-- =====================================================
+  <!-- ===================================================
        FOTOS
-  ====================================================== -->
+  ==================================================== -->
 
   <div
     class="window"
@@ -877,6 +1095,7 @@ body{
         ></div>
 
         <div class="window-button minimize"></div>
+
         <div class="window-button maximize"></div>
 
       </div>
@@ -899,9 +1118,9 @@ body{
   </div>
 
 
-  <!-- =====================================================
+  <!-- ===================================================
        MUSICA
-  ====================================================== -->
+  ==================================================== -->
 
   <div
     class="window"
@@ -918,6 +1137,7 @@ body{
         ></div>
 
         <div class="window-button minimize"></div>
+
         <div class="window-button maximize"></div>
 
       </div>
@@ -978,9 +1198,9 @@ body{
   </div>
 
 
-  <!-- =====================================================
+  <!-- ===================================================
        RAZONES
-  ====================================================== -->
+  ==================================================== -->
 
   <div
     class="window"
@@ -997,6 +1217,7 @@ body{
         ></div>
 
         <div class="window-button minimize"></div>
+
         <div class="window-button maximize"></div>
 
       </div>
@@ -1019,9 +1240,9 @@ body{
   </div>
 
 
-  <!-- =====================================================
+  <!-- ===================================================
        VALES
-  ====================================================== -->
+  ==================================================== -->
 
   <div
     class="window"
@@ -1038,6 +1259,7 @@ body{
         ></div>
 
         <div class="window-button minimize"></div>
+
         <div class="window-button maximize"></div>
 
       </div>
@@ -1060,9 +1282,9 @@ body{
   </div>
 
 
-  <!-- =====================================================
+  <!-- ===================================================
        SORPRESA
-  ====================================================== -->
+  ==================================================== -->
 
   <div
     class="window"
@@ -1079,6 +1301,7 @@ body{
         ></div>
 
         <div class="window-button minimize"></div>
+
         <div class="window-button maximize"></div>
 
       </div>
@@ -1104,7 +1327,9 @@ body{
         <p>
           Si llegaste hasta aquí significa que exploraste
           este pequeño mundo que hice para ti.
+
           <br><br>
+
           Y aunque no existe una página capaz de explicar
           todo lo que siento por ti, espero que cada pequeño
           detalle te recuerde cuánto te amo.
@@ -1124,9 +1349,9 @@ body{
   </div>
 
 
-  <!-- =====================================================
+  <!-- ===================================================
        DOCK
-  ====================================================== -->
+  ==================================================== -->
 
   <div class="dock">
 
@@ -1183,16 +1408,16 @@ body{
 </div>
 
 
-<!-- =========================================================
+<!-- =====================================================
      TOAST
-========================================================= -->
+====================================================== -->
 
 <div id="toast"></div>
 
 
-<!-- =========================================================
+<!-- =====================================================
      IMAGE VIEWER
-========================================================= -->
+====================================================== -->
 
 <div id="image-viewer">
 
@@ -1215,11 +1440,13 @@ body{
 <script>
 
 /* =========================================================
-   HELPERS
+   HELPER
 ========================================================= */
 
 function $(selector){
+
   return document.querySelector(selector);
+
 }
 
 
@@ -1239,53 +1466,66 @@ Gracias por cada sonrisa, por cada momento y por hacer que mi vida tenga recuerd
 
 Te amo muchísimo. 💕`,
 
-  fondo: "assets/fondo.jpg",
+  fondo:
+    "assets/fondo.jpg",
+
+  /* =========================================
+     LAS 31 FOTOS
+  ========================================= */
 
   fotos: [
 
-    fotos: [
-  "assets/fotos/foto01.jpg",
-  "assets/fotos/foto02.jpg",
-  "assets/fotos/foto03.jpg",
-  "assets/fotos/foto04.jpg",
-  "assets/fotos/foto05.jpg",
-  "assets/fotos/foto06.jpg",
-  "assets/fotos/foto07.jpg",
-  "assets/fotos/foto08.jpg",
-  "assets/fotos/foto09.jpg",
-  "assets/fotos/foto10.jpg",
-  "assets/fotos/foto11.jpg",
-  "assets/fotos/foto12.jpg",
-  "assets/fotos/foto13.jpg",
-  "assets/fotos/foto14.jpg",
-  "assets/fotos/foto15.jpg",
-  "assets/fotos/foto16.jpg",
-  "assets/fotos/foto17.jpg",
-  "assets/fotos/foto18.jpg",
-  "assets/fotos/foto19.jpg",
-  "assets/fotos/foto20.jpg",
-  "assets/fotos/foto21.jpg",
-  "assets/fotos/foto22.jpg",
-  "assets/fotos/foto23.jpg",
-  "assets/fotos/foto24.jpg",
-  "assets/fotos/foto25.jpg",
-  "assets/fotos/foto26.jpg",
-  "assets/fotos/foto27.jpg",
-  "assets/fotos/foto28.jpg",
-  "assets/fotos/foto29.jpg",
-  "assets/fotos/foto30.jpg",
-  "assets/fotos/foto31.jpg"
+    "assets/fotos/foto01.jpg",
+    "assets/fotos/foto02.jpg",
+    "assets/fotos/foto03.jpg",
+    "assets/fotos/foto04.jpg",
+    "assets/fotos/foto05.jpg",
 
-    
-    ],
+    "assets/fotos/foto06.jpg",
+    "assets/fotos/foto07.jpg",
+    "assets/fotos/foto08.jpg",
+    "assets/fotos/foto09.jpg",
+    "assets/fotos/foto10.jpg",
 
-  musica: "assets/musica/nuestra-cancion.mp3",
+    "assets/fotos/foto11.jpg",
+    "assets/fotos/foto12.jpg",
+    "assets/fotos/foto13.jpg",
+    "assets/fotos/foto14.jpg",
+    "assets/fotos/foto15.jpg",
 
-  titulo: "Nuestra canción especial",
+    "assets/fotos/foto16.jpg",
+    "assets/fotos/foto17.jpg",
+    "assets/fotos/foto18.jpg",
+    "assets/fotos/foto19.jpg",
+    "assets/fotos/foto20.jpg",
 
-  artista: "Para mi persona favorita ❤️",
+    "assets/fotos/foto21.jpg",
+    "assets/fotos/foto22.jpg",
+    "assets/fotos/foto23.jpg",
+    "assets/fotos/foto24.jpg",
+    "assets/fotos/foto25.jpg",
 
-  portada: "assets/portada.jpg"
+    "assets/fotos/foto26.jpg",
+    "assets/fotos/foto27.jpg",
+    "assets/fotos/foto28.jpg",
+    "assets/fotos/foto29.jpg",
+    "assets/fotos/foto30.jpg",
+
+    "assets/fotos/foto31.jpg"
+
+  ],
+
+  musica:
+    "assets/musica/nuestra-cancion.mp3",
+
+  titulo:
+    "Nuestra canción especial",
+
+  artista:
+    "Para mi persona favorita ❤️",
+
+  portada:
+    "assets/fondo.jpg"
 
 };
 
@@ -1366,9 +1606,11 @@ const coupons = [
 
 function showToast(message){
 
-  const toast = $("#toast");
+  const toast =
+    $("#toast");
 
-  toast.textContent = message;
+  toast.textContent =
+    message;
 
   toast.classList.add("show");
 
@@ -1387,43 +1629,56 @@ function showToast(message){
 
 function openWindow(id){
 
-  const windowElement = document.getElementById(id);
+  const windowElement =
+    document.getElementById(id);
 
   if(!windowElement){
+
     return;
+
   }
 
-  windowElement.style.display = "block";
+  windowElement.style.display =
+    "block";
 
 }
 
 
 function closeWindow(id){
 
-  const windowElement = document.getElementById(id);
+  const windowElement =
+    document.getElementById(id);
 
   if(!windowElement){
+
     return;
+
   }
 
-  windowElement.style.display = "none";
+  windowElement.style.display =
+    "none";
 
 }
 
 
 /* =========================================================
-   CLOCK
+   RELOJ
 ========================================================= */
 
 function updateClock(){
 
-  const now = new Date();
+  const now =
+    new Date();
 
   const hours =
-    String(now.getHours()).padStart(2,"0");
+    String(
+      now.getHours()
+    ).padStart(2,"0");
 
   const minutes =
-    String(now.getMinutes()).padStart(2,"0");
+    String(
+      now.getMinutes()
+    ).padStart(2,"0");
 
   $("#clock").textContent =
     `${hours}:${minutes}`;
@@ -1432,52 +1687,65 @@ function updateClock(){
 
 updateClock();
 
-setInterval(updateClock,1000);
+setInterval(
+  updateClock,
+  1000
+);
 
 
 /* =========================================================
-   RENDER APP
+   RENDERIZAR
 ========================================================= */
 
 function renderApp(){
 
-  /* Carta */
+  /* CARTA */
 
   $("#letter-text").textContent =
     appData.carta;
 
 
-  /* Fotos */
+  /* GALERÍA */
 
   const gallery =
     $("#gallery");
 
-  gallery.innerHTML = "";
+  gallery.innerHTML =
+    "";
 
-  appData.fotos.forEach((photo,index)=>{
+  appData.fotos.forEach(
+    (photo,index)=>{
 
-    const img =
-      document.createElement("img");
+      const img =
+        document.createElement("img");
 
-    img.src = photo;
+      img.src =
+        photo;
 
-    img.alt =
-      `Recuerdo ${index + 1}`;
+      img.alt =
+        `Recuerdo ${index + 1}`;
 
-    img.loading = "lazy";
+      img.loading =
+        "lazy";
 
-    img.onclick = ()=>{
+      img.onclick =
+        ()=>{
 
-      openImageViewer(photo);
+          openImageViewer(
+            photo
+          );
 
-    };
+        };
 
-    gallery.appendChild(img);
+      gallery.appendChild(
+        img
+      );
 
-  });
+    }
+  );
 
 
-  /* Música */
+  /* MUSICA */
 
   $("#music-title").textContent =
     appData.titulo;
@@ -1494,86 +1762,107 @@ function renderApp(){
   audio.src =
     appData.musica;
 
+  /*
+    IMPORTANTE:
+    No usamos audio.play()
+    aquí.
+
+    La canción queda detenida
+    hasta que Viviana pulse
+    Play.
+  */
+
   audio.load();
 
 
-  /* Razones */
+  /* RAZONES */
 
   const reasonsList =
     $("#reasons-list");
 
-  reasonsList.innerHTML = "";
+  reasonsList.innerHTML =
+    "";
 
-  reasons.forEach((reason,index)=>{
+  reasons.forEach(
+    (reason,index)=>{
 
-    const element =
-      document.createElement("div");
+      const element =
+        document.createElement("div");
 
-    element.className =
-      "reason";
+      element.className =
+        "reason";
 
-    element.innerHTML = `
+      element.innerHTML = `
 
-      <div class="reason-number">
-        RAZÓN ${index + 1}
-      </div>
+        <div class="reason-number">
+          RAZÓN ${index + 1}
+        </div>
 
-      <div class="reason-text">
-        ${reason}
-      </div>
+        <div class="reason-text">
+          ${reason}
+        </div>
 
-    `;
+      `;
 
-    reasonsList.appendChild(element);
+      reasonsList.appendChild(
+        element
+      );
 
-  });
+    }
+  );
 
 
-  /* Vales */
+  /* VALES */
 
   const couponsList =
     $("#coupons-list");
 
-  couponsList.innerHTML = "";
+  couponsList.innerHTML =
+    "";
 
-  coupons.forEach(coupon=>{
+  coupons.forEach(
+    coupon=>{
 
-    const element =
-      document.createElement("div");
+      const element =
+        document.createElement("div");
 
-    element.className =
-      "coupon";
+      element.className =
+        "coupon";
 
-    element.innerHTML = `
+      element.innerHTML = `
 
-      <div class="coupon-icon">
-        ${coupon.icon}
-      </div>
+        <div class="coupon-icon">
+          ${coupon.icon}
+        </div>
 
-      <div class="coupon-title">
-        ${coupon.title}
-      </div>
+        <div class="coupon-title">
+          ${coupon.title}
+        </div>
 
-      <div class="coupon-description">
-        ${coupon.description}
-      </div>
+        <div class="coupon-description">
+          ${coupon.description}
+        </div>
 
-    `;
+      `;
 
-    couponsList.appendChild(element);
+      couponsList.appendChild(
+        element
+      );
 
-  });
+    }
+  );
 
 }
 
 
 /* =========================================================
-   IMAGE VIEWER
+   VISOR DE FOTOS
 ========================================================= */
 
 function openImageViewer(src){
 
-  $("#viewer-image").src = src;
+  $("#viewer-image").src =
+    src;
 
   $("#image-viewer").style.display =
     "flex";
@@ -1590,7 +1879,7 @@ function closeImageViewer(){
 
 
 /* =========================================================
-   SURPRISE
+   SORPRESA
 ========================================================= */
 
 function showLoveMessage(){
@@ -1606,44 +1895,53 @@ function showLoveMessage(){
    BOOT
 ========================================================= */
 
-window.addEventListener("load",()=>{
-
-  setTimeout(()=>{
-
-    $("#boot").style.opacity = "0";
+window.addEventListener(
+  "load",
+  ()=>{
 
     setTimeout(()=>{
 
-      $("#boot").style.display = "none";
+      $("#boot").style.opacity =
+        "0";
 
-    },800);
+      setTimeout(()=>{
 
-  },2200);
+        $("#boot").style.display =
+          "none";
 
-});
+      },800);
+
+    },2200);
+
+  }
+);
 
 
 /* =========================================================
    LOGIN
-   IMPORTANTE:
-   NO reproduce la canción automáticamente.
+   SIN AUTOPLAY
 ========================================================= */
 
-$("#login-btn").addEventListener("click",()=>{
+$("#login-btn").addEventListener(
+  "click",
+  ()=>{
 
-  $("#login").style.opacity = "0";
+    $("#login").style.opacity =
+      "0";
 
-  setTimeout(()=>{
+    setTimeout(()=>{
 
-    $("#login").style.display = "none";
+      $("#login").style.display =
+        "none";
 
-    showToast(
-      "Bienvenida a ViviOS ❤️"
-    );
+      showToast(
+        "Bienvenida a ViviOS ❤️"
+      );
 
-  },700);
+    },700);
 
-});
+  }
+);
 
 
 /* =========================================================
