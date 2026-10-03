@@ -2,27 +2,36 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <title>ViviOS - Para Mi Amor ❤️</title>
 
 <style>
 
+/* =========================================
+   GENERAL
+========================================= */
+
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    -webkit-tap-highlight-color: transparent;
 }
 
 html,
 body {
     width: 100%;
     height: 100%;
+    margin: 0;
+    padding: 0;
     overflow: hidden;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 }
 
 body {
     background: #111;
+    color: white;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 
@@ -33,13 +42,14 @@ body {
 #boot {
     position: fixed;
     inset: 0;
+    background: #050505;
     z-index: 99999;
-    background: linear-gradient(135deg, #17121d, #25152a, #35152d);
-    color: white;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: opacity .6s ease;
+
+    transition: opacity 0.6s ease;
 }
 
 .boot-content {
@@ -47,58 +57,24 @@ body {
 }
 
 .boot-heart {
-    font-size: 65px;
+    font-size: 55px;
     margin-bottom: 20px;
-    animation: heartbeat 1.3s infinite;
+    animation: heartbeat 1.2s infinite;
 }
 
-.boot-title {
-    font-size: 30px;
-    font-weight: 700;
-}
-
-.boot-subtitle {
-    opacity: .65;
-    margin-top: 10px;
-    font-size: 14px;
-}
-
-.boot-loading {
-    width: 180px;
-    height: 5px;
-    background: rgba(255,255,255,.15);
-    border-radius: 20px;
-    overflow: hidden;
-    margin: 25px auto 0;
-}
-
-.boot-loading div {
-    width: 50%;
-    height: 100%;
-    background: #ff4f91;
-    border-radius: 20px;
-    animation: loading 1.5s infinite ease-in-out;
-}
-
-@keyframes loading {
-    0% {
-        transform: translateX(-180px);
-    }
-
-    100% {
-        transform: translateX(180px);
-    }
+.boot-text {
+    color: #fff;
+    font-size: 17px;
+    opacity: 0.8;
 }
 
 @keyframes heartbeat {
-
-    0%,
-    100% {
+    0%, 100% {
         transform: scale(1);
     }
 
     50% {
-        transform: scale(1.12);
+        transform: scale(1.15);
     }
 }
 
@@ -107,68 +83,107 @@ body {
    LOGIN
 ========================================= */
 
-#login {
+#login-screen {
     position: fixed;
     inset: 0;
-    z-index: 9999;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.35),
+            rgba(0,0,0,0.55)
+        ),
+        url("assets/fondo.jpg");
+
+    background-size: cover;
+    background-position: center;
+
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background:
-        linear-gradient(rgba(20,10,20,.5), rgba(20,10,20,.7)),
-        url("assets/fondo.jpg") center/cover;
-
-    transition: opacity .6s ease;
+    z-index: 9000;
 }
 
-.login-card {
-    width: min(90%, 380px);
-    padding: 35px;
-    text-align: center;
-    color: white;
+.login-box {
+    width: min(360px, 90%);
+    padding: 35px 28px;
 
+    background: rgba(255,255,255,0.13);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+
+    border: 1px solid rgba(255,255,255,0.25);
     border-radius: 25px;
 
-    background: rgba(20,20,25,.65);
-    border: 1px solid rgba(255,255,255,.2);
+    text-align: center;
 
-    backdrop-filter: blur(20px);
-
-    box-shadow: 0 25px 80px rgba(0,0,0,.45);
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.35);
 }
 
 .login-heart {
-    font-size: 55px;
-    margin-bottom: 15px;
+    font-size: 60px;
+    margin-bottom: 10px;
 }
 
-.login-card h1 {
-    font-size: 28px;
-    margin-bottom: 8px;
+.login-box h1 {
+    margin: 0 0 8px;
+    font-size: 27px;
 }
 
-.login-card p {
-    opacity: .75;
-    margin-bottom: 25px;
+.login-box p {
+    margin: 0 0 25px;
+    opacity: 0.8;
 }
 
-#login-btn {
-    border: 0;
-    color: white;
+#password {
+    width: 100%;
+    padding: 13px 16px;
 
-    background: linear-gradient(135deg, #ff4f91, #ff286f);
-
-    padding: 13px 28px;
+    border: none;
+    outline: none;
 
     border-radius: 14px;
 
-    font-size: 15px;
+    background: rgba(255,255,255,0.18);
+    color: white;
+
+    font-size: 16px;
+
+    text-align: center;
+}
+
+#password::placeholder {
+    color: rgba(255,255,255,0.65);
+}
+
+.login-button {
+    width: 100%;
+    margin-top: 14px;
+
+    padding: 13px;
+
+    border: none;
+    border-radius: 14px;
+
+    background: #ff4f81;
+    color: white;
+
+    font-size: 16px;
     font-weight: 600;
 
     cursor: pointer;
+}
 
-    box-shadow: 0 10px 30px rgba(255,45,110,.3);
+.login-button:active {
+    transform: scale(0.97);
+}
+
+.login-error {
+    margin-top: 12px;
+    color: #ff9eb8;
+    font-size: 14px;
+    min-height: 18px;
 }
 
 
@@ -181,70 +196,97 @@ body {
     inset: 0;
 
     background:
-        linear-gradient(rgba(10,5,15,.15), rgba(10,5,15,.35)),
-        url("assets/fondo.jpg") center/cover no-repeat;
+        linear-gradient(
+            rgba(0,0,0,0.10),
+            rgba(0,0,0,0.25)
+        ),
+        url("assets/fondo.jpg");
 
-    color: white;
+    background-size: cover;
+    background-position: center;
+
+    overflow: hidden;
 }
 
-#topbar {
-    position: absolute;
 
+/* =========================================
+   TOP BAR
+========================================= */
+
+.top-bar {
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
 
-    height: 36px;
+    height: 42px;
+
+    background: rgba(20,20,20,0.35);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 
     display: flex;
     align-items: center;
-    justify-content: space-between;
 
     padding: 0 15px;
 
-    background: rgba(15,15,18,.42);
-
-    backdrop-filter: blur(15px);
-
-    font-size: 13px;
-
-    z-index: 100;
+    z-index: 1000;
 }
 
-.top-left,
+.top-left {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.top-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    font-size: 14px;
+    opacity: 0.9;
+}
+
 .top-right {
-    display: flex;
-    align-items: center;
-    gap: 16px;
+    margin-left: auto;
+    font-size: 13px;
+    opacity: 0.9;
 }
 
-.apple {
-    font-size: 17px;
-}
+
+/* =========================================
+   DESKTOP ICONS
+========================================= */
 
 .desktop-icons {
     position: absolute;
 
-    top: 55px;
-    left: 20px;
+    top: 65px;
+    left: 18px;
 
-    display: grid;
-    gap: 20px;
+    display: flex;
+    flex-direction: column;
+
+    gap: 18px;
+
+    z-index: 50;
 }
 
 .desktop-icon {
-    width: 85px;
+    width: 75px;
 
     text-align: center;
 
     cursor: pointer;
-
-    user-select: none;
 }
 
-.desktop-icon .icon {
-    width: 58px;
-    height: 58px;
+.desktop-icon:active {
+    transform: scale(0.94);
+}
+
+.desktop-icon-image {
+    width: 52px;
+    height: 52px;
 
     margin: auto;
 
@@ -254,25 +296,29 @@ body {
     align-items: center;
     justify-content: center;
 
-    font-size: 31px;
+    font-size: 28px;
 
-    background: rgba(255,255,255,.14);
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
 
-    border: 1px solid rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,0.2);
 
-    backdrop-filter: blur(10px);
-
-    box-shadow: 0 10px 30px rgba(0,0,0,.2);
+    box-shadow:
+        0 8px 20px rgba(0,0,0,0.2);
 }
 
 .desktop-icon span {
     display: block;
 
-    margin-top: 7px;
+    margin-top: 5px;
 
     font-size: 12px;
 
-    text-shadow: 0 2px 4px #000;
+    color: white;
+
+    text-shadow:
+        0 2px 5px rgba(0,0,0,0.7);
 }
 
 
@@ -283,55 +329,61 @@ body {
 .window {
     position: absolute;
 
-    width: min(850px, 90vw);
-    height: min(600px, 75vh);
+    width: min(700px, 92vw);
+    height: min(620px, 78vh);
 
     left: 50%;
     top: 50%;
 
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(0.95);
 
-    display: none;
-    flex-direction: column;
+    background: rgba(25,25,25,0.78);
+
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+
+    border: 1px solid rgba(255,255,255,0.18);
+
+    border-radius: 18px;
 
     overflow: hidden;
 
-    border-radius: 16px;
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.5);
 
-    background: rgba(25,25,30,.9);
+    opacity: 0;
+    pointer-events: none;
 
-    border: 1px solid rgba(255,255,255,.16);
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
 
-    box-shadow: 0 30px 100px rgba(0,0,0,.55);
-
-    backdrop-filter: blur(25px);
-
-    z-index: 500;
+    z-index: 2000;
 }
 
 .window.active {
-    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .window-header {
-    height: 46px;
-    min-height: 46px;
+    height: 45px;
+
+    background: rgba(255,255,255,0.08);
 
     display: flex;
     align-items: center;
 
-    position: relative;
+    padding: 0 13px;
 
-    padding: 0 15px;
-
-    background: rgba(255,255,255,.07);
-
-    border-bottom: 1px solid rgba(255,255,255,.08);
+    border-bottom: 1px solid rgba(255,255,255,0.12);
 }
 
 .window-buttons {
     display: flex;
-    gap: 8px;
+    gap: 7px;
 }
 
 .window-button {
@@ -339,37 +391,24 @@ body {
     height: 12px;
 
     border-radius: 50%;
-}
 
-.close {
-    background: #ff5f57;
+    background: rgba(255,255,255,0.3);
+
     cursor: pointer;
-}
-
-.minimize {
-    background: #febc2e;
-}
-
-.maximize {
-    background: #28c840;
 }
 
 .window-title {
     position: absolute;
-
     left: 50%;
 
     transform: translateX(-50%);
 
-    font-size: 13px;
-
+    font-size: 14px;
     font-weight: 600;
-
-    opacity: .9;
 }
 
 .window-content {
-    flex: 1;
+    height: calc(100% - 45px);
 
     overflow: auto;
 
@@ -382,55 +421,35 @@ body {
 ========================================= */
 
 .letter {
-    max-width: 680px;
-
+    max-width: 600px;
     margin: auto;
 
-    padding: 35px;
+    line-height: 1.8;
 
-    border-radius: 20px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.08),
-            rgba(255,255,255,.03)
-        );
-
-    border: 1px solid rgba(255,255,255,.1);
+    font-size: 16px;
+    color: rgba(255,255,255,0.92);
 }
 
 .letter h2 {
     text-align: center;
-
-    font-size: 28px;
-
-    margin-bottom: 25px;
+    margin-top: 0;
+    color: #ff8eac;
 }
 
-.letter-text {
-    white-space: pre-line;
-
-    line-height: 1.9;
-
-    font-size: 16px;
-
-    color: rgba(255,255,255,.9);
+.letter p {
+    margin-bottom: 20px;
 }
 
 .signature {
     text-align: right;
-
-    margin-top: 30px;
-
-    font-size: 19px;
-
-    color: #ff78a9;
+    color: #ff8eac;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 
 /* =========================================
-   NUEVA GALERÍA
+   GALERÍA
 ========================================= */
 
 .photo-gallery {
@@ -439,43 +458,26 @@ body {
 
     display: flex;
     flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
-
-    position: relative;
 }
 
 .photo-counter {
-    position: absolute;
+    text-align: center;
 
-    top: 5px;
+    font-size: 14px;
 
-    left: 50%;
+    opacity: 0.75;
 
-    transform: translateX(-50%);
-
-    padding: 7px 15px;
-
-    border-radius: 20px;
-
-    background: rgba(0,0,0,.45);
-
-    backdrop-filter: blur(10px);
-
-    font-size: 13px;
-
-    color: rgba(255,255,255,.9);
-
-    z-index: 10;
+    margin-bottom: 8px;
 }
 
 .photo-slider {
     width: 100%;
-    height: calc(100% - 45px);
+
+    flex: 1;
+
+    min-height: 0;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
@@ -486,96 +488,101 @@ body {
     touch-action: pan-y;
 
     user-select: none;
+    -webkit-user-select: none;
 }
 
 .main-photo {
-    max-width: 82%;
-    max-height: 82%;
+    max-width: calc(100% - 100px);
+    max-height: 100%;
+
+    width: auto;
+    height: auto;
 
     object-fit: contain;
 
-    border-radius: 18px;
+    border-radius: 14px;
 
     box-shadow:
-        0 25px 70px rgba(0,0,0,.55);
+        0 15px 45px rgba(0,0,0,0.45);
+
+    user-select: none;
+    -webkit-user-select: none;
+
+    -webkit-user-drag: none;
+    user-drag: none;
+
+    touch-action: pan-y;
+
+    pointer-events: auto;
 
     transition:
-        opacity .25s ease,
-        transform .25s ease;
-
-    cursor: grab;
-}
-
-.main-photo:active {
-    cursor: grabbing;
+        opacity 0.22s ease,
+        transform 0.22s ease;
 }
 
 .photo-arrow {
     position: absolute;
 
     top: 50%;
-
     transform: translateY(-50%);
 
-    width: 48px;
-    height: 48px;
-
-    border: 0;
+    width: 45px;
+    height: 45px;
 
     border-radius: 50%;
 
-    background: rgba(0,0,0,.45);
+    border: 1px solid rgba(255,255,255,0.2);
+
+    background: rgba(0,0,0,0.35);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 
     color: white;
 
-    font-size: 25px;
+    font-size: 34px;
+    line-height: 35px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
     cursor: pointer;
 
-    backdrop-filter: blur(10px);
-
-    transition:
-        background .2s,
-        transform .2s;
-
     z-index: 20;
 }
 
-.photo-arrow:hover {
-    background: rgba(255,255,255,.18);
-
-    transform:
-        translateY(-50%)
-        scale(1.08);
+.photo-arrow:active {
+    transform: translateY(-50%) scale(0.88);
 }
 
 .photo-prev {
-    left: 10px;
+    left: 12px;
 }
 
 .photo-next {
-    right: 10px;
+    right: 12px;
 }
 
 .photo-hint {
     position: absolute;
 
-    bottom: 5px;
-
+    bottom: 8px;
     left: 50%;
 
     transform: translateX(-50%);
 
+    background: rgba(0,0,0,0.45);
+
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
     font-size: 11px;
 
-    opacity: .45;
+    opacity: 0.65;
 
-    white-space: nowrap;
+    pointer-events: none;
 }
 
 
@@ -584,49 +591,51 @@ body {
 ========================================= */
 
 .photo-thumbnails {
-    width: 100%;
+    height: 78px;
 
     display: flex;
 
-    gap: 7px;
+    gap: 8px;
 
     overflow-x: auto;
 
-    padding: 8px 5px 3px;
+    padding: 10px 4px 3px;
 
-    scrollbar-width: thin;
+    scrollbar-width: none;
 }
 
-.photo-thumbnail {
-    flex: 0 0 55px;
+.photo-thumbnails::-webkit-scrollbar {
+    display: none;
+}
 
-    width: 55px;
-    height: 55px;
+.photo-thumb {
+    flex: 0 0 58px;
+
+    width: 58px;
+    height: 58px;
 
     object-fit: cover;
 
-    border-radius: 8px;
+    border-radius: 9px;
 
-    opacity: .45;
-
-    cursor: pointer;
+    opacity: 0.55;
 
     border: 2px solid transparent;
 
+    cursor: pointer;
+
     transition:
-        opacity .2s,
-        transform .2s,
-        border .2s;
+        opacity 0.2s ease,
+        transform 0.2s ease,
+        border 0.2s ease;
+
+    -webkit-user-drag: none;
 }
 
-.photo-thumbnail:hover {
-    opacity: .8;
-}
-
-.photo-thumbnail.active {
+.photo-thumb.active {
     opacity: 1;
 
-    border-color: #ff5f98;
+    border-color: #ff6f96;
 
     transform: scale(1.05);
 }
@@ -636,45 +645,35 @@ body {
    MÚSICA
 ========================================= */
 
-.music-card {
-    max-width: 600px;
+.music-box {
+    height: 100%;
 
-    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
 
-    padding: 30px;
+    align-items: center;
+    justify-content: center;
 
     text-align: center;
-
-    border-radius: 25px;
-
-    background: rgba(255,255,255,.07);
 }
 
-.music-cover {
-    width: 220px;
-    height: 220px;
-
-    object-fit: cover;
-
-    border-radius: 20px;
-
-    box-shadow: 0 20px 50px rgba(0,0,0,.4);
-
-    margin-bottom: 20px;
+.music-icon {
+    font-size: 75px;
+    margin-bottom: 15px;
 }
 
-.music-card h2 {
-    margin-bottom: 7px;
+.music-box h2 {
+    margin: 0 0 10px;
 }
 
-.music-card p {
-    opacity: .65;
-
-    margin-bottom: 20px;
+.music-box p {
+    opacity: 0.7;
+    margin-bottom: 25px;
 }
 
-.music-card audio {
+audio {
     width: 100%;
+    max-width: 450px;
 }
 
 
@@ -683,34 +682,25 @@ body {
 ========================================= */
 
 .reasons {
-    display: grid;
+    max-width: 600px;
+    margin: auto;
+}
 
-    grid-template-columns:
-        repeat(auto-fit, minmax(210px, 1fr));
-
-    gap: 15px;
+.reasons h2 {
+    text-align: center;
+    color: #ff8eac;
 }
 
 .reason {
-    padding: 22px;
+    padding: 15px;
 
-    border-radius: 18px;
+    margin-bottom: 12px;
 
-    background: rgba(255,255,255,.07);
+    border-radius: 14px;
 
-    border: 1px solid rgba(255,255,255,.08);
-}
+    background: rgba(255,255,255,0.07);
 
-.reason .number {
-    color: #ff619a;
-
-    font-size: 13px;
-
-    margin-bottom: 10px;
-}
-
-.reason p {
-    line-height: 1.6;
+    border: 1px solid rgba(255,255,255,0.08);
 }
 
 
@@ -718,46 +708,35 @@ body {
    VALES
 ========================================= */
 
-.coupons {
+.vouchers {
     display: grid;
 
     grid-template-columns:
-        repeat(auto-fit, minmax(230px, 1fr));
+        repeat(auto-fit, minmax(180px, 1fr));
 
-    gap: 18px;
+    gap: 15px;
 }
 
-.coupon {
-    padding: 25px;
+.voucher {
+    padding: 25px 15px;
 
-    border-radius: 20px;
+    text-align: center;
+
+    border-radius: 18px;
 
     background:
         linear-gradient(
             135deg,
-            rgba(255,80,140,.18),
-            rgba(255,255,255,.05)
+            rgba(255,111,150,0.25),
+            rgba(255,255,255,0.07)
         );
 
-    border: 1px dashed rgba(255,120,170,.45);
-
-    text-align: center;
+    border: 1px solid rgba(255,255,255,0.12);
 }
 
-.coupon .coupon-icon {
+.voucher-icon {
     font-size: 40px;
-
-    margin-bottom: 12px;
-}
-
-.coupon h3 {
-    margin-bottom: 8px;
-}
-
-.coupon p {
-    opacity: .7;
-
-    line-height: 1.5;
+    margin-bottom: 10px;
 }
 
 
@@ -769,6 +748,7 @@ body {
     height: 100%;
 
     display: flex;
+    flex-direction: column;
 
     align-items: center;
     justify-content: center;
@@ -776,28 +756,22 @@ body {
     text-align: center;
 }
 
-.surprise-box {
-    max-width: 600px;
+.surprise-heart {
+    font-size: 100px;
+
+    animation: heartbeat 1.3s infinite;
 }
 
-.big-heart {
-    font-size: 90px;
-
-    animation: heartbeat 1.4s infinite;
-
-    margin-bottom: 20px;
+.surprise h2 {
+    color: #ff8eac;
 }
 
-.surprise-box h2 {
-    font-size: 34px;
+.surprise p {
+    max-width: 450px;
 
-    margin-bottom: 20px;
-}
+    line-height: 1.7;
 
-.surprise-box p {
-    line-height: 1.8;
-
-    opacity: .8;
+    opacity: 0.85;
 }
 
 
@@ -805,58 +779,59 @@ body {
    DOCK
 ========================================= */
 
-#dock {
+.dock {
     position: absolute;
 
-    bottom: 13px;
-
     left: 50%;
+    bottom: 15px;
 
     transform: translateX(-50%);
 
     display: flex;
 
-    align-items: center;
+    gap: 9px;
 
-    gap: 8px;
+    padding: 9px 12px;
 
-    padding: 8px 12px;
+    background: rgba(25,25,25,0.42);
 
-    border-radius: 20px;
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
 
-    background: rgba(30,30,35,.55);
+    border: 1px solid rgba(255,255,255,0.18);
 
-    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 22px;
 
-    backdrop-filter: blur(20px);
-
-    z-index: 900;
+    z-index: 5000;
 }
 
-.dock-icon {
-    width: 48px;
-    height: 48px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    font-size: 25px;
+.dock-item {
+    width: 47px;
+    height: 47px;
 
     border-radius: 13px;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 24px;
+
+    background: rgba(255,255,255,0.13);
+
     cursor: pointer;
 
-    transition: transform .2s;
+    transition:
+        transform 0.15s ease,
+        background 0.15s ease;
 }
 
-.dock-icon:hover {
-    transform:
-        translateY(-8px)
-        scale(1.1);
+.dock-item:active {
+    transform: scale(0.85);
+}
 
-    background: rgba(255,255,255,.12);
+.dock-item:hover {
+    background: rgba(255,255,255,0.22);
 }
 
 
@@ -868,30 +843,34 @@ body {
     position: fixed;
 
     left: 50%;
-
-    top: 55px;
+    bottom: 95px;
 
     transform:
         translateX(-50%)
-        translateY(-20px);
+        translateY(20px);
+
+    background: rgba(20,20,20,0.75);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    padding: 11px 18px;
+
+    border-radius: 20px;
+
+    font-size: 13px;
 
     opacity: 0;
 
     pointer-events: none;
 
-    padding: 12px 20px;
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
 
-    border-radius: 13px;
-
-    background: rgba(20,20,25,.9);
-
-    color: white;
-
-    box-shadow: 0 10px 30px rgba(0,0,0,.35);
-
-    transition: .3s;
-
-    z-index: 99999;
+    z-index: 9999;
 }
 
 #toast.show {
@@ -904,118 +883,150 @@ body {
 
 
 /* =========================================
-   MÓVIL
+   MOBILE
 ========================================= */
 
 @media (max-width: 600px) {
 
+    .top-bar {
+        height: 38px;
+    }
+
+    .top-left {
+        font-size: 12px;
+    }
+
+    .top-center {
+        font-size: 12px;
+    }
+
+    .top-right {
+        font-size: 11px;
+    }
+
     .desktop-icons {
-        grid-template-columns:
-            repeat(2, 85px);
+        top: 55px;
+        left: 10px;
+        gap: 12px;
+    }
+
+    .desktop-icon {
+        width: 62px;
+    }
+
+    .desktop-icon-image {
+        width: 45px;
+        height: 45px;
+        font-size: 24px;
+    }
+
+    .desktop-icon span {
+        font-size: 10px;
     }
 
     .window {
         width: 94vw;
-        height: 72vh;
+        height: 78vh;
+
+        border-radius: 17px;
     }
 
     .window-content {
         padding: 15px;
     }
 
-    .letter {
-        padding: 22px;
-    }
-
     .main-photo {
-        max-width: 94%;
-        max-height: 78%;
+        max-width: calc(100% - 75px);
+        max-height: calc(100% - 10px);
+
+        border-radius: 12px;
     }
 
     .photo-arrow {
+        width: 38px;
+        height: 38px;
+
+        font-size: 29px;
+    }
+
+    .photo-prev {
+        left: 5px;
+    }
+
+    .photo-next {
+        right: 5px;
+    }
+
+    .photo-hint {
+        font-size: 9px;
+        bottom: 5px;
+    }
+
+    .photo-thumbnails {
+        height: 70px;
+    }
+
+    .photo-thumb {
+        width: 52px;
+        height: 52px;
+        flex-basis: 52px;
+    }
+
+    .dock {
+        bottom: 8px;
+
+        gap: 6px;
+
+        padding: 7px 8px;
+
+        border-radius: 18px;
+    }
+
+    .dock-item {
         width: 42px;
         height: 42px;
 
         font-size: 21px;
+
+        border-radius: 11px;
     }
-
-    .photo-prev {
-        left: 4px;
-    }
-
-    .photo-next {
-        right: 4px;
-    }
-
-    .photo-hint {
-        display: none;
-    }
-
-    .photo-thumbnail {
-        flex-basis: 48px;
-
-        width: 48px;
-        height: 48px;
-    }
-
-    .dock-icon {
-        width: 42px;
-        height: 42px;
-
-        font-size: 22px;
-    }
-
-    #dock {
-        max-width: 95vw;
-
-        overflow-x: auto;
-    }
-
-    .top-left span {
-        display: none;
-    }
-
 }
 
 
 /* =========================================
-   ANIMACIÓN DE CAMBIO DE FOTO
+   PHOTO SWIPE ANIMATION
 ========================================= */
 
-.photo-changing-left {
-    animation: photoLeft .25s ease;
+.photo-slide-left {
+    animation: slideLeft 0.25s ease;
 }
 
-.photo-changing-right {
-    animation: photoRight .25s ease;
+.photo-slide-right {
+    animation: slideRight 0.25s ease;
 }
 
-@keyframes photoLeft {
-
-    from {
+@keyframes slideLeft {
+    0% {
         opacity: 0;
         transform: translateX(35px);
     }
 
-    to {
+    100% {
         opacity: 1;
         transform: translateX(0);
     }
-
 }
 
-@keyframes photoRight {
-
-    from {
+@keyframes slideRight {
+    0% {
         opacity: 0;
         transform: translateX(-35px);
     }
 
-    to {
+    100% {
         opacity: 1;
         transform: translateX(0);
     }
-
 }
 
 </style>
@@ -1037,16 +1048,8 @@ body {
             ❤️
         </div>
 
-        <div class="boot-title">
-            ViviOS
-        </div>
-
-        <div class="boot-subtitle">
-            Preparando un pequeño lugar para ti...
-        </div>
-
-        <div class="boot-loading">
-            <div></div>
+        <div class="boot-text">
+            Iniciando ViviOS...
         </div>
 
     </div>
@@ -1055,7 +1058,6 @@ body {
 
 
 <script>
-
 setTimeout(function () {
 
     var boot = document.getElementById("boot");
@@ -1073,7 +1075,6 @@ setTimeout(function () {
     }
 
 }, 2000);
-
 </script>
 
 
@@ -1081,25 +1082,38 @@ setTimeout(function () {
      LOGIN
 ========================================= -->
 
-<div id="login">
+<div id="login-screen">
 
-    <div class="login-card">
+    <div class="login-box">
 
         <div class="login-heart">
-            💗
+            ❤️
         </div>
 
-        <h1>
-            Bienvenida, Viviana
-        </h1>
+        <h1>ViviOS</h1>
 
         <p>
-            Preparé este pequeño lugar especialmente para ti.
+            Un pequeño lugar hecho para ti
         </p>
 
-        <button id="login-btn">
+        <input
+            id="password"
+            type="password"
+            placeholder="Contraseña"
+            autocomplete="off"
+        >
+
+        <button
+            class="login-button"
+            onclick="login()"
+        >
             Entrar ❤️
         </button>
+
+        <div
+            id="login-error"
+            class="login-error"
+        ></div>
 
     </div>
 
@@ -1110,61 +1124,41 @@ setTimeout(function () {
      DESKTOP
 ========================================= -->
 
-<div id="desktop">
+<div id="desktop" style="display:none;">
 
 
-    <div id="topbar">
+    <!-- TOP BAR -->
+
+    <div class="top-bar">
 
         <div class="top-left">
-
-            <span class="apple">
-                ♥
-            </span>
-
-            <span>
-                ViviOS
-            </span>
-
-            <span>
-                Archivo
-            </span>
-
-            <span>
-                Ventana
-            </span>
-
-            <span>
-                Ayuda
-            </span>
-
+            ViviOS ❤️
         </div>
 
-        <div class="top-right">
+        <div class="top-center">
+            Para mi amor
+        </div>
 
-            <span id="clock">
-                00:00
-            </span>
-
-            <span>
-                ❤️
-            </span>
-
+        <div class="top-right" id="clock">
+            00:00
         </div>
 
     </div>
 
 
-    <!-- =========================================
-         ICONOS
-    ========================================= -->
+    <!-- =====================================
+         DESKTOP ICONS
+    ====================================== -->
 
     <div class="desktop-icons">
 
 
-        <div class="desktop-icon"
-             onclick="openWindow('letter-window')">
+        <div
+            class="desktop-icon"
+            onclick="openWindow('letter-window')"
+        >
 
-            <div class="icon">
+            <div class="desktop-icon-image">
                 💌
             </div>
 
@@ -1175,11 +1169,13 @@ setTimeout(function () {
         </div>
 
 
-        <div class="desktop-icon"
-             onclick="openWindow('photos-window')">
+        <div
+            class="desktop-icon"
+            onclick="openWindow('photos-window')"
+        >
 
-            <div class="icon">
-                📷
+            <div class="desktop-icon-image">
+                🖼️
             </div>
 
             <span>
@@ -1189,10 +1185,12 @@ setTimeout(function () {
         </div>
 
 
-        <div class="desktop-icon"
-             onclick="openWindow('music-window')">
+        <div
+            class="desktop-icon"
+            onclick="openWindow('music-window')"
+        >
 
-            <div class="icon">
+            <div class="desktop-icon-image">
                 🎵
             </div>
 
@@ -1203,10 +1201,12 @@ setTimeout(function () {
         </div>
 
 
-        <div class="desktop-icon"
-             onclick="openWindow('reasons-window')">
+        <div
+            class="desktop-icon"
+            onclick="openWindow('reasons-window')"
+        >
 
-            <div class="icon">
+            <div class="desktop-icon-image">
                 💗
             </div>
 
@@ -1217,10 +1217,12 @@ setTimeout(function () {
         </div>
 
 
-        <div class="desktop-icon"
-             onclick="openWindow('coupons-window')">
+        <div
+            class="desktop-icon"
+            onclick="openWindow('vouchers-window')"
+        >
 
-            <div class="icon">
+            <div class="desktop-icon-image">
                 🎟️
             </div>
 
@@ -1231,10 +1233,12 @@ setTimeout(function () {
         </div>
 
 
-        <div class="desktop-icon"
-             onclick="openWindow('surprise-window')">
+        <div
+            class="desktop-icon"
+            onclick="openWindow('surprise-window')"
+        >
 
-            <div class="icon">
+            <div class="desktop-icon-image">
                 🎁
             </div>
 
@@ -1247,26 +1251,23 @@ setTimeout(function () {
     </div>
 
 
-    <!-- =========================================
+    <!-- =====================================
          CARTA
-    ========================================= -->
+    ====================================== -->
 
-    <div class="window"
-         id="letter-window">
+    <div
+        class="window"
+        id="letter-window"
+    >
 
         <div class="window-header">
 
             <div class="window-buttons">
 
-                <div class="window-button close"
-                     onclick="closeWindow('letter-window')">
-                </div>
-
-                <div class="window-button minimize">
-                </div>
-
-                <div class="window-button maximize">
-                </div>
+                <div
+                    class="window-button"
+                    onclick="closeWindows()"
+                ></div>
 
             </div>
 
@@ -1282,24 +1283,41 @@ setTimeout(function () {
             <div class="letter">
 
                 <h2>
-                    Para mi amor ❤️
+                    Para la persona que amo ❤️
                 </h2>
 
-                <div class="letter-text">
-Hola mi amor ❤️
+                <p>
+                    Mi amor, hice este pequeño espacio pensando
+                    completamente en ti.
+                </p>
 
-Quise crear este pequeño lugar solo para ti, Viviana.
+                <p>
+                    Tal vez no sea el regalo más grande del mundo,
+                    pero cada detalle está hecho con muchísimo cariño.
+                    Quería crear algo que fuera solamente nuestro.
+                </p>
 
-No es simplemente una página. Quería que cada carpeta, cada ventana y cada pequeño detalle escondiera algo que me recuerde a ti.
+                <p>
+                    Aquí están algunos de nuestros recuerdos,
+                    algunas cosas que siento por ti y pequeños detalles
+                    que espero que te hagan sonreír.
+                </p>
 
-Gracias por cada sonrisa, por cada momento y por hacer que mi vida tenga recuerdos que quiero guardar para siempre.
+                <p>
+                    Gracias por formar parte de mi vida, por cada
+                    conversación, cada llamada, cada risa y cada
+                    momento que hemos compartido.
+                </p>
 
-Te amo muchísimo. 💕
-                </div>
+                <p>
+                    Te amo muchísimo y espero que cuando abras
+                    ViviOS recuerdes siempre lo especial que eres
+                    para mí.
+                </p>
 
-                <div class="signature">
+                <p class="signature">
                     Con todo mi amor ❤️
-                </div>
+                </p>
 
             </div>
 
@@ -1308,32 +1326,28 @@ Te amo muchísimo. 💕
     </div>
 
 
-    <!-- =========================================
-         GALERÍA
-    ========================================= -->
+    <!-- =====================================
+         FOTOS
+    ====================================== -->
 
-    <div class="window"
-         id="photos-window">
-
+    <div
+        class="window"
+        id="photos-window"
+    >
 
         <div class="window-header">
 
             <div class="window-buttons">
 
-                <div class="window-button close"
-                     onclick="closeWindow('photos-window')">
-                </div>
-
-                <div class="window-button minimize">
-                </div>
-
-                <div class="window-button maximize">
-                </div>
+                <div
+                    class="window-button"
+                    onclick="closeWindows()"
+                ></div>
 
             </div>
 
             <div class="window-title">
-                Nuestros recuerdos 📷
+                Nuestros recuerdos 🖼️
             </div>
 
         </div>
@@ -1341,31 +1355,29 @@ Te amo muchísimo. 💕
 
         <div class="window-content">
 
-
             <div class="photo-gallery">
 
 
-                <!-- CONTADOR -->
-
-                <div class="photo-counter"
-                     id="photo-counter">
-
+                <div
+                    class="photo-counter"
+                    id="photo-counter"
+                >
                     1 / 31
-
                 </div>
 
 
-                <!-- SLIDER -->
+                <div
+                    class="photo-slider"
+                    id="photo-slider"
+                >
 
-                <div class="photo-slider"
-                     id="photo-slider">
 
-
-                    <button class="photo-arrow photo-prev"
-                            onclick="previousPhoto()">
-
+                    <button
+                        class="photo-arrow photo-prev"
+                        onclick="previousPhoto()"
+                        aria-label="Foto anterior"
+                    >
                         ‹
-
                     </button>
 
 
@@ -1374,30 +1386,31 @@ Te amo muchísimo. 💕
                         class="main-photo"
                         src="assets/fotos/foto01.jpg"
                         alt="Recuerdo 1"
+                        draggable="false"
                     >
 
 
-                    <button class="photo-arrow photo-next"
-                            onclick="nextPhoto()">
-
+                    <button
+                        class="photo-arrow photo-next"
+                        onclick="nextPhoto()"
+                        aria-label="Foto siguiente"
+                    >
                         ›
-
                     </button>
 
 
                     <div class="photo-hint">
-                        Desliza hacia los lados para cambiar de foto
+                        Desliza para cambiar de foto
                     </div>
 
 
                 </div>
 
 
-                <!-- MINIATURAS -->
-
-                <div class="photo-thumbnails"
-                     id="photo-thumbnails">
-                </div>
+                <div
+                    class="photo-thumbnails"
+                    id="photo-thumbnails"
+                ></div>
 
 
             </div>
@@ -1407,27 +1420,23 @@ Te amo muchísimo. 💕
     </div>
 
 
-    <!-- =========================================
+    <!-- =====================================
          MÚSICA
-    ========================================= -->
+    ====================================== -->
 
-    <div class="window"
-         id="music-window">
-
+    <div
+        class="window"
+        id="music-window"
+    >
 
         <div class="window-header">
 
             <div class="window-buttons">
 
-                <div class="window-button close"
-                     onclick="closeWindow('music-window')">
-                </div>
-
-                <div class="window-button minimize">
-                </div>
-
-                <div class="window-button maximize">
-                </div>
+                <div
+                    class="window-button"
+                    onclick="closeWindows()"
+                ></div>
 
             </div>
 
@@ -1440,33 +1449,33 @@ Te amo muchísimo. 💕
 
         <div class="window-content">
 
-            <div class="music-card">
+            <div class="music-box">
 
-                <img
-                    class="music-cover"
-                    src="assets/fondo.jpg"
-                    alt="Nuestra canción"
-                >
+                <div class="music-icon">
+                    🎵
+                </div>
 
                 <h2>
-                    Nuestra canción especial
+                    Nuestra canción
                 </h2>
 
                 <p>
-                    Para mi persona favorita ❤️
+                    Reprodúcela cuando quieras recordar
+                    este pequeño rincón.
                 </p>
 
                 <audio
                     controls
                     preload="metadata"
-                    id="audio-player">
+                    id="audio-player"
+                >
 
                     <source
                         src="assets/musica/nuestra-cancion.mp3"
                         type="audio/mpeg"
                     >
 
-                    Tu navegador no puede reproducir este audio.
+                    Tu navegador no soporta audio.
 
                 </audio>
 
@@ -1477,32 +1486,28 @@ Te amo muchísimo. 💕
     </div>
 
 
-    <!-- =========================================
+    <!-- =====================================
          RAZONES
-    ========================================= -->
+    ====================================== -->
 
-    <div class="window"
-         id="reasons-window">
-
+    <div
+        class="window"
+        id="reasons-window"
+    >
 
         <div class="window-header">
 
             <div class="window-buttons">
 
-                <div class="window-button close"
-                     onclick="closeWindow('reasons-window')">
-                </div>
-
-                <div class="window-button minimize">
-                </div>
-
-                <div class="window-button maximize">
-                </div>
+                <div
+                    class="window-button"
+                    onclick="closeWindows()"
+                ></div>
 
             </div>
 
             <div class="window-title">
-                Razones por las que te amo 💗
+                Razones 💗
             </div>
 
         </div>
@@ -1510,8 +1515,36 @@ Te amo muchísimo. 💕
 
         <div class="window-content">
 
-            <div class="reasons"
-                 id="reasons">
+            <div class="reasons">
+
+                <h2>
+                    Algunas razones por las que te amo ❤️
+                </h2>
+
+
+                <div class="reason">
+                    Porque contigo puedo ser yo mismo.
+                </div>
+
+                <div class="reason">
+                    Porque sabes hacerme sonreír incluso
+                    en los días difíciles.
+                </div>
+
+                <div class="reason">
+                    Porque cada momento contigo termina
+                    convirtiéndose en un recuerdo especial.
+                </div>
+
+                <div class="reason">
+                    Porque tienes una forma única de hacer
+                    que me sienta querido.
+                </div>
+
+                <div class="reason">
+                    Porque simplemente eres tú.
+                </div>
+
             </div>
 
         </div>
@@ -1519,32 +1552,28 @@ Te amo muchísimo. 💕
     </div>
 
 
-    <!-- =========================================
+    <!-- =====================================
          VALES
-    ========================================= -->
+    ====================================== -->
 
-    <div class="window"
-         id="coupons-window">
-
+    <div
+        class="window"
+        id="vouchers-window"
+    >
 
         <div class="window-header">
 
             <div class="window-buttons">
 
-                <div class="window-button close"
-                     onclick="closeWindow('coupons-window')">
-                </div>
-
-                <div class="window-button minimize">
-                </div>
-
-                <div class="window-button maximize">
-                </div>
+                <div
+                    class="window-button"
+                    onclick="closeWindows()"
+                ></div>
 
             </div>
 
             <div class="window-title">
-                Vales para ti 🎟️
+                Vales de amor 🎟️
             </div>
 
         </div>
@@ -1552,8 +1581,77 @@ Te amo muchísimo. 💕
 
         <div class="window-content">
 
-            <div class="coupons"
-                 id="coupons">
+            <div class="vouchers">
+
+
+                <div class="voucher">
+
+                    <div class="voucher-icon">
+                        🤗
+                    </div>
+
+                    <h3>
+                        Vale por un abrazo
+                    </h3>
+
+                    <p>
+                        Canjeable cuando quieras.
+                    </p>
+
+                </div>
+
+
+                <div class="voucher">
+
+                    <div class="voucher-icon">
+                        💋
+                    </div>
+
+                    <h3>
+                        Vale por un beso
+                    </h3>
+
+                    <p>
+                        Sin fecha de vencimiento.
+                    </p>
+
+                </div>
+
+
+                <div class="voucher">
+
+                    <div class="voucher-icon">
+                        🍕
+                    </div>
+
+                    <h3>
+                        Vale por una cita
+                    </h3>
+
+                    <p>
+                        Una salida solo para nosotros.
+                    </p>
+
+                </div>
+
+
+                <div class="voucher">
+
+                    <div class="voucher-icon">
+                        ❤️
+                    </div>
+
+                    <h3>
+                        Vale por amor infinito
+                    </h3>
+
+                    <p>
+                        Este no se puede cancelar.
+                    </p>
+
+                </div>
+
+
             </div>
 
         </div>
@@ -1561,32 +1659,28 @@ Te amo muchísimo. 💕
     </div>
 
 
-    <!-- =========================================
+    <!-- =====================================
          SORPRESA
-    ========================================= -->
+    ====================================== -->
 
-    <div class="window"
-         id="surprise-window">
-
+    <div
+        class="window"
+        id="surprise-window"
+    >
 
         <div class="window-header">
 
             <div class="window-buttons">
 
-                <div class="window-button close"
-                     onclick="closeWindow('surprise-window')">
-                </div>
-
-                <div class="window-button minimize">
-                </div>
-
-                <div class="window-button maximize">
-                </div>
+                <div
+                    class="window-button"
+                    onclick="closeWindows()"
+                ></div>
 
             </div>
 
             <div class="window-title">
-                Una sorpresa 🎁
+                Sorpresa 🎁
             </div>
 
         </div>
@@ -1596,23 +1690,24 @@ Te amo muchísimo. 💕
 
             <div class="surprise">
 
-                <div class="surprise-box">
-
-                    <div class="big-heart">
-                        ❤️
-                    </div>
-
-                    <h2>
-                        Te amo, Viviana
-                    </h2>
-
-                    <p>
-                        Entre millones de personas, coincidimos nosotros.
-                        Y de todos los recuerdos que podría guardar,
-                        quiero seguir construyendo muchos más contigo.
-                    </p>
-
+                <div class="surprise-heart">
+                    ❤️
                 </div>
+
+                <h2>
+                    Te amo, Viviana
+                </h2>
+
+                <p>
+                    Entre todas las personas del mundo,
+                    tuve la suerte de encontrarte a ti.
+                </p>
+
+                <p>
+                    Y aunque esta pequeña página solamente
+                    sea código, cada cosa que puse aquí
+                    representa algo que siento de verdad.
+                </p>
 
             </div>
 
@@ -1621,51 +1716,63 @@ Te amo muchísimo. 💕
     </div>
 
 
-    <!-- =========================================
+    <!-- =====================================
          DOCK
-    ========================================= -->
+    ====================================== -->
 
-    <div id="dock">
+    <div class="dock">
 
 
-        <div class="dock-icon"
-             onclick="openWindow('letter-window')"
-             title="Carta">
+        <div
+            class="dock-item"
+            onclick="openWindow('letter-window')"
+            title="Carta"
+        >
             💌
         </div>
 
 
-        <div class="dock-icon"
-             onclick="openWindow('photos-window')"
-             title="Fotos">
-            📷
+        <div
+            class="dock-item"
+            onclick="openWindow('photos-window')"
+            title="Fotos"
+        >
+            🖼️
         </div>
 
 
-        <div class="dock-icon"
-             onclick="openWindow('music-window')"
-             title="Música">
+        <div
+            class="dock-item"
+            onclick="openWindow('music-window')"
+            title="Música"
+        >
             🎵
         </div>
 
 
-        <div class="dock-icon"
-             onclick="openWindow('reasons-window')"
-             title="Razones">
+        <div
+            class="dock-item"
+            onclick="openWindow('reasons-window')"
+            title="Razones"
+        >
             💗
         </div>
 
 
-        <div class="dock-icon"
-             onclick="openWindow('coupons-window')"
-             title="Vales">
+        <div
+            class="dock-item"
+            onclick="openWindow('vouchers-window')"
+            title="Vales"
+        >
             🎟️
         </div>
 
 
-        <div class="dock-icon"
-             onclick="openWindow('surprise-window')"
-             title="Sorpresa">
+        <div
+            class="dock-item"
+            onclick="openWindow('surprise-window')"
+            title="Sorpresa"
+        >
             🎁
         </div>
 
@@ -1676,22 +1783,156 @@ Te amo muchísimo. 💕
 </div>
 
 
-<!-- TOAST -->
+<!-- =========================================
+     TOAST
+========================================= -->
 
 <div id="toast"></div>
 
 
-<!-- =========================================
-     JAVASCRIPT
-========================================= -->
-
 <script>
 
-"use strict";
+/* =========================================
+   LOGIN
+========================================= */
+
+function login() {
+
+    var password =
+        document.getElementById("password").value;
+
+    var error =
+        document.getElementById("login-error");
+
+    /*
+       CAMBIA ESTA CONTRASEÑA SI QUIERES
+    */
+
+    if (password === "viviana") {
+
+        document.getElementById("login-screen").style.display =
+            "none";
+
+        document.getElementById("desktop").style.display =
+            "block";
+
+        showToast("Bienvenida a ViviOS ❤️");
+
+    } else {
+
+        error.textContent =
+            "Contraseña incorrecta ❤️";
+
+    }
+
+}
+
+
+document.getElementById("password").addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Enter") {
+            login();
+        }
+
+    }
+);
 
 
 /* =========================================
-   DATOS
+   WINDOWS
+========================================= */
+
+function openWindow(id) {
+
+    closeWindows();
+
+    var windowElement =
+        document.getElementById(id);
+
+    if (windowElement) {
+
+        windowElement.classList.add("active");
+
+    }
+
+}
+
+
+function closeWindows() {
+
+    var windows =
+        document.querySelectorAll(".window");
+
+    for (var i = 0; i < windows.length; i++) {
+
+        windows[i].classList.remove("active");
+
+    }
+
+}
+
+
+/* =========================================
+   TOAST
+========================================= */
+
+var toastTimer;
+
+function showToast(message) {
+
+    var toast =
+        document.getElementById("toast");
+
+    toast.textContent = message;
+
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer = setTimeout(function() {
+
+        toast.classList.remove("show");
+
+    }, 2500);
+
+}
+
+
+/* =========================================
+   RELOJ
+========================================= */
+
+function updateClock() {
+
+    var clock =
+        document.getElementById("clock");
+
+    if (!clock) {
+        return;
+    }
+
+    var now = new Date();
+
+    var hours =
+        String(now.getHours()).padStart(2, "0");
+
+    var minutes =
+        String(now.getMinutes()).padStart(2, "0");
+
+    clock.textContent =
+        hours + ":" + minutes;
+
+}
+
+updateClock();
+
+setInterval(updateClock, 1000);
+
+
+/* =========================================
+   FOTOS
 ========================================= */
 
 var photos = [
@@ -1731,91 +1972,17 @@ var photos = [
 ];
 
 
-/* =========================================
-   FOTO ACTUAL
-========================================= */
-
 var currentPhoto = 0;
 
 
-/* =========================================
-   VENTANAS
-========================================= */
+var mainPhoto =
+    document.getElementById("main-photo");
 
-function openWindow(id) {
+var photoCounter =
+    document.getElementById("photo-counter");
 
-    var windows =
-        document.querySelectorAll(".window");
-
-    for (var i = 0; i < windows.length; i++) {
-
-        windows[i].classList.remove("active");
-
-    }
-
-    var element =
-        document.getElementById(id);
-
-    if (element) {
-
-        element.classList.add("active");
-
-    }
-
-}
-
-
-function closeWindow(id) {
-
-    var element =
-        document.getElementById(id);
-
-    if (element) {
-
-        element.classList.remove("active");
-
-    }
-
-}
-
-
-/* =========================================
-   LOGIN
-========================================= */
-
-var loginButton =
-    document.getElementById("login-btn");
-
-
-if (loginButton) {
-
-    loginButton.addEventListener(
-        "click",
-        function () {
-
-            var login =
-                document.getElementById("login");
-
-            if (!login) {
-                return;
-            }
-
-            login.style.opacity = "0";
-
-            setTimeout(function () {
-
-                login.style.display = "none";
-
-                showToast(
-                    "Bienvenida a ViviOS ❤️"
-                );
-
-            }, 600);
-
-        }
-    );
-
-}
+var thumbnailsContainer =
+    document.getElementById("photo-thumbnails");
 
 
 /* =========================================
@@ -1839,79 +2006,45 @@ function showPhoto(index, direction) {
     currentPhoto = index;
 
 
-    var image =
-        document.getElementById("main-photo");
+    if (direction === "left") {
 
-    var counter =
-        document.getElementById("photo-counter");
+        mainPhoto.classList.remove(
+            "photo-slide-right"
+        );
 
+        void mainPhoto.offsetWidth;
 
-    if (!image) {
-        return;
+        mainPhoto.classList.add(
+            "photo-slide-left"
+        );
+
+    } else if (direction === "right") {
+
+        mainPhoto.classList.remove(
+            "photo-slide-left"
+        );
+
+        void mainPhoto.offsetWidth;
+
+        mainPhoto.classList.add(
+            "photo-slide-right"
+        );
+
     }
 
 
-    /*
-       Reiniciamos la animación
-    */
-
-    image.classList.remove(
-        "photo-changing-left",
-        "photo-changing-right"
-    );
-
-
-    void image.offsetWidth;
-
-
-    /*
-       Nueva imagen
-    */
-
-    image.src =
+    mainPhoto.src =
         photos[currentPhoto];
 
-    image.alt =
-        "Recuerdo " +
-        (currentPhoto + 1);
+    mainPhoto.alt =
+        "Recuerdo " + (currentPhoto + 1);
 
 
-    /*
-       Animación
-    */
+    photoCounter.textContent =
+        (currentPhoto + 1) +
+        " / " +
+        photos.length;
 
-    if (direction === "next") {
-
-        image.classList.add(
-            "photo-changing-left"
-        );
-
-    } else {
-
-        image.classList.add(
-            "photo-changing-right"
-        );
-
-    }
-
-
-    /*
-       Contador
-    */
-
-    if (counter) {
-
-        counter.textContent =
-            (currentPhoto + 1) +
-            " / " +
-            photos.length;
-
-    }
-
-
-    /*
-       Miniaturas
-    */
 
     updateThumbnails();
 
@@ -1926,7 +2059,7 @@ function nextPhoto() {
 
     showPhoto(
         currentPhoto + 1,
-        "next"
+        "left"
     );
 
 }
@@ -1940,29 +2073,19 @@ function previousPhoto() {
 
     showPhoto(
         currentPhoto - 1,
-        "previous"
+        "right"
     );
 
 }
 
 
 /* =========================================
-   MINIATURAS
+   THUMBNAILS
 ========================================= */
 
 function createThumbnails() {
 
-    var container =
-        document.getElementById(
-            "photo-thumbnails"
-        );
-
-    if (!container) {
-        return;
-    }
-
-
-    container.innerHTML = "";
+    thumbnailsContainer.innerHTML = "";
 
 
     for (
@@ -1971,50 +2094,47 @@ function createThumbnails() {
         i++
     ) {
 
-        (function (index) {
-
-            var thumb =
-                document.createElement("img");
+        var thumbnail =
+            document.createElement("img");
 
 
-            thumb.src =
-                photos[index];
-
-            thumb.alt =
-                "Miniatura " +
-                (index + 1);
+        thumbnail.className =
+            "photo-thumb";
 
 
-            thumb.className =
-                "photo-thumbnail";
+        thumbnail.src =
+            photos[i];
 
 
-            thumb.onclick =
-                function () {
+        thumbnail.alt =
+            "Miniatura " + (i + 1);
 
-                    showPhoto(
-                        index,
-                        index > currentPhoto
-                            ? "next"
-                            : "previous"
+
+        thumbnail.draggable = false;
+
+
+        thumbnail.dataset.index = i;
+
+
+        thumbnail.addEventListener(
+            "click",
+            function() {
+
+                var index =
+                    parseInt(
+                        this.dataset.index,
+                        10
                     );
 
-                };
+                showPhoto(index);
+
+            }
+        );
 
 
-            thumb.onerror =
-                function () {
-
-                    this.style.display =
-                        "none";
-
-                };
-
-
-            container.appendChild(thumb);
-
-
-        })(i);
+        thumbnailsContainer.appendChild(
+            thumbnail
+        );
 
     }
 
@@ -2026,164 +2146,310 @@ function createThumbnails() {
 
 function updateThumbnails() {
 
-    var thumbnails =
+    var thumbs =
         document.querySelectorAll(
-            ".photo-thumbnail"
+            ".photo-thumb"
         );
 
 
     for (
         var i = 0;
-        i < thumbnails.length;
+        i < thumbs.length;
         i++
     ) {
 
-        if (i === currentPhoto) {
-
-            thumbnails[i].classList.add(
-                "active"
-            );
-
-        } else {
-
-            thumbnails[i].classList.remove(
-                "active"
-            );
-
-        }
+        thumbs[i].classList.remove(
+            "active"
+        );
 
     }
 
 
-    /*
-       Mantener miniatura actual visible
-    */
+    if (thumbs[currentPhoto]) {
 
-    if (
-        thumbnails[currentPhoto]
-    ) {
+        thumbs[currentPhoto].classList.add(
+            "active"
+        );
 
-        thumbnails[currentPhoto]
-            .scrollIntoView({
-                behavior: "smooth",
-                block: "nearest",
-                inline: "center"
-            });
+
+        thumbs[currentPhoto].scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "center"
+        });
 
     }
+
+}
+
+
+createThumbnails();
+
+
+/* =========================================
+   PRELOAD FOTOS
+========================================= */
+
+for (
+    var i = 0;
+    i < photos.length;
+    i++
+) {
+
+    var preload =
+        new Image();
+
+    preload.src =
+        photos[i];
 
 }
 
 
 /* =========================================
-   SWIPE
+   SWIPE PARA ANDROID
 ========================================= */
 
-var slider =
-    document.getElementById(
-        "photo-slider"
-    );
+/*
+   IMPORTANTE:
+
+   El gesto se detecta directamente sobre
+   la imagen principal.
+
+   Esto evita que el navegador confunda
+   el movimiento con el scroll de la página.
+*/
 
 
-var touchStartX = 0;
-var touchStartY = 0;
+var swipeStartX = 0;
+var swipeStartY = 0;
+
+var swipeStartTime = 0;
 
 
-if (slider) {
+mainPhoto.addEventListener(
+    "touchstart",
+    function(event) {
 
-
-    slider.addEventListener(
-        "touchstart",
-        function (event) {
-
-            if (
-                !event.touches ||
-                !event.touches.length
-            ) {
-                return;
-            }
-
-            touchStartX =
-                event.touches[0].clientX;
-
-            touchStartY =
-                event.touches[0].clientY;
-
-        },
-        {
-            passive: true
+        if (
+            !event.touches ||
+            event.touches.length === 0
+        ) {
+            return;
         }
-    );
 
 
-    slider.addEventListener(
-        "touchend",
-        function (event) {
-
-            if (
-                !event.changedTouches ||
-                !event.changedTouches.length
-            ) {
-                return;
-            }
+        swipeStartX =
+            event.touches[0].clientX;
 
 
-            var touchEndX =
-                event.changedTouches[0].clientX;
-
-            var touchEndY =
-                event.changedTouches[0].clientY;
+        swipeStartY =
+            event.touches[0].clientY;
 
 
-            var differenceX =
-                touchEndX - touchStartX;
+        swipeStartTime =
+            Date.now();
 
-            var differenceY =
-                touchEndY - touchStartY;
-
-
-            /*
-               Solo hacemos swipe si
-               el movimiento horizontal
-               es suficientemente grande.
-            */
-
-            if (
-                Math.abs(differenceX) > 50 &&
-                Math.abs(differenceX) >
-                Math.abs(differenceY)
-            ) {
+    },
+    {
+        passive: true
+    }
+);
 
 
-                if (differenceX < 0) {
+mainPhoto.addEventListener(
+    "touchend",
+    function(event) {
 
-                    /*
-                       Deslizar izquierda
-                       = siguiente
-                    */
-
-                    nextPhoto();
-
-                } else {
-
-                    /*
-                       Deslizar derecha
-                       = anterior
-                    */
-
-                    previousPhoto();
-
-                }
-
-            }
-
-        },
-        {
-            passive: true
+        if (
+            !event.changedTouches ||
+            event.changedTouches.length === 0
+        ) {
+            return;
         }
-    );
 
-}
+
+        var endX =
+            event.changedTouches[0].clientX;
+
+
+        var endY =
+            event.changedTouches[0].clientY;
+
+
+        var differenceX =
+            endX - swipeStartX;
+
+
+        var differenceY =
+            endY - swipeStartY;
+
+
+        var duration =
+            Date.now() - swipeStartTime;
+
+
+        /*
+           Ignorar gestos demasiado lentos.
+        */
+
+        if (duration > 1000) {
+            return;
+        }
+
+
+        /*
+           El movimiento horizontal debe
+           ser mayor que el vertical.
+        */
+
+        if (
+            Math.abs(differenceX) >= 35 &&
+            Math.abs(differenceX) >
+            Math.abs(differenceY)
+        ) {
+
+
+            if (differenceX < 0) {
+
+                nextPhoto();
+
+            } else {
+
+                previousPhoto();
+
+            }
+
+        }
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+/* =========================================
+   EVITAR ARRASTRAR LA IMAGEN
+========================================= */
+
+mainPhoto.addEventListener(
+    "dragstart",
+    function(event) {
+
+        event.preventDefault();
+
+    }
+);
+
+
+/* =========================================
+   SWIPE ADICIONAL SOBRE EL SLIDER
+========================================= */
+
+var photoSlider =
+    document.getElementById("photo-slider");
+
+
+var sliderStartX = 0;
+var sliderStartY = 0;
+var sliderStartTime = 0;
+
+
+photoSlider.addEventListener(
+    "touchstart",
+    function(event) {
+
+        if (
+            !event.touches ||
+            event.touches.length === 0
+        ) {
+            return;
+        }
+
+
+        sliderStartX =
+            event.touches[0].clientX;
+
+
+        sliderStartY =
+            event.touches[0].clientY;
+
+
+        sliderStartTime =
+            Date.now();
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+photoSlider.addEventListener(
+    "touchend",
+    function(event) {
+
+        if (
+            !event.changedTouches ||
+            event.changedTouches.length === 0
+        ) {
+            return;
+        }
+
+
+        var endX =
+            event.changedTouches[0].clientX;
+
+
+        var endY =
+            event.changedTouches[0].clientY;
+
+
+        var differenceX =
+            endX - sliderStartX;
+
+
+        var differenceY =
+            endY - sliderStartY;
+
+
+        var duration =
+            Date.now() - sliderStartTime;
+
+
+        if (duration > 1000) {
+            return;
+        }
+
+
+        /*
+           Solo ejecutar si el gesto
+           realmente fue horizontal.
+        */
+
+        if (
+            Math.abs(differenceX) >= 45 &&
+            Math.abs(differenceX) >
+            Math.abs(differenceY)
+        ) {
+
+            if (differenceX < 0) {
+
+                nextPhoto();
+
+            } else {
+
+                previousPhoto();
+
+            }
+
+        }
+
+    },
+    {
+        passive: true
+    }
+);
 
 
 /* =========================================
@@ -2192,7 +2458,7 @@ if (slider) {
 
 document.addEventListener(
     "keydown",
-    function (event) {
+    function(event) {
 
         var photosWindow =
             document.getElementById(
@@ -2223,296 +2489,36 @@ document.addEventListener(
 
         }
 
+
+        if (event.key === "Escape") {
+
+            closeWindows();
+
+        }
+
     }
 );
 
 
 /* =========================================
-   RAZONES
+   BOTÓN ATRÁS DE ANDROID
 ========================================= */
 
-var reasons = [
+window.addEventListener(
+    "popstate",
+    function() {
 
-    "Porque contigo puedo ser yo mismo. ❤️",
-
-    "Porque haces que los momentos simples sean especiales.",
-
-    "Porque tu sonrisa puede cambiar completamente mi día.",
-
-    "Porque me encanta compartir mis cosas contigo.",
-
-    "Porque tienes una forma única de hacerme sentir querido.",
-
-    "Porque cada recuerdo contigo significa muchísimo para mí.",
-
-    "Porque incluso estando lejos, sigues siendo importante para mí.",
-
-    "Porque me haces querer construir nuevos recuerdos contigo.",
-
-    "Porque amo la persona que eres.",
-
-    "Porque simplemente eres tú. Y eso me basta. ❤️"
-
-];
-
-
-function renderReasons() {
-
-    var container =
-        document.getElementById(
-            "reasons"
-        );
-
-
-    if (!container) {
-        return;
-    }
-
-
-    for (
-        var i = 0;
-        i < reasons.length;
-        i++
-    ) {
-
-        var card =
-            document.createElement("div");
-
-
-        card.className =
-            "reason";
-
-
-        card.innerHTML =
-            '<div class="number">RAZÓN ' +
-            String(i + 1).padStart(2, "0") +
-            '</div>' +
-            '<p>' +
-            reasons[i] +
-            '</p>';
-
-
-        container.appendChild(card);
+        closeWindows();
 
     }
-
-}
-
-
-/* =========================================
-   VALES
-========================================= */
-
-var coupons = [
-
-    {
-        icon: "🤗",
-        title: "Vale por un abrazo",
-        text: "Canjeable por un abrazo largo y sin límite de tiempo."
-    },
-
-    {
-        icon: "🎬",
-        title: "Vale por una película",
-        text: "Una película juntos, aunque tengamos que verla a distancia."
-    },
-
-    {
-        icon: "🍕",
-        title: "Vale por una comida",
-        text: "Una comida preparada especialmente para ti."
-    },
-
-    {
-        icon: "💋",
-        title: "Vale por un beso",
-        text: "Un beso pendiente que tendrás que cobrar algún día."
-    },
-
-    {
-        icon: "❤️",
-        title: "Vale infinito",
-        text: "Válido para recordarte cuánto te amo."
-    }
-
-];
-
-
-function renderCoupons() {
-
-    var container =
-        document.getElementById(
-            "coupons"
-        );
-
-
-    if (!container) {
-        return;
-    }
-
-
-    for (
-        var i = 0;
-        i < coupons.length;
-        i++
-    ) {
-
-        var coupon =
-            coupons[i];
-
-
-        var card =
-            document.createElement("div");
-
-
-        card.className =
-            "coupon";
-
-
-        card.innerHTML =
-            '<div class="coupon-icon">' +
-            coupon.icon +
-            '</div>' +
-
-            '<h3>' +
-            coupon.title +
-            '</h3>' +
-
-            '<p>' +
-            coupon.text +
-            '</p>';
-
-
-        container.appendChild(card);
-
-    }
-
-}
-
-
-/* =========================================
-   TOAST
-========================================= */
-
-function showToast(message) {
-
-    var toast =
-        document.getElementById(
-            "toast"
-        );
-
-
-    if (!toast) {
-        return;
-    }
-
-
-    toast.textContent =
-        message;
-
-
-    toast.classList.add(
-        "show"
-    );
-
-
-    setTimeout(
-        function () {
-
-            toast.classList.remove(
-                "show"
-            );
-
-        },
-        2500
-    );
-
-}
-
-
-/* =========================================
-   RELOJ
-========================================= */
-
-function updateClock() {
-
-    var clock =
-        document.getElementById(
-            "clock"
-        );
-
-
-    if (!clock) {
-        return;
-    }
-
-
-    var now =
-        new Date();
-
-
-    var hours =
-        String(
-            now.getHours()
-        ).padStart(2, "0");
-
-
-    var minutes =
-        String(
-            now.getMinutes()
-        ).padStart(2, "0");
-
-
-    clock.textContent =
-        hours +
-        ":" +
-        minutes;
-
-}
-
-
-updateClock();
-
-setInterval(
-    updateClock,
-    1000
 );
 
 
 /* =========================================
-   INICIAR GALERÍA
+   MOSTRAR PRIMERA FOTO
 ========================================= */
 
-createThumbnails();
-
-showPhoto(
-    0,
-    "next"
-);
-
-
-/* =========================================
-   PRE-CARGAR FOTOS
-========================================= */
-
-for (
-    var i = 0;
-    i < photos.length;
-    i++
-) {
-
-    var preload =
-        new Image();
-
-    preload.src =
-        photos[i];
-
-}
-
-
-renderReasons();
-
-renderCoupons();
+showPhoto(0);
 
 </script>
 
