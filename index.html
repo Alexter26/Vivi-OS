@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <title>ViviOS - Para Mi Amor ❤️</title>
 
 <style>
+
 :root{
   --accent:#ff2d55;
   --accent2:#ff6b8a;
@@ -22,20 +24,25 @@
   font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif
 }
 
-html,body{
+html,
+body{
   width:100%;
   height:100%;
   overflow:hidden
 }
 
 body{
-  background:linear-gradient(135deg,#ff9a9e,#fecfef 48%,#a1c4fd);
+  background-image:url("assets/fondo.jpg");
   background-size:cover;
   background-position:center;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
   color:var(--text);
 }
 
-button,input,textarea{
+button,
+input,
+textarea{
   font:inherit
 }
 
@@ -43,9 +50,10 @@ button{
   cursor:pointer
 }
 
-/* =========================
+
+/* =========================================================
    BOOT
-========================= */
+========================================================= */
 
 #boot{
   position:fixed;
@@ -56,8 +64,17 @@ button{
   justify-content:center;
   flex-direction:column;
   color:white;
-  background:radial-gradient(circle at center,#34203e,#120f18 70%);
-  transition:opacity .9s,visibility .9s;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #34203e,
+      #120f18 70%
+    );
+
+  transition:
+    opacity .9s,
+    visibility .9s
 }
 
 #boot.hide{
@@ -103,29 +120,44 @@ button{
 }
 
 @keyframes load{
-  to{width:100%}
+  to{
+    width:100%
+  }
 }
 
 @keyframes pulse{
-  50%{transform:scale(1.08)}
+  50%{
+    transform:scale(1.08)
+  }
 }
 
-/* =========================
+
+/* =========================================================
    LOGIN
-========================= */
+========================================================= */
 
 #login{
   position:fixed;
   inset:0;
   z-index:40000;
+
   display:none;
   align-items:center;
   justify-content:center;
   flex-direction:column;
+
   color:white;
-  background:linear-gradient(135deg,#17121d,#40223c 55%,#1c1930);
+
+  background:
+    linear-gradient(
+      135deg,
+      #17121d,
+      #40223c 55%,
+      #1c1930
+    );
+
   opacity:0;
-  transition:opacity .8s;
+  transition:opacity .8s
 }
 
 #login.show{
@@ -137,12 +169,23 @@ button{
   width:92px;
   height:92px;
   border-radius:50%;
-  background:linear-gradient(135deg,#fff,#ffd7e0);
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff,
+      #ffd7e0
+    );
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   font-size:45px;
-  box-shadow:0 15px 45px rgba(0,0,0,.35);
+
+  box-shadow:
+    0 15px 45px rgba(0,0,0,.35);
+
   margin-bottom:18px
 }
 
@@ -161,10 +204,14 @@ button{
   border:0;
   border-radius:22px;
   padding:11px 25px;
+
   background:rgba(255,255,255,.16);
   color:#fff;
+
   border:1px solid rgba(255,255,255,.25);
+
   backdrop-filter:blur(15px);
+
   transition:.25s
 }
 
@@ -173,25 +220,34 @@ button{
   transform:translateY(-2px)
 }
 
-/* =========================
+
+/* =========================================================
    TOP BAR
-========================= */
+========================================================= */
 
 #top-bar{
   position:fixed;
   top:0;
   left:0;
+
   width:100%;
   height:30px;
+
   z-index:10000;
+
   display:flex;
   justify-content:space-between;
   align-items:center;
+
   padding:0 14px;
+
   background:rgba(255,255,255,.38);
+
   backdrop-filter:blur(22px);
   -webkit-backdrop-filter:blur(22px);
+
   border-bottom:1px solid rgba(255,255,255,.35);
+
   font-size:12px;
   font-weight:600
 }
@@ -215,9 +271,10 @@ button{
   font-variant-numeric:tabular-nums
 }
 
-/* =========================
+
+/* =========================================================
    DESKTOP
-========================= */
+========================================================= */
 
 #desktop{
   position:fixed;
@@ -227,16 +284,25 @@ button{
 
 .desktop-item{
   width:82px;
+
   display:flex;
   flex-direction:column;
   align-items:center;
+
   gap:5px;
+
   padding:7px;
+
   border-radius:9px;
+
   cursor:pointer;
+
   margin-bottom:10px;
+
   color:#fff;
+
   text-align:center;
+
   transition:.2s
 }
 
@@ -247,112 +313,179 @@ button{
 .desktop-icon{
   width:54px;
   height:54px;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   font-size:38px;
-  filter:drop-shadow(0 5px 7px rgba(0,0,0,.25))
+
+  filter:
+    drop-shadow(
+      0 5px 7px rgba(0,0,0,.25)
+    )
 }
 
 .desktop-label{
   font-size:11px;
   font-weight:600;
-  text-shadow:0 2px 5px rgba(0,0,0,.8)
+
+  text-shadow:
+    0 2px 5px rgba(0,0,0,.8)
 }
 
-/* =========================
+
+/* =========================================================
    DOCK
-========================= */
+========================================================= */
 
 #dock-container{
   position:fixed;
+
   left:50%;
   bottom:9px;
+
   transform:translateX(-50%);
+
   z-index:15000
 }
 
 #dock{
   display:flex;
   align-items:flex-end;
+
   gap:7px;
+
   padding:8px 10px;
+
   border:1px solid var(--border);
+
   border-radius:21px;
+
   background:rgba(255,255,255,.30);
+
   backdrop-filter:blur(25px);
   -webkit-backdrop-filter:blur(25px);
-  box-shadow:0 14px 35px rgba(0,0,0,.20)
+
+  box-shadow:
+    0 14px 35px rgba(0,0,0,.20)
 }
 
 .dock-icon{
   position:relative;
+
   width:48px;
   height:48px;
+
   border-radius:13px;
+
   border:1px solid rgba(255,255,255,.45);
-  background:linear-gradient(
-    145deg,
-    rgba(255,255,255,.82),
-    rgba(255,255,255,.45)
-  );
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.82),
+      rgba(255,255,255,.45)
+    );
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   font-size:25px;
-  box-shadow:0 5px 10px rgba(0,0,0,.12);
-  transition:transform .16s ease,margin .16s ease
+
+  box-shadow:
+    0 5px 10px rgba(0,0,0,.12);
+
+  transition:
+    transform .16s ease,
+    margin .16s ease
 }
 
 .dock-icon:hover{
-  transform:translateY(-10px) scale(1.22);
+  transform:
+    translateY(-10px)
+    scale(1.22);
+
   margin:0 5px
 }
 
 .dock-icon.open::after{
   content:"";
+
   position:absolute;
+
   bottom:-5px;
+
   width:4px;
   height:4px;
+
   border-radius:50%;
+
   background:#333
 }
 
-/* =========================
+
+/* =========================================================
    WINDOWS
-========================= */
+========================================================= */
 
 .window{
   position:fixed;
+
   display:none;
   flex-direction:column;
+
   width:min(760px,88vw);
   height:min(650px,76vh);
+
   min-width:300px;
   min-height:240px;
+
   top:50%;
   left:50%;
-  transform:translate(-50%,-50%);
-  background:rgba(248,248,250,.82);
+
+  transform:
+    translate(-50%,-50%);
+
+  background:
+    rgba(248,248,250,.82);
+
   backdrop-filter:blur(30px);
   -webkit-backdrop-filter:blur(30px);
-  border:1px solid rgba(255,255,255,.65);
+
+  border:
+    1px solid rgba(255,255,255,.65);
+
   border-radius:14px;
-  box-shadow:0 30px 80px rgba(0,0,0,.32);
+
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.32);
+
   overflow:hidden;
+
   z-index:2000;
+
   opacity:0;
+
   scale:.94
 }
 
 .window.active{
   display:flex;
-  animation:windowIn .28s cubic-bezier(.2,.8,.2,1) forwards
+
+  animation:
+    windowIn
+    .28s
+    cubic-bezier(.2,.8,.2,1)
+    forwards
 }
 
 .window.closing{
-  animation:windowOut .22s forwards
+  animation:
+    windowOut
+    .22s
+    forwards
 }
 
 .window.minimized{
@@ -376,21 +509,35 @@ button{
 .window.maximized{
   top:40px!important;
   left:0!important;
+
   transform:none!important;
+
   width:100vw!important;
-  height:calc(100vh - 40px)!important;
+
+  height:
+    calc(100vh - 40px)!important;
+
   border-radius:0!important
 }
 
 .window-header{
   height:42px;
+
   flex:none;
-  background:rgba(235,235,238,.78);
-  border-bottom:1px solid rgba(0,0,0,.08);
+
+  background:
+    rgba(235,235,238,.78);
+
+  border-bottom:
+    1px solid rgba(0,0,0,.08);
+
   display:flex;
   align-items:center;
+
   padding:0 14px;
+
   position:relative;
+
   cursor:grab
 }
 
@@ -407,109 +554,183 @@ button{
 .dot{
   width:13px;
   height:13px;
+
   border-radius:50%;
+
   border:0;
-  padding:0;
-  transition:transform .15s ease,filter .15s ease
+  padding:0
 }
 
-.dot:hover{
-  transform:scale(1.12);
-  filter:brightness(.92)
+.dot-close{
+  background:#ff5f57
 }
 
-.dot-close{background:#ff5f57}
-.dot-min{background:#ffbd2e}
-.dot-max{background:#28c840}
+.dot-min{
+  background:#ffbd2e
+}
+
+.dot-max{
+  background:#28c840
+}
 
 .window-title{
   position:absolute;
+
   left:50%;
-  transform:translateX(-50%);
+
+  transform:
+    translateX(-50%);
+
   font-size:13px;
+
   font-weight:600;
+
   color:#4b4b4d;
+
   white-space:nowrap;
+
   max-width:55%;
+
   overflow:hidden;
+
   text-overflow:ellipsis
 }
 
 .window-body{
   flex:1;
+
   overflow:auto;
+
   padding:20px;
+
   -webkit-overflow-scrolling:touch
 }
 
-/* =========================
-   LETTER
-========================= */
+
+/* =========================================================
+   CARTA
+========================================================= */
 
 .letter-paper{
-  background:linear-gradient(145deg,#fff,#fff7fa);
+  background:
+    linear-gradient(
+      145deg,
+      #fff,
+      #fff7fa
+    );
+
   padding:30px;
+
   border-radius:14px;
-  box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+  box-shadow:
+    0 8px 25px rgba(0,0,0,.08);
+
   font-family:Georgia,serif;
+
   font-size:15px;
+
   line-height:1.8;
+
   white-space:pre-line;
+
   min-height:100%
 }
 
 .letter-heading{
   text-align:center;
+
   font-family:inherit;
+
   font-size:22px;
+
   margin-bottom:22px;
+
   color:#d91e4d
 }
 
 .letter-sign{
   text-align:right;
+
   margin-top:28px;
+
   font-style:italic;
+
   color:#b51d43
 }
 
-/* =========================
+
+/* =========================================================
    GALLERY
-========================= */
+========================================================= */
 
 .gallery-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
-  gap:14px
+
+  grid-template-columns:
+    repeat(
+      auto-fill,
+      minmax(150px,1fr)
+    );
+
+  gap:14px;
+
+  touch-action:pan-y
 }
 
 .photo-card{
   background:#fff;
+
   padding:8px;
+
   border-radius:12px;
-  box-shadow:0 7px 18px rgba(0,0,0,.09);
+
+  box-shadow:
+    0 7px 18px rgba(0,0,0,.09);
+
   cursor:pointer;
+
   transition:.25s;
-  animation:cardIn .45s both
+
+  animation:
+    cardIn
+    .45s
+    both
 }
 
 .photo-card:hover{
-  transform:translateY(-4px) rotate(.3deg);
-  box-shadow:0 13px 25px rgba(0,0,0,.15)
+  transform:
+    translateY(-4px)
+    rotate(.3deg);
+
+  box-shadow:
+    0 13px 25px rgba(0,0,0,.15)
 }
 
 .photo-card img{
   width:100%;
+
   height:145px;
+
   object-fit:cover;
+
   border-radius:8px;
-  display:block
+
+  display:block;
+
+  -webkit-user-drag:none;
+
+  user-select:none;
+  -webkit-user-select:none
 }
 
 .photo-card p{
   text-align:center;
+
   font-size:11px;
+
   margin:7px 0 2px;
+
   color:#555
 }
 
@@ -518,53 +739,84 @@ button{
     opacity:0;
     transform:translateY(15px)
   }
+
   to{
     opacity:1;
     transform:none
   }
 }
 
-/* =========================
+
+/* =========================================================
    REASONS
-========================= */
+========================================================= */
 
 .reason-item{
-  background:rgba(255,255,255,.78);
+  background:
+    rgba(255,255,255,.78);
+
   padding:14px 16px;
+
   margin-bottom:11px;
-  border-left:4px solid var(--accent);
+
+  border-left:
+    4px solid var(--accent);
+
   border-radius:11px;
-  box-shadow:0 3px 12px rgba(0,0,0,.05);
+
+  box-shadow:
+    0 3px 12px rgba(0,0,0,.05);
+
   font-size:14px;
-  animation:cardIn .4s both
+
+  animation:
+    cardIn
+    .4s
+    both
 }
 
-/* =========================
+
+/* =========================================================
    COUPONS
-========================= */
+========================================================= */
 
 .coupon{
   display:flex;
+
   justify-content:space-between;
   align-items:center;
+
   gap:12px;
+
   background:#fff;
+
   padding:15px;
-  border:1px solid #ffd2dc;
+
+  border:
+    1px solid #ffd2dc;
+
   border-radius:13px;
+
   margin-bottom:12px
 }
 
 .claim-btn,
-.surprise-btn,
-.save-btn{
+.surprise-btn{
   border:0;
+
   color:#fff;
-  background:var(--accent);
+
+  background:
+    var(--accent);
+
   border-radius:20px;
+
   padding:9px 15px;
+
   font-size:12px;
+
   font-weight:600;
+
   white-space:nowrap
 }
 
@@ -572,261 +824,245 @@ button{
   background:#34c759!important
 }
 
-/* =========================
+
+/* =========================================================
    SURPRISE
-========================= */
+========================================================= */
 
 .surprise{
   text-align:center;
+
   padding:35px 20px
 }
 
 .gift{
   font-size:85px;
+
   display:inline-block;
+
   cursor:pointer;
-  animation:giftFloat 2s ease-in-out infinite
+
+  animation:
+    giftFloat
+    2s
+    ease-in-out
+    infinite
 }
 
 @keyframes giftFloat{
   50%{
-    transform:translateY(-8px) rotate(2deg)
+    transform:
+      translateY(-8px)
+      rotate(2deg)
   }
 }
 
 #gift-text{
   display:none;
+
   margin-top:20px;
+
   font-size:21px;
+
   font-weight:700;
+
   color:var(--accent)
 }
 
-/* =========================
+
+/* =========================================================
    MUSIC
-========================= */
+========================================================= */
 
 .music-card{
   text-align:center;
+
   padding:35px 20px
 }
 
 .music-title{
   font-size:20px;
+
   font-weight:700
 }
 
 .music-artist{
   font-size:13px;
+
   color:#777;
+
   margin:6px 0 15px
 }
 
-.yt-container{
+.local-audio{
   width:100%;
+
   max-width:450px;
-  height:180px;
-  margin:0 auto;
-  border-radius:12px;
-  overflow:hidden;
-  box-shadow:0 8px 20px rgba(0,0,0,.15);
-  background:#000
+
+  margin:20px auto 0;
+
+  display:block
 }
 
-.yt-container iframe{
-  width:100%;
-  height:100%;
-  border:0
-}
 
-/* =========================
-   SETTINGS
-========================= */
-
-.form-group{
-  margin-bottom:15px
-}
-
-.form-group label{
-  display:block;
-  font-size:12px;
-  font-weight:600;
-  color:#555;
-  margin-bottom:6px
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select{
-  width:100%;
-  border:1px solid #ccc;
-  border-radius:9px;
-  padding:10px;
-  background:rgba(255,255,255,.9);
-  outline:none;
-  font-size:13px;
-  resize:vertical
-}
-
-.form-group input[type="file"]{
-  padding:7px;
-  background:#fff
-}
-
-.form-group input:focus,
-.form-group textarea:focus{
-  border-color:#007aff;
-  box-shadow:0 0 0 3px rgba(0,122,255,.12)
-}
-
-.save-btn{
-  width:100%;
-  background:#007aff;
-  margin-top:3px
-}
-
-/* =========================
-   ADMIN PHOTOS
-========================= */
-
-.admin-photo-list{
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-  max-height:160px;
-  overflow-y:auto;
-  border:1px solid #ddd;
-  padding:8px;
-  border-radius:8px;
-  background:#fff
-}
-
-.admin-photo-row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  font-size:12px
-}
-
-.admin-photo-row img{
-  width:36px;
-  height:36px;
-  object-fit:cover;
-  border-radius:4px
-}
-
-.del-photo-btn{
-  background:#ff3b30;
-  color:white;
-  border:0;
-  padding:5px 10px;
-  border-radius:6px;
-  font-size:11px;
-  font-weight:600;
-  cursor:pointer
-}
-
-/* =========================
+/* =========================================================
    IMAGE VIEWER
-========================= */
+========================================================= */
 
 #image-viewer{
   position:fixed;
+
   inset:0;
-  background:rgba(0,0,0,.82);
+
+  background:
+    rgba(0,0,0,.82);
+
   z-index:30000;
+
   display:none;
+
   align-items:center;
   justify-content:center;
+
   flex-direction:column;
+
   backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
+
   touch-action:none
 }
 
 #image-viewer.show{
   display:flex;
-  animation:fadeIn .2s
+
+  animation:
+    fadeIn
+    .2s
 }
 
 #viewer-img{
   max-width:90vw;
+
   max-height:78vh;
+
   object-fit:contain;
+
   border-radius:10px;
-  box-shadow:0 20px 60px #000;
-  user-select:none;
-  -webkit-user-select:none;
-  -webkit-user-drag:none;
+
+  box-shadow:
+    0 20px 60px #000;
+
   touch-action:none;
-  transition:opacity .15s ease,transform .15s ease
+
+  -webkit-user-drag:none;
+
+  user-select:none;
+  -webkit-user-select:none
 }
 
 .viewer-close{
   position:absolute;
+
   top:25px;
   right:25px;
+
   width:35px;
   height:35px;
+
   border:0;
+
   border-radius:50%;
-  background:rgba(255,255,255,.18);
+
+  background:
+    rgba(255,255,255,.18);
+
   color:white;
-  font-size:20px
+
+  font-size:20px;
+
+  z-index:3
 }
 
 .viewer-nav{
   display:flex;
+
   gap:15px;
+
   margin-top:18px
 }
 
 .viewer-nav button{
   border:0;
+
   border-radius:20px;
+
   padding:8px 18px;
-  background:rgba(255,255,255,.16);
+
+  background:
+    rgba(255,255,255,.16);
+
   color:white
 }
 
 #viewer-caption{
   color:white;
+
   font-size:12px;
+
   margin-top:10px
 }
 
 @keyframes fadeIn{
-  from{opacity:0}
-  to{opacity:1}
+  from{
+    opacity:0
+  }
+
+  to{
+    opacity:1
+  }
 }
 
-/* =========================
+
+/* =========================================================
    HEARTS
-========================= */
+========================================================= */
 
 .click-heart{
   position:fixed;
+
   pointer-events:none;
+
   font-size:22px;
+
   z-index:60000;
-  animation:heartFloat .9s forwards
+
+  animation:
+    heartFloat
+    .9s
+    forwards
 }
 
 @keyframes heartFloat{
   from{
     opacity:1;
-    transform:translate(-50%,-50%) scale(.5)
+
+    transform:
+      translate(-50%,-50%)
+      scale(.5)
   }
+
   to{
     opacity:0;
-    transform:translate(-50%,-95px) scale(1.35)
+
+    transform:
+      translate(-50%,-95px)
+      scale(1.35)
   }
 }
 
-/* =========================
+
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
 @media(max-width:600px){
 
@@ -836,6 +1072,7 @@ button{
 
   #desktop{
     inset:32px 0 0;
+
     padding:12px
   }
 
@@ -849,14 +1086,19 @@ button{
 
   .window{
     width:96vw;
+
     height:82vh;
+
     min-width:0;
+
     border-radius:12px
   }
 
   .window.maximized{
     top:32px!important;
-    height:calc(100vh - 32px)!important
+
+    height:
+      calc(100vh - 32px)!important
   }
 
   .window-header{
@@ -868,7 +1110,9 @@ button{
   }
 
   .gallery-grid{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:
+      repeat(2,1fr);
+
     gap:9px
   }
 
@@ -878,14 +1122,24 @@ button{
 
   #dock{
     max-width:95vw;
+
     overflow-x:auto
   }
 
   .dock-icon{
-    flex:0 0 43px;
+    flex:
+      0 0 43px;
+
     width:43px;
     height:43px;
+
     font-size:22px
+  }
+
+  .letter-paper{
+    padding:22px;
+
+    font-size:14px
   }
 
   #viewer-img{
@@ -898,36 +1152,43 @@ button{
   }
 
   .viewer-nav button{
-    padding:8px 13px;
-    font-size:12px
+    padding:8px 13px
   }
 
 }
 
-/* =========================
+
+/* =========================================================
    SCROLLBAR
-========================= */
+========================================================= */
 
 ::-webkit-scrollbar{
   width:7px
 }
 
 ::-webkit-scrollbar-thumb{
-  background:rgba(0,0,0,.18);
+  background:
+    rgba(0,0,0,.18);
+
   border-radius:10px
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- =========================
+
+<!-- =========================================================
      BOOT
-========================= -->
+========================================================= -->
 
 <div id="boot">
 
-  <div class="boot-logo">❤️</div>
+  <div class="boot-logo">
+    ❤️
+  </div>
 
   <div class="boot-title">
     ViviOS
@@ -944,9 +1205,9 @@ button{
 </div>
 
 
-<!-- =========================
+<!-- =========================================================
      LOGIN
-========================= -->
+========================================================= -->
 
 <div id="login">
 
@@ -962,24 +1223,40 @@ button{
     Una pequeña sorpresa te está esperando
   </div>
 
-  <button class="login-btn" id="login-btn">
+  <button
+    class="login-btn"
+    id="login-btn"
+  >
     Iniciar sesión
   </button>
 
 </div>
 
 
-<!-- =========================
+<!-- =========================================================
      TOP BAR
-========================= -->
+========================================================= -->
 
 <div id="top-bar">
 
   <div class="top-left">
-    <span class="apple"></span>
-    <span>ViviOS</span>
-    <span class="menu">Archivo</span>
-    <span class="menu">Ventana</span>
+
+    <span class="apple">
+      
+    </span>
+
+    <span>
+      ViviOS
+    </span>
+
+    <span class="menu">
+      Archivo
+    </span>
+
+    <span class="menu">
+      Ventana
+    </span>
+
   </div>
 
   <div id="mac-clock"></div>
@@ -987,69 +1264,126 @@ button{
 </div>
 
 
-<!-- =========================
+<!-- =========================================================
      DESKTOP
-========================= -->
+========================================================= -->
 
 <div id="desktop">
 
-  <div class="desktop-item" data-open="win-carta">
-    <div class="desktop-icon">💌</div>
-    <div class="desktop-label">Carta.pdf</div>
+  <div
+    class="desktop-item"
+    data-open="win-carta"
+  >
+
+    <div class="desktop-icon">
+      💌
+    </div>
+
+    <div class="desktop-label">
+      Carta.pdf
+    </div>
+
   </div>
 
-  <div class="desktop-item" data-open="win-momentos">
-    <div class="desktop-icon">🖼</div>
-    <div class="desktop-label">Fotos</div>
+
+  <div
+    class="desktop-item"
+    data-open="win-momentos"
+  >
+
+    <div class="desktop-icon">
+      🖼
+    </div>
+
+    <div class="desktop-label">
+      Fotos
+    </div>
+
   </div>
 
-  <div class="desktop-item" data-open="win-razones">
-    <div class="desktop-icon">📝</div>
-    <div class="desktop-label">Razones.txt</div>
+
+  <div
+    class="desktop-item"
+    data-open="win-razones"
+  >
+
+    <div class="desktop-icon">
+      📝
+    </div>
+
+    <div class="desktop-label">
+      Razones.txt
+    </div>
+
   </div>
 
-  <div class="desktop-item" data-open="win-papelera">
-    <div class="desktop-icon">🗑️</div>
-    <div class="desktop-label">Papelera</div>
+
+  <div
+    class="desktop-item"
+    data-open="win-papelera"
+  >
+
+    <div class="desktop-icon">
+      🗑️
+    </div>
+
+    <div class="desktop-label">
+      Papelera
+    </div>
+
   </div>
 
 </div>
 
 
-<!-- =========================
+<!-- =========================================================
      DOCK
-========================= -->
+========================================================= -->
 
 <div id="dock-container">
 
   <div id="dock">
 
-    <div class="dock-icon" data-open="win-carta">
+    <div
+      class="dock-icon"
+      data-open="win-carta"
+    >
       💌
     </div>
 
-    <div class="dock-icon" data-open="win-momentos">
+    <div
+      class="dock-icon"
+      data-open="win-momentos"
+    >
       📸
     </div>
 
-    <div class="dock-icon" data-open="win-canciones">
+    <div
+      class="dock-icon"
+      data-open="win-canciones"
+    >
       🎵
     </div>
 
-    <div class="dock-icon" data-open="win-razones">
+    <div
+      class="dock-icon"
+      data-open="win-razones"
+    >
       💖
     </div>
 
-    <div class="dock-icon" data-open="win-vales">
+    <div
+      class="dock-icon"
+      data-open="win-vales"
+    >
       🎟️
     </div>
 
-    <div class="dock-icon" data-open="win-sorpresa">
+    <div
+      class="dock-icon"
+      data-open="win-sorpresa"
+    >
       🎁
-    </div>
-
-    <div class="dock-icon" data-open="win-config">
-      ⚙️
     </div>
 
   </div>
@@ -1057,19 +1391,33 @@ button{
 </div>
 
 
-<!-- =========================
+<!-- =========================================================
      CARTA
-========================= -->
+========================================================= -->
 
-<div id="win-carta" class="window">
+<div
+  id="win-carta"
+  class="window"
+>
 
   <div class="window-header">
 
     <div class="window-dots">
 
-      <button class="dot dot-close" data-close="win-carta"></button>
-      <button class="dot dot-min" data-min="win-carta"></button>
-      <button class="dot dot-max" data-max="win-carta"></button>
+      <button
+        class="dot dot-close"
+        data-close="win-carta"
+      ></button>
+
+      <button
+        class="dot dot-min"
+        data-min="win-carta"
+      ></button>
+
+      <button
+        class="dot dot-max"
+        data-max="win-carta"
+      ></button>
 
     </div>
 
@@ -1078,6 +1426,7 @@ button{
     </div>
 
   </div>
+
 
   <div class="window-body">
 
@@ -1101,19 +1450,33 @@ button{
 </div>
 
 
-<!-- =========================
+<!-- =========================================================
      FOTOS
-========================= -->
+========================================================= -->
 
-<div id="win-momentos" class="window">
+<div
+  id="win-momentos"
+  class="window"
+>
 
   <div class="window-header">
 
     <div class="window-dots">
 
-      <button class="dot dot-close" data-close="win-momentos"></button>
-      <button class="dot dot-min" data-min="win-momentos"></button>
-      <button class="dot dot-max" data-max="win-momentos"></button>
+      <button
+        class="dot dot-close"
+        data-close="win-momentos"
+      ></button>
+
+      <button
+        class="dot dot-min"
+        data-min="win-momentos"
+      ></button>
+
+      <button
+        class="dot dot-max"
+        data-max="win-momentos"
+      ></button>
 
     </div>
 
@@ -1123,28 +1486,46 @@ button{
 
   </div>
 
+
   <div class="window-body">
 
-    <div class="gallery-grid" id="display-galeria"></div>
+    <div
+      class="gallery-grid"
+      id="display-galeria"
+    ></div>
 
   </div>
 
 </div>
 
 
-<!-- =========================
+<!-- =========================================================
      CANCIONES
-========================= -->
+========================================================= -->
 
-<div id="win-canciones" class="window">
+<div
+  id="win-canciones"
+  class="window"
+>
 
   <div class="window-header">
 
     <div class="window-dots">
 
-      <button class="dot dot-close" data-close="win-canciones"></button>
-      <button class="dot dot-min" data-min="win-canciones"></button>
-      <button class="dot dot-max" data-max="win-canciones"></button>
+      <button
+        class="dot dot-close"
+        data-close="win-canciones"
+      ></button>
+
+      <button
+        class="dot dot-min"
+        data-min="win-canciones"
+      ></button>
+
+      <button
+        class="dot dot-max"
+        data-max="win-canciones"
+      ></button>
 
     </div>
 
@@ -1154,36 +1535,65 @@ button{
 
   </div>
 
+
   <div class="window-body music-card">
 
-    <div class="music-title" id="music-title">
-      Say You Won't Let Go
+    <div class="music-title">
+      Nuestra canción ❤️
     </div>
 
-    <div class="music-artist" id="music-artist">
-      James Arthur
+    <div class="music-artist">
+      Para Viviana
     </div>
 
-    <div class="yt-container" id="yt-player-box"></div>
+    <audio
+      id="local-audio"
+      class="local-audio"
+      controls
+      preload="metadata"
+    >
+
+      <source
+        src="assets/musica/nuestra-cancion.mp3"
+        type="audio/mpeg"
+      >
+
+      Tu navegador no puede reproducir este audio.
+
+    </audio>
 
   </div>
 
 </div>
 
 
-<!-- =========================
+<!-- =========================================================
      RAZONES
-========================= -->
+========================================================= -->
 
-<div id="win-razones" class="window">
+<div
+  id="win-razones"
+  class="window"
+>
 
   <div class="window-header">
 
     <div class="window-dots">
 
-      <button class="dot dot-close" data-close="win-razones"></button>
-      <button class="dot dot-min" data-min="win-razones"></button>
-      <button class="dot dot-max" data-max="win-razones"></button>
+      <button
+        class="dot dot-close"
+        data-close="win-razones"
+      ></button>
+
+      <button
+        class="dot dot-min"
+        data-min="win-razones"
+      ></button>
+
+      <button
+        class="dot dot-max"
+        data-max="win-razones"
+      ></button>
 
     </div>
 
@@ -1192,6 +1602,7 @@ button{
     </div>
 
   </div>
+
 
   <div class="window-body">
 
@@ -1220,19 +1631,33 @@ button{
 </div>
 
 
-<!-- =========================
+<!-- =========================================================
      VALES
-========================= -->
+========================================================= -->
 
-<div id="win-vales" class="window">
+<div
+  id="win-vales"
+  class="window"
+>
 
   <div class="window-header">
 
     <div class="window-dots">
 
-      <button class="dot dot-close" data-close="win-vales"></button>
-      <button class="dot dot-min" data-min="win-vales"></button>
-      <button class="dot dot-max" data-max="win-vales"></button>
+      <button
+        class="dot dot-close"
+        data-close="win-vales"
+      ></button>
+
+      <button
+        class="dot dot-min"
+        data-min="win-vales"
+      ></button>
+
+      <button
+        class="dot dot-max"
+        data-max="win-vales"
+      ></button>
 
     </div>
 
@@ -1242,7 +1667,9 @@ button{
 
   </div>
 
+
   <div class="window-body">
+
 
     <div class="coupon">
 
@@ -1252,7 +1679,13 @@ button{
           Cena especial 🍝
         </strong>
 
-        <p style="font-size:11px;color:#777;margin-top:4px">
+        <p
+          style="
+            font-size:11px;
+            color:#777;
+            margin-top:4px
+          "
+        >
           Canjeable por tu comida favorita.
         </p>
 
@@ -1273,7 +1706,13 @@ button{
           Tarde de películas 🎬
         </strong>
 
-        <p style="font-size:11px;color:#777;margin-top:4px">
+        <p
+          style="
+            font-size:11px;
+            color:#777;
+            margin-top:4px
+          "
+        >
           Tú eliges la película y el postre.
         </p>
 
@@ -1294,7 +1733,13 @@ button{
           Abrazo infinito 🤗
         </strong>
 
-        <p style="font-size:11px;color:#777;margin-top:4px">
+        <p
+          style="
+            font-size:11px;
+            color:#777;
+            margin-top:4px
+          "
+        >
           Sin fecha de vencimiento.
         </p>
 
@@ -1306,24 +1751,39 @@ button{
 
     </div>
 
+
   </div>
 
 </div>
 
 
-<!-- =========================
+<!-- =========================================================
      SORPRESA
-========================= -->
+========================================================= -->
 
-<div id="win-sorpresa" class="window">
+<div
+  id="win-sorpresa"
+  class="window"
+>
 
   <div class="window-header">
 
     <div class="window-dots">
 
-      <button class="dot dot-close" data-close="win-sorpresa"></button>
-      <button class="dot dot-min" data-min="win-sorpresa"></button>
-      <button class="dot dot-max" data-max="win-sorpresa"></button>
+      <button
+        class="dot dot-close"
+        data-close="win-sorpresa"
+      ></button>
+
+      <button
+        class="dot dot-min"
+        data-min="win-sorpresa"
+      ></button>
+
+      <button
+        class="dot dot-max"
+        data-max="win-sorpresa"
+      ></button>
 
     </div>
 
@@ -1333,13 +1793,24 @@ button{
 
   </div>
 
-  <div class="window-body surprise">
 
-    <p style="font-weight:600;margin-bottom:18px">
+  <div
+    class="window-body surprise"
+  >
+
+    <p
+      style="
+        font-weight:600;
+        margin-bottom:18px
+      "
+    >
       Hay algo escondido aquí...
     </p>
 
-    <div class="gift" id="gift-btn">
+    <div
+      class="gift"
+      id="gift-btn"
+    >
       🎁
     </div>
 
@@ -1352,19 +1823,33 @@ button{
 </div>
 
 
-<!-- =========================
+<!-- =========================================================
      PAPELERA
-========================= -->
+========================================================= -->
 
-<div id="win-papelera" class="window">
+<div
+  id="win-papelera"
+  class="window"
+>
 
   <div class="window-header">
 
     <div class="window-dots">
 
-      <button class="dot dot-close" data-close="win-papelera"></button>
-      <button class="dot dot-min" data-min="win-papelera"></button>
-      <button class="dot dot-max" data-max="win-papelera"></button>
+      <button
+        class="dot dot-close"
+        data-close="win-papelera"
+      ></button>
+
+      <button
+        class="dot dot-min"
+        data-min="win-papelera"
+      ></button>
+
+      <button
+        class="dot dot-max"
+        data-max="win-papelera"
+      ></button>
 
     </div>
 
@@ -1374,18 +1859,35 @@ button{
 
   </div>
 
-  <div class="window-body" style="text-align:center;padding-top:55px">
+
+  <div
+    class="window-body"
+    style="
+      text-align:center;
+      padding-top:55px
+    "
+  >
 
     <div style="font-size:65px">
       ✨
     </div>
 
-    <h3 style="margin:14px 0 8px">
+    <h3
+      style="
+        margin:14px 0 8px
+      "
+    >
       La papelera está vacía
     </h3>
 
-    <p style="font-size:13px;color:#666">
-      No hay nada que cambiaría de ti. Eres perfecta tal como eres. ❤️
+    <p
+      style="
+        font-size:13px;
+        color:#666
+      "
+    >
+      No hay nada que cambiaría de ti.
+      Eres perfecta tal como eres. ❤️
     </p>
 
   </div>
@@ -1393,144 +1895,16 @@ button{
 </div>
 
 
-<!-- =========================
-     CONFIGURACIÓN
-========================= -->
-
-<div id="win-config" class="window">
-
-  <div class="window-header">
-
-    <div class="window-dots">
-
-      <button class="dot dot-close" data-close="win-config"></button>
-      <button class="dot dot-min" data-min="win-config"></button>
-      <button class="dot dot-max" data-max="win-config"></button>
-
-    </div>
-
-    <div class="window-title">
-      Ajustes de ViviOS
-    </div>
-
-  </div>
-
-  <div class="window-body">
-
-    <div class="form-group">
-
-      <label>
-        Carta
-      </label>
-
-      <textarea id="cfg-carta" rows="5"></textarea>
-
-    </div>
-
-
-    <div class="form-group">
-
-      <label>
-        Fondo de pantalla (Imagen local)
-      </label>
-
-      <input
-        type="file"
-        id="cfg-fondo-file"
-        accept="image/*"
-      >
-
-    </div>
-
-
-    <div class="form-group">
-
-      <label>
-        Subir nuevas fotos
-      </label>
-
-      <input
-        type="file"
-        id="cfg-fotos-file"
-        accept="image/*"
-        multiple
-      >
-
-    </div>
-
-
-    <div class="form-group">
-
-      <label>
-        Administrar / Eliminar fotos actuales
-      </label>
-
-      <div
-        class="admin-photo-list"
-        id="admin-photo-list"
-      ></div>
-
-    </div>
-
-
-    <div class="form-group">
-
-      <label>
-        Enlace o ID del video de YouTube
-      </label>
-
-      <input
-        id="cfg-youtube"
-        placeholder="Ej: https://youtu.be/bdPG8SlmpNc"
-      >
-
-    </div>
-
-
-    <div class="form-group">
-
-      <label>
-        Título de la canción
-      </label>
-
-      <input
-        id="cfg-titulo"
-        placeholder="Nuestra canción"
-      >
-
-    </div>
-
-
-    <div class="form-group">
-
-      <label>
-        Artista
-      </label>
-
-      <input
-        id="cfg-artista"
-        placeholder="Artista"
-      >
-
-    </div>
-
-
-    <button class="save-btn" id="btn-guardar">
-      Guardar ajustes ❤
-    </button>
-
-  </div>
-
-</div>
-
-
-<!-- =========================
+<!-- =========================================================
      IMAGE VIEWER
-========================= -->
+========================================================= -->
 
 <div id="image-viewer">
 
-  <button class="viewer-close" id="viewer-close">
+  <button
+    class="viewer-close"
+    id="viewer-close"
+  >
     ×
   </button>
 
@@ -1538,6 +1912,7 @@ button{
     id="viewer-img"
     src=""
     alt="Foto ampliada"
+    draggable="false"
   >
 
   <div id="viewer-caption"></div>
@@ -1559,18 +1934,12 @@ button{
 
 <script>
 
+
 /* =========================================================
-   DATOS
+   DATOS FIJOS
 ========================================================= */
 
-const defaultPhotos = Array.from(
-  {length:31},
-  (_,i) =>
-    `assets/fotos/foto${String(i+1).padStart(2,'0')}.jpg`
-);
-
-
-const defaultData = {
+const appData = {
 
   carta: `Hola mi amor ❤️
 
@@ -1582,106 +1951,19 @@ Gracias por cada sonrisa, por cada momento y por hacer que mi vida tenga recuerd
 
 Te amo muchísimo. 💕`,
 
-  fondo: '',
+  fondo:
+    'assets/fondo.jpg',
 
-  fotos: defaultPhotos,
-
-  youtubeId: 'bdPG8SlmpNc',
-
-  titulo: "Say You Won't Let Go",
-
-  artista: 'James Arthur'
+  fotos:
+    Array.from(
+      {length:31},
+      (_,i)=>
+        'assets/fotos/foto' +
+        String(i+1).padStart(2,'0') +
+        '.jpg'
+    )
 
 };
-
-
-/* =========================================================
-   CARGAR DATOS
-========================================================= */
-
-let appData;
-
-try{
-
-  const storedData =
-    localStorage.getItem('macViviOSData');
-
-
-  appData =
-    storedData
-      ? JSON.parse(storedData)
-      : {...defaultData};
-
-
-  if(
-    !appData ||
-    typeof appData !== 'object'
-  ){
-    appData = {...defaultData};
-  }
-
-
-  if(!Array.isArray(appData.fotos)){
-
-    appData.fotos =
-      [...defaultPhotos];
-
-  }
-
-
-  /*
-     Si existe un almacenamiento antiguo
-     con fotos vacías, usamos las 31 fotos
-     reales del proyecto.
-  */
-
-  if(appData.fotos.length === 0){
-
-    appData.fotos =
-      [...defaultPhotos];
-
-  }
-
-
-  if(!appData.youtubeId){
-    appData.youtubeId =
-      defaultData.youtubeId;
-  }
-
-
-  if(!appData.titulo){
-    appData.titulo =
-      defaultData.titulo;
-  }
-
-
-  if(!appData.artista){
-    appData.artista =
-      defaultData.artista;
-  }
-
-
-  if(typeof appData.carta !== 'string'){
-    appData.carta =
-      defaultData.carta;
-  }
-
-
-  if(typeof appData.fondo !== 'string'){
-    appData.fondo = '';
-  }
-
-}catch(error){
-
-  console.error(
-    'Error cargando datos:',
-    error
-  );
-
-  appData =
-    {...defaultData};
-
-}
 
 
 /* =========================================================
@@ -1692,48 +1974,15 @@ const $ =
   selector =>
     document.querySelector(selector);
 
-
 const $$ =
   selector =>
     document.querySelectorAll(selector);
 
+let zIndex =
+  3000;
 
-let zIndex = 3000;
-
-let viewerIndex = 0;
-
-
-/* =========================================================
-   GUARDAR
-========================================================= */
-
-function save(){
-
-  try{
-
-    localStorage.setItem(
-      'macViviOSData',
-      JSON.stringify(appData)
-    );
-
-    return true;
-
-  }catch(error){
-
-    console.error(
-      'No se pudieron guardar los datos:',
-      error
-    );
-
-    showToast(
-      'No hay suficiente espacio para guardar estos archivos'
-    );
-
-    return false;
-
-  }
-
-}
+let viewerIndex =
+  0;
 
 
 /* =========================================================
@@ -1745,11 +1994,13 @@ function abrirVentana(id){
   const w =
     document.getElementById(id);
 
+  if(!w){
+    return;
+  }
 
-  if(!w) return;
-
-
-  if(w.classList.contains('minimized')){
+  if(
+    w.classList.contains('minimized')
+  ){
 
     w.classList.remove(
       'minimized'
@@ -1757,10 +2008,13 @@ function abrirVentana(id){
 
   }
 
+  w.classList.add(
+    'active'
+  );
 
-  w.classList.add('active');
-
-  w.classList.remove('closing');
+  w.classList.remove(
+    'closing'
+  );
 
   w.style.zIndex =
     ++zIndex;
@@ -1778,7 +2032,9 @@ function abrirVentana(id){
   );
 
 
-  if(id === 'win-carta'){
+  if(
+    id === 'win-carta'
+  ){
 
     typeLetter();
 
@@ -1792,9 +2048,9 @@ function cerrarVentana(id){
   const w =
     document.getElementById(id);
 
-
-  if(!w) return;
-
+  if(!w){
+    return;
+  }
 
   w.classList.add(
     'closing'
@@ -1823,9 +2079,9 @@ function minimizarVentana(id){
   const w =
     document.getElementById(id);
 
-
-  if(!w) return;
-
+  if(!w){
+    return;
+  }
 
   w.classList.remove(
     'active'
@@ -1856,9 +2112,9 @@ function maximizarVentana(id){
   const w =
     document.getElementById(id);
 
-
-  if(!w) return;
-
+  if(!w){
+    return;
+  }
 
   w.classList.toggle(
     'maximized'
@@ -1872,11 +2128,11 @@ function maximizarVentana(id){
 ========================================================= */
 
 $$('[data-open]').forEach(
-  el => {
+  el=>{
 
     el.addEventListener(
       'click',
-      e => {
+      e=>{
 
         e.stopPropagation();
 
@@ -1892,11 +2148,11 @@ $$('[data-open]').forEach(
 
 
 $$('[data-close]').forEach(
-  el => {
+  el=>{
 
     el.addEventListener(
       'click',
-      e => {
+      e=>{
 
         e.stopPropagation();
 
@@ -1912,11 +2168,11 @@ $$('[data-close]').forEach(
 
 
 $$('[data-min]').forEach(
-  el => {
+  el=>{
 
     el.addEventListener(
       'click',
-      e => {
+      e=>{
 
         e.stopPropagation();
 
@@ -1932,11 +2188,11 @@ $$('[data-min]').forEach(
 
 
 $$('[data-max]').forEach(
-  el => {
+  el=>{
 
     el.addEventListener(
       'click',
-      e => {
+      e=>{
 
         e.stopPropagation();
 
@@ -1956,21 +2212,23 @@ $$('[data-max]').forEach(
 ========================================================= */
 
 $$('.window').forEach(
-  w => {
+  w=>{
 
     w.addEventListener(
       'mousedown',
-      () =>
+      ()=>{
         w.style.zIndex =
-          ++zIndex
+          ++zIndex;
+      }
     );
 
 
     w.addEventListener(
       'touchstart',
-      () =>
+      ()=>{
         w.style.zIndex =
-          ++zIndex,
+          ++zIndex;
+      },
       {passive:true}
     );
 
@@ -1979,17 +2237,18 @@ $$('.window').forEach(
 
 
 /* =========================================================
-   DRAG
+   DRAG DE VENTANAS
 ========================================================= */
 
-let drag = null;
+let drag =
+  null;
 
 
 $$('.window-header').forEach(
-  header => {
+  header=>{
 
     const start =
-      (clientX,clientY) => {
+      (clientX,clientY)=>{
 
         const w =
           header.closest('.window');
@@ -2000,7 +2259,9 @@ $$('.window-header').forEach(
             'maximized'
           )
         ){
+
           return;
+
         }
 
 
@@ -2012,13 +2273,17 @@ $$('.window-header').forEach(
 
           w,
 
-          startX:clientX,
+          startX:
+            clientX,
 
-          startY:clientY,
+          startY:
+            clientY,
 
-          left:r.left,
+          left:
+            r.left,
 
-          top:r.top
+          top:
+            r.top
 
         };
 
@@ -2036,9 +2301,11 @@ $$('.window-header').forEach(
 
 
     const move =
-      (x,y) => {
+      (x,y)=>{
 
-        if(!drag) return;
+        if(!drag){
+          return;
+        }
 
 
         drag.w.style.left =
@@ -2061,14 +2328,16 @@ $$('.window-header').forEach(
 
     header.addEventListener(
       'mousedown',
-      e => {
+      e=>{
 
         if(
           e.target.classList.contains(
             'dot'
           )
         ){
+
           return;
+
         }
 
 
@@ -2079,17 +2348,21 @@ $$('.window-header').forEach(
 
 
         const mm =
-          e =>
+          e=>{
+
             move(
               e.clientX,
               e.clientY
             );
 
+          };
+
 
         const up =
-          () => {
+          ()=>{
 
-            drag = null;
+            drag =
+              null;
 
 
             document.removeEventListener(
@@ -2123,14 +2396,16 @@ $$('.window-header').forEach(
 
     header.addEventListener(
       'touchstart',
-      e => {
+      e=>{
 
         if(
           e.target.classList.contains(
             'dot'
           )
         ){
+
           return;
+
         }
 
 
@@ -2145,7 +2420,11 @@ $$('.window-header').forEach(
 
 
         const mm =
-          e => {
+          e=>{
+
+            if(!e.touches[0]){
+              return;
+            }
 
             const t =
               e.touches[0];
@@ -2160,9 +2439,10 @@ $$('.window-header').forEach(
 
 
         const up =
-          () => {
+          ()=>{
 
-            drag = null;
+            drag =
+              null;
 
 
             document.removeEventListener(
@@ -2217,17 +2497,22 @@ function typeLetter(){
     $('#display-carta');
 
 
-  if(!el) return;
+  if(!el){
+    return;
+  }
 
 
   const text =
-    appData.carta || '';
+    appData.carta ||
+    '';
 
 
   if(
     el.dataset.done === text
   ){
+
     return;
+
   }
 
 
@@ -2239,7 +2524,8 @@ function typeLetter(){
     '';
 
 
-  let i = 0;
+  let i =
+    0;
 
 
   function step(){
@@ -2250,7 +2536,6 @@ function typeLetter(){
 
       el.textContent +=
         text[i++];
-
 
       typingTimer =
         setTimeout(
@@ -2269,84 +2554,6 @@ function typeLetter(){
 
 
 /* =========================================================
-   YOUTUBE
-========================================================= */
-
-function extractYouTubeId(
-  urlOrId
-){
-
-  if(!urlOrId){
-    return 'bdPG8SlmpNc';
-  }
-
-
-  urlOrId =
-    urlOrId.trim();
-
-
-  if(
-    urlOrId.length === 11 &&
-    !urlOrId.includes('/') &&
-    !urlOrId.includes('.')
-  ){
-
-    return urlOrId;
-
-  }
-
-
-  const regExp =
-    /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-
-
-  const match =
-    urlOrId.match(
-      regExp
-    );
-
-
-  return (
-    match &&
-    match[2] &&
-    match[2].length === 11
-  )
-    ? match[2]
-    : urlOrId;
-
-}
-
-
-/* =========================================================
-   PRECARGA DE FOTOS
-========================================================= */
-
-function preloadPhotos(){
-
-  if(
-    !appData.fotos ||
-    !appData.fotos.length
-  ){
-    return;
-  }
-
-
-  appData.fotos.forEach(
-    src => {
-
-      const img =
-        new Image();
-
-      img.src =
-        src;
-
-    }
-  );
-
-}
-
-
-/* =========================================================
    RENDER
 ========================================================= */
 
@@ -2354,40 +2561,12 @@ function renderApp(){
 
   try{
 
-    $('#cfg-carta').value =
-      appData.carta || '';
-
-
-    $('#cfg-titulo').value =
-      appData.titulo ||
-      defaultData.titulo;
-
-
-    $('#cfg-artista').value =
-      appData.artista ||
-      defaultData.artista;
-
-
-    $('#cfg-youtube').value =
-      appData.youtubeId ||
-      defaultData.youtubeId;
-
-
     /* =========================
        FONDO
     ========================= */
 
-    if(appData.fondo){
-
-      document.body.style.backgroundImage =
-        `url("${appData.fondo}")`;
-
-    }else{
-
-      document.body.style.backgroundImage =
-        'linear-gradient(135deg,#ff9a9e,#fecfef 48%,#a1c4fd)';
-
-    }
+    document.body.style.backgroundImage =
+      'url("assets/fondo.jpg")';
 
 
     /* =========================
@@ -2402,271 +2581,90 @@ function renderApp(){
       '';
 
 
-    if(
-      !appData.fotos ||
-      appData.fotos.length === 0
-    ){
+    appData.fotos.forEach(
+      (src,i)=>{
 
-      gal.innerHTML = `
-        <div style="
-          grid-column:1 / -1;
-          text-align:center;
-          padding:40px;
-          color:#666;
-          font-size:13px;
-        ">
-          No hay fotos aún.
-          Sube algunas desde los Ajustes (⚙).
-        </div>
-      `;
-
-    }else{
-
-      appData.fotos.forEach(
-        (src,i) => {
-
-          const card =
-            document.createElement(
-              'div'
-            );
-
-
-          card.className =
-            'photo-card';
-
-
-          card.style.animationDelay =
-            (i*.07)+'s';
-
-
-          const img =
-            document.createElement(
-              'img'
-            );
-
-
-          img.src =
-            src;
-
-
-          img.alt =
-            'Foto '+(i+1);
-
-
-          img.loading =
-            'lazy';
-
-
-          img.onerror =
-            () => {
-
-              img.style.display =
-                'none';
-
-            };
-
-
-          const p =
-            document.createElement(
-              'p'
-            );
-
-
-          p.textContent =
-            'Foto #'+(i+1);
-
-
-          card.append(
-            img,
-            p
+        const card =
+          document.createElement(
+            'div'
           );
 
 
-          card.addEventListener(
-            'click',
-            () =>
-              openViewer(i)
+        card.className =
+          'photo-card';
+
+
+        card.style.animationDelay =
+          (i*.07)+'s';
+
+
+        const img =
+          document.createElement(
+            'img'
           );
 
 
-          gal.appendChild(
-            card
+        img.src =
+          src;
+
+
+        img.alt =
+          'Foto '+(i+1);
+
+
+        img.loading =
+          'lazy';
+
+
+        img.draggable =
+          false;
+
+
+        img.onerror =
+          ()=>{
+
+            console.error(
+              'No se pudo cargar:',
+              src
+            );
+
+          };
+
+
+        const p =
+          document.createElement(
+            'p'
           );
 
-        }
-      );
 
-    }
-
-
-    /* =========================
-       ADMINISTRACIÓN
-    ========================= */
-
-    const adminList =
-      $('#admin-photo-list');
+        p.textContent =
+          'Foto #'+(i+1);
 
 
-    adminList.innerHTML =
+        card.append(
+          img,
+          p
+        );
+
+
+        card.addEventListener(
+          'click',
+          ()=>{
+            openViewer(i);
+          }
+        );
+
+
+        gal.appendChild(
+          card
+        );
+
+      }
+    );
+
+
+    $('#display-carta').dataset.done =
       '';
-
-
-    if(
-      !appData.fotos ||
-      appData.fotos.length === 0
-    ){
-
-      adminList.innerHTML = `
-        <div style="
-          font-size:11px;
-          color:#777;
-          text-align:center;
-          padding:10px
-        ">
-          No hay fotos para eliminar
-        </div>
-      `;
-
-    }else{
-
-      appData.fotos.forEach(
-        (src,i) => {
-
-          const row =
-            document.createElement(
-              'div'
-            );
-
-
-          row.className =
-            'admin-photo-row';
-
-
-          const thumb =
-            document.createElement(
-              'img'
-            );
-
-
-          thumb.src =
-            src;
-
-
-          const lbl =
-            document.createElement(
-              'span'
-            );
-
-
-          lbl.textContent =
-            `Foto #${i+1}`;
-
-
-          const delBtn =
-            document.createElement(
-              'button'
-            );
-
-
-          delBtn.className =
-            'del-photo-btn';
-
-
-          delBtn.textContent =
-            'Eliminar';
-
-
-          delBtn.onclick =
-            () => {
-
-              appData.fotos.splice(
-                i,
-                1
-              );
-
-
-              save();
-
-              renderApp();
-
-              showToast(
-                'Foto eliminada'
-              );
-
-            };
-
-
-          row.append(
-            thumb,
-            lbl,
-            delBtn
-          );
-
-
-          adminList.appendChild(
-            row
-          );
-
-        }
-      );
-
-    }
-
-
-    /* =========================
-       MÚSICA
-    ========================= */
-
-    $('#music-title').textContent =
-      appData.titulo ||
-      defaultData.titulo;
-
-
-    $('#music-artist').textContent =
-      appData.artista ||
-      defaultData.artista;
-
-
-    const ytBox =
-      $('#yt-player-box');
-
-
-    ytBox.innerHTML =
-      '';
-
-
-    const cleanId =
-      extractYouTubeId(
-        appData.youtubeId
-      );
-
-
-    if(cleanId){
-
-      ytBox.innerHTML = `
-        <iframe
-          src="https://www.youtube.com/embed/${cleanId}?autoplay=0"
-          allow="
-            accelerometer;
-            autoplay;
-            clipboard-write;
-            encrypted-media;
-            gyroscope;
-            picture-in-picture
-          "
-          allowfullscreen>
-        </iframe>
-      `;
-
-    }
-
-
-    $('#display-carta')
-      .dataset.done =
-        '';
-
-
-    preloadPhotos();
 
 
   }catch(error){
@@ -2682,214 +2680,56 @@ function renderApp(){
 
 
 /* =========================================================
-   BASE64
+   VALES
 ========================================================= */
 
-const toBase64 =
-  file => {
+$$('.claim-btn').forEach(
+  btn=>{
 
-    return new Promise(
-      (resolve,reject) => {
+    btn.addEventListener(
+      'click',
+      ()=>{
 
-        const reader =
-          new FileReader();
-
-
-        reader.readAsDataURL(
-          file
-        );
+        btn.textContent =
+          '¡CANJEADO! ❤️';
 
 
-        reader.onload =
-          () =>
-            resolve(
-              reader.result
-            );
-
-
-        reader.onerror =
-          error =>
-            reject(error);
-
-      }
-    );
-
-  };
-
-
-/* =========================================================
-   GUARDAR AJUSTES
-========================================================= */
-
-$('#btn-guardar')
-  .addEventListener(
-    'click',
-    async () => {
-
-      appData.carta =
-        $('#cfg-carta').value;
-
-
-      appData.titulo =
-        $('#cfg-titulo').value.trim()
-        ||
-        defaultData.titulo;
-
-
-      appData.artista =
-        $('#cfg-artista').value.trim()
-        ||
-        defaultData.artista;
-
-
-      appData.youtubeId =
-        $('#cfg-youtube').value.trim()
-        ||
-        defaultData.youtubeId;
-
-
-      try{
-
-        const fondoFile =
-          $('#cfg-fondo-file').files[0];
-
-
-        if(fondoFile){
-
-          appData.fondo =
-            await toBase64(
-              fondoFile
-            );
-
-        }
-
-
-        const fotosFiles =
-          $('#cfg-fotos-file').files;
-
-
-        if(
-          fotosFiles.length > 0
-        ){
-
-          const nuevasFotos =
-            [];
-
-
-          for(
-            let file of fotosFiles
-          ){
-
-            nuevasFotos.push(
-              await toBase64(
-                file
-              )
-            );
-
-          }
-
-
-          appData.fotos = [
-            ...nuevasFotos,
-            ...(appData.fotos || [])
-          ];
-
-        }
-
-
-        const saved =
-          save();
-
-
-        if(saved){
-
-          renderApp();
-
-
-          cerrarVentana(
-            'win-config'
-          );
-
-
-          showToast(
-            '¡Ajustes y cambios guardados! ❤️'
-          );
-
-        }
-
-      }catch(err){
-
-        console.error(
-          'Error procesando archivos:',
-          err
+        btn.classList.add(
+          'claimed'
         );
 
 
         showToast(
-          'Error al procesar los archivos'
+          'Vale canjeado 💕'
         );
 
       }
+    );
 
-    }
-  );
-
-
-/* =========================================================
-   VALES
-========================================================= */
-
-$$('.claim-btn')
-  .forEach(
-    btn => {
-
-      btn.addEventListener(
-        'click',
-        () => {
-
-          btn.textContent =
-            '¡CANJEADO! ❤️';
-
-
-          btn.classList.add(
-            'claimed'
-          );
-
-
-          showToast(
-            'Vale canjeado 💕'
-          );
-
-        }
-      );
-
-    }
-  );
+  }
+);
 
 
 /* =========================================================
    REGALO
 ========================================================= */
 
-$('#gift-btn')
-  .addEventListener(
-    'click',
-    () => {
+$('#gift-btn').addEventListener(
+  'click',
+  ()=>{
 
-      $('#gift-text')
-        .style.display =
-          'block';
+    $('#gift-text').style.display =
+      'block';
 
 
-      $('#gift-btn')
-        .style.animation =
-          'none';
+    $('#gift-btn').style.animation =
+      'none';
 
 
-      burstHearts();
+    burstHearts();
 
-    }
-  );
+  }
+);
 
 
 /* =========================================================
@@ -2902,7 +2742,9 @@ function openViewer(i){
     !appData.fotos ||
     !appData.fotos.length
   ){
+
     return;
+
   }
 
 
@@ -2914,9 +2756,7 @@ function openViewer(i){
 
 
   $('#image-viewer')
-    .classList.add(
-      'show'
-    );
+    .classList.add('show');
 
 }
 
@@ -2927,7 +2767,9 @@ function updateViewer(){
     !appData.fotos ||
     !appData.fotos.length
   ){
+
     return;
+
   }
 
 
@@ -2937,158 +2779,137 @@ function updateViewer(){
     ];
 
 
-  const img =
-    $('#viewer-img');
-
-
-  img.style.opacity =
-    '0';
-
-
-  img.style.transform =
-    'scale(.98)';
-
-
-  img.src =
+  $('#viewer-img').src =
     src;
 
 
-  img.onload =
-    () => {
-
-      img.style.opacity =
-        '1';
-
-      img.style.transform =
-        'scale(1)';
-
-    };
-
-
-  $('#viewer-caption')
-    .textContent =
-      `Foto ${viewerIndex+1} de ${appData.fotos.length}`;
+  $('#viewer-caption').textContent =
+    `Foto ${viewerIndex+1} de ${appData.fotos.length}`;
 
 }
 
 
-/* =========================
+/* =========================================================
    CERRAR VISOR
-========================= */
+========================================================= */
 
 $('#viewer-close').onclick =
-  () => {
+  ()=>{
 
     $('#image-viewer')
-      .classList.remove(
-        'show'
-      );
+      .classList.remove('show');
 
   };
 
 
-/* =========================
-   ANTERIOR
-========================= */
-
-function previousPhoto(){
-
-  if(
-    !appData.fotos ||
-    !appData.fotos.length
-  ){
-    return;
-  }
-
-
-  viewerIndex =
-    (
-      viewerIndex -
-      1 +
-      appData.fotos.length
-    ) %
-    appData.fotos.length;
-
-
-  updateViewer();
-
-}
-
+/* =========================================================
+   FOTO ANTERIOR
+========================================================= */
 
 $('#viewer-prev').onclick =
-  previousPhoto;
+  ()=>{
+
+    if(
+      !appData.fotos.length
+    ){
+
+      return;
+
+    }
 
 
-/* =========================
-   SIGUIENTE
-========================= */
-
-function nextPhoto(){
-
-  if(
-    !appData.fotos ||
-    !appData.fotos.length
-  ){
-    return;
-  }
+    viewerIndex =
+      (
+        viewerIndex -
+        1 +
+        appData.fotos.length
+      ) %
+      appData.fotos.length;
 
 
-  viewerIndex =
-    (
-      viewerIndex +
-      1
-    ) %
-    appData.fotos.length;
+    updateViewer();
 
-
-  updateViewer();
-
-}
-
-
-$('#viewer-next').onclick =
-  nextPhoto;
+  };
 
 
 /* =========================================================
-   SWIPE EN ANDROID
+   FOTO SIGUIENTE
 ========================================================= */
 
-const imageViewer =
+$('#viewer-next').onclick =
+  ()=>{
+
+    if(
+      !appData.fotos.length
+    ){
+
+      return;
+
+    }
+
+
+    viewerIndex =
+      (
+        viewerIndex +
+        1
+      ) %
+      appData.fotos.length;
+
+
+    updateViewer();
+
+  };
+
+
+/* =========================================================
+   SWIPE ANDROID
+========================================================= */
+
+const viewer =
   $('#image-viewer');
 
 
-const viewerImage =
+const viewerImg =
   $('#viewer-img');
 
 
-let touchStartX = 0;
+let touchStartX =
+  0;
 
-let touchStartY = 0;
+let touchStartY =
+  0;
 
-let touchStartTime = 0;
+let touchStartTime =
+  0;
 
-let swipeHandled = false;
+let swipeHandled =
+  false;
 
 
-imageViewer.addEventListener(
+viewer.addEventListener(
   'touchstart',
-  e => {
+  e=>{
 
     if(
       !e.touches ||
       e.touches.length !== 1
     ){
+
       return;
+
     }
 
 
+    const touch =
+      e.touches[0];
+
+
     touchStartX =
-      e.touches[0].clientX;
+      touch.clientX;
 
 
     touchStartY =
-      e.touches[0].clientY;
+      touch.clientY;
 
 
     touchStartTime =
@@ -3103,9 +2924,9 @@ imageViewer.addEventListener(
 );
 
 
-imageViewer.addEventListener(
+viewer.addEventListener(
   'touchend',
-  e => {
+  e=>{
 
     if(swipeHandled){
       return;
@@ -3116,25 +2937,23 @@ imageViewer.addEventListener(
       !e.changedTouches ||
       e.changedTouches.length !== 1
     ){
+
       return;
+
     }
 
 
-    const endX =
-      e.changedTouches[0].clientX;
-
-
-    const endY =
-      e.changedTouches[0].clientY;
+    const touch =
+      e.changedTouches[0];
 
 
     const dx =
-      endX -
+      touch.clientX -
       touchStartX;
 
 
     const dy =
-      endY -
+      touch.clientY -
       touchStartY;
 
 
@@ -3146,14 +2965,18 @@ imageViewer.addEventListener(
     if(
       duration > 1200
     ){
+
       return;
+
     }
 
 
     if(
-      Math.abs(dx) < 35
+      Math.abs(dx) < 40
     ){
+
       return;
+
     }
 
 
@@ -3161,7 +2984,9 @@ imageViewer.addEventListener(
       Math.abs(dx) <=
       Math.abs(dy)
     ){
+
       return;
+
     }
 
 
@@ -3171,11 +2996,11 @@ imageViewer.addEventListener(
 
     if(dx < 0){
 
-      nextPhoto();
+      $('#viewer-next').click();
 
     }else{
 
-      previousPhoto();
+      $('#viewer-prev').click();
 
     }
 
@@ -3184,51 +3009,10 @@ imageViewer.addEventListener(
 );
 
 
-viewerImage.addEventListener(
+viewerImg.addEventListener(
   'dragstart',
-  e =>
-    e.preventDefault()
-);
-
-
-/* =========================================================
-   TECLADO
-========================================================= */
-
-document.addEventListener(
-  'keydown',
-  e => {
-
-    const viewer =
-      $('#image-viewer');
-
-
-    if(
-      !viewer.classList.contains(
-        'show'
-      )
-    ){
-      return;
-    }
-
-
-    if(e.key === 'ArrowLeft'){
-
-      e.preventDefault();
-
-      previousPhoto();
-
-    }
-
-
-    if(e.key === 'ArrowRight'){
-
-      e.preventDefault();
-
-      nextPhoto();
-
-    }
-
+  e=>{
+    e.preventDefault();
   }
 );
 
@@ -3304,30 +3088,50 @@ function showToast(msg){
   Object.assign(
     t.style,
     {
+
       position:'fixed',
+
       top:'48px',
+
       left:'50%',
-      transform:'translateX(-50%)',
+
+      transform:
+        'translateX(-50%)',
+
       zIndex:65000,
+
       padding:'10px 16px',
+
       borderRadius:'20px',
-      background:'rgba(30,30,30,.78)',
+
+      background:
+        'rgba(30,30,30,.78)',
+
       color:'#fff',
+
       fontSize:'12px',
-      backdropFilter:'blur(15px)',
-      boxShadow:'0 8px 25px rgba(0,0,0,.25)'
+
+      backdropFilter:
+        'blur(15px)',
+
+      boxShadow:
+        '0 8px 25px rgba(0,0,0,.25)'
+
     }
   );
 
 
-  document.body.appendChild(
-    t
-  );
+  document.body.appendChild(t);
 
 
   setTimeout(
-    () =>
-      t.remove(),
+    ()=>{
+
+      if(t.parentNode){
+        t.remove();
+      }
+
+    },
     2200
   );
 
@@ -3356,8 +3160,7 @@ function heart(x,y){
       '💕',
       '❤️',
       '💗'
-    ]
-    [
+    ][
       Math.floor(
         Math.random()*4
       )
@@ -3378,8 +3181,11 @@ function heart(x,y){
 
 
   setTimeout(
-    () =>
-      h.remove(),
+    ()=>{
+      if(h.parentNode){
+        h.remove();
+      }
+    },
     900
   );
 
@@ -3388,14 +3194,16 @@ function heart(x,y){
 
 document.addEventListener(
   'click',
-  e => {
+  e=>{
 
     if(
       e.target.closest(
         'button,input,textarea,.window-header,.dock,.desktop-item,#image-viewer'
       )
     ){
+
       return;
+
     }
 
 
@@ -3421,7 +3229,7 @@ function burstHearts(){
   ){
 
     setTimeout(
-      () => {
+      ()=>{
 
         heart(
 
@@ -3443,12 +3251,14 @@ function burstHearts(){
 
 
 /* =========================================================
-   TECLA ESC
+   TECLADO
 ========================================================= */
 
 document.addEventListener(
   'keydown',
-  e => {
+  e=>{
+
+    /* ESC */
 
     if(
       e.key === 'Escape'
@@ -3470,8 +3280,56 @@ document.addEventListener(
 
     }
 
+
+    /* GALERÍA */
+
+    if(
+      $('#image-viewer')
+        .classList.contains('show')
+    ){
+
+      if(
+        e.key === 'ArrowLeft'
+      ){
+
+        $('#viewer-prev').click();
+
+      }
+
+
+      if(
+        e.key === 'ArrowRight'
+      ){
+
+        $('#viewer-next').click();
+
+      }
+
+    }
+
   }
 );
+
+
+/* =========================================================
+   PRE-CARGA DE FOTOS
+========================================================= */
+
+function preloadPhotos(){
+
+  appData.fotos.forEach(
+    src=>{
+
+      const img =
+        new Image();
+
+      img.src =
+        src;
+
+    }
+  );
+
+}
 
 
 /* =========================================================
@@ -3496,6 +3354,8 @@ function launchOS(){
   try{
 
     renderApp();
+
+    preloadPhotos();
 
   }catch(error){
 
@@ -3529,9 +3389,7 @@ function launchOS(){
 
 
 /*
-   Transición normal:
-   la barra de carga dura aproximadamente
-   1.8 segundos.
+   Arranque normal.
 */
 
 setTimeout(
@@ -3541,25 +3399,33 @@ setTimeout(
 
 
 /*
-   SEGURIDAD:
-   si por alguna razón el navegador,
-   el teléfono o alguna carga de imagen
-   retrasa el JavaScript principal,
-   la pantalla de boot jamás debe quedarse
-   permanentemente bloqueada.
+   Seguro adicional:
+   si algo falla antes de launchOS,
+   el boot no queda congelado.
 */
 
 setTimeout(
-  () => {
+  ()=>{
 
-    if(!bootDone){
+    const boot =
+      $('#boot');
+
+
+    if(
+      boot &&
+      !bootDone
+    ){
+
+      boot.classList.add(
+        'hide'
+      );
 
       launchOS();
 
     }
 
   },
-  3000
+  2500
 );
 
 
@@ -3567,35 +3433,31 @@ setTimeout(
    LOGIN
 ========================================================= */
 
-$('#login-btn')
-  .addEventListener(
-    'click',
-    () => {
+$('#login-btn').addEventListener(
+  'click',
+  ()=>{
 
-      $('#login')
-        .style.opacity =
-          '0';
+    $('#login').style.opacity =
+      '0';
 
 
-      setTimeout(
-        () => {
+    setTimeout(
+      ()=>{
 
-          $('#login')
-            .style.display =
-              'none';
+        $('#login').style.display =
+          'none';
 
 
-          showToast(
-            'Bienvenida a ViviOS ❤️'
-          );
+        showToast(
+          'Bienvenida a ViviOS ❤️'
+        );
 
-        },
-        700
-      );
+      },
+      700
+    );
 
-    }
-  );
-
+  }
+);
 
 </script>
 
