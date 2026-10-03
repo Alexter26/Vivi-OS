@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <title>ViviOS - Para Mi Amor ❤️</title>
 
 <style>
@@ -17,16 +18,15 @@
 
 *{
   box-sizing:border-box;
-  -webkit-tap-highlight-color:transparent;
+  margin:0;
+  padding:0;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
 }
 
 html,body{
-  margin:0;
   width:100%;
   height:100%;
   overflow:hidden;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-  color:var(--text);
 }
 
 body{
@@ -35,6 +35,7 @@ body{
   background-position:center;
   background-repeat:no-repeat;
   background-attachment:fixed;
+  color:var(--text);
 }
 
 /* =========================
@@ -44,50 +45,59 @@ body{
 #boot{
   position:fixed;
   inset:0;
-  z-index:99999;
-  background:#050505;
-  color:white;
+  z-index:50000;
   display:flex;
   align-items:center;
   justify-content:center;
   flex-direction:column;
+  color:white;
+  background:radial-gradient(circle at center,#34203e,#120f18 70%);
+  transition:opacity .9s,visibility .9s;
+}
+
+#boot.hide{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
 }
 
 .boot-logo{
-  font-size:58px;
+  font-size:54px;
   margin-bottom:18px;
-  animation:pulse 1.5s infinite;
+  animation:pulse 2s infinite;
 }
 
 .boot-title{
-  font-size:22px;
-  font-weight:700;
+  font-size:24px;
+  font-weight:600;
+  letter-spacing:.5px;
 }
 
 .boot-sub{
-  margin-top:8px;
-  opacity:.55;
   font-size:13px;
+  opacity:.65;
+  margin-top:6px;
 }
 
-.boot-bar{
-  width:220px;
+.boot-progress{
+  width:190px;
   height:5px;
+  background:rgba(255,255,255,.16);
   border-radius:10px;
-  background:#292929;
   margin-top:28px;
   overflow:hidden;
 }
 
-.boot-progress{
-  width:0;
+.boot-progress span{
+  display:block;
   height:100%;
-  background:#fff;
+  width:0;
+  background:white;
   border-radius:10px;
-  animation:bootProgress 2.3s forwards;
+  animation:load 1.8s ease forwards;
 }
 
-@keyframes bootProgress{
+@keyframes load{
   to{width:100%}
 }
 
@@ -102,58 +112,108 @@ body{
 #login{
   position:fixed;
   inset:0;
-  z-index:99998;
+  z-index:40000;
   display:none;
   align-items:center;
   justify-content:center;
-  background:rgba(0,0,0,.22);
-  backdrop-filter:blur(20px);
+  flex-direction:column;
+  color:white;
+  background:
+    linear-gradient(
+      135deg,
+      #17121d,
+      #40223c 55%,
+      #1c1930
+    );
+  opacity:0;
+  transition:opacity .8s;
 }
 
-.login-card{
-  width:min(360px,90vw);
-  padding:35px 30px;
-  text-align:center;
-  border:1px solid rgba(255,255,255,.5);
-  background:rgba(255,255,255,.35);
-  backdrop-filter:blur(25px);
-  border-radius:28px;
-  box-shadow:0 25px 80px rgba(0,0,0,.25);
+#login.show{
+  display:flex;
+  opacity:1;
 }
 
 .login-avatar{
-  width:90px;
-  height:90px;
+  width:92px;
+  height:92px;
   border-radius:50%;
-  margin:auto;
+  background:linear-gradient(135deg,#fff,#ffd7e0);
   display:flex;
   align-items:center;
   justify-content:center;
   font-size:45px;
-  background:rgba(255,255,255,.65);
-  box-shadow:0 10px 30px rgba(0,0,0,.12);
+  box-shadow:0 15px 45px rgba(0,0,0,.35);
+  margin-bottom:18px;
 }
 
-.login-card h1{
-  margin:17px 0 4px;
-  font-size:25px;
+.login-name{
+  font-size:21px;
+  font-weight:600;
 }
 
-.login-card p{
-  margin:0 0 22px;
-  opacity:.65;
+.login-hint{
+  font-size:12px;
+  opacity:.6;
+  margin:5px 0 20px;
 }
 
 .login-btn{
   border:0;
-  padding:12px 25px;
-  border-radius:999px;
-  background:var(--accent);
-  color:white;
+  border-radius:22px;
+  padding:11px 25px;
+  background:rgba(255,255,255,.16);
+  color:#fff;
+  border:1px solid rgba(255,255,255,.25);
+  backdrop-filter:blur(15px);
+  transition:.25s;
+}
+
+.login-btn:hover{
+  background:rgba(255,255,255,.28);
+  transform:translateY(-2px);
+}
+
+/* =========================
+   TOP BAR
+========================= */
+
+#top-bar{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:30px;
+  z-index:10000;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 14px;
+  background:rgba(255,255,255,.38);
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
+  border-bottom:1px solid rgba(255,255,255,.35);
+  font-size:12px;
+  font-weight:600;
+}
+
+.top-left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.apple{
   font-size:15px;
-  font-weight:700;
-  cursor:pointer;
-  box-shadow:0 8px 20px rgba(255,45,85,.3);
+}
+
+.menu{
+  opacity:.7;
+  font-weight:400;
+}
+
+#mac-clock{
+  font-variant-numeric:tabular-nums;
 }
 
 /* =========================
@@ -161,121 +221,107 @@ body{
 ========================= */
 
 #desktop{
-  display:none;
   position:fixed;
-  inset:0;
+  inset:30px 0 0 0;
+  padding:18px;
 }
 
-.topbar{
-  position:absolute;
-  left:0;
-  right:0;
-  top:0;
-  height:34px;
-  z-index:1000;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 14px;
-  background:rgba(255,255,255,.38);
-  backdrop-filter:blur(20px);
-  border-bottom:1px solid rgba(255,255,255,.3);
-  font-size:13px;
-  font-weight:600;
-}
-
-.top-left,
-.top-right{
-  display:flex;
-  gap:15px;
-  align-items:center;
-}
-
-.desktop-icons{
-  position:absolute;
-  top:55px;
-  right:20px;
+.desktop-item{
+  width:82px;
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:20px;
-}
-
-.desktop-icon{
-  width:82px;
-  padding:5px;
-  border-radius:12px;
-  text-align:center;
-  color:white;
-  text-shadow:0 1px 4px rgba(0,0,0,.8);
+  gap:5px;
+  padding:7px;
+  border-radius:9px;
   cursor:pointer;
-  user-select:none;
+  margin-bottom:10px;
+  color:#fff;
+  text-align:center;
+  transition:.2s;
 }
 
-.desktop-icon:hover{
+.desktop-item:hover{
   background:rgba(255,255,255,.18);
 }
 
-.desktop-icon .icon{
-  width:55px;
-  height:55px;
-  margin:auto;
+.desktop-icon{
+  width:54px;
+  height:54px;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:40px;
-  filter:drop-shadow(0 5px 8px rgba(0,0,0,.2));
+  font-size:38px;
+  filter:drop-shadow(0 5px 7px rgba(0,0,0,.25));
 }
 
-.desktop-icon span{
-  display:block;
-  margin-top:5px;
-  font-size:12px;
-  line-height:15px;
+.desktop-label{
+  font-size:11px;
+  font-weight:600;
+  text-shadow:0 2px 5px rgba(0,0,0,.8);
 }
 
 /* =========================
    DOCK
 ========================= */
 
-.dock{
-  position:absolute;
-  z-index:2000;
+#dock-container{
+  position:fixed;
   left:50%;
-  bottom:15px;
+  bottom:9px;
   transform:translateX(-50%);
-  display:flex;
-  align-items:flex-end;
-  gap:8px;
-  padding:8px 12px;
-  border-radius:22px;
-  background:rgba(255,255,255,.48);
-  backdrop-filter:blur(22px);
-  border:1px solid rgba(255,255,255,.55);
-  box-shadow:0 12px 35px rgba(0,0,0,.22);
+  z-index:15000;
 }
 
-.dock-item{
-  width:49px;
-  height:49px;
+#dock{
+  display:flex;
+  align-items:flex-end;
+  gap:7px;
+  padding:8px 10px;
+  border:1px solid var(--border);
+  border-radius:21px;
+  background:rgba(255,255,255,.30);
+  backdrop-filter:blur(25px);
+  -webkit-backdrop-filter:blur(25px);
+  box-shadow:0 14px 35px rgba(0,0,0,.20);
+}
+
+.dock-icon{
+  position:relative;
+  width:48px;
+  height:48px;
+  border-radius:13px;
+  border:1px solid rgba(255,255,255,.45);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.82),
+      rgba(255,255,255,.45)
+    );
   display:flex;
   align-items:center;
   justify-content:center;
-  border-radius:14px;
-  font-size:28px;
+  font-size:25px;
+  box-shadow:0 5px 10px rgba(0,0,0,.12);
+  transition:
+    transform .16s ease,
+    margin .16s ease;
   cursor:pointer;
-  transition:.18s;
 }
 
-.dock-item:hover{
-  transform:translateY(-8px) scale(1.1);
-  background:rgba(255,255,255,.35);
+.dock-icon:hover{
+  transform:translateY(-10px) scale(1.22);
+  margin:0 5px;
 }
 
-.dock-separator{
-  width:1px;
-  height:35px;
-  background:rgba(0,0,0,.15);
+.dock-icon.open::after{
+  content:"";
+  position:absolute;
+  bottom:-5px;
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:#333;
 }
 
 /* =========================
@@ -283,207 +329,258 @@ body{
 ========================= */
 
 .window{
-  position:absolute;
-  z-index:100;
+  position:fixed;
   display:none;
-  width:min(720px,90vw);
-  height:min(560px,75vh);
-  left:50%;
+  flex-direction:column;
+  width:min(760px,88vw);
+  height:min(650px,76vh);
+  min-width:300px;
+  min-height:240px;
   top:50%;
+  left:50%;
   transform:translate(-50%,-50%);
-  border-radius:15px;
+  background:rgba(248,248,250,.82);
+  backdrop-filter:blur(30px);
+  -webkit-backdrop-filter:blur(30px);
+  border:1px solid rgba(255,255,255,.65);
+  border-radius:14px;
+  box-shadow:0 30px 80px rgba(0,0,0,.32);
   overflow:hidden;
-  background:rgba(255,255,255,.78);
-  backdrop-filter:blur(28px);
-  border:1px solid rgba(255,255,255,.7);
-  box-shadow:0 25px 80px rgba(0,0,0,.28);
+  z-index:2000;
+  opacity:0;
+  scale:.94;
 }
 
 .window.active{
-  display:block;
-  animation:windowOpen .18s ease-out;
+  display:flex;
+  animation:windowIn .28s cubic-bezier(.2,.8,.2,1) forwards;
 }
 
-@keyframes windowOpen{
-  from{
-    opacity:0;
-    transform:translate(-50%,-48%) scale(.97);
-  }
+.window.closing{
+  animation:windowOut .22s forwards;
+}
+
+.window.minimized{
+  display:none!important;
+}
+
+@keyframes windowIn{
   to{
     opacity:1;
-    transform:translate(-50%,-50%) scale(1);
+    scale:1;
+  }
+}
+
+@keyframes windowOut{
+  to{
+    opacity:0;
+    scale:.92;
   }
 }
 
 .window.maximized{
+  top:40px!important;
   left:0!important;
-  top:34px!important;
-  width:100%!important;
-  height:calc(100% - 34px)!important;
   transform:none!important;
-  border-radius:0;
+  width:100vw!important;
+  height:calc(100vh - 40px)!important;
+  border-radius:0!important;
 }
 
 .window-header{
-  height:43px;
+  height:42px;
+  flex:none;
+  background:rgba(235,235,238,.78);
+  border-bottom:1px solid rgba(0,0,0,.08);
   display:flex;
   align-items:center;
-  padding:0 13px;
-  background:rgba(245,245,245,.72);
-  border-bottom:1px solid rgba(0,0,0,.08);
-  cursor:move;
-  user-select:none;
+  padding:0 14px;
+  position:relative;
+  cursor:grab;
 }
 
-.traffic{
+.window-header:active{
+  cursor:grabbing;
+}
+
+.window-dots{
   display:flex;
   gap:7px;
-  margin-right:14px;
+  z-index:2;
 }
 
 .dot{
-  width:12px;
-  height:12px;
-  padding:0;
-  border:0;
+  width:13px;
+  height:13px;
   border-radius:50%;
+  border:0;
+  padding:0;
   cursor:pointer;
 }
 
-.dot-close{background:#ff5f57}
-.dot-min{background:#ffbd2e}
-.dot-max{background:#28c840}
-
-.window-title{
-  font-weight:700;
-  font-size:13px;
-  flex:1;
-  text-align:center;
-  margin-right:55px;
+.dot-close{
+  background:#ff5f57;
 }
 
-.window-content{
-  height:calc(100% - 43px);
+.dot-min{
+  background:#ffbd2e;
+}
+
+.dot-max{
+  background:#28c840;
+}
+
+.window-title{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:13px;
+  font-weight:600;
+  color:#4b4b4d;
+  white-space:nowrap;
+  max-width:55%;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.window-body{
+  flex:1;
   overflow:auto;
-  padding:25px;
+  padding:20px;
+  -webkit-overflow-scrolling:touch;
 }
 
 /* =========================
    CARTA
 ========================= */
 
-.letter{
-  max-width:600px;
-  margin:auto;
-  padding:35px;
-  background:rgba(255,255,255,.7);
-  border-radius:20px;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
-  white-space:pre-line;
+.letter-paper{
+  background:linear-gradient(145deg,#fff,#fff7fa);
+  padding:30px;
+  border-radius:14px;
+  box-shadow:0 8px 25px rgba(0,0,0,.08);
+  font-family:Georgia,serif;
+  font-size:15px;
   line-height:1.8;
-  font-size:16px;
+  white-space:pre-line;
+  min-height:100%;
 }
 
-.letter-title{
+.letter-heading{
   text-align:center;
-  font-size:26px;
-  color:var(--accent);
-  margin-bottom:20px;
+  font-size:22px;
+  margin-bottom:22px;
+  color:#d91e4d;
+}
+
+.letter-sign{
+  text-align:right;
+  margin-top:28px;
+  font-style:italic;
+  color:#b51d43;
 }
 
 /* =========================
-   GALERIA
+   GALERÍA
 ========================= */
 
-.gallery{
+.gallery-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(145px,1fr));
-  gap:15px;
+  grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+  gap:14px;
+  touch-action:pan-y;
 }
 
 .photo-card{
-  height:145px;
-  overflow:hidden;
-  border-radius:15px;
-  background:#eee;
+  background:#fff;
+  padding:8px;
+  border-radius:12px;
+  box-shadow:0 7px 18px rgba(0,0,0,.09);
   cursor:pointer;
-  box-shadow:0 7px 20px rgba(0,0,0,.12);
+  transition:.25s;
+  animation:cardIn .45s both;
+}
+
+.photo-card:hover{
+  transform:translateY(-4px) rotate(.3deg);
+  box-shadow:0 13px 25px rgba(0,0,0,.15);
 }
 
 .photo-card img{
   width:100%;
-  height:100%;
+  height:145px;
   object-fit:cover;
-  transition:.25s;
+  border-radius:8px;
+  display:block;
+  -webkit-user-drag:none;
+  user-select:none;
+  -webkit-user-select:none;
 }
 
-.photo-card:hover img{
-  transform:scale(1.06);
-}
-
-/* =========================
-   MUSIC
-========================= */
-
-.music-box{
-  max-width:480px;
-  margin:30px auto;
-  padding:30px;
+.photo-card p{
   text-align:center;
-  background:rgba(255,255,255,.7);
-  border-radius:25px;
+  font-size:11px;
+  margin:7px 0 2px;
+  color:#555;
 }
 
-.music-icon{
-  font-size:75px;
-  margin-bottom:15px;
-}
+@keyframes cardIn{
+  from{
+    opacity:0;
+    transform:translateY(15px);
+  }
 
-.local-audio{
-  width:100%;
-  margin-top:20px;
+  to{
+    opacity:1;
+    transform:none;
+  }
 }
 
 /* =========================
    RAZONES
 ========================= */
 
-.reasons{
-  display:grid;
-  gap:15px;
-}
-
-.reason{
-  padding:20px;
-  border-radius:17px;
-  background:rgba(255,255,255,.68);
-  box-shadow:0 7px 20px rgba(0,0,0,.06);
-}
-
-.reason b{
-  color:var(--accent);
+.reason-item{
+  background:rgba(255,255,255,.78);
+  padding:14px 16px;
+  margin-bottom:11px;
+  border-left:4px solid var(--accent);
+  border-radius:11px;
+  box-shadow:0 3px 12px rgba(0,0,0,.05);
+  font-size:14px;
+  animation:cardIn .4s both;
 }
 
 /* =========================
    VALES
 ========================= */
 
-.coupons{
-  display:grid;
-  gap:18px;
-}
-
 .coupon{
-  padding:25px;
-  border:2px dashed var(--accent);
-  border-radius:18px;
-  background:rgba(255,255,255,.72);
-  text-align:center;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  background:#fff;
+  padding:15px;
+  border:1px solid #ffd2dc;
+  border-radius:13px;
+  margin-bottom:12px;
 }
 
-.coupon h3{
-  margin:5px 0;
-  color:var(--accent);
+.claim-btn{
+  border:0;
+  color:#fff;
+  background:var(--accent);
+  border-radius:20px;
+  padding:9px 15px;
+  font-size:12px;
+  font-weight:600;
+  white-space:nowrap;
+  cursor:pointer;
+}
+
+.claimed{
+  background:#34c759!important;
 }
 
 /* =========================
@@ -492,94 +589,266 @@ body{
 
 .surprise{
   text-align:center;
-  padding:30px;
+  padding:35px 20px;
 }
 
 .gift{
-  font-size:100px;
+  font-size:85px;
+  display:inline-block;
   cursor:pointer;
-  transition:.25s;
+  animation:giftFloat 2s ease-in-out infinite;
 }
 
-.gift:hover{
-  transform:scale(1.1) rotate(-5deg);
+@keyframes giftFloat{
+  50%{
+    transform:translateY(-8px) rotate(2deg);
+  }
 }
 
-.surprise-message{
+#gift-text{
   display:none;
   margin-top:20px;
-  padding:25px;
-  background:rgba(255,255,255,.7);
-  border-radius:20px;
-  font-size:20px;
-  line-height:1.6;
-}
-
-/* =========================
-   JUEGO
-========================= */
-
-.game-window{
-  width:min(900px,94vw);
-  height:min(560px,82vh);
-}
-
-.game-content{
-  padding:0;
-  overflow:hidden;
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(255,238,244,.95),
-      rgba(255,255,255,.98)
-    );
-  position:relative;
-}
-
-.game-top{
-  height:58px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 18px;
-  background:rgba(255,255,255,.62);
-  border-bottom:1px solid rgba(255,45,85,.12);
-}
-
-.game-title{
-  font-weight:800;
+  font-size:21px;
+  font-weight:700;
   color:var(--accent);
 }
 
-.game-score{
-  font-family:monospace;
+/* =========================
+   MÚSICA LOCAL
+========================= */
+
+.music-card{
+  text-align:center;
+  padding:35px 20px;
+}
+
+.music-title{
+  font-size:20px;
   font-weight:700;
 }
 
-.game-help{
+.music-artist{
+  font-size:13px;
+  color:#777;
+  margin:6px 0 15px;
+}
+
+.local-audio{
+  width:100%;
+  max-width:450px;
+  margin:20px auto 0;
+  display:block;
+}
+
+/* =========================
+   VISOR
+========================= */
+
+#image-viewer{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.82);
+  z-index:30000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  backdrop-filter:blur(12px);
+  touch-action:none;
+}
+
+#image-viewer.show{
+  display:flex;
+  animation:fadeIn .2s;
+}
+
+#viewer-img{
+  max-width:90vw;
+  max-height:78vh;
+  object-fit:contain;
+  border-radius:10px;
+  box-shadow:0 20px 60px #000;
+  touch-action:none;
+  -webkit-user-drag:none;
+  user-select:none;
+  -webkit-user-select:none;
+}
+
+.viewer-close{
+  position:absolute;
+  top:25px;
+  right:25px;
+  width:35px;
+  height:35px;
+  border:0;
+  border-radius:50%;
+  background:rgba(255,255,255,.18);
+  color:white;
+  font-size:20px;
+  z-index:3;
+  cursor:pointer;
+}
+
+.viewer-nav{
+  display:flex;
+  gap:15px;
+  margin-top:18px;
+}
+
+.viewer-nav button{
+  border:0;
+  border-radius:20px;
+  padding:8px 18px;
+  background:rgba(255,255,255,.16);
+  color:white;
+  cursor:pointer;
+}
+
+#viewer-caption{
+  color:white;
   font-size:12px;
-  opacity:.6;
+  margin-top:10px;
+}
+
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+/* =========================
+   CORAZONES
+========================= */
+
+.click-heart{
+  position:fixed;
+  pointer-events:none;
+  font-size:22px;
+  z-index:60000;
+  animation:heartFloat .9s forwards;
+}
+
+@keyframes heartFloat{
+  from{
+    opacity:1;
+    transform:translate(-50%,-50%) scale(.5);
+  }
+
+  to{
+    opacity:0;
+    transform:translate(-50%,-95px) scale(1.35);
+  }
+}
+
+/* =========================
+   TOAST
+========================= */
+
+.toast{
+  position:fixed;
+  top:48px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:65000;
+  padding:10px 16px;
+  border-radius:20px;
+  background:rgba(30,30,30,.78);
+  color:#fff;
+  font-size:12px;
+  backdrop-filter:blur(15px);
+  box-shadow:0 8px 25px rgba(0,0,0,.25);
+}
+
+/* =====================================================
+   JUEGO
+===================================================== */
+
+.game-window{
+  width:min(900px,92vw);
+  height:min(590px,78vh);
+}
+
+.game-content{
+  position:relative;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  background:
+    linear-gradient(
+      180deg,
+      #fff8fb 0%,
+      #ffeef4 100%
+    );
+}
+
+.game-top{
+  flex:none;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  gap:10px;
+  padding:12px 16px 9px;
+  background:rgba(255,255,255,.62);
+  border-bottom:1px solid rgba(255,255,255,.8);
+}
+
+.game-title{
+  font-size:14px;
+  font-weight:700;
+  color:#d91e4d;
+}
+
+.game-score{
+  font-size:13px;
+  font-weight:700;
+  text-align:center;
+  color:#333;
+}
+
+.game-help{
+  font-size:10px;
+  text-align:right;
+  color:#888;
+  font-weight:600;
 }
 
 #gameCanvas{
   display:block;
   width:100%;
-  height:calc(100% - 58px);
+  flex:1;
+  min-height:0;
+  background:#fff3f7;
   touch-action:none;
-  cursor:pointer;
+  user-select:none;
+  -webkit-user-select:none;
+}
+
+.game-mobile-help{
+  display:none;
+  position:absolute;
+  bottom:9px;
+  left:50%;
+  transform:translateX(-50%);
+  padding:7px 12px;
+  border-radius:15px;
+  background:rgba(255,255,255,.76);
+  color:#777;
+  font-size:10px;
+  backdrop-filter:blur(10px);
+  pointer-events:none;
 }
 
 .game-overlay{
   position:absolute;
-  inset:58px 0 0;
+  inset:54px 0 0;
   display:flex;
   align-items:center;
   justify-content:center;
   flex-direction:column;
-  text-align:center;
-  background:rgba(255,255,255,.58);
-  backdrop-filter:blur(5px);
+  background:rgba(255,255,255,.72);
+  backdrop-filter:blur(8px);
   z-index:5;
+  text-align:center;
 }
 
 .game-overlay.hidden{
@@ -587,745 +856,374 @@ body{
 }
 
 .game-over-title{
-  font-size:35px;
-  font-weight:900;
-  color:var(--accent);
-  margin-bottom:7px;
+  font-size:28px;
+  font-weight:800;
+  color:#d91e4d;
+  margin-bottom:10px;
 }
 
 .game-over-score{
-  font-size:17px;
-  margin-bottom:18px;
+  font-size:14px;
+  line-height:1.8;
+  color:#555;
 }
 
 .game-btn{
+  margin-top:18px;
   border:0;
+  padding:11px 20px;
+  border-radius:22px;
+  color:#fff;
   background:var(--accent);
-  color:white;
-  padding:12px 25px;
-  border-radius:999px;
-  font-size:15px;
-  font-weight:800;
+  font-size:13px;
+  font-weight:700;
   cursor:pointer;
-  box-shadow:0 8px 20px rgba(255,45,85,.28);
+  box-shadow:0 7px 18px rgba(255,45,85,.25);
+  transition:.2s;
 }
 
-.game-mobile-help{
-  display:none;
-  position:absolute;
-  left:50%;
-  bottom:12px;
-  transform:translateX(-50%);
-  padding:7px 13px;
-  border-radius:999px;
-  background:rgba(255,255,255,.7);
-  font-size:11px;
-  opacity:.65;
-  z-index:3;
+.game-btn:hover{
+  transform:translateY(-2px);
+  background:#e9274f;
 }
 
 /* =========================
-   VIEWER
+   MOBILE
 ========================= */
 
-#viewer{
-  position:fixed;
-  inset:0;
-  z-index:5000;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  background:rgba(0,0,0,.9);
-  touch-action:none;
-}
+@media(max-width:600px){
 
-#viewer.active{
-  display:flex;
-}
-
-.viewer-image{
-  max-width:92vw;
-  max-height:88vh;
-  object-fit:contain;
-  border-radius:8px;
-  user-select:none;
-}
-
-.viewer-close,
-.viewer-prev,
-.viewer-next{
-  position:absolute;
-  border:0;
-  color:white;
-  background:rgba(255,255,255,.13);
-  backdrop-filter:blur(10px);
-  cursor:pointer;
-  width:45px;
-  height:45px;
-  border-radius:50%;
-  font-size:25px;
-}
-
-.viewer-close{
-  top:20px;
-  right:20px;
-}
-
-.viewer-prev{
-  left:20px;
-  top:50%;
-  transform:translateY(-50%);
-}
-
-.viewer-next{
-  right:20px;
-  top:50%;
-  transform:translateY(-50%);
-}
-
-.viewer-counter{
-  position:absolute;
-  bottom:20px;
-  color:white;
-  background:rgba(0,0,0,.35);
-  padding:7px 14px;
-  border-radius:999px;
-}
-
-/* =========================
-   TOAST
-========================= */
-
-#toast{
-  position:fixed;
-  left:50%;
-  bottom:90px;
-  transform:translateX(-50%) translateY(20px);
-  z-index:10000;
-  padding:11px 18px;
-  border-radius:999px;
-  color:white;
-  background:rgba(20,20,20,.78);
-  opacity:0;
-  pointer-events:none;
-  transition:.25s;
-}
-
-#toast.show{
-  opacity:1;
-  transform:translateX(-50%) translateY(0);
-}
-
-/* =========================
-   HEARTS
-========================= */
-
-.heart{
-  position:fixed;
-  pointer-events:none;
-  z-index:9999;
-  font-size:20px;
-  animation:heartFloat 1.5s forwards;
-}
-
-@keyframes heartFloat{
-  0%{
-    opacity:1;
-    transform:translateY(0) scale(.8);
-  }
-  100%{
-    opacity:0;
-    transform:translateY(-100px) scale(1.4);
-  }
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media(max-width:700px){
-
-  .top-left span:not(:first-child){
-    display:none;
+  #top-bar{
+    height:32px;
   }
 
-  .desktop-icons{
-    right:8px;
-    top:50px;
-    gap:10px;
+  #desktop{
+    inset:32px 0 0;
+    padding:12px;
+  }
+
+  .desktop-item{
+    width:74px;
   }
 
   .desktop-icon{
-    width:70px;
-  }
-
-  .desktop-icon .icon{
-    width:45px;
-    height:45px;
-    font-size:32px;
-  }
-
-  .dock{
-    bottom:8px;
-    gap:3px;
-    padding:7px;
-  }
-
-  .dock-item{
-    width:43px;
-    height:43px;
-    font-size:24px;
+    font-size:34px;
   }
 
   .window{
-    width:94vw;
-    height:76vh;
+    width:96vw;
+    height:82vh;
+    min-width:0;
+    border-radius:12px;
   }
 
-  .window-content{
-    padding:16px;
+  .window.maximized{
+    top:32px!important;
+    height:calc(100vh - 32px)!important;
   }
 
-  .letter{
-    padding:22px;
+  .window-header{
+    height:40px;
   }
 
-  .gallery{
+  .window-body{
+    padding:14px;
+  }
+
+  .gallery-grid{
     grid-template-columns:repeat(2,1fr);
-    gap:10px;
+    gap:9px;
   }
 
-  .photo-card{
-    height:150px;
+  .photo-card img{
+    height:120px;
+  }
+
+  #dock{
+    max-width:95vw;
+    overflow-x:auto;
+  }
+
+  .dock-icon{
+    flex:0 0 43px;
+    width:43px;
+    height:43px;
+    font-size:22px;
+  }
+
+  .letter-paper{
+    padding:22px;
+    font-size:14px;
+  }
+
+  #viewer-img{
+    max-width:94vw;
+    max-height:72vh;
+  }
+
+  .viewer-nav{
+    gap:8px;
+  }
+
+  .viewer-nav button{
+    padding:8px 13px;
   }
 
   .game-window{
-    width:96vw;
-    height:70vh;
+    width:97vw;
+    height:78vh;
+  }
+
+  .game-top{
+    grid-template-columns:1fr auto;
+    padding:9px 11px;
   }
 
   .game-help{
     display:none;
   }
 
+  .game-title{
+    font-size:12px;
+  }
+
+  .game-score{
+    font-size:11px;
+  }
+
   .game-mobile-help{
     display:block;
   }
+}
+
+::-webkit-scrollbar{
+  width:7px;
+}
+
+::-webkit-scrollbar-thumb{
+  background:rgba(0,0,0,.18);
+  border-radius:10px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     BOOT
-========================= -->
+<!-- =====================================================
+     PANTALLA DE CARGA
+====================================================== -->
 
 <div id="boot">
+
   <div class="boot-logo">❤️</div>
-  <div class="boot-title">ViviOS</div>
-  <div class="boot-sub">Preparando un pequeño lugar para ti...</div>
-  <div class="boot-bar">
-    <div class="boot-progress"></div>
+
+  <div class="boot-title">
+    ViviOS
   </div>
+
+  <div class="boot-sub">
+    Preparando algo especial para Viviana...
+  </div>
+
+  <div class="boot-progress">
+    <span></span>
+  </div>
+
 </div>
 
-<!-- =========================
+
+<!-- =====================================================
      LOGIN
-========================= -->
+====================================================== -->
 
 <div id="login">
-  <div class="login-card">
-    <div class="login-avatar">💖</div>
-    <h1>Hola, Viviana ❤️</h1>
-    <p>Este pequeño mundo fue hecho para ti.</p>
-    <button class="login-btn" id="loginBtn">Entrar</button>
+
+  <div class="login-avatar">
+    ❤️
   </div>
+
+  <div class="login-name">
+    Viviana
+  </div>
+
+  <div class="login-hint">
+    Una pequeña sorpresa te está esperando
+  </div>
+
+  <button
+    class="login-btn"
+    id="login-btn"
+  >
+    Iniciar sesión
+  </button>
+
 </div>
 
-<!-- =========================
-     DESKTOP
-========================= -->
+
+<!-- =====================================================
+     BARRA SUPERIOR
+====================================================== -->
+
+<div id="top-bar">
+
+  <div class="top-left">
+
+    <span class="apple"></span>
+
+    <span>ViviOS</span>
+
+    <span class="menu">Archivo</span>
+
+    <span class="menu">Ventana</span>
+
+  </div>
+
+  <div id="mac-clock"></div>
+
+</div>
+
+
+<!-- =====================================================
+     ESCRITORIO
+====================================================== -->
 
 <div id="desktop">
 
-  <div class="topbar">
-    <div class="top-left">
-      <span>❤️ ViviOS</span>
-      <span>Archivo</span>
-      <span>Editar</span>
-      <span>Ver</span>
-    </div>
-
-    <div class="top-right">
-      <span id="clock">00:00</span>
-      <span>🔋</span>
-    </div>
-  </div>
-
-  <!-- DESKTOP ICONS -->
-
-  <div class="desktop-icons">
-
-    <div class="desktop-icon" data-open="win-carta">
-      <div class="icon">💌</div>
-      <span>Carta.pdf</span>
-    </div>
-
-    <div class="desktop-icon" data-open="win-momentos">
-      <div class="icon">📸</div>
-      <span>Fotos</span>
-    </div>
-
-    <div class="desktop-icon" data-open="win-razones">
-      <div class="icon">💖</div>
-      <span>Razones.txt</span>
-    </div>
-
-    <div class="desktop-icon" data-open="win-juego">
-      <div class="icon">🎮</div>
-      <span>Vivi Runner</span>
-    </div>
-
-    <div class="desktop-icon" data-open="win-papelera">
-      <div class="icon">🗑️</div>
-      <span>Papelera</span>
-    </div>
-
-  </div>
-
-  <!-- =========================
-       CARTA
-  ========================= -->
-
-  <div class="window" id="win-carta">
-
-    <div class="window-header">
-      <div class="traffic">
-        <button class="dot dot-close" data-close="win-carta"></button>
-        <button class="dot dot-min" data-min="win-carta"></button>
-        <button class="dot dot-max" data-max="win-carta"></button>
-      </div>
-
-      <div class="window-title">Carta.pdf</div>
-    </div>
-
-    <div class="window-content">
-
-      <div class="letter">
-
-        <div class="letter-title">
-          Para mi amor, Viviana ❤️
-        </div>
-
-        <div id="letterText"></div>
-
-      </div>
-
-    </div>
-  </div>
-
-  <!-- =========================
-       GALERIA
-  ========================= -->
-
-  <div class="window" id="win-momentos">
-
-    <div class="window-header">
-      <div class="traffic">
-        <button class="dot dot-close" data-close="win-momentos"></button>
-        <button class="dot dot-min" data-min="win-momentos"></button>
-        <button class="dot dot-max" data-max="win-momentos"></button>
-      </div>
-
-      <div class="window-title">Fotos</div>
-    </div>
-
-    <div class="window-content">
-
-      <div class="gallery" id="gallery"></div>
-
-    </div>
-  </div>
-
-  <!-- =========================
-       CANCIONES
-  ========================= -->
-
-  <div class="window" id="win-canciones">
-
-    <div class="window-header">
-      <div class="traffic">
-        <button class="dot dot-close" data-close="win-canciones"></button>
-        <button class="dot dot-min" data-min="win-canciones"></button>
-        <button class="dot dot-max" data-max="win-canciones"></button>
-      </div>
-
-      <div class="window-title">Nuestra canción</div>
-    </div>
-
-    <div class="window-content">
-
-      <div class="music-box">
-
-        <div class="music-icon">🎵</div>
-
-        <h2>Nuestra canción ❤️</h2>
-
-        <p>
-          Una canción para escuchar mientras recorres
-          este pequeño rincón.
-        </p>
-
-        <audio
-          id="local-audio"
-          class="local-audio"
-          controls
-          preload="metadata"
-        >
-          <source
-            src="assets/musica/nuestra-cancion.mp3"
-            type="audio/mpeg"
-          >
-          Tu navegador no puede reproducir este audio.
-        </audio>
-
-      </div>
-
-    </div>
-  </div>
-
-  <!-- =========================
-       RAZONES
-  ========================= -->
-
-  <div class="window" id="win-razones">
-
-    <div class="window-header">
-      <div class="traffic">
-        <button class="dot dot-close" data-close="win-razones"></button>
-        <button class="dot dot-min" data-min="win-razones"></button>
-        <button class="dot dot-max" data-max="win-razones"></button>
-      </div>
-
-      <div class="window-title">Razones.txt</div>
-    </div>
-
-    <div class="window-content">
-
-      <h2 style="text-align:center;color:#ff2d55;">
-        Algunas razones por las que te amo ❤️
-      </h2>
-
-      <div class="reasons">
-
-        <div class="reason">
-          <b>01.</b>
-          Porque contigo hasta las cosas más pequeñas
-          pueden convertirse en recuerdos especiales.
-        </div>
-
-        <div class="reason">
-          <b>02.</b>
-          Porque tu forma de ser tiene algo que siempre
-          consigue hacerme sonreír.
-        </div>
-
-        <div class="reason">
-          <b>03.</b>
-          Porque me encanta compartir momentos contigo,
-          incluso cuando no estamos haciendo nada especial.
-        </div>
-
-        <div class="reason">
-          <b>04.</b>
-          Porque eres una persona que ocupa un lugar
-          enorme en mi corazón.
-        </div>
-
-        <div class="reason">
-          <b>05.</b>
-          Porque simplemente eres tú.
-          Y eso ya es suficiente. ❤️
-        </div>
-
-      </div>
-
-    </div>
-  </div>
-
-  <!-- =========================
-       VALES
-  ========================= -->
-
-  <div class="window" id="win-vales">
-
-    <div class="window-header">
-      <div class="traffic">
-        <button class="dot dot-close" data-close="win-vales"></button>
-        <button class="dot dot-min" data-min="win-vales"></button>
-        <button class="dot dot-max" data-max="win-vales"></button>
-      </div>
-
-      <div class="window-title">Vales</div>
-    </div>
-
-    <div class="window-content">
-
-      <h2 style="text-align:center;color:#ff2d55;">
-        Vales para mi amor 🎟️
-      </h2>
-
-      <div class="coupons">
-
-        <div class="coupon">
-          <h3>🎟️ Vale por un abrazo</h3>
-          <p>Canjeable cuando quieras.</p>
-        </div>
-
-        <div class="coupon">
-          <h3>🎟️ Vale por una cita</h3>
-          <p>Una cita para nosotros dos.</p>
-        </div>
-
-        <div class="coupon">
-          <h3>🎟️ Vale infinito</h3>
-          <p>Un "te amo" que nunca caduca. ❤️</p>
-        </div>
-
-      </div>
-
-    </div>
-  </div>
-
-  <!-- =========================
-       SORPRESA
-  ========================= -->
-
-  <div class="window" id="win-sorpresa">
-
-    <div class="window-header">
-      <div class="traffic">
-        <button class="dot dot-close" data-close="win-sorpresa"></button>
-        <button class="dot dot-min" data-min="win-sorpresa"></button>
-        <button class="dot dot-max" data-max="win-sorpresa"></button>
-      </div>
-
-      <div class="window-title">Sorpresa 🎁</div>
-    </div>
-
-    <div class="window-content">
-
-      <div class="surprise">
-
-        <h2>Hay algo escondido aquí...</h2>
-
-        <div class="gift" id="gift">🎁</div>
-
-        <div
-          class="surprise-message"
-          id="surpriseMessage"
-        >
-          Te amo muchísimo, Viviana. ❤️
-          <br><br>
-          Gracias por existir y por formar parte
-          de tantos momentos importantes de mi vida.
-        </div>
-
-      </div>
-
-    </div>
-  </div>
-
-  <!-- =========================
-       PAPELERA
-  ========================= -->
-
-  <div class="window" id="win-papelera">
-
-    <div class="window-header">
-      <div class="traffic">
-        <button class="dot dot-close" data-close="win-papelera"></button>
-        <button class="dot dot-min" data-min="win-papelera"></button>
-        <button class="dot dot-max" data-max="win-papelera"></button>
-      </div>
-
-      <div class="window-title">Papelera</div>
-    </div>
-
-    <div class="window-content">
-
-      <div style="text-align:center;padding:60px 20px;">
-
-        <div style="font-size:80px;">🗑️</div>
-
-        <h2>La papelera está vacía</h2>
-
-        <p style="opacity:.6;">
-          Por una vez, algo en este sistema no tiene
-          absolutamente ningún problema.
-        </p>
-
-      </div>
-
-    </div>
-  </div>
-
-  <!-- =========================
-       VIVI RUNNER
-  ========================= -->
-
   <div
-    class="window game-window"
-    id="win-juego"
+    class="desktop-item"
+    data-open="win-carta"
   >
 
-    <div class="window-header">
-
-      <div class="traffic">
-
-        <button
-          class="dot dot-close"
-          data-close="win-juego"
-        ></button>
-
-        <button
-          class="dot dot-min"
-          data-min="win-juego"
-        ></button>
-
-        <button
-          class="dot dot-max"
-          data-max="win-juego"
-        ></button>
-
-      </div>
-
-      <div class="window-title">
-        Vivi Runner
-      </div>
-
+    <div class="desktop-icon">
+      💌
     </div>
 
-    <div class="game-content">
-
-      <div class="game-top">
-
-        <div class="game-title">
-          ❤️ Vivi Runner
-        </div>
-
-        <div class="game-score">
-          ❤️ <span id="heartScore">0</span>
-          &nbsp;&nbsp;
-          ⭐ <span id="gameScore">0</span>
-        </div>
-
-        <div class="game-help">
-          ESPACIO / ↑ / TOCAR
-        </div>
-
-      </div>
-
-      <canvas id="gameCanvas"></canvas>
-
-      <div
-        class="game-mobile-help"
-        id="mobileGameHelp"
-      >
-        Toca la pantalla para saltar ❤️
-      </div>
-
-      <div
-        class="game-overlay"
-        id="gameOverlay"
-      >
-
-        <div class="game-over-title">
-          ¡Game Over! 💔
-        </div>
-
-        <div class="game-over-score">
-          Puntuación:
-          <b id="finalScore">0</b>
-          <br>
-          Corazones:
-          <b id="finalHearts">0</b>
-        </div>
-
-        <button
-          class="game-btn"
-          id="restartGame"
-        >
-          Volver a jugar ❤️
-        </button>
-
-      </div>
-
+    <div class="desktop-label">
+      Carta.pdf
     </div>
 
   </div>
 
-  <!-- =========================
-       DOCK
-  ========================= -->
 
-  <div class="dock">
+  <div
+    class="desktop-item"
+    data-open="win-momentos"
+  >
+
+    <div class="desktop-icon">
+      🖼️
+    </div>
+
+    <div class="desktop-label">
+      Fotos
+    </div>
+
+  </div>
+
+
+  <div
+    class="desktop-item"
+    data-open="win-razones"
+  >
+
+    <div class="desktop-icon">
+      📝
+    </div>
+
+    <div class="desktop-label">
+      Razones.txt
+    </div>
+
+  </div>
+
+
+  <div
+    class="desktop-item"
+    data-open="win-juego"
+  >
+
+    <div class="desktop-icon">
+      🎮
+    </div>
+
+    <div class="desktop-label">
+      Vivi Runner
+    </div>
+
+  </div>
+
+
+  <div
+    class="desktop-item"
+    data-open="win-papelera"
+  >
+
+    <div class="desktop-icon">
+      🗑️
+    </div>
+
+    <div class="desktop-label">
+      Papelera
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     DOCK
+====================================================== -->
+
+<div id="dock-container">
+
+  <div id="dock">
 
     <div
-      class="dock-item"
+      class="dock-icon"
       data-open="win-carta"
-      title="Carta"
     >
       💌
     </div>
 
     <div
-      class="dock-item"
+      class="dock-icon"
       data-open="win-momentos"
-      title="Fotos"
     >
       📸
     </div>
 
     <div
-      class="dock-item"
+      class="dock-icon"
       data-open="win-canciones"
-      title="Música"
     >
       🎵
     </div>
 
     <div
-      class="dock-item"
+      class="dock-icon"
       data-open="win-razones"
-      title="Razones"
     >
       💖
     </div>
 
     <div
-      class="dock-item"
+      class="dock-icon"
       data-open="win-vales"
-      title="Vales"
     >
       🎟️
     </div>
 
     <div
-      class="dock-item"
+      class="dock-icon"
       data-open="win-sorpresa"
-      title="Sorpresa"
     >
       🎁
     </div>
 
-    <div class="dock-separator"></div>
-
     <div
-      class="dock-item"
+      class="dock-icon"
       data-open="win-juego"
-      title="Vivi Runner"
     >
       🎮
     </div>
@@ -1334,56 +1232,519 @@ body{
 
 </div>
 
-<!-- =========================
-     IMAGE VIEWER
-========================= -->
 
-<div id="viewer">
+<!-- =====================================================
+     CARTA
+====================================================== -->
 
-  <button
-    class="viewer-close"
-    id="viewerClose"
-  >
-    ×
-  </button>
+<div
+  id="win-carta"
+  class="window"
+>
 
-  <button
-    class="viewer-prev"
-    id="viewerPrev"
-  >
-    ‹
-  </button>
+  <div class="window-header">
 
-  <img
-    class="viewer-image"
-    id="viewerImage"
-    src=""
-    alt="Foto"
-  >
+    <div class="window-dots">
 
-  <button
-    class="viewer-next"
-    id="viewerNext"
-  >
-    ›
-  </button>
+      <button class="dot dot-close" data-close="win-carta"></button>
+      <button class="dot dot-min" data-min="win-carta"></button>
+      <button class="dot dot-max" data-max="win-carta"></button>
 
-  <div
-    class="viewer-counter"
-    id="viewerCounter"
-  >
-    1 / 31
+    </div>
+
+    <div class="window-title">
+      Carta para ti
+    </div>
+
+  </div>
+
+  <div class="window-body">
+
+    <div class="letter-paper">
+
+      <div class="letter-heading">
+        Para Viviana ❤️
+      </div>
+
+      <div id="display-carta"></div>
+
+      <div class="letter-sign">
+        Con todo mi amor,<br>
+        para siempre ❤️
+      </div>
+
+    </div>
+
   </div>
 
 </div>
 
-<div id="toast"></div>
+
+<!-- =====================================================
+     FOTOS
+====================================================== -->
+
+<div
+  id="win-momentos"
+  class="window"
+>
+
+  <div class="window-header">
+
+    <div class="window-dots">
+
+      <button class="dot dot-close" data-close="win-momentos"></button>
+      <button class="dot dot-min" data-min="win-momentos"></button>
+      <button class="dot dot-max" data-max="win-momentos"></button>
+
+    </div>
+
+    <div class="window-title">
+      Nuestras Fotos
+    </div>
+
+  </div>
+
+  <div class="window-body">
+
+    <div
+      class="gallery-grid"
+      id="display-galeria"
+    ></div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     MÚSICA
+====================================================== -->
+
+<div
+  id="win-canciones"
+  class="window"
+>
+
+  <div class="window-header">
+
+    <div class="window-dots">
+
+      <button class="dot dot-close" data-close="win-canciones"></button>
+      <button class="dot dot-min" data-min="win-canciones"></button>
+      <button class="dot dot-max" data-max="win-canciones"></button>
+
+    </div>
+
+    <div class="window-title">
+      Nuestra Canción
+    </div>
+
+  </div>
+
+  <div class="window-body music-card">
+
+    <div class="music-title">
+      Nuestra canción ❤️
+    </div>
+
+    <div class="music-artist">
+      Para Viviana
+    </div>
+
+    <audio
+      id="local-audio"
+      class="local-audio"
+      controls
+      preload="metadata"
+    >
+
+      <source
+        src="assets/musica/nuestra-cancion.mp3"
+        type="audio/mpeg"
+      >
+
+      Tu navegador no puede reproducir este audio.
+
+    </audio>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     RAZONES
+====================================================== -->
+
+<div
+  id="win-razones"
+  class="window"
+>
+
+  <div class="window-header">
+
+    <div class="window-dots">
+
+      <button class="dot dot-close" data-close="win-razones"></button>
+      <button class="dot dot-min" data-min="win-razones"></button>
+      <button class="dot dot-max" data-max="win-razones"></button>
+
+    </div>
+
+    <div class="window-title">
+      Razones para amarte
+    </div>
+
+  </div>
+
+  <div class="window-body">
+
+    <div class="reason-item">
+      1. Por tu forma tan bonita de sonreír. ❤️
+    </div>
+
+    <div class="reason-item">
+      2. Por cómo haces que incluso un día normal se sienta especial.
+    </div>
+
+    <div class="reason-item">
+      3. Por la paz que siento cuando estoy contigo.
+    </div>
+
+    <div class="reason-item">
+      4. Por cada recuerdo que hemos construido.
+    </div>
+
+    <div class="reason-item">
+      5. Por ser tú, sin tener que cambiar nada.
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     VALES
+====================================================== -->
+
+<div
+  id="win-vales"
+  class="window"
+>
+
+  <div class="window-header">
+
+    <div class="window-dots">
+
+      <button class="dot dot-close" data-close="win-vales"></button>
+      <button class="dot dot-min" data-min="win-vales"></button>
+      <button class="dot dot-max" data-max="win-vales"></button>
+
+    </div>
+
+    <div class="window-title">
+      Vales Canjeables
+    </div>
+
+  </div>
+
+  <div class="window-body">
+
+    <div class="coupon">
+
+      <div>
+
+        <strong>
+          Cena especial 🍝
+        </strong>
+
+        <p style="font-size:11px;color:#777;margin-top:4px;">
+          Canjeable por tu comida favorita.
+        </p>
+
+      </div>
+
+      <button class="claim-btn">
+        Canjear
+      </button>
+
+    </div>
+
+
+    <div class="coupon">
+
+      <div>
+
+        <strong>
+          Tarde de películas 🎬
+        </strong>
+
+        <p style="font-size:11px;color:#777;margin-top:4px;">
+          Tú eliges la película y el postre.
+        </p>
+
+      </div>
+
+      <button class="claim-btn">
+        Canjear
+      </button>
+
+    </div>
+
+
+    <div class="coupon">
+
+      <div>
+
+        <strong>
+          Abrazo infinito 🤗
+        </strong>
+
+        <p style="font-size:11px;color:#777;margin-top:4px;">
+          Sin fecha de vencimiento.
+        </p>
+
+      </div>
+
+      <button class="claim-btn">
+        Canjear
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     SORPRESA
+====================================================== -->
+
+<div
+  id="win-sorpresa"
+  class="window"
+>
+
+  <div class="window-header">
+
+    <div class="window-dots">
+
+      <button class="dot dot-close" data-close="win-sorpresa"></button>
+      <button class="dot dot-min" data-min="win-sorpresa"></button>
+      <button class="dot dot-max" data-max="win-sorpresa"></button>
+
+    </div>
+
+    <div class="window-title">
+      Regalito Sorpresa
+    </div>
+
+  </div>
+
+  <div class="window-body surprise">
+
+    <p style="font-weight:600;margin-bottom:18px;">
+      Hay algo escondido aquí...
+    </p>
+
+    <div
+      class="gift"
+      id="gift-btn"
+    >
+      🎁
+    </div>
+
+    <div id="gift-text">
+      ¡Vale por un postre juntos! 🍦❤️
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     PAPELERA
+====================================================== -->
+
+<div
+  id="win-papelera"
+  class="window"
+>
+
+  <div class="window-header">
+
+    <div class="window-dots">
+
+      <button class="dot dot-close" data-close="win-papelera"></button>
+      <button class="dot dot-min" data-min="win-papelera"></button>
+      <button class="dot dot-max" data-max="win-papelera"></button>
+
+    </div>
+
+    <div class="window-title">
+      Papelera
+    </div>
+
+  </div>
+
+  <div
+    class="window-body"
+    style="text-align:center;padding-top:55px;"
+  >
+
+    <div style="font-size:65px">
+      ✨
+    </div>
+
+    <h3 style="margin:14px 0 8px;">
+      La papelera está vacía
+    </h3>
+
+    <p style="font-size:13px;color:#666;">
+      No hay nada que cambiaría de ti.
+      Eres perfecta tal como eres. ❤️
+    </p>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     VIVI RUNNER
+====================================================== -->
+
+<div
+  id="win-juego"
+  class="window game-window"
+>
+
+  <div class="window-header">
+
+    <div class="window-dots">
+
+      <button class="dot dot-close" data-close="win-juego"></button>
+      <button class="dot dot-min" data-min="win-juego"></button>
+      <button class="dot dot-max" data-max="win-juego"></button>
+
+    </div>
+
+    <div class="window-title">
+      Vivi Runner
+    </div>
+
+  </div>
+
+  <div class="game-content">
+
+    <div class="game-top">
+
+      <div class="game-title">
+        ❤️ Vivi Runner
+      </div>
+
+      <div class="game-score">
+        ❤️ <span id="heartScore">0</span>
+        &nbsp;&nbsp;
+        ⭐ <span id="gameScore">0</span>
+      </div>
+
+      <div class="game-help">
+        ESPACIO / ↑ / TOCAR
+      </div>
+
+    </div>
+
+    <canvas id="gameCanvas"></canvas>
+
+    <div
+      class="game-mobile-help"
+      id="mobileGameHelp"
+    >
+      Toca la pantalla para saltar ❤️
+    </div>
+
+    <div
+      class="game-overlay"
+      id="gameOverlay"
+    >
+
+      <div class="game-over-title">
+        ¡Game Over! 💔
+      </div>
+
+      <div class="game-over-score">
+
+        Puntuación:
+        <b id="finalScore">0</b>
+
+        <br>
+
+        Corazones:
+        <b id="finalHearts">0</b>
+
+      </div>
+
+      <button
+        class="game-btn"
+        id="restartGame"
+      >
+        Volver a jugar ❤️
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     VISOR DE FOTOS
+====================================================== -->
+
+<div id="image-viewer">
+
+  <button
+    class="viewer-close"
+    id="viewer-close"
+  >
+    ×
+  </button>
+
+  <img
+    id="viewer-img"
+    src=""
+    alt="Foto ampliada"
+    draggable="false"
+  >
+
+  <div id="viewer-caption"></div>
+
+  <div class="viewer-nav">
+
+    <button id="viewer-prev">
+      ← Anterior
+    </button>
+
+    <button id="viewer-next">
+      Siguiente →
+    </button>
+
+  </div>
+
+</div>
+
 
 <script>
 
-/* =========================================================
-   DATOS
-========================================================= */
+/* =====================================================
+   DATOS DE VIVIOS
+====================================================== */
 
 const appData = {
 
@@ -1410,513 +1771,731 @@ Te amo muchísimo. 💕`,
 };
 
 
-/* =========================================================
-   ELEMENTOS
-========================================================= */
+/* =====================================================
+   UTILIDADES
+====================================================== */
 
-const boot =
-  document.getElementById('boot');
+const $ = selector =>
+  document.querySelector(selector);
 
-const login =
-  document.getElementById('login');
+const $$ = selector =>
+  document.querySelectorAll(selector);
 
-const desktop =
-  document.getElementById('desktop');
-
-const loginBtn =
-  document.getElementById('loginBtn');
-
-const gallery =
-  document.getElementById('gallery');
-
-const letterText =
-  document.getElementById('letterText');
-
-const clock =
-  document.getElementById('clock');
-
-const toast =
-  document.getElementById('toast');
+let zIndex = 3000;
 
 
-/* =========================================================
-   BOOT
-========================================================= */
+/* =====================================================
+   ABRIR VENTANA
+====================================================== */
 
-setTimeout(()=>{
+function abrirVentana(id){
 
-  boot.style.display='none';
-  login.style.display='flex';
-
-},2500);
-
-
-/* =========================================================
-   LOGIN
-========================================================= */
-
-loginBtn.addEventListener('click',()=>{
-
-  login.style.display='none';
-  desktop.style.display='block';
-
-  renderApp();
-
-  showToast('Bienvenida a ViviOS ❤️');
-
-  setTimeout(()=>{
-    openWindow('win-carta');
-  },350);
-
-});
-
-
-/* =========================================================
-   RENDER APP
-========================================================= */
-
-function renderApp(){
-
-  document.body.style.backgroundImage =
-    'url("assets/fondo.jpg")';
-
-  letterText.textContent =
-    appData.carta;
-
-  gallery.innerHTML='';
-
-  appData.fotos.forEach((src,index)=>{
-
-    const card =
-      document.createElement('div');
-
-    card.className='photo-card';
-
-    const img =
-      document.createElement('img');
-
-    img.src=src;
-    img.loading='lazy';
-    img.alt='Foto '+(index+1);
-
-    img.onerror=()=>{
-
-      card.style.background=
-        'linear-gradient(135deg,#eee,#ddd)';
-
-      card.innerHTML=
-        '<div style="height:100%;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;">Foto '+(index+1)+'</div>';
-
-    };
-
-    card.appendChild(img);
-
-    card.addEventListener(
-      'click',
-      ()=>openViewer(index)
-    );
-
-    gallery.appendChild(card);
-
-  });
-
-  preloadPhotos();
-
-}
-
-
-/* =========================================================
-   PRELOAD FOTOS
-========================================================= */
-
-function preloadPhotos(){
-
-  appData.fotos.forEach(src=>{
-
-    const img =
-      new Image();
-
-    img.src=src;
-
-  });
-
-}
-
-
-/* =========================================================
-   WINDOWS
-========================================================= */
-
-let highestZ=100;
-
-function openWindow(id){
-
-  const win =
+  const w =
     document.getElementById(id);
 
-  if(!win)return;
+  if(!w){
+    return;
+  }
 
-  win.classList.add('active');
+  w.classList.remove(
+    'minimized',
+    'closing'
+  );
 
-  highestZ++;
+  w.classList.add(
+    'active'
+  );
 
-  win.style.zIndex=highestZ;
+  w.style.zIndex =
+    ++zIndex;
 
-  if(id==='win-juego'){
+  $$('.dock-icon').forEach(
+    icon =>
+      icon.classList.remove('open')
+  );
 
-    setTimeout(()=>{
-      resizeGame();
-      startGameIfNeeded();
-    },100);
+  $$('.dock-icon[data-open="'+id+'"]').forEach(
+    icon =>
+      icon.classList.add('open')
+  );
 
+  if(id === 'win-carta'){
+    typeLetter();
+  }
+
+  if(id === 'win-juego'){
+    setTimeout(
+      ()=>{
+        resizeGame();
+        if(!gameStarted){
+          resetGame();
+        }
+      },
+      80
+    );
   }
 
 }
 
-function closeWindow(id){
 
-  const win =
+/* =====================================================
+   CERRAR VENTANA
+====================================================== */
+
+function cerrarVentana(id){
+
+  const w =
     document.getElementById(id);
 
-  if(!win)return;
+  if(!w){
+    return;
+  }
 
-  win.classList.remove('active');
-
-  if(id==='win-juego'){
+  if(id === 'win-juego'){
     stopGame();
   }
 
+  w.classList.add('closing');
+
+  setTimeout(
+    ()=>{
+      w.classList.remove(
+        'active',
+        'closing'
+      );
+
+      updateDock(id);
+
+    },
+    220
+  );
+
 }
 
-function minimizeWindow(id){
 
-  const win =
+/* =====================================================
+   MINIMIZAR
+====================================================== */
+
+function minimizarVentana(id){
+
+  const w =
     document.getElementById(id);
 
-  if(!win)return;
+  if(!w){
+    return;
+  }
 
-  win.classList.remove('active');
+  w.classList.remove(
+    'active'
+  );
+
+  w.classList.add(
+    'minimized'
+  );
+
+  updateDock(id);
 
 }
 
-document.querySelectorAll('[data-open]').forEach(el=>{
 
-  el.addEventListener('click',()=>{
+/* =====================================================
+   MAXIMIZAR
+====================================================== */
 
-    openWindow(
-      el.dataset.open
+function maximizarVentana(id){
+
+  const w =
+    document.getElementById(id);
+
+  if(!w){
+    return;
+  }
+
+  w.classList.toggle(
+    'maximized'
+  );
+
+  if(id === 'win-juego'){
+    setTimeout(
+      resizeGame,
+      80
+    );
+  }
+
+}
+
+
+/* =====================================================
+   DOCK
+====================================================== */
+
+function updateDock(id){
+
+  $$('.dock-icon[data-open="'+id+'"]')
+    .forEach(
+      icon =>
+        icon.classList.remove('open')
     );
 
-  });
-
-});
+}
 
 
-document.querySelectorAll('[data-close]').forEach(btn=>{
+/* =====================================================
+   BOTONES data-open
+====================================================== */
 
-  btn.addEventListener('click',()=>{
+$$('[data-open]').forEach(
+  element => {
 
-    closeWindow(
-      btn.dataset.close
+    element.addEventListener(
+      'click',
+      event => {
+
+        event.stopPropagation();
+
+        abrirVentana(
+          element.dataset.open
+        );
+
+      }
     );
 
-  });
+  }
+);
 
-});
 
+/* =====================================================
+   BOTONES CERRAR
+====================================================== */
 
-document.querySelectorAll('[data-min]').forEach(btn=>{
+$$('[data-close]').forEach(
+  element => {
 
-  btn.addEventListener('click',()=>{
+    element.addEventListener(
+      'click',
+      event => {
 
-    minimizeWindow(
-      btn.dataset.min
+        event.stopPropagation();
+
+        cerrarVentana(
+          element.dataset.close
+        );
+
+      }
     );
 
-  });
-
-});
-
-
-document.querySelectorAll('[data-max]').forEach(btn=>{
-
-  btn.addEventListener('click',()=>{
-
-    const win =
-      document.getElementById(
-        btn.dataset.max
-      );
-
-    if(!win)return;
-
-    win.classList.toggle('maximized');
-
-    if(
-      btn.dataset.max==='win-juego'
-    ){
-
-      setTimeout(
-        resizeGame,
-        150
-      );
-
-    }
-
-  });
-
-});
+  }
+);
 
 
-document.querySelectorAll('.window').forEach(win=>{
+/* =====================================================
+   BOTONES MINIMIZAR
+====================================================== */
 
-  win.addEventListener('mousedown',()=>{
+$$('[data-min]').forEach(
+  element => {
 
-    highestZ++;
+    element.addEventListener(
+      'click',
+      event => {
 
-    win.style.zIndex=highestZ;
+        event.stopPropagation();
 
-  });
+        minimizarVentana(
+          element.dataset.min
+        );
 
-});
+      }
+    );
+
+  }
+);
 
 
-/* =========================================================
+/* =====================================================
+   BOTONES MAXIMIZAR
+====================================================== */
+
+$$('[data-max]').forEach(
+  element => {
+
+    element.addEventListener(
+      'click',
+      event => {
+
+        event.stopPropagation();
+
+        maximizarVentana(
+          element.dataset.max
+        );
+
+      }
+    );
+
+  }
+);
+
+
+/* =====================================================
+   Z-INDEX
+====================================================== */
+
+$$('.window').forEach(
+  windowElement => {
+
+    windowElement.addEventListener(
+      'mousedown',
+      ()=>{
+        windowElement.style.zIndex =
+          ++zIndex;
+      }
+    );
+
+    windowElement.addEventListener(
+      'touchstart',
+      ()=>{
+        windowElement.style.zIndex =
+          ++zIndex;
+      },
+      {passive:true}
+    );
+
+  }
+);
+
+
+/* =====================================================
    DRAG WINDOWS
-========================================================= */
+====================================================== */
 
-document.querySelectorAll('.window').forEach(win=>{
-
-  const header =
-    win.querySelector('.window-header');
-
-  let dragging=false;
-  let offsetX=0;
-  let offsetY=0;
-
-  header.addEventListener(
-    'mousedown',
-    e=>{
-
-      if(
-        e.target.classList.contains('dot')
-      )return;
-
-      if(
-        win.classList.contains('maximized')
-      )return;
-
-      dragging=true;
-
-      const rect =
-        win.getBoundingClientRect();
-
-      offsetX =
-        e.clientX-rect.left;
-
-      offsetY =
-        e.clientY-rect.top;
-
-    }
-  );
-
-  document.addEventListener(
-    'mousemove',
-    e=>{
-
-      if(!dragging)return;
-
-      win.style.left =
-        (e.clientX-offsetX)+'px';
-
-      win.style.top =
-        (e.clientY-offsetY)+'px';
-
-      win.style.transform='none';
-
-    }
-  );
-
-  document.addEventListener(
-    'mouseup',
-    ()=>{
-      dragging=false;
-    }
-  );
-
-});
+let drag = null;
 
 
-/* =========================================================
+$$('.window-header').forEach(
+  header => {
+
+    header.addEventListener(
+      'mousedown',
+      event => {
+
+        if(
+          event.target.classList.contains('dot')
+        ){
+          return;
+        }
+
+        const windowElement =
+          header.closest('.window');
+
+        if(
+          windowElement.classList.contains('maximized')
+        ){
+          return;
+        }
+
+        const rect =
+          windowElement.getBoundingClientRect();
+
+        drag = {
+
+          windowElement,
+
+          startX:event.clientX,
+
+          startY:event.clientY,
+
+          left:rect.left,
+
+          top:rect.top
+
+        };
+
+        windowElement.style.transform =
+          'none';
+
+        windowElement.style.left =
+          rect.left + 'px';
+
+        windowElement.style.top =
+          rect.top + 'px';
+
+
+        function move(e){
+
+          if(!drag){
+            return;
+          }
+
+          drag.windowElement.style.left =
+            (
+              drag.left +
+              e.clientX -
+              drag.startX
+            ) + 'px';
+
+          drag.windowElement.style.top =
+            (
+              drag.top +
+              e.clientY -
+              drag.startY
+            ) + 'px';
+
+        }
+
+
+        function stop(){
+
+          drag = null;
+
+          document.removeEventListener(
+            'mousemove',
+            move
+          );
+
+          document.removeEventListener(
+            'mouseup',
+            stop
+          );
+
+        }
+
+
+        document.addEventListener(
+          'mousemove',
+          move
+        );
+
+        document.addEventListener(
+          'mouseup',
+          stop
+        );
+
+      }
+    );
+
+  }
+);
+
+
+/* =====================================================
    CARTA
-========================================================= */
+====================================================== */
+
+let typingTimer;
 
 function typeLetter(){
 
-  const target =
-    document.getElementById(
-      'letterText'
-    );
+  clearTimeout(
+    typingTimer
+  );
+
+  const element =
+    $('#display-carta');
+
+  if(!element){
+    return;
+  }
 
   const text =
     appData.carta;
 
-  target.textContent='';
+  if(
+    element.dataset.done === text
+  ){
+    return;
+  }
 
-  let i=0;
+  element.dataset.done =
+    text;
 
-  const timer =
-    setInterval(()=>{
+  element.textContent =
+    '';
 
-      target.textContent +=
-        text[i];
+  let index = 0;
 
-      i++;
+  function write(){
 
-      if(i>=text.length){
+    if(index < text.length){
 
-        clearInterval(timer);
+      element.textContent +=
+        text[index];
 
-      }
+      index++;
 
-    },18);
+      typingTimer =
+        setTimeout(
+          write,
+          12
+        );
+
+    }
+
+  }
+
+  write();
 
 }
 
-typeLetter();
+
+/* =====================================================
+   RENDER APP
+====================================================== */
+
+function renderApp(){
+
+  try{
+
+    document.body.style.backgroundImage =
+      'url("assets/fondo.jpg")';
 
 
-/* =========================================================
-   IMAGE VIEWER
-========================================================= */
+    const gallery =
+      $('#display-galeria');
 
-const viewer =
-  document.getElementById('viewer');
+    gallery.innerHTML =
+      '';
 
-const viewerImage =
-  document.getElementById('viewerImage');
 
-const viewerCounter =
-  document.getElementById('viewerCounter');
+    appData.fotos.forEach(
+      (src,index)=>{
 
-const viewerClose =
-  document.getElementById('viewerClose');
+        const card =
+          document.createElement('div');
 
-const viewerPrev =
-  document.getElementById('viewerPrev');
+        card.className =
+          'photo-card';
 
-const viewerNext =
-  document.getElementById('viewerNext');
+        card.style.animationDelay =
+          (index * .07) + 's';
 
-let currentPhoto=0;
+
+        const image =
+          document.createElement('img');
+
+        image.src =
+          src;
+
+        image.alt =
+          'Foto ' + (index + 1);
+
+        image.loading =
+          'lazy';
+
+        image.draggable =
+          false;
+
+
+        image.onerror =
+          ()=>{
+            console.error(
+              'No se pudo cargar:',
+              src
+            );
+          };
+
+
+        const caption =
+          document.createElement('p');
+
+        caption.textContent =
+          'Foto #' + (index + 1);
+
+
+        card.append(
+          image,
+          caption
+        );
+
+
+        card.addEventListener(
+          'click',
+          ()=>{
+            openViewer(index);
+          }
+        );
+
+
+        gallery.appendChild(
+          card
+        );
+
+      }
+    );
+
+
+    $('#display-carta').dataset.done =
+      '';
+
+  }catch(error){
+
+    console.error(
+      'Error renderizando ViviOS:',
+      error
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   PRECARGAR FOTOS
+====================================================== */
+
+function preloadPhotos(){
+
+  appData.fotos.forEach(
+    src => {
+
+      const image =
+        new Image();
+
+      image.src =
+        src;
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   VISOR DE FOTOS
+====================================================== */
+
+let viewerIndex = 0;
 
 
 function openViewer(index){
 
-  currentPhoto=index;
+  if(
+    !appData.fotos.length
+  ){
+    return;
+  }
+
+  viewerIndex =
+    index;
 
   updateViewer();
 
-  viewer.classList.add('active');
+  $('#image-viewer')
+    .classList.add('show');
 
 }
 
 
 function updateViewer(){
 
-  viewerImage.src =
-    appData.fotos[currentPhoto];
+  if(
+    !appData.fotos.length
+  ){
+    return;
+  }
 
-  viewerCounter.textContent =
-    (currentPhoto+1)+
-    ' / '+
+  const source =
+    appData.fotos[viewerIndex];
+
+  $('#viewer-img').src =
+    source;
+
+  $('#viewer-caption').textContent =
+    'Foto ' +
+    (viewerIndex + 1) +
+    ' de ' +
     appData.fotos.length;
 
 }
 
 
-function nextPhoto(){
+/* =====================================================
+   VISOR: CERRAR
+====================================================== */
 
-  currentPhoto++;
-
-  if(
-    currentPhoto>=appData.fotos.length
-  ){
-
-    currentPhoto=0;
-
-  }
-
-  updateViewer();
-
-}
-
-
-function previousPhoto(){
-
-  currentPhoto--;
-
-  if(currentPhoto<0){
-
-    currentPhoto =
-      appData.fotos.length-1;
-
-  }
-
-  updateViewer();
-
-}
-
-
-viewerClose.addEventListener(
-  'click',
+$('#viewer-close').onclick =
   ()=>{
-    viewer.classList.remove('active');
-  }
-);
-
-viewerNext.addEventListener(
-  'click',
-  nextPhoto
-);
-
-viewerPrev.addEventListener(
-  'click',
-  previousPhoto
-);
+    $('#image-viewer')
+      .classList.remove('show');
+  };
 
 
-document.addEventListener(
-  'keydown',
-  e=>{
+/* =====================================================
+   VISOR: ANTERIOR
+====================================================== */
 
-    if(!viewer.classList.contains('active'))
-      return;
+$('#viewer-prev').onclick =
+  ()=>{
 
-    if(e.key==='ArrowRight')
-      nextPhoto();
+    viewerIndex =
+      (
+        viewerIndex -
+        1 +
+        appData.fotos.length
+      ) %
+      appData.fotos.length;
 
-    if(e.key==='ArrowLeft')
-      previousPhoto();
+    updateViewer();
 
-    if(e.key==='Escape')
-      viewer.classList.remove('active');
-
-  }
-);
+  };
 
 
-/* =========================================================
-   SWIPE GALERIA
-========================================================= */
+/* =====================================================
+   VISOR: SIGUIENTE
+====================================================== */
 
-let touchStartX=0;
+$('#viewer-next').onclick =
+  ()=>{
+
+    viewerIndex =
+      (
+        viewerIndex +
+        1
+      ) %
+      appData.fotos.length;
+
+    updateViewer();
+
+  };
+
+
+/* =====================================================
+   SWIPE EN ANDROID
+====================================================== */
+
+const viewer =
+  $('#image-viewer');
+
+const viewerImage =
+  $('#viewer-img');
+
+let touchStartX = 0;
+let touchStartY = 0;
+let touchStartTime = 0;
+
 
 viewer.addEventListener(
   'touchstart',
-  e=>{
+  event => {
+
+    if(
+      !event.touches ||
+      event.touches.length !== 1
+    ){
+      return;
+    }
+
+    const touch =
+      event.touches[0];
 
     touchStartX =
-      e.changedTouches[0].screenX;
+      touch.clientX;
+
+    touchStartY =
+      touch.clientY;
+
+    touchStartTime =
+      Date.now();
 
   },
   {passive:true}
@@ -1925,40 +2504,139 @@ viewer.addEventListener(
 
 viewer.addEventListener(
   'touchend',
-  e=>{
+  event => {
 
-    const endX =
-      e.changedTouches[0].screenX;
-
-    const diff =
-      endX-touchStartX;
-
-    if(Math.abs(diff)<50)
+    if(
+      !event.changedTouches ||
+      event.changedTouches.length !== 1
+    ){
       return;
+    }
 
-    if(diff<0)
-      nextPhoto();
-    else
-      previousPhoto();
+    const touch =
+      event.changedTouches[0];
+
+    const deltaX =
+      touch.clientX -
+      touchStartX;
+
+    const deltaY =
+      touch.clientY -
+      touchStartY;
+
+    const duration =
+      Date.now() -
+      touchStartTime;
+
+
+    if(duration > 1200){
+      return;
+    }
+
+    if(Math.abs(deltaX) < 40){
+      return;
+    }
+
+    if(
+      Math.abs(deltaX) <=
+      Math.abs(deltaY)
+    ){
+      return;
+    }
+
+
+    if(deltaX < 0){
+
+      $('#viewer-next').click();
+
+    }else{
+
+      $('#viewer-prev').click();
+
+    }
 
   },
   {passive:true}
 );
 
 
-/* =========================================================
-   CLOCK
-========================================================= */
+viewerImage.addEventListener(
+  'dragstart',
+  event => {
+    event.preventDefault();
+  }
+);
+
+
+/* =====================================================
+   VALES
+====================================================== */
+
+$$('.claim-btn').forEach(
+  button => {
+
+    button.addEventListener(
+      'click',
+      ()=>{
+
+        button.textContent =
+          '¡CANJEADO! ❤️';
+
+        button.classList.add(
+          'claimed'
+        );
+
+        showToast(
+          'Vale canjeado 💕'
+        );
+
+      }
+    );
+
+  }
+);
+
+
+/* =====================================================
+   REGALO
+====================================================== */
+
+$('#gift-btn').addEventListener(
+  'click',
+  ()=>{
+
+    $('#gift-text').style.display =
+      'block';
+
+    $('#gift-btn').style.animation =
+      'none';
+
+    burstHearts();
+
+  }
+);
+
+
+/* =====================================================
+   RELOJ
+====================================================== */
 
 function updateClock(){
 
-  const now =
-    new Date();
+  const clock =
+    $('#mac-clock');
+
+  if(!clock){
+    return;
+  }
 
   clock.textContent =
-    now.toLocaleTimeString(
-      [],
+    new Date().toLocaleString(
+      'es-ES',
       {
+        weekday:'short',
+        day:'numeric',
+        month:'short',
         hour:'2-digit',
         minute:'2-digit'
       }
@@ -1974,94 +2652,147 @@ setInterval(
 );
 
 
-/* =========================================================
-   GIFT
-========================================================= */
+/* =====================================================
+   TOAST
+====================================================== */
 
-const gift =
-  document.getElementById('gift');
+function showToast(message){
 
-const surpriseMessage =
-  document.getElementById(
-    'surpriseMessage'
+  const previous =
+    document.querySelector('.toast');
+
+  if(previous){
+    previous.remove();
+  }
+
+  const toast =
+    document.createElement('div');
+
+  toast.className =
+    'toast';
+
+  toast.textContent =
+    message;
+
+  document.body.appendChild(
+    toast
   );
 
-gift.addEventListener(
+  setTimeout(
+    ()=>{
+      toast.remove();
+    },
+    2200
+  );
+
+}
+
+
+/* =====================================================
+   CORAZONES
+====================================================== */
+
+function createHeart(x,y){
+
+  const heart =
+    document.createElement('div');
+
+  heart.className =
+    'click-heart';
+
+  const hearts =
+    [
+      '💖',
+      '💕',
+      '❤️',
+      '💗'
+    ];
+
+  heart.textContent =
+    hearts[
+      Math.floor(
+        Math.random() *
+        hearts.length
+      )
+    ];
+
+  heart.style.left =
+    x + 'px';
+
+  heart.style.top =
+    y + 'px';
+
+  document.body.appendChild(
+    heart
+  );
+
+  setTimeout(
+    ()=>{
+      heart.remove();
+    },
+    900
+  );
+
+}
+
+
+document.addEventListener(
   'click',
-  ()=>{
+  event => {
 
-    gift.textContent='💝';
+    if(
+      event.target.closest(
+        'button,' +
+        'input,' +
+        'textarea,' +
+        '.window-header,' +
+        '.dock,' +
+        '.desktop-item,' +
+        '#image-viewer,' +
+        '#gameCanvas'
+      )
+    ){
+      return;
+    }
 
-    surpriseMessage.style.display='block';
-
-    createHearts();
+    createHeart(
+      event.clientX,
+      event.clientY
+    );
 
   }
 );
 
 
-/* =========================================================
-   TOAST
-========================================================= */
+/* =====================================================
+   EXPLOSIÓN DE CORAZONES
+====================================================== */
 
-let toastTimer;
+function burstHearts(){
 
-function showToast(message){
+  for(
+    let i = 0;
+    i < 14;
+    i++
+  ){
 
-  toast.textContent=
-    message;
-
-  toast.classList.add('show');
-
-  clearTimeout(toastTimer);
-
-  toastTimer =
     setTimeout(
       ()=>{
-        toast.classList.remove('show');
+
+        createHeart(
+
+          innerWidth / 2 +
+          (Math.random() - .5) *
+          220,
+
+          innerHeight / 2 +
+          (Math.random() - .5) *
+          120
+
+        );
+
       },
-      2200
-    );
-
-}
-
-
-/* =========================================================
-   HEARTS
-========================================================= */
-
-function createHearts(){
-
-  for(let i=0;i<15;i++){
-
-    const heart =
-      document.createElement('div');
-
-    heart.className='heart';
-
-    heart.textContent=
-      ['❤️','💕','💗','💖'][
-
-        Math.floor(
-          Math.random()*4
-        )
-
-      ];
-
-    heart.style.left =
-      (30+Math.random()*40)+'%';
-
-    heart.style.bottom =
-      '100px';
-
-    heart.style.animationDelay =
-      (Math.random()*.6)+'s';
-
-    document.body.appendChild(heart);
-
-    setTimeout(
-      ()=>heart.remove(),
-      1700
+      i * 45
     );
 
   }
@@ -2069,77 +2800,57 @@ function createHearts(){
 }
 
 
-/* =========================================================
-   ================= VIVI RUNNER ===========================
-========================================================= */
+/* =====================================================
+   VIVI RUNNER
+====================================================== */
 
 const canvas =
-  document.getElementById(
-    'gameCanvas'
-  );
+  $('#gameCanvas');
 
 const ctx =
   canvas.getContext('2d');
 
 const gameOverlay =
-  document.getElementById(
-    'gameOverlay'
-  );
+  $('#gameOverlay');
 
 const gameScoreEl =
-  document.getElementById(
-    'gameScore'
-  );
+  $('#gameScore');
 
 const heartScoreEl =
-  document.getElementById(
-    'heartScore'
-  );
+  $('#heartScore');
 
 const finalScoreEl =
-  document.getElementById(
-    'finalScore'
-  );
+  $('#finalScore');
 
 const finalHeartsEl =
-  document.getElementById(
-    'finalHearts'
-  );
+  $('#finalHearts');
 
 const restartGame =
-  document.getElementById(
-    'restartGame'
-  );
+  $('#restartGame');
 
 
-let gameRunning=false;
-let gameAnimation=null;
-let gameStarted=false;
+let gameRunning = false;
+let gameAnimation = null;
+let gameStarted = false;
 
-let gameWidth=800;
-let gameHeight=350;
+let gameWidth = 800;
+let gameHeight = 350;
 
-let score=0;
-let heartsCollected=0;
+let score = 0;
+let heartsCollected = 0;
 
-let speed=5;
+let speed = 5;
+let groundY = 0;
 
-let groundY=0;
+let lastTime = 0;
+let obstacleTimer = 0;
+let heartTimer = 0;
 
-let lastTime=0;
-
-let obstacleTimer=0;
-let heartTimer=0;
-
-let obstacles=[];
-let collectibles=[];
+let obstacles = [];
+let collectibles = [];
 
 
-/* =========================================================
-   GAME PLAYER
-========================================================= */
-
-const player={
+const player = {
 
   x:110,
   y:0,
@@ -2150,7 +2861,6 @@ const player={
   velocityY:0,
 
   gravity:.72,
-
   jumpPower:-13,
 
   grounded:true
@@ -2158,129 +2868,175 @@ const player={
 };
 
 
-/* =========================================================
-   VIVI
-========================================================= */
-
-const vivi={
+const vivi = {
 
   x:55,
   y:0,
 
-  width:40,
-  height:66,
+  width:42,
+  height:68,
 
   bounce:0
 
 };
 
 
-/* =========================================================
-   RESIZE GAME
-========================================================= */
+/* =====================================================
+   REDIMENSIONAR JUEGO
+====================================================== */
 
 function resizeGame(){
 
-  if(!canvas)return;
+  if(!canvas){
+    return;
+  }
 
   const rect =
     canvas.getBoundingClientRect();
 
-  const dpr =
+  const width =
+    Math.max(300,rect.width);
+
+  const height =
+    Math.max(200,rect.height);
+
+  const ratio =
     Math.min(
-      window.devicePixelRatio||1,
+      window.devicePixelRatio || 1,
       2
     );
 
   canvas.width =
-    rect.width*dpr;
+    width * ratio;
 
   canvas.height =
-    rect.height*dpr;
+    height * ratio;
+
+  canvas.style.width =
+    width + 'px';
+
+  canvas.style.height =
+    height + 'px';
 
   ctx.setTransform(
-    dpr,
+    ratio,
     0,
     0,
-    dpr,
+    ratio,
     0,
     0
   );
 
   gameWidth =
-    rect.width;
+    width;
 
   gameHeight =
-    rect.height;
+    height;
 
   groundY =
-    gameHeight-55;
+    gameHeight - 52;
 
   if(player.grounded){
-
     player.y =
-      groundY-player.height;
-
+      groundY - player.height;
   }
 
   vivi.y =
-    groundY-vivi.height;
+    groundY - vivi.height;
 
 }
 
+
 window.addEventListener(
   'resize',
-  resizeGame
+  ()=>{
+    if(
+      $('#win-juego') &&
+      $('#win-juego').classList.contains('active')
+    ){
+      resizeGame();
+    }
+  }
 );
 
 
-/* =========================================================
-   START GAME
-========================================================= */
+/* =====================================================
+   INICIAR / REINICIAR
+====================================================== */
 
 function startGameIfNeeded(){
 
-  if(gameStarted)
+  if(gameRunning){
     return;
+  }
 
-  gameStarted=true;
+  gameRunning = true;
+  gameStarted = true;
 
-  resetGame();
+  lastTime =
+    performance.now();
+
+  gameAnimation =
+    requestAnimationFrame(
+      gameLoop
+    );
 
 }
 
 
 function resetGame(){
 
-  cancelAnimationFrame(
-    gameAnimation
-  );
+  resizeGame();
 
-  score=0;
-  heartsCollected=0;
+  score = 0;
+  heartsCollected = 0;
 
-  speed=5;
+  speed = 5;
 
-  obstacles=[];
-  collectibles=[];
+  obstacleTimer = 0;
+  heartTimer = 0;
 
-  obstacleTimer=0;
-  heartTimer=0;
+  obstacles = [];
+  collectibles = [];
 
-  player.velocityY=0;
+  player.velocityY = 0;
+  player.grounded = true;
 
-  player.grounded=true;
+  player.y =
+    groundY -
+    player.height;
+
+  vivi.y =
+    groundY -
+    vivi.height;
+
+  vivi.bounce = 0;
+
+  gameScoreEl.textContent =
+    '0';
+
+  heartScoreEl.textContent =
+    '0';
+
+  finalScoreEl.textContent =
+    '0';
+
+  finalHeartsEl.textContent =
+    '0';
 
   gameOverlay.classList.add(
     'hidden'
   );
 
-  resizeGame();
+  gameStarted = true;
+  gameRunning = true;
 
-  gameRunning=true;
-
-  lastTime=
+  lastTime =
     performance.now();
+
+  cancelAnimationFrame(
+    gameAnimation
+  );
 
   gameAnimation =
     requestAnimationFrame(
@@ -2292,64 +3048,59 @@ function resetGame(){
 
 function stopGame(){
 
-  gameRunning=false;
+  gameRunning = false;
 
   cancelAnimationFrame(
     gameAnimation
   );
 
-  gameAnimation=null;
-
-  gameStarted=false;
+  gameAnimation = null;
 
 }
 
 
-/* =========================================================
-   JUMP
-========================================================= */
+/* =====================================================
+   SALTO
+====================================================== */
 
 function jump(){
 
-  if(
-    !gameRunning
-  )return;
+  if(!gameRunning){
+    resetGame();
+    return;
+  }
 
-  if(
-    player.grounded
-  ){
+  if(player.grounded){
 
     player.velocityY =
       player.jumpPower;
 
-    player.grounded=false;
+    player.grounded =
+      false;
 
   }
 
 }
 
 
+/* =====================================================
+   CONTROLES
+====================================================== */
+
 document.addEventListener(
   'keydown',
-  e=>{
+  event => {
 
     if(
-      e.code==='Space' ||
-      e.code==='ArrowUp'
+      event.code === 'Space' ||
+      event.key === 'ArrowUp'
     ){
 
-      const gameWindow =
-        document.getElementById(
-          'win-juego'
-        );
-
       if(
-        gameWindow.classList.contains(
-          'active'
-        )
+        $('#win-juego').classList.contains('active')
       ){
 
-        e.preventDefault();
+        event.preventDefault();
 
         jump();
 
@@ -2363,9 +3114,15 @@ document.addEventListener(
 
 canvas.addEventListener(
   'pointerdown',
-  e=>{
+  event => {
 
-    e.preventDefault();
+    event.preventDefault();
+
+    if(
+      !$('#win-juego').classList.contains('active')
+    ){
+      return;
+    }
 
     jump();
 
@@ -2373,22 +3130,24 @@ canvas.addEventListener(
 );
 
 
-/* =========================================================
-   GAME LOOP
-========================================================= */
+/* =====================================================
+   LOOP
+====================================================== */
 
 function gameLoop(time){
 
-  if(!gameRunning)
+  if(!gameRunning){
     return;
+  }
 
   const delta =
     Math.min(
-      (time-lastTime)/16.67,
+      (time - lastTime) / 16.67,
       2
     );
 
-  lastTime=time;
+  lastTime =
+    time;
 
   updateGame(delta);
 
@@ -2402,81 +3161,116 @@ function gameLoop(time){
 }
 
 
-/* =========================================================
-   UPDATE
-========================================================= */
+/* =====================================================
+   ACTUALIZAR JUEGO
+====================================================== */
 
 function updateGame(delta){
 
   score +=
-    .08*delta;
+    0.12 * delta;
 
-  speed +=
-    .0008*delta;
-
-  if(speed>11)
-    speed=11;
+  gameScoreEl.textContent =
+    Math.floor(score);
 
 
-  /* PLAYER PHYSICS */
+  speed =
+    Math.min(
+      9,
+      5 +
+      score / 350
+    );
+
 
   player.velocityY +=
-    player.gravity*delta;
+    player.gravity * delta;
 
   player.y +=
-    player.velocityY*delta;
+    player.velocityY * delta;
 
 
   if(
-    player.y+
+    player.y +
     player.height >=
     groundY
   ){
 
     player.y =
-      groundY-player.height;
+      groundY -
+      player.height;
 
-    player.velocityY=0;
+    player.velocityY =
+      0;
 
-    player.grounded=true;
+    player.grounded =
+      true;
 
   }
 
 
-  /* VIVI BOUNCE */
-
   vivi.bounce +=
-    .12*delta;
+    .13 * delta;
+
 
   vivi.y =
-    groundY-
-    vivi.height+
-    Math.sin(vivi.bounce)*2;
+    groundY -
+    vivi.height +
+    Math.sin(vivi.bounce) * 3;
 
 
-  /* OBSTACLES */
-
-  obstacleTimer -=
+  obstacleTimer +=
     delta;
 
+  heartTimer +=
+    delta;
+
+
   if(
-    obstacleTimer<=0
+    obstacleTimer >
+    Math.max(
+      52,
+      88 -
+      score / 20
+    )
   ){
 
     spawnObstacle();
 
-    obstacleTimer =
-      70+
-      Math.random()*80;
+    obstacleTimer = 0;
+
+  }
+
+
+  if(
+    heartTimer >
+    95
+  ){
+
+    spawnHeart();
+
+    heartTimer = 0;
 
   }
 
 
   obstacles.forEach(
-    obstacle=>{
+    obstacle => {
 
       obstacle.x -=
-        speed*delta;
+        speed * delta;
+
+    }
+  );
+
+
+  collectibles.forEach(
+    heart => {
+
+      heart.x -=
+        speed * delta;
+
+      heart.rotation +=
+        .05 * delta;
 
     }
   );
@@ -2485,58 +3279,23 @@ function updateGame(delta){
   obstacles =
     obstacles.filter(
       obstacle =>
-        obstacle.x+
+        obstacle.x +
         obstacle.width >
-        -30
+        -40
     );
-
-
-  /* HEARTS */
-
-  heartTimer -=
-    delta;
-
-  if(
-    heartTimer<=0
-  ){
-
-    spawnHeart();
-
-    heartTimer =
-      100+
-      Math.random()*110;
-
-  }
-
-
-  collectibles.forEach(
-    heart=>{
-
-      heart.x -=
-        speed*delta;
-
-      heart.y +=
-        Math.sin(
-          (timeNow()/150)+
-          heart.offset
-        )*.5;
-
-    }
-  );
 
 
   collectibles =
     collectibles.filter(
       heart =>
-        heart.x+heart.size>-30
+        heart.x +
+        heart.size >
+        -40
     );
 
 
-  /* COLLISION */
-
   for(
-    const obstacle
-    of obstacles
+    const obstacle of obstacles
   ){
 
     if(
@@ -2555,161 +3314,124 @@ function updateGame(delta){
   }
 
 
-  /* HEART COLLECTION */
+  for(
+    let i = collectibles.length - 1;
+    i >= 0;
+    i--
+  ){
 
-  collectibles =
-    collectibles.filter(
-      heart=>{
+    const heart =
+      collectibles[i];
 
-        const hit =
-          player.x <
-          heart.x+
-          heart.size &&
-          player.x+
-          player.width >
-          heart.x &&
-          player.y <
-          heart.y+
-          heart.size &&
-          player.y+
-          player.height >
-          heart.y;
+    if(
+      circlePlayerCollision(
+        player,
+        heart
+      )
+    ){
 
-        if(hit){
+      heartsCollected++;
 
-          heartsCollected++;
+      heartScoreEl.textContent =
+        heartsCollected;
 
-          score +=5;
+      score += 20;
 
-          createGameHeart(
-            heart.x,
-            heart.y
-          );
+      collectibles.splice(
+        i,
+        1
+      );
 
-          return false;
-
-        }
-
-        return true;
-
-      }
-    );
-
-
-  gameScoreEl.textContent =
-    Math.floor(score);
-
-  heartScoreEl.textContent =
-    heartsCollected;
-
-}
-
-
-function timeNow(){
-
-  return performance.now();
-
-}
-
-
-/* =========================================================
-   SPAWN OBSTACLE
-========================================================= */
-
-function spawnObstacle(){
-
-  const type =
-    Math.random();
-
-  let width;
-  let height;
-
-  if(type<.5){
-
-    width=25;
-    height=45;
-
-  }else if(type<.8){
-
-    width=42;
-    height=34;
-
-  }else{
-
-    width=30;
-    height=58;
+    }
 
   }
 
+}
+
+
+/* =====================================================
+   OBSTÁCULOS
+====================================================== */
+
+function spawnObstacle(){
+
+  const height =
+    28 +
+    Math.random() *
+    34;
+
+  const width =
+    25 +
+    Math.random() *
+    18;
+
   obstacles.push({
 
-    x:gameWidth+20,
+    x:
+      gameWidth + 20,
 
-    y:groundY-height,
+    y:
+      groundY - height,
 
     width,
-    height,
-
-    type:
-
-      type<.5
-        ? 'flower'
-        : type<.8
-          ? 'box'
-          : 'heart'
+    height
 
   });
 
 }
 
-
-/* =========================================================
-   SPAWN HEART
-========================================================= */
 
 function spawnHeart(){
 
-  const size=22;
+  const minY =
+    Math.max(
+      65,
+      groundY - 155
+    );
+
+  const maxY =
+    groundY - 80;
 
   collectibles.push({
 
-    x:gameWidth+20,
+    x:
+      gameWidth + 25,
 
     y:
-      groundY-
-      75-
-      Math.random()*85,
+      minY +
+      Math.random() *
+      (maxY - minY),
 
-    size,
+    size:18,
 
-    offset:
-      Math.random()*10
+    rotation:0
 
   });
 
 }
 
 
-/* =========================================================
-   COLLISION
-========================================================= */
+/* =====================================================
+   COLISIONES
+====================================================== */
 
 function collision(a,b){
 
-  const padding=7;
+  const paddingX = 8;
+  const paddingY = 8;
 
   return (
 
-    a.x+padding <
-    b.x+b.width &&
+    a.x + paddingX <
+    b.x + b.width &&
 
-    a.x+a.width-padding >
+    a.x + a.width - paddingX >
     b.x &&
 
-    a.y+padding <
-    b.y+b.height &&
+    a.y + paddingY <
+    b.y + b.height &&
 
-    a.y+a.height-padding >
+    a.y + a.height - paddingY >
     b.y
 
   );
@@ -2717,17 +3439,66 @@ function collision(a,b){
 }
 
 
-/* =========================================================
-   END GAME
-========================================================= */
+function circlePlayerCollision(
+  player,
+  heart
+){
+
+  const cx =
+    heart.x + heart.size / 2;
+
+  const cy =
+    heart.y + heart.size / 2;
+
+  const closestX =
+    Math.max(
+      player.x,
+      Math.min(
+        cx,
+        player.x + player.width
+      )
+    );
+
+  const closestY =
+    Math.max(
+      player.y,
+      Math.min(
+        cy,
+        player.y + player.height
+      )
+    );
+
+  const dx =
+    cx - closestX;
+
+  const dy =
+    cy - closestY;
+
+  return (
+    dx * dx +
+    dy * dy
+  ) <
+  Math.pow(
+    heart.size * .72,
+    2
+  );
+
+}
+
+
+/* =====================================================
+   FIN DEL JUEGO
+====================================================== */
 
 function endGame(){
 
-  gameRunning=false;
+  gameRunning = false;
 
   cancelAnimationFrame(
     gameAnimation
   );
+
+  gameAnimation = null;
 
   finalScoreEl.textContent =
     Math.floor(score);
@@ -2742,19 +3513,9 @@ function endGame(){
 }
 
 
-restartGame.addEventListener(
-  'click',
-  ()=>{
-
-    resetGame();
-
-  }
-);
-
-
-/* =========================================================
-   DRAW GAME
-========================================================= */
+/* =====================================================
+   DIBUJAR TODO
+====================================================== */
 
 function drawGame(){
 
@@ -2766,9 +3527,9 @@ function drawGame(){
   );
 
 
-  /* SKY */
+  /* CIELO */
 
-  const gradient =
+  const sky =
     ctx.createLinearGradient(
       0,
       0,
@@ -2776,17 +3537,18 @@ function drawGame(){
       gameHeight
     );
 
-  gradient.addColorStop(
+  sky.addColorStop(
     0,
-    '#ffe9ef'
+    '#ffdce7'
   );
 
-  gradient.addColorStop(
+  sky.addColorStop(
     1,
-    '#ffffff'
+    '#fff7fa'
   );
 
-  ctx.fillStyle=gradient;
+  ctx.fillStyle =
+    sky;
 
   ctx.fillRect(
     0,
@@ -2796,104 +3558,142 @@ function drawGame(){
   );
 
 
-  /* CLOUDS */
-
-  drawCloud(
-    gameWidth*.15,
-    55,
-    1
-  );
-
-  drawCloud(
-    gameWidth*.62,
-    85,
-    .7
-  );
-
-  drawCloud(
-    gameWidth*.85,
-    45,
-    .55
-  );
-
-
-  /* DISTANT HILLS */
-
-  ctx.fillStyle='#ffdce5';
+  /* SOL */
 
   ctx.beginPath();
 
-  ctx.moveTo(0,groundY);
-
-  for(
-    let x=0;
-    x<=gameWidth;
-    x+=80
-  ){
-
-    ctx.quadraticCurveTo(
-      x+40,
-      groundY-45-
-        Math.sin(x)*8,
-      x+80,
-      groundY
-    );
-
-  }
-
-  ctx.lineTo(
-    gameWidth,
-    gameHeight
-  );
-
-  ctx.lineTo(
+  ctx.arc(
+    gameWidth - 85,
+    62,
+    28,
     0,
-    gameHeight
+    Math.PI * 2
   );
+
+  ctx.fillStyle =
+    'rgba(255,205,112,.65)';
 
   ctx.fill();
 
 
-  /* GROUND */
+  /* NUBES */
 
-  ctx.fillStyle='#4a3d42';
+  drawCloud(
+    100,
+    55,
+    .9
+  );
+
+  drawCloud(
+    gameWidth * .48,
+    82,
+    .65
+  );
+
+
+  /* COLINAS */
+
+  ctx.fillStyle =
+    '#f8cad8';
+
+  ctx.beginPath();
+
+  ctx.moveTo(
+    0,
+    groundY
+  );
+
+  ctx.quadraticCurveTo(
+    gameWidth * .18,
+    groundY - 55,
+    gameWidth * .38,
+    groundY
+  );
+
+  ctx.quadraticCurveTo(
+    gameWidth * .60,
+    groundY - 75,
+    gameWidth * .83,
+    groundY
+  );
+
+  ctx.lineTo(
+    gameWidth,
+    groundY
+  );
+
+  ctx.closePath();
+
+  ctx.fill();
+
+
+  /* SUELO */
+
+  ctx.fillStyle =
+    '#fff';
 
   ctx.fillRect(
     0,
     groundY,
     gameWidth,
-    3
+    gameHeight - groundY
   );
 
 
-  /* GROUND DETAILS */
+  ctx.strokeStyle =
+    '#ffd0dc';
 
-  ctx.strokeStyle=
-    'rgba(74,61,66,.25)';
+  ctx.lineWidth =
+    2;
 
-  ctx.lineWidth=2;
+  ctx.beginPath();
+
+  ctx.moveTo(
+    0,
+    groundY
+  );
+
+  ctx.lineTo(
+    gameWidth,
+    groundY
+  );
+
+  ctx.stroke();
+
+
+  /* PEQUEÑAS FLORES */
 
   for(
-    let x=0;
-    x<gameWidth;
-    x+=35
+    let x = 10;
+    x < gameWidth;
+    x += 85
   ){
 
-    ctx.beginPath();
+    const offset =
+      Math.sin(
+        x * .08
+      ) * 4;
 
-    ctx.moveTo(
+    drawFlower(
       x,
-      groundY+12
+      groundY + 22 + offset
     );
-
-    ctx.lineTo(
-      x+14,
-      groundY+12
-    );
-
-    ctx.stroke();
 
   }
+
+
+  /* OBSTÁCULOS */
+
+  obstacles.forEach(
+    drawObstacle
+  );
+
+
+  /* CORAZONES */
+
+  collectibles.forEach(
+    drawCollectible
+  );
 
 
   /* VIVI */
@@ -2901,424 +3701,300 @@ function drawGame(){
   drawVivi();
 
 
-  /* PLAYER */
+  /* JUGADOR */
 
   drawPlayer();
 
-
-  /* OBSTACLES */
-
-  obstacles.forEach(
-    obstacle=>{
-      drawObstacle(obstacle);
-    }
-  );
-
-
-  /* HEARTS */
-
-  collectibles.forEach(
-    heart=>{
-      drawCollectible(heart);
-    }
-  );
-
 }
 
 
-/* =========================================================
-   DRAW CLOUD
-========================================================= */
+/* =====================================================
+   NUBES
+====================================================== */
 
-function drawCloud(x,y,s){
-
-  ctx.save();
-
-  ctx.translate(x,y);
-
-  ctx.scale(s,s);
-
-  ctx.fillStyle=
-    'rgba(255,255,255,.75)';
-
-  ctx.beginPath();
-
-  ctx.arc(0,10,18,0,Math.PI*2);
-
-  ctx.arc(20,0,24,0,Math.PI*2);
-
-  ctx.arc(45,10,17,0,Math.PI*2);
-
-  ctx.fill();
-
-  ctx.restore();
-
-}
-
-
-/* =========================================================
-   DRAW PLAYER
-========================================================= */
-
-function drawPlayer(){
-
-  const x=player.x;
-  const y=player.y;
+function drawCloud(
+  x,
+  y,
+  scale
+){
 
   ctx.save();
 
-  /* LEGS */
-
-  ctx.strokeStyle='#202020';
-  ctx.lineWidth=7;
-  ctx.lineCap='round';
-
-  ctx.beginPath();
-
-  ctx.moveTo(
-    x+16,
-    y+48
-  );
-
-  ctx.lineTo(
-    x+11,
-    y+65
-  );
-
-  ctx.moveTo(
-    x+29,
-    y+48
-  );
-
-  ctx.lineTo(
-    x+35,
-    y+65
-  );
-
-  ctx.stroke();
-
-
-  /* SHOES */
-
-  ctx.fillStyle='#333';
-
-  ctx.fillRect(
-    x+5,
-    y+63,
-    13,
-    5
-  );
-
-  ctx.fillRect(
-    x+32,
-    y+63,
-    13,
-    5
-  );
-
-
-  /* BODY */
-
-  ctx.fillStyle='#222';
-
-  roundRect(
-    ctx,
-    x+7,
-    y+28,
-    34,
-    29,
-    7
-  );
-
-  ctx.fill();
-
-
-  /* HEAD */
-
-  ctx.fillStyle='#f5c9b7';
-
-  ctx.beginPath();
-
-  ctx.arc(
-    x+24,
-    y+18,
-    17,
-    0,
-    Math.PI*2
-  );
-
-  ctx.fill();
-
-
-  /* HAIR */
-
-  ctx.fillStyle='#111';
-
-  ctx.beginPath();
-
-  ctx.moveTo(
-    x+7,
-    y+15
-  );
-
-  ctx.quadraticCurveTo(
-    x+9,
-    y-4,
-    x+28,
-    y+1
-  );
-
-  ctx.quadraticCurveTo(
-    x+41,
-    y+2,
-    x+42,
-    y+16
-  );
-
-  ctx.lineTo(
-    x+34,
-    y+11
-  );
-
-  ctx.lineTo(
-    x+28,
-    y+16
-  );
-
-  ctx.lineTo(
-    x+23,
-    y+10
-  );
-
-  ctx.lineTo(
-    x+16,
-    y+17
-  );
-
-  ctx.closePath();
-
-  ctx.fill();
-
-
-  /* GLASSES */
-
-  ctx.strokeStyle='#222';
-  ctx.lineWidth=2;
-
-  ctx.strokeRect(
-    x+11,
-    y+15,
-    10,
-    7
-  );
-
-  ctx.strokeRect(
-    x+27,
-    y+15,
-    10,
-    7
-  );
-
-  ctx.beginPath();
-
-  ctx.moveTo(
-    x+21,
-    y+18
-  );
-
-  ctx.lineTo(
-    x+27,
-    y+18
-  );
-
-  ctx.stroke();
-
-
-  /* EYES */
-
-  ctx.fillStyle='#5a3828';
-
-  ctx.fillRect(
-    x+15,
-    y+17,
-    3,
-    3
-  );
-
-  ctx.fillRect(
-    x+30,
-    y+17,
-    3,
-    3
-  );
-
-
-  /* SMILE */
-
-  ctx.strokeStyle='#8b4a48';
-  ctx.lineWidth=1.5;
-
-  ctx.beginPath();
-
-  ctx.arc(
-    x+24,
-    y+23,
-    4,
-    0,
-    Math.PI
-  );
-
-  ctx.stroke();
-
-  ctx.restore();
-
-}
-
-
-/* =========================================================
-   DRAW VIVI
-========================================================= */
-
-function drawVivi(){
-
-  const x=vivi.x;
-  const y=vivi.y;
-
-  ctx.save();
-
-  /* LEGS */
-
-  ctx.strokeStyle='#262626';
-  ctx.lineWidth=7;
-  ctx.lineCap='round';
-
-  ctx.beginPath();
-
-  ctx.moveTo(
-    x+15,
-    y+47
-  );
-
-  ctx.lineTo(
-    x+11,
-    y+63
-  );
-
-  ctx.moveTo(
-    x+27,
-    y+47
-  );
-
-  ctx.lineTo(
-    x+33,
-    y+63
-  );
-
-  ctx.stroke();
-
-
-  /* SHOES */
-
-  ctx.fillStyle='#555';
-
-  ctx.fillRect(
-    x+4,
-    y+61,
-    13,
-    6
-  );
-
-  ctx.fillRect(
-    x+30,
-    y+61,
-    13,
-    6
-  );
-
-
-  /* JEANS */
-
-  ctx.fillStyle='#5977a8';
-
-  ctx.fillRect(
-    x+7,
-    y+39,
-    29,
-    15
-  );
-
-
-  /* SHIRT */
-
-  ctx.fillStyle='#ff6b8a';
-
-  roundRect(
-    ctx,
-    x+8,
-    y+25,
-    27,
-    21,
-    7
-  );
-
-  ctx.fill();
-
-
-  /* HEAD */
-
-  ctx.fillStyle='#f2c7b6';
-
-  ctx.beginPath();
-
-  ctx.arc(
-    x+21,
-    y+17,
-    16,
-    0,
-    Math.PI*2
-  );
-
-  ctx.fill();
-
-
-  /* HAIR */
-
-  ctx.fillStyle='#111';
-
-  ctx.beginPath();
-
-  ctx.moveTo(
-    x+6,
-    y+18
-  );
-
-  ctx.quadraticCurveTo(
-    x+5,
-    y-3,
-    x+23,
+  ctx.translate(
+    x,
     y
   );
 
+  ctx.scale(
+    scale,
+    scale
+  );
+
+  ctx.fillStyle =
+    'rgba(255,255,255,.72)';
+
+  ctx.beginPath();
+
+  ctx.arc(
+    0,
+    8,
+    18,
+    0,
+    Math.PI * 2
+  );
+
+  ctx.arc(
+    20,
+    0,
+    23,
+    0,
+    Math.PI * 2
+  );
+
+  ctx.arc(
+    46,
+    10,
+    17,
+    0,
+    Math.PI * 2
+  );
+
+  ctx.fill();
+
+  ctx.restore();
+
+}
+
+
+/* =====================================================
+   FLORES
+====================================================== */
+
+function drawFlower(
+  x,
+  y
+){
+
+  ctx.save();
+
+  ctx.translate(
+    x,
+    y
+  );
+
+  ctx.strokeStyle =
+    '#9bcf9d';
+
+  ctx.lineWidth =
+    1.5;
+
+  ctx.beginPath();
+
+  ctx.moveTo(
+    0,
+    8
+  );
+
+  ctx.lineTo(
+    0,
+    -5
+  );
+
+  ctx.stroke();
+
+
+  ctx.fillStyle =
+    '#ff8daa';
+
+  for(
+    let i = 0;
+    i < 5;
+    i++
+  ){
+
+    const angle =
+      i *
+      Math.PI *
+      2 /
+      5;
+
+    ctx.beginPath();
+
+    ctx.arc(
+      Math.cos(angle) * 4,
+      -5 + Math.sin(angle) * 4,
+      3,
+      0,
+      Math.PI * 2
+    );
+
+    ctx.fill();
+
+  }
+
+
+  ctx.fillStyle =
+    '#ffd65c';
+
+  ctx.beginPath();
+
+  ctx.arc(
+    0,
+    -5,
+    2.2,
+    0,
+    Math.PI * 2
+  );
+
+  ctx.fill();
+
+  ctx.restore();
+
+}
+
+
+/* =====================================================
+   PERSONAJE DEL USUARIO
+====================================================== */
+
+function drawPlayer(){
+
+  const x =
+    player.x;
+
+  const y =
+    player.y;
+
+  ctx.save();
+
+  ctx.translate(
+    x,
+    y
+  );
+
+
+  /* SOMBRA */
+
+  ctx.fillStyle =
+    'rgba(0,0,0,.10)';
+
+  ctx.beginPath();
+
+  ctx.ellipse(
+    player.width / 2,
+    player.height + 2,
+    22,
+    5,
+    0,
+    0,
+    Math.PI * 2
+  );
+
+  ctx.fill();
+
+
+  /* CUERPO */
+
+  ctx.fillStyle =
+    '#202124';
+
+  roundRect(
+    ctx,
+    7,
+    35,
+    28,
+    30,
+    8
+  );
+
+  ctx.fill();
+
+
+  /* CUELLO */
+
+  ctx.fillStyle =
+    '#f3c7b7';
+
+  ctx.fillRect(
+    18,
+    30,
+    8,
+    9
+  );
+
+
+  /* CARA */
+
+  ctx.fillStyle =
+    '#f3c7b7';
+
+  ctx.beginPath();
+
+  ctx.roundRect(
+    8,
+    5,
+    27,
+    31,
+    11
+  );
+
+  ctx.fill();
+
+
+  /* PELO FRENCH CROP */
+
+  ctx.fillStyle =
+    '#171717';
+
+  ctx.beginPath();
+
+  ctx.moveTo(
+    7,
+    16
+  );
+
   ctx.quadraticCurveTo(
-    x+39,
-    y+2,
-    x+38,
-    y+24
+    6,
+    3,
+    20,
+    2
+  );
+
+  ctx.quadraticCurveTo(
+    35,
+    1,
+    37,
+    14
   );
 
   ctx.lineTo(
-    x+32,
-    y+35
+    34,
+    18
   );
 
   ctx.lineTo(
-    x+27,
-    y+24
+    29,
+    11
   );
 
   ctx.lineTo(
-    x+10,
-    y+33
+    25,
+    17
+  );
+
+  ctx.lineTo(
+    20,
+    11
+  );
+
+  ctx.lineTo(
+    15,
+    17
+  );
+
+  ctx.lineTo(
+    10,
+    12
   );
 
   ctx.closePath();
@@ -3326,263 +4002,673 @@ function drawVivi(){
   ctx.fill();
 
 
-  /* GLASSES */
+  /* GAFAS */
 
-  ctx.strokeStyle='#222';
-  ctx.lineWidth=2;
+  ctx.strokeStyle =
+    '#222';
 
-  ctx.strokeRect(
-    x+8,
-    y+14,
+  ctx.lineWidth =
+    2;
+
+  ctx.fillStyle =
+    'rgba(255,255,255,.28)';
+
+  ctx.beginPath();
+
+  ctx.roundRect(
+    8,
+    17,
+    11,
+    8,
+    2
+  );
+
+  ctx.roundRect(
+    24,
+    17,
+    11,
+    8,
+    2
+  );
+
+  ctx.fill();
+
+  ctx.stroke();
+
+
+  ctx.beginPath();
+
+  ctx.moveTo(
+    19,
+    20
+  );
+
+  ctx.lineTo(
+    24,
+    20
+  );
+
+  ctx.stroke();
+
+
+  /* OJOS */
+
+  ctx.fillStyle =
+    '#5b3b2d';
+
+  ctx.beginPath();
+
+  ctx.arc(
+    14,
+    21,
+    1.5,
+    0,
+    Math.PI * 2
+  );
+
+  ctx.arc(
+    29,
+    21,
+    1.5,
+    0,
+    Math.PI * 2
+  );
+
+  ctx.fill();
+
+
+  /* SONRISA */
+
+  ctx.strokeStyle =
+    '#9e4b52';
+
+  ctx.lineWidth =
+    1.4;
+
+  ctx.beginPath();
+
+  ctx.arc(
+    21.5,
+    26,
+    4,
+    0.15,
+    Math.PI - .15
+  );
+
+  ctx.stroke();
+
+
+  /* PIERNAS */
+
+  ctx.strokeStyle =
+    '#202124';
+
+  ctx.lineWidth =
+    6;
+
+  ctx.lineCap =
+    'round';
+
+  const running =
+    Math.sin(
+      performance.now() * .018
+    ) * 4;
+
+  ctx.beginPath();
+
+  ctx.moveTo(
+    16,
+    62
+  );
+
+  ctx.lineTo(
+    13 - running,
+    68
+  );
+
+  ctx.moveTo(
+    27,
+    62
+  );
+
+  ctx.lineTo(
+    30 + running,
+    68
+  );
+
+  ctx.stroke();
+
+
+  ctx.restore();
+
+}
+
+
+/* =====================================================
+   VIVI
+   INSPIRADA EN 👩🏻‍🦰 + GAFAS
+====================================================== */
+
+function drawVivi(){
+
+  const x =
+    vivi.x;
+
+  const y =
+    vivi.y;
+
+  ctx.save();
+
+  ctx.translate(
+    x,
+    y
+  );
+
+
+  /* SOMBRA */
+
+  ctx.fillStyle =
+    'rgba(0,0,0,.09)';
+
+  ctx.beginPath();
+
+  ctx.ellipse(
+    vivi.width / 2,
+    vivi.height + 2,
+    21,
+    5,
+    0,
+    0,
+    Math.PI * 2
+  );
+
+  ctx.fill();
+
+
+  /* CUERPO */
+
+  ctx.fillStyle =
+    '#b96c86';
+
+  roundRect(
+    ctx,
+    7,
+    37,
+    28,
+    28,
+    9
+  );
+
+  ctx.fill();
+
+
+  /* CUELLO */
+
+  ctx.fillStyle =
+    '#f5c9b8';
+
+  ctx.fillRect(
+    17,
+    30,
+    9,
+    9
+  );
+
+
+  /* CABELLO ROJIZO DETRÁS */
+
+  ctx.fillStyle =
+    '#a94d38';
+
+  ctx.beginPath();
+
+  ctx.moveTo(
+    6,
+    13
+  );
+
+  ctx.quadraticCurveTo(
+    4,
+    2,
+    21,
+    1
+  );
+
+  ctx.quadraticCurveTo(
+    38,
+    1,
+    39,
+    16
+  );
+
+  ctx.lineTo(
+    37,
+    39
+  );
+
+  ctx.quadraticCurveTo(
+    31,
+    45,
+    27,
+    37
+  );
+
+  ctx.lineTo(
     10,
+    39
+  );
+
+  ctx.quadraticCurveTo(
+    4,
+    31,
+    6,
+    13
+  );
+
+  ctx.closePath();
+
+  ctx.fill();
+
+
+  /* CARA */
+
+  ctx.fillStyle =
+    '#f5c9b8';
+
+  ctx.beginPath();
+
+  ctx.roundRect(
+    9,
+    6,
+    26,
+    31,
+    12
+  );
+
+  ctx.fill();
+
+
+  /* MECHONES NARANJAS */
+
+  ctx.fillStyle =
+    '#b9573b';
+
+  ctx.beginPath();
+
+  ctx.arc(
+    8,
+    18,
+    7,
+    0,
+    Math.PI * 2
+  );
+
+  ctx.arc(
+    36,
+    18,
+    7,
+    0,
+    Math.PI * 2
+  );
+
+  ctx.fill();
+
+
+  /* PARTE SUPERIOR DEL PELO */
+
+  ctx.fillStyle =
+    '#b9573b';
+
+  ctx.beginPath();
+
+  ctx.moveTo(
+    7,
+    14
+  );
+
+  ctx.quadraticCurveTo(
+    7,
+    0,
+    21,
+    1
+  );
+
+  ctx.quadraticCurveTo(
+    35,
+    0,
+    37,
+    14
+  );
+
+  ctx.quadraticCurveTo(
+    32,
+    8,
+    27,
+    10
+  );
+
+  ctx.quadraticCurveTo(
+    20,
+    13,
+    15,
+    9
+  );
+
+  ctx.quadraticCurveTo(
+    11,
+    8,
+    7,
+    14
+  );
+
+  ctx.closePath();
+
+  ctx.fill();
+
+
+  /* GAFAS */
+
+  ctx.strokeStyle =
+    '#4a3432';
+
+  ctx.lineWidth =
+    2;
+
+  ctx.fillStyle =
+    'rgba(255,255,255,.32)';
+
+  ctx.beginPath();
+
+  ctx.roundRect(
+    8,
+    17,
+    11,
+    8,
+    3
+  );
+
+  ctx.roundRect(
+    25,
+    17,
+    11,
+    8,
+    3
+  );
+
+  ctx.fill();
+
+  ctx.stroke();
+
+
+  /* PUENTE DE GAFAS */
+
+  ctx.beginPath();
+
+  ctx.moveTo(
+    19,
+    20
+  );
+
+  ctx.lineTo(
+    25,
+    20
+  );
+
+  ctx.stroke();
+
+
+  /* OJOS */
+
+  ctx.fillStyle =
+    '#5b3a2d';
+
+  ctx.beginPath();
+
+  ctx.arc(
+    14,
+    21,
+    1.5,
+    0,
+    Math.PI * 2
+  );
+
+  ctx.arc(
+    30,
+    21,
+    1.5,
+    0,
+    Math.PI * 2
+  );
+
+  ctx.fill();
+
+
+  /* MEJILLAS */
+
+  ctx.fillStyle =
+    'rgba(236,125,129,.35)';
+
+  ctx.beginPath();
+
+  ctx.arc(
+    12,
+    27,
+    3,
+    0,
+    Math.PI * 2
+  );
+
+  ctx.arc(
+    32,
+    27,
+    3,
+    0,
+    Math.PI * 2
+  );
+
+  ctx.fill();
+
+
+  /* SONRISA */
+
+  ctx.strokeStyle =
+    '#a84d55';
+
+  ctx.lineWidth =
+    1.4;
+
+  ctx.beginPath();
+
+  ctx.arc(
+    21.5,
+    26,
+    4,
+    .15,
+    Math.PI - .15
+  );
+
+  ctx.stroke();
+
+
+  /* PIERNAS */
+
+  ctx.strokeStyle =
+    '#7c465b';
+
+  ctx.lineWidth =
+    6;
+
+  ctx.lineCap =
+    'round';
+
+  const running =
+    Math.sin(
+      performance.now() * .018 + 1
+    ) * 4;
+
+  ctx.beginPath();
+
+  ctx.moveTo(
+    16,
+    62
+  );
+
+  ctx.lineTo(
+    13 - running,
+    68
+  );
+
+  ctx.moveTo(
+    27,
+    62
+  );
+
+  ctx.lineTo(
+    30 + running,
+    68
+  );
+
+  ctx.stroke();
+
+
+  ctx.restore();
+
+}
+
+
+/* =====================================================
+   OBSTÁCULO
+====================================================== */
+
+function drawObstacle(
+  obstacle
+){
+
+  ctx.save();
+
+  ctx.translate(
+    obstacle.x,
+    obstacle.y
+  );
+
+
+  ctx.fillStyle =
+    '#d95b73';
+
+  roundRect(
+    ctx,
+    0,
+    0,
+    obstacle.width,
+    obstacle.height,
     7
   );
 
-  ctx.strokeRect(
-    x+24,
-    y+14,
-    10,
+  ctx.fill();
+
+
+  ctx.fillStyle =
+    'rgba(255,255,255,.32)';
+
+  ctx.beginPath();
+
+  ctx.arc(
+    obstacle.width * .35,
+    obstacle.height * .28,
+    3,
+    0,
+    Math.PI * 2
+  );
+
+  ctx.arc(
+    obstacle.width * .68,
+    obstacle.height * .52,
+    2.5,
+    0,
+    Math.PI * 2
+  );
+
+  ctx.fill();
+
+
+  ctx.fillStyle =
+    '#a83d55';
+
+  ctx.fillRect(
+    obstacle.width * .43,
+    -6,
+    3,
     7
+  );
+
+
+  ctx.restore();
+
+}
+
+
+/* =====================================================
+   CORAZÓN COLECCIONABLE
+====================================================== */
+
+function drawCollectible(
+  heart
+){
+
+  ctx.save();
+
+  ctx.translate(
+    heart.x + heart.size / 2,
+    heart.y + heart.size / 2
+  );
+
+  ctx.rotate(
+    heart.rotation
+  );
+
+  ctx.scale(
+    .75,
+    .75
   );
 
   ctx.beginPath();
 
   ctx.moveTo(
-    x+18,
-    y+17
-  );
-
-  ctx.lineTo(
-    x+24,
-    y+17
-  );
-
-  ctx.stroke();
-
-
-  /* EYES */
-
-  ctx.fillStyle='#5a3828';
-
-  ctx.fillRect(
-    x+12,
-    y+16,
-    3,
-    3
-  );
-
-  ctx.fillRect(
-    x+28,
-    y+16,
-    3,
-    3
-  );
-
-
-  /* SMILE */
-
-  ctx.strokeStyle='#8b4a48';
-  ctx.lineWidth=1.5;
-
-  ctx.beginPath();
-
-  ctx.arc(
-    x+21,
-    y+22,
-    4,
     0,
-    Math.PI
+    8
   );
 
-  ctx.stroke();
-
-
-  /* HEART ABOVE */
-
-  ctx.fillStyle='#ff2d55';
-
-  ctx.font='15px Arial';
-
-  ctx.fillText(
-    '♥',
-    x+15,
-    y-6
+  ctx.bezierCurveTo(
+    -19,
+    -4,
+    -10,
+    -17,
+    0,
+    -10
   );
+
+  ctx.bezierCurveTo(
+    10,
+    -17,
+    19,
+    -4,
+    0,
+    8
+  );
+
+  ctx.fillStyle =
+    '#ff2d55';
+
+  ctx.fill();
 
   ctx.restore();
 
 }
 
 
-/* =========================================================
-   DRAW OBSTACLE
-========================================================= */
-
-function drawObstacle(obstacle){
-
-  const x=obstacle.x;
-  const y=obstacle.y;
-
-  ctx.save();
-
-  if(
-    obstacle.type==='flower'
-  ){
-
-    ctx.strokeStyle='#5a9c57';
-    ctx.lineWidth=7;
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-      x+12,
-      y+obstacle.height
-    );
-
-    ctx.lineTo(
-      x+12,
-      y+18
-    );
-
-    ctx.stroke();
-
-    ctx.fillStyle='#ff6b8a';
-
-    ctx.beginPath();
-
-    ctx.arc(
-      x+12,
-      y+13,
-      10,
-      0,
-      Math.PI*2
-    );
-
-    ctx.fill();
-
-    ctx.fillStyle='#ffd54d';
-
-    ctx.beginPath();
-
-    ctx.arc(
-      x+12,
-      y+13,
-      4,
-      0,
-      Math.PI*2
-    );
-
-    ctx.fill();
-
-  }
-
-  else if(
-    obstacle.type==='box'
-  ){
-
-    ctx.fillStyle='#c58a64';
-
-    roundRect(
-      ctx,
-      x,
-      y,
-      obstacle.width,
-      obstacle.height,
-      5
-    );
-
-    ctx.fill();
-
-    ctx.strokeStyle='#8c5a3d';
-    ctx.lineWidth=2;
-
-    ctx.strokeRect(
-      x+5,
-      y+5,
-      obstacle.width-10,
-      obstacle.height-10
-    );
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-      x+5,
-      y+5
-    );
-
-    ctx.lineTo(
-      x+obstacle.width-5,
-      y+obstacle.height-5
-    );
-
-    ctx.moveTo(
-      x+obstacle.width-5,
-      y+5
-    );
-
-    ctx.lineTo(
-      x+5,
-      y+obstacle.height-5
-    );
-
-    ctx.stroke();
-
-  }
-
-  else{
-
-    ctx.fillStyle='#ff2d55';
-
-    ctx.font=
-      obstacle.height+
-      'px Arial';
-
-    ctx.fillText(
-      '♥',
-      x,
-      y+obstacle.height
-    );
-
-  }
-
-  ctx.restore();
-
-}
-
-
-/* =========================================================
-   DRAW COLLECTIBLE
-========================================================= */
-
-function drawCollectible(heart){
-
-  ctx.save();
-
-  ctx.fillStyle='#ff2d55';
-
-  ctx.font=
-    heart.size+
-    'px Arial';
-
-  ctx.shadowColor=
-    'rgba(255,45,85,.35)';
-
-  ctx.shadowBlur=10;
-
-  ctx.fillText(
-    '♥',
-    heart.x,
-    heart.y+heart.size
-  );
-
-  ctx.restore();
-
-}
-
-
-/* =========================================================
-   ROUND RECT
-========================================================= */
+/* =====================================================
+   RECTÁNGULO REDONDEADO
+====================================================== */
 
 function roundRect(
   context,
@@ -3593,59 +4679,50 @@ function roundRect(
   radius
 ){
 
+  const r =
+    Math.min(
+      radius,
+      width / 2,
+      height / 2
+    );
+
   context.beginPath();
 
   context.moveTo(
-    x+radius,
+    x + r,
     y
   );
 
-  context.lineTo(
-    x+width-radius,
-    y
-  );
-
-  context.quadraticCurveTo(
-    x+width,
+  context.arcTo(
+    x + width,
     y,
-    x+width,
-    y+radius
+    x + width,
+    y + height,
+    r
   );
 
-  context.lineTo(
-    x+width,
-    y+height-radius
-  );
-
-  context.quadraticCurveTo(
-    x+width,
-    y+height,
-    x+width-radius,
-    y+height
-  );
-
-  context.lineTo(
-    x+radius,
-    y+height
-  );
-
-  context.quadraticCurveTo(
+  context.arcTo(
+    x + width,
+    y + height,
     x,
-    y+height,
-    x,
-    y+height-radius
+    y + height,
+    r
   );
 
-  context.lineTo(
+  context.arcTo(
     x,
-    y+radius
-  );
-
-  context.quadraticCurveTo(
+    y + height,
     x,
     y,
-    x+radius,
-    y
+    r
+  );
+
+  context.arcTo(
+    x,
+    y,
+    x + width,
+    y,
+    r
   );
 
   context.closePath();
@@ -3653,79 +4730,159 @@ function roundRect(
 }
 
 
-/* =========================================================
-   GAME HEART EFFECT
-========================================================= */
+/* =====================================================
+   BOTÓN REINICIAR
+====================================================== */
 
-function createGameHeart(x,y){
+restartGame.addEventListener(
+  'click',
+  event => {
 
-  for(let i=0;i<5;i++){
+    event.stopPropagation();
 
-    const particle={
-      x:x,
-      y:y,
-      vx:
-        (Math.random()-.5)*3,
-      vy:
-        -Math.random()*3,
-      life:30
-    };
+    resetGame();
 
-    animateParticle(
-      particle
+  }
+);
+
+
+/* =====================================================
+   TECLADO
+====================================================== */
+
+document.addEventListener(
+  'keydown',
+  event => {
+
+    if(
+      event.key === 'Escape'
+    ){
+
+      $('#image-viewer')
+        .classList.remove('show');
+
+    }
+
+
+    if(
+      $('#image-viewer')
+        .classList.contains('show')
+    ){
+
+      if(
+        event.key === 'ArrowLeft'
+      ){
+        $('#viewer-prev').click();
+      }
+
+      if(
+        event.key === 'ArrowRight'
+      ){
+        $('#viewer-next').click();
+      }
+
+    }
+
+  }
+);
+
+
+/* =====================================================
+   ARRANQUE
+====================================================== */
+
+let bootDone = false;
+
+
+function launchOS(){
+
+  if(bootDone){
+    return;
+  }
+
+  bootDone = true;
+
+
+  try{
+
+    renderApp();
+
+    preloadPhotos();
+
+  }catch(error){
+
+    console.error(
+      'Error iniciando ViviOS:',
+      error
     );
 
   }
 
-}
+
+  const boot =
+    $('#boot');
+
+  if(boot){
+    boot.classList.add(
+      'hide'
+    );
+  }
 
 
-function animateParticle(p){
-
-  const draw=()=>{
-
-    if(p.life<=0)
-      return;
-
-    p.x+=p.vx;
-    p.y+=p.vy;
-
-    p.vy+=.08;
-
-    p.life--;
-
-    ctx.save();
-
-    ctx.globalAlpha=
-      p.life/30;
-
-    ctx.fillStyle='#ff2d55';
-
-    ctx.font='12px Arial';
-
-    ctx.fillText(
-      '♥',
-      p.x,
-      p.y
+  $('#login')
+    .classList.add(
+      'show'
     );
 
-    ctx.restore();
-
-    requestAnimationFrame(draw);
-
-  };
-
-  requestAnimationFrame(draw);
-
 }
 
 
-/* =========================================================
-   FINAL
-========================================================= */
+setTimeout(
+  launchOS,
+  1800
+);
 
-console.log(
-  'ViviOS iniciado correctamente ❤️'
+
+/* =====================================================
+   SEGURIDAD CONTRA BOOT CONGELADO
+====================================================== */
+
+setTimeout(
+  ()=>{
+    if(!bootDone){
+      launchOS();
+    }
+  },
+  2500
+);
+
+
+/* =====================================================
+   LOGIN
+====================================================== */
+
+$('#login-btn').addEventListener(
+  'click',
+  ()=>{
+
+    $('#login').style.opacity =
+      '0';
+
+    setTimeout(
+      ()=>{
+
+        $('#login').style.display =
+          'none';
+
+        showToast(
+          'Bienvenida a ViviOS ❤️'
+        );
+
+      },
+      700
+    );
+
+  }
 );
 
 </script>
