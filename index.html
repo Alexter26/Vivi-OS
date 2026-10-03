@@ -7,7 +7,6 @@
 <title>ViviOS - Para Mi Amor ❤️</title>
 
 <style>
-
 :root{
   --accent:#ff2d55;
   --accent2:#ff6b8a;
@@ -21,14 +20,13 @@
   box-sizing:border-box;
   margin:0;
   padding:0;
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
 }
 
-html,
-body{
+html,body{
   width:100%;
   height:100%;
-  overflow:hidden
+  overflow:hidden;
 }
 
 body{
@@ -40,20 +38,9 @@ body{
   color:var(--text);
 }
 
-button,
-input,
-textarea{
-  font:inherit
-}
-
-button{
-  cursor:pointer
-}
-
-
-/* =========================================================
+/* =========================
    BOOT
-========================================================= */
+========================= */
 
 #boot{
   position:fixed;
@@ -64,41 +51,32 @@ button{
   justify-content:center;
   flex-direction:column;
   color:white;
-
-  background:
-    radial-gradient(
-      circle at center,
-      #34203e,
-      #120f18 70%
-    );
-
-  transition:
-    opacity .9s,
-    visibility .9s
+  background:radial-gradient(circle at center,#34203e,#120f18 70%);
+  transition:opacity .9s,visibility .9s;
 }
 
 #boot.hide{
   opacity:0;
   visibility:hidden;
-  pointer-events:none
+  pointer-events:none;
 }
 
 .boot-logo{
   font-size:54px;
   margin-bottom:18px;
-  animation:pulse 2s infinite
+  animation:pulse 2s infinite;
 }
 
 .boot-title{
   font-size:24px;
   font-weight:600;
-  letter-spacing:.5px
+  letter-spacing:.5px;
 }
 
 .boot-sub{
   font-size:13px;
   opacity:.65;
-  margin-top:6px
+  margin-top:6px;
 }
 
 .boot-progress{
@@ -107,7 +85,7 @@ button{
   background:rgba(255,255,255,.16);
   border-radius:10px;
   margin-top:28px;
-  overflow:hidden
+  overflow:hidden;
 }
 
 .boot-progress span{
@@ -116,38 +94,30 @@ button{
   width:0;
   background:white;
   border-radius:10px;
-  animation:load 1.8s ease forwards
+  animation:load 1.8s ease forwards;
 }
 
 @keyframes load{
-  to{
-    width:100%
-  }
+  to{width:100%}
 }
 
 @keyframes pulse{
-  50%{
-    transform:scale(1.08)
-  }
+  50%{transform:scale(1.08)}
 }
 
-
-/* =========================================================
+/* =========================
    LOGIN
-========================================================= */
+========================= */
 
 #login{
   position:fixed;
   inset:0;
   z-index:40000;
-
   display:none;
   align-items:center;
   justify-content:center;
   flex-direction:column;
-
   color:white;
-
   background:
     linear-gradient(
       135deg,
@@ -155,1040 +125,742 @@ button{
       #40223c 55%,
       #1c1930
     );
-
   opacity:0;
-  transition:opacity .8s
+  transition:opacity .8s;
 }
 
 #login.show{
   display:flex;
-  opacity:1
+  opacity:1;
 }
 
 .login-avatar{
   width:92px;
   height:92px;
   border-radius:50%;
-
-  background:
-    linear-gradient(
-      135deg,
-      #fff,
-      #ffd7e0
-    );
-
+  background:linear-gradient(135deg,#fff,#ffd7e0);
   display:flex;
   align-items:center;
   justify-content:center;
-
   font-size:45px;
-
-  box-shadow:
-    0 15px 45px rgba(0,0,0,.35);
-
-  margin-bottom:18px
+  box-shadow:0 15px 45px rgba(0,0,0,.35);
+  margin-bottom:18px;
 }
 
 .login-name{
   font-size:21px;
-  font-weight:600
+  font-weight:600;
 }
 
 .login-hint{
   font-size:12px;
   opacity:.6;
-  margin:5px 0 20px
+  margin:5px 0 20px;
 }
 
 .login-btn{
   border:0;
   border-radius:22px;
   padding:11px 25px;
-
   background:rgba(255,255,255,.16);
   color:#fff;
-
   border:1px solid rgba(255,255,255,.25);
-
   backdrop-filter:blur(15px);
-
-  transition:.25s
+  transition:.25s;
 }
 
 .login-btn:hover{
   background:rgba(255,255,255,.28);
-  transform:translateY(-2px)
+  transform:translateY(-2px);
 }
 
-
-/* =========================================================
+/* =========================
    TOP BAR
-========================================================= */
+========================= */
 
 #top-bar{
   position:fixed;
   top:0;
   left:0;
-
   width:100%;
   height:30px;
-
   z-index:10000;
-
   display:flex;
   justify-content:space-between;
   align-items:center;
-
   padding:0 14px;
-
   background:rgba(255,255,255,.38);
-
   backdrop-filter:blur(22px);
   -webkit-backdrop-filter:blur(22px);
-
   border-bottom:1px solid rgba(255,255,255,.35);
-
   font-size:12px;
-  font-weight:600
+  font-weight:600;
 }
 
 .top-left{
   display:flex;
   align-items:center;
-  gap:12px
+  gap:12px;
 }
 
 .apple{
-  font-size:15px
+  font-size:15px;
 }
 
 .menu{
   opacity:.7;
-  font-weight:400
+  font-weight:400;
 }
 
 #mac-clock{
-  font-variant-numeric:tabular-nums
+  font-variant-numeric:tabular-nums;
 }
 
-
-/* =========================================================
+/* =========================
    DESKTOP
-========================================================= */
+========================= */
 
 #desktop{
   position:fixed;
   inset:30px 0 0 0;
-  padding:18px
+  padding:18px;
 }
 
 .desktop-item{
   width:82px;
-
   display:flex;
   flex-direction:column;
   align-items:center;
-
   gap:5px;
-
   padding:7px;
-
   border-radius:9px;
-
   cursor:pointer;
-
   margin-bottom:10px;
-
   color:#fff;
-
   text-align:center;
-
-  transition:.2s
+  transition:.2s;
 }
 
 .desktop-item:hover{
-  background:rgba(255,255,255,.18)
+  background:rgba(255,255,255,.18);
 }
 
 .desktop-icon{
   width:54px;
   height:54px;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   font-size:38px;
-
-  filter:
-    drop-shadow(
-      0 5px 7px rgba(0,0,0,.25)
-    )
+  filter:drop-shadow(0 5px 7px rgba(0,0,0,.25));
 }
 
 .desktop-label{
   font-size:11px;
   font-weight:600;
-
-  text-shadow:
-    0 2px 5px rgba(0,0,0,.8)
+  text-shadow:0 2px 5px rgba(0,0,0,.8);
 }
 
-
-/* =========================================================
+/* =========================
    DOCK
-========================================================= */
+========================= */
 
 #dock-container{
   position:fixed;
-
   left:50%;
   bottom:9px;
-
   transform:translateX(-50%);
-
-  z-index:15000
+  z-index:15000;
 }
 
 #dock{
   display:flex;
   align-items:flex-end;
-
   gap:7px;
-
   padding:8px 10px;
-
   border:1px solid var(--border);
-
   border-radius:21px;
-
   background:rgba(255,255,255,.30);
-
   backdrop-filter:blur(25px);
   -webkit-backdrop-filter:blur(25px);
-
-  box-shadow:
-    0 14px 35px rgba(0,0,0,.20)
+  box-shadow:0 14px 35px rgba(0,0,0,.20);
 }
 
 .dock-icon{
   position:relative;
-
   width:48px;
   height:48px;
-
   border-radius:13px;
-
   border:1px solid rgba(255,255,255,.45);
-
   background:
     linear-gradient(
       145deg,
       rgba(255,255,255,.82),
       rgba(255,255,255,.45)
     );
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   font-size:25px;
-
-  box-shadow:
-    0 5px 10px rgba(0,0,0,.12);
-
+  box-shadow:0 5px 10px rgba(0,0,0,.12);
   transition:
     transform .16s ease,
-    margin .16s ease
+    margin .16s ease;
+  cursor:pointer;
 }
 
 .dock-icon:hover{
-  transform:
-    translateY(-10px)
-    scale(1.22);
-
-  margin:0 5px
+  transform:translateY(-10px) scale(1.22);
+  margin:0 5px;
 }
 
 .dock-icon.open::after{
   content:"";
-
   position:absolute;
-
   bottom:-5px;
-
   width:4px;
   height:4px;
-
   border-radius:50%;
-
-  background:#333
+  background:#333;
 }
 
-
-/* =========================================================
+/* =========================
    WINDOWS
-========================================================= */
+========================= */
 
 .window{
   position:fixed;
-
   display:none;
   flex-direction:column;
-
   width:min(760px,88vw);
   height:min(650px,76vh);
-
   min-width:300px;
   min-height:240px;
-
   top:50%;
   left:50%;
-
-  transform:
-    translate(-50%,-50%);
-
-  background:
-    rgba(248,248,250,.82);
-
+  transform:translate(-50%,-50%);
+  background:rgba(248,248,250,.82);
   backdrop-filter:blur(30px);
   -webkit-backdrop-filter:blur(30px);
-
-  border:
-    1px solid rgba(255,255,255,.65);
-
+  border:1px solid rgba(255,255,255,.65);
   border-radius:14px;
-
-  box-shadow:
-    0 30px 80px rgba(0,0,0,.32);
-
+  box-shadow:0 30px 80px rgba(0,0,0,.32);
   overflow:hidden;
-
   z-index:2000;
-
   opacity:0;
-
-  scale:.94
+  scale:.94;
 }
 
 .window.active{
   display:flex;
-
-  animation:
-    windowIn
-    .28s
-    cubic-bezier(.2,.8,.2,1)
-    forwards
+  animation:windowIn .28s cubic-bezier(.2,.8,.2,1) forwards;
 }
 
 .window.closing{
-  animation:
-    windowOut
-    .22s
-    forwards
+  animation:windowOut .22s forwards;
 }
 
 .window.minimized{
-  display:none!important
+  display:none!important;
 }
 
 @keyframes windowIn{
   to{
     opacity:1;
-    scale:1
+    scale:1;
   }
 }
 
 @keyframes windowOut{
   to{
     opacity:0;
-    scale:.92
+    scale:.92;
   }
 }
 
 .window.maximized{
   top:40px!important;
   left:0!important;
-
   transform:none!important;
-
   width:100vw!important;
-
-  height:
-    calc(100vh - 40px)!important;
-
-  border-radius:0!important
+  height:calc(100vh - 40px)!important;
+  border-radius:0!important;
 }
 
 .window-header{
   height:42px;
-
   flex:none;
-
-  background:
-    rgba(235,235,238,.78);
-
-  border-bottom:
-    1px solid rgba(0,0,0,.08);
-
+  background:rgba(235,235,238,.78);
+  border-bottom:1px solid rgba(0,0,0,.08);
   display:flex;
   align-items:center;
-
   padding:0 14px;
-
   position:relative;
-
-  cursor:grab
+  cursor:grab;
 }
 
 .window-header:active{
-  cursor:grabbing
+  cursor:grabbing;
 }
 
 .window-dots{
   display:flex;
   gap:7px;
-  z-index:2
+  z-index:2;
 }
 
 .dot{
   width:13px;
   height:13px;
-
   border-radius:50%;
-
   border:0;
-  padding:0
+  padding:0;
+  cursor:pointer;
 }
 
 .dot-close{
-  background:#ff5f57
+  background:#ff5f57;
 }
 
 .dot-min{
-  background:#ffbd2e
+  background:#ffbd2e;
 }
 
 .dot-max{
-  background:#28c840
+  background:#28c840;
 }
 
 .window-title{
   position:absolute;
-
   left:50%;
-
-  transform:
-    translateX(-50%);
-
+  transform:translateX(-50%);
   font-size:13px;
-
   font-weight:600;
-
   color:#4b4b4d;
-
   white-space:nowrap;
-
   max-width:55%;
-
   overflow:hidden;
-
-  text-overflow:ellipsis
+  text-overflow:ellipsis;
 }
 
 .window-body{
   flex:1;
-
   overflow:auto;
-
   padding:20px;
-
-  -webkit-overflow-scrolling:touch
+  -webkit-overflow-scrolling:touch;
 }
 
-
-/* =========================================================
+/* =========================
    CARTA
-========================================================= */
+========================= */
 
 .letter-paper{
-  background:
-    linear-gradient(
-      145deg,
-      #fff,
-      #fff7fa
-    );
-
+  background:linear-gradient(145deg,#fff,#fff7fa);
   padding:30px;
-
   border-radius:14px;
-
-  box-shadow:
-    0 8px 25px rgba(0,0,0,.08);
-
+  box-shadow:0 8px 25px rgba(0,0,0,.08);
   font-family:Georgia,serif;
-
   font-size:15px;
-
   line-height:1.8;
-
   white-space:pre-line;
-
-  min-height:100%
+  min-height:100%;
 }
 
 .letter-heading{
   text-align:center;
-
-  font-family:inherit;
-
   font-size:22px;
-
   margin-bottom:22px;
-
-  color:#d91e4d
+  color:#d91e4d;
 }
 
 .letter-sign{
   text-align:right;
-
   margin-top:28px;
-
   font-style:italic;
-
-  color:#b51d43
+  color:#b51d43;
 }
 
-
-/* =========================================================
-   GALLERY
-========================================================= */
+/* =========================
+   GALERÍA
+========================= */
 
 .gallery-grid{
   display:grid;
-
-  grid-template-columns:
-    repeat(
-      auto-fill,
-      minmax(150px,1fr)
-    );
-
+  grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
   gap:14px;
-
-  touch-action:pan-y
+  touch-action:pan-y;
 }
 
 .photo-card{
   background:#fff;
-
   padding:8px;
-
   border-radius:12px;
-
-  box-shadow:
-    0 7px 18px rgba(0,0,0,.09);
-
+  box-shadow:0 7px 18px rgba(0,0,0,.09);
   cursor:pointer;
-
   transition:.25s;
-
-  animation:
-    cardIn
-    .45s
-    both
+  animation:cardIn .45s both;
 }
 
 .photo-card:hover{
-  transform:
-    translateY(-4px)
-    rotate(.3deg);
-
-  box-shadow:
-    0 13px 25px rgba(0,0,0,.15)
+  transform:translateY(-4px) rotate(.3deg);
+  box-shadow:0 13px 25px rgba(0,0,0,.15);
 }
 
 .photo-card img{
   width:100%;
-
   height:145px;
-
   object-fit:cover;
-
   border-radius:8px;
-
   display:block;
-
   -webkit-user-drag:none;
-
   user-select:none;
-  -webkit-user-select:none
+  -webkit-user-select:none;
 }
 
 .photo-card p{
   text-align:center;
-
   font-size:11px;
-
   margin:7px 0 2px;
-
-  color:#555
+  color:#555;
 }
 
 @keyframes cardIn{
   from{
     opacity:0;
-    transform:translateY(15px)
+    transform:translateY(15px);
   }
 
   to{
     opacity:1;
-    transform:none
+    transform:none;
   }
 }
 
-
-/* =========================================================
-   REASONS
-========================================================= */
+/* =========================
+   RAZONES
+========================= */
 
 .reason-item{
-  background:
-    rgba(255,255,255,.78);
-
+  background:rgba(255,255,255,.78);
   padding:14px 16px;
-
   margin-bottom:11px;
-
-  border-left:
-    4px solid var(--accent);
-
+  border-left:4px solid var(--accent);
   border-radius:11px;
-
-  box-shadow:
-    0 3px 12px rgba(0,0,0,.05);
-
+  box-shadow:0 3px 12px rgba(0,0,0,.05);
   font-size:14px;
-
-  animation:
-    cardIn
-    .4s
-    both
+  animation:cardIn .4s both;
 }
 
-
-/* =========================================================
-   COUPONS
-========================================================= */
+/* =========================
+   VALES
+========================= */
 
 .coupon{
   display:flex;
-
   justify-content:space-between;
   align-items:center;
-
   gap:12px;
-
   background:#fff;
-
   padding:15px;
-
-  border:
-    1px solid #ffd2dc;
-
+  border:1px solid #ffd2dc;
   border-radius:13px;
-
-  margin-bottom:12px
+  margin-bottom:12px;
 }
 
-.claim-btn,
-.surprise-btn{
+.claim-btn{
   border:0;
-
   color:#fff;
-
-  background:
-    var(--accent);
-
+  background:var(--accent);
   border-radius:20px;
-
   padding:9px 15px;
-
   font-size:12px;
-
   font-weight:600;
-
-  white-space:nowrap
+  white-space:nowrap;
+  cursor:pointer;
 }
 
 .claimed{
-  background:#34c759!important
+  background:#34c759!important;
 }
 
-
-/* =========================================================
-   SURPRISE
-========================================================= */
+/* =========================
+   SORPRESA
+========================= */
 
 .surprise{
   text-align:center;
-
-  padding:35px 20px
+  padding:35px 20px;
 }
 
 .gift{
   font-size:85px;
-
   display:inline-block;
-
   cursor:pointer;
-
-  animation:
-    giftFloat
-    2s
-    ease-in-out
-    infinite
+  animation:giftFloat 2s ease-in-out infinite;
 }
 
 @keyframes giftFloat{
   50%{
-    transform:
-      translateY(-8px)
-      rotate(2deg)
+    transform:translateY(-8px) rotate(2deg);
   }
 }
 
 #gift-text{
   display:none;
-
   margin-top:20px;
-
   font-size:21px;
-
   font-weight:700;
-
-  color:var(--accent)
+  color:var(--accent);
 }
 
-
-/* =========================================================
-   MUSIC
-========================================================= */
+/* =========================
+   MÚSICA LOCAL
+========================= */
 
 .music-card{
   text-align:center;
-
-  padding:35px 20px
+  padding:35px 20px;
 }
 
 .music-title{
   font-size:20px;
-
-  font-weight:700
+  font-weight:700;
 }
 
 .music-artist{
   font-size:13px;
-
   color:#777;
-
-  margin:6px 0 15px
+  margin:6px 0 15px;
 }
 
 .local-audio{
   width:100%;
-
   max-width:450px;
-
   margin:20px auto 0;
-
-  display:block
+  display:block;
 }
 
-
-/* =========================================================
-   IMAGE VIEWER
-========================================================= */
+/* =========================
+   VISOR
+========================= */
 
 #image-viewer{
   position:fixed;
-
   inset:0;
-
-  background:
-    rgba(0,0,0,.82);
-
+  background:rgba(0,0,0,.82);
   z-index:30000;
-
   display:none;
-
   align-items:center;
   justify-content:center;
-
   flex-direction:column;
-
   backdrop-filter:blur(12px);
-
-  touch-action:none
+  touch-action:none;
 }
 
 #image-viewer.show{
   display:flex;
-
-  animation:
-    fadeIn
-    .2s
+  animation:fadeIn .2s;
 }
 
 #viewer-img{
   max-width:90vw;
-
   max-height:78vh;
-
   object-fit:contain;
-
   border-radius:10px;
-
-  box-shadow:
-    0 20px 60px #000;
-
+  box-shadow:0 20px 60px #000;
   touch-action:none;
-
   -webkit-user-drag:none;
-
   user-select:none;
-  -webkit-user-select:none
+  -webkit-user-select:none;
 }
 
 .viewer-close{
   position:absolute;
-
   top:25px;
   right:25px;
-
   width:35px;
   height:35px;
-
   border:0;
-
   border-radius:50%;
-
-  background:
-    rgba(255,255,255,.18);
-
+  background:rgba(255,255,255,.18);
   color:white;
-
   font-size:20px;
-
-  z-index:3
+  z-index:3;
+  cursor:pointer;
 }
 
 .viewer-nav{
   display:flex;
-
   gap:15px;
-
-  margin-top:18px
+  margin-top:18px;
 }
 
 .viewer-nav button{
   border:0;
-
   border-radius:20px;
-
   padding:8px 18px;
-
-  background:
-    rgba(255,255,255,.16);
-
-  color:white
+  background:rgba(255,255,255,.16);
+  color:white;
+  cursor:pointer;
 }
 
 #viewer-caption{
   color:white;
-
   font-size:12px;
-
-  margin-top:10px
+  margin-top:10px;
 }
 
 @keyframes fadeIn{
-  from{
-    opacity:0
-  }
-
-  to{
-    opacity:1
-  }
+  from{opacity:0}
+  to{opacity:1}
 }
 
-
-/* =========================================================
-   HEARTS
-========================================================= */
+/* =========================
+   CORAZONES
+========================= */
 
 .click-heart{
   position:fixed;
-
   pointer-events:none;
-
   font-size:22px;
-
   z-index:60000;
-
-  animation:
-    heartFloat
-    .9s
-    forwards
+  animation:heartFloat .9s forwards;
 }
 
 @keyframes heartFloat{
   from{
     opacity:1;
-
-    transform:
-      translate(-50%,-50%)
-      scale(.5)
+    transform:translate(-50%,-50%) scale(.5);
   }
 
   to{
     opacity:0;
-
-    transform:
-      translate(-50%,-95px)
-      scale(1.35)
+    transform:translate(-50%,-95px) scale(1.35);
   }
 }
 
+/* =========================
+   TOAST
+========================= */
 
-/* =========================================================
+.toast{
+  position:fixed;
+  top:48px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:65000;
+  padding:10px 16px;
+  border-radius:20px;
+  background:rgba(30,30,30,.78);
+  color:#fff;
+  font-size:12px;
+  backdrop-filter:blur(15px);
+  box-shadow:0 8px 25px rgba(0,0,0,.25);
+}
+
+/* =========================
    MOBILE
-========================================================= */
+========================= */
 
 @media(max-width:600px){
 
   #top-bar{
-    height:32px
+    height:32px;
   }
 
   #desktop{
     inset:32px 0 0;
-
-    padding:12px
+    padding:12px;
   }
 
   .desktop-item{
-    width:74px
+    width:74px;
   }
 
   .desktop-icon{
-    font-size:34px
+    font-size:34px;
   }
 
   .window{
     width:96vw;
-
     height:82vh;
-
     min-width:0;
-
-    border-radius:12px
+    border-radius:12px;
   }
 
   .window.maximized{
     top:32px!important;
-
-    height:
-      calc(100vh - 32px)!important
+    height:calc(100vh - 32px)!important;
   }
 
   .window-header{
-    height:40px
+    height:40px;
   }
 
   .window-body{
-    padding:14px
+    padding:14px;
   }
 
   .gallery-grid{
-    grid-template-columns:
-      repeat(2,1fr);
-
-    gap:9px
+    grid-template-columns:repeat(2,1fr);
+    gap:9px;
   }
 
   .photo-card img{
-    height:120px
+    height:120px;
   }
 
   #dock{
     max-width:95vw;
-
-    overflow-x:auto
+    overflow-x:auto;
   }
 
   .dock-icon{
-    flex:
-      0 0 43px;
-
+    flex:0 0 43px;
     width:43px;
     height:43px;
-
-    font-size:22px
+    font-size:22px;
   }
 
   .letter-paper{
     padding:22px;
-
-    font-size:14px
+    font-size:14px;
   }
 
   #viewer-img{
     max-width:94vw;
-    max-height:72vh
+    max-height:72vh;
   }
 
   .viewer-nav{
-    gap:8px
+    gap:8px;
   }
 
   .viewer-nav button{
-    padding:8px 13px
+    padding:8px 13px;
   }
-
 }
 
-
-/* =========================================================
-   SCROLLBAR
-========================================================= */
-
 ::-webkit-scrollbar{
-  width:7px
+  width:7px;
 }
 
 ::-webkit-scrollbar-thumb{
-  background:
-    rgba(0,0,0,.18);
-
-  border-radius:10px
+  background:rgba(0,0,0,.18);
+  border-radius:10px;
 }
-
 </style>
 </head>
 
-
 <body>
 
-
-<!-- =========================================================
-     BOOT
-========================================================= -->
+<!-- =====================================================
+     PANTALLA DE CARGA
+====================================================== -->
 
 <div id="boot">
 
-  <div class="boot-logo">
-    ❤️
-  </div>
+  <div class="boot-logo">❤️</div>
 
   <div class="boot-title">
     ViviOS
@@ -1205,9 +877,9 @@ button{
 </div>
 
 
-<!-- =========================================================
+<!-- =====================================================
      LOGIN
-========================================================= -->
+====================================================== -->
 
 <div id="login">
 
@@ -1233,29 +905,21 @@ button{
 </div>
 
 
-<!-- =========================================================
-     TOP BAR
-========================================================= -->
+<!-- =====================================================
+     BARRA SUPERIOR
+====================================================== -->
 
 <div id="top-bar">
 
   <div class="top-left">
 
-    <span class="apple">
-      
-    </span>
+    <span class="apple"></span>
 
-    <span>
-      ViviOS
-    </span>
+    <span>ViviOS</span>
 
-    <span class="menu">
-      Archivo
-    </span>
+    <span class="menu">Archivo</span>
 
-    <span class="menu">
-      Ventana
-    </span>
+    <span class="menu">Ventana</span>
 
   </div>
 
@@ -1264,9 +928,9 @@ button{
 </div>
 
 
-<!-- =========================================================
-     DESKTOP
-========================================================= -->
+<!-- =====================================================
+     ESCRITORIO
+====================================================== -->
 
 <div id="desktop">
 
@@ -1292,7 +956,7 @@ button{
   >
 
     <div class="desktop-icon">
-      🖼
+      🖼️
     </div>
 
     <div class="desktop-label">
@@ -1336,9 +1000,11 @@ button{
 </div>
 
 
-<!-- =========================================================
+<!-- =====================================================
      DOCK
-========================================================= -->
+     IMPORTANTE:
+     NO HAY CONFIGURACIÓN AQUÍ
+====================================================== -->
 
 <div id="dock-container">
 
@@ -1391,9 +1057,9 @@ button{
 </div>
 
 
-<!-- =========================================================
+<!-- =====================================================
      CARTA
-========================================================= -->
+====================================================== -->
 
 <div
   id="win-carta"
@@ -1450,9 +1116,9 @@ button{
 </div>
 
 
-<!-- =========================================================
+<!-- =====================================================
      FOTOS
-========================================================= -->
+====================================================== -->
 
 <div
   id="win-momentos"
@@ -1499,9 +1165,11 @@ button{
 </div>
 
 
-<!-- =========================================================
-     CANCIONES
-========================================================= -->
+<!-- =====================================================
+     MÚSICA
+     SOLO ARCHIVO MP3 LOCAL
+     NO YOUTUBE
+====================================================== -->
 
 <div
   id="win-canciones"
@@ -1567,9 +1235,9 @@ button{
 </div>
 
 
-<!-- =========================================================
+<!-- =====================================================
      RAZONES
-========================================================= -->
+====================================================== -->
 
 <div
   id="win-razones"
@@ -1631,9 +1299,9 @@ button{
 </div>
 
 
-<!-- =========================================================
+<!-- =====================================================
      VALES
-========================================================= -->
+====================================================== -->
 
 <div
   id="win-vales"
@@ -1670,7 +1338,6 @@ button{
 
   <div class="window-body">
 
-
     <div class="coupon">
 
       <div>
@@ -1683,7 +1350,7 @@ button{
           style="
             font-size:11px;
             color:#777;
-            margin-top:4px
+            margin-top:4px;
           "
         >
           Canjeable por tu comida favorita.
@@ -1710,7 +1377,7 @@ button{
           style="
             font-size:11px;
             color:#777;
-            margin-top:4px
+            margin-top:4px;
           "
         >
           Tú eliges la película y el postre.
@@ -1737,7 +1404,7 @@ button{
           style="
             font-size:11px;
             color:#777;
-            margin-top:4px
+            margin-top:4px;
           "
         >
           Sin fecha de vencimiento.
@@ -1751,15 +1418,14 @@ button{
 
     </div>
 
-
   </div>
 
 </div>
 
 
-<!-- =========================================================
+<!-- =====================================================
      SORPRESA
-========================================================= -->
+====================================================== -->
 
 <div
   id="win-sorpresa"
@@ -1794,14 +1460,12 @@ button{
   </div>
 
 
-  <div
-    class="window-body surprise"
-  >
+  <div class="window-body surprise">
 
     <p
       style="
         font-weight:600;
-        margin-bottom:18px
+        margin-bottom:18px;
       "
     >
       Hay algo escondido aquí...
@@ -1823,9 +1487,9 @@ button{
 </div>
 
 
-<!-- =========================================================
+<!-- =====================================================
      PAPELERA
-========================================================= -->
+====================================================== -->
 
 <div
   id="win-papelera"
@@ -1864,7 +1528,7 @@ button{
     class="window-body"
     style="
       text-align:center;
-      padding-top:55px
+      padding-top:55px;
     "
   >
 
@@ -1874,7 +1538,7 @@ button{
 
     <h3
       style="
-        margin:14px 0 8px
+        margin:14px 0 8px;
       "
     >
       La papelera está vacía
@@ -1883,7 +1547,7 @@ button{
     <p
       style="
         font-size:13px;
-        color:#666
+        color:#666;
       "
     >
       No hay nada que cambiaría de ti.
@@ -1895,9 +1559,9 @@ button{
 </div>
 
 
-<!-- =========================================================
-     IMAGE VIEWER
-========================================================= -->
+<!-- =====================================================
+     VISOR DE FOTOS
+====================================================== -->
 
 <div id="image-viewer">
 
@@ -1934,10 +1598,9 @@ button{
 
 <script>
 
-
-/* =========================================================
-   DATOS FIJOS
-========================================================= */
+/* =====================================================
+   DATOS DE VIVIOS
+====================================================== */
 
 const appData = {
 
@@ -1951,97 +1614,76 @@ Gracias por cada sonrisa, por cada momento y por hacer que mi vida tenga recuerd
 
 Te amo muchísimo. 💕`,
 
-  fondo:
-    'assets/fondo.jpg',
+  fondo: 'assets/fondo.jpg',
 
-  fotos:
-    Array.from(
-      {length:31},
-      (_,i)=>
-        'assets/fotos/foto' +
-        String(i+1).padStart(2,'0') +
-        '.jpg'
-    )
+  fotos: Array.from(
+    {length:31},
+    (_,i) =>
+      'assets/fotos/foto' +
+      String(i+1).padStart(2,'0') +
+      '.jpg'
+  )
 
 };
 
 
-/* =========================================================
+/* =====================================================
    UTILIDADES
-========================================================= */
+====================================================== */
 
-const $ =
-  selector =>
-    document.querySelector(selector);
+const $ = selector =>
+  document.querySelector(selector);
 
-const $$ =
-  selector =>
-    document.querySelectorAll(selector);
+const $$ = selector =>
+  document.querySelectorAll(selector);
 
-let zIndex =
-  3000;
-
-let viewerIndex =
-  0;
+let zIndex = 3000;
 
 
-/* =========================================================
-   VENTANAS
-========================================================= */
+/* =====================================================
+   ABRIR VENTANA
+====================================================== */
 
 function abrirVentana(id){
 
-  const w =
-    document.getElementById(id);
+  const w = document.getElementById(id);
 
   if(!w){
     return;
   }
 
-  if(
-    w.classList.contains('minimized')
-  ){
-
-    w.classList.remove(
-      'minimized'
-    );
-
-  }
+  w.classList.remove(
+    'minimized',
+    'closing'
+  );
 
   w.classList.add(
     'active'
   );
 
-  w.classList.remove(
-    'closing'
-  );
-
   w.style.zIndex =
     ++zIndex;
 
-
   $$('.dock-icon').forEach(
-    x =>
-      x.classList.remove('open')
+    icon =>
+      icon.classList.remove('open')
   );
-
 
   $$('.dock-icon[data-open="'+id+'"]').forEach(
-    x =>
-      x.classList.add('open')
+    icon =>
+      icon.classList.add('open')
   );
 
-
-  if(
-    id === 'win-carta'
-  ){
-
+  if(id === 'win-carta'){
     typeLetter();
-
   }
 
 }
 
+
+/* =====================================================
+   CERRAR VENTANA
+====================================================== */
 
 function cerrarVentana(id){
 
@@ -2052,14 +1694,10 @@ function cerrarVentana(id){
     return;
   }
 
-  w.classList.add(
-    'closing'
-  );
-
+  w.classList.add('closing');
 
   setTimeout(
     ()=>{
-
       w.classList.remove(
         'active',
         'closing'
@@ -2068,11 +1706,15 @@ function cerrarVentana(id){
       updateDock(id);
 
     },
-    210
+    220
   );
 
 }
 
+
+/* =====================================================
+   MINIMIZAR
+====================================================== */
 
 function minimizarVentana(id){
 
@@ -2096,16 +1738,9 @@ function minimizarVentana(id){
 }
 
 
-function updateDock(id){
-
-  $$('.dock-icon[data-open="'+id+'"]')
-    .forEach(
-      x =>
-        x.classList.remove('open')
-    );
-
-}
-
+/* =====================================================
+   MAXIMIZAR
+====================================================== */
 
 function maximizarVentana(id){
 
@@ -2123,21 +1758,36 @@ function maximizarVentana(id){
 }
 
 
-/* =========================================================
-   BOTONES DE VENTANAS
-========================================================= */
+/* =====================================================
+   DOCK
+====================================================== */
+
+function updateDock(id){
+
+  $$('.dock-icon[data-open="'+id+'"]')
+    .forEach(
+      icon =>
+        icon.classList.remove('open')
+    );
+
+}
+
+
+/* =====================================================
+   BOTONES data-open
+====================================================== */
 
 $$('[data-open]').forEach(
-  el=>{
+  element => {
 
-    el.addEventListener(
+    element.addEventListener(
       'click',
-      e=>{
+      event => {
 
-        e.stopPropagation();
+        event.stopPropagation();
 
         abrirVentana(
-          el.dataset.open
+          element.dataset.open
         );
 
       }
@@ -2146,18 +1796,22 @@ $$('[data-open]').forEach(
   }
 );
 
+
+/* =====================================================
+   BOTONES CERRAR
+====================================================== */
 
 $$('[data-close]').forEach(
-  el=>{
+  element => {
 
-    el.addEventListener(
+    element.addEventListener(
       'click',
-      e=>{
+      event => {
 
-        e.stopPropagation();
+        event.stopPropagation();
 
         cerrarVentana(
-          el.dataset.close
+          element.dataset.close
         );
 
       }
@@ -2166,18 +1820,22 @@ $$('[data-close]').forEach(
   }
 );
 
+
+/* =====================================================
+   BOTONES MINIMIZAR
+====================================================== */
 
 $$('[data-min]').forEach(
-  el=>{
+  element => {
 
-    el.addEventListener(
+    element.addEventListener(
       'click',
-      e=>{
+      event => {
 
-        e.stopPropagation();
+        event.stopPropagation();
 
         minimizarVentana(
-          el.dataset.min
+          element.dataset.min
         );
 
       }
@@ -2186,18 +1844,22 @@ $$('[data-min]').forEach(
   }
 );
 
+
+/* =====================================================
+   BOTONES MAXIMIZAR
+====================================================== */
 
 $$('[data-max]').forEach(
-  el=>{
+  element => {
 
-    el.addEventListener(
+    element.addEventListener(
       'click',
-      e=>{
+      event => {
 
-        e.stopPropagation();
+        event.stopPropagation();
 
         maximizarVentana(
-          el.dataset.max
+          element.dataset.max
         );
 
       }
@@ -2207,26 +1869,25 @@ $$('[data-max]').forEach(
 );
 
 
-/* =========================================================
+/* =====================================================
    Z-INDEX
-========================================================= */
+====================================================== */
 
 $$('.window').forEach(
-  w=>{
+  windowElement => {
 
-    w.addEventListener(
+    windowElement.addEventListener(
       'mousedown',
       ()=>{
-        w.style.zIndex =
+        windowElement.style.zIndex =
           ++zIndex;
       }
     );
 
-
-    w.addEventListener(
+    windowElement.addEventListener(
       'touchstart',
       ()=>{
-        w.style.zIndex =
+        windowElement.style.zIndex =
           ++zIndex;
       },
       {passive:true}
@@ -2236,255 +1897,128 @@ $$('.window').forEach(
 );
 
 
-/* =========================================================
-   DRAG DE VENTANAS
-========================================================= */
+/* =====================================================
+   DRAG WINDOWS
+====================================================== */
 
-let drag =
-  null;
+let drag = null;
 
 
 $$('.window-header').forEach(
-  header=>{
-
-    const start =
-      (clientX,clientY)=>{
-
-        const w =
-          header.closest('.window');
-
-
-        if(
-          w.classList.contains(
-            'maximized'
-          )
-        ){
-
-          return;
-
-        }
-
-
-        const r =
-          w.getBoundingClientRect();
-
-
-        drag = {
-
-          w,
-
-          startX:
-            clientX,
-
-          startY:
-            clientY,
-
-          left:
-            r.left,
-
-          top:
-            r.top
-
-        };
-
-
-        w.style.transform =
-          'none';
-
-        w.style.left =
-          r.left+'px';
-
-        w.style.top =
-          r.top+'px';
-
-      };
-
-
-    const move =
-      (x,y)=>{
-
-        if(!drag){
-          return;
-        }
-
-
-        drag.w.style.left =
-          (
-            drag.left +
-            x -
-            drag.startX
-          )+'px';
-
-
-        drag.w.style.top =
-          (
-            drag.top +
-            y -
-            drag.startY
-          )+'px';
-
-      };
-
+  header => {
 
     header.addEventListener(
       'mousedown',
-      e=>{
+      event => {
 
         if(
-          e.target.classList.contains(
-            'dot'
-          )
+          event.target.classList.contains('dot')
         ){
-
           return;
+        }
+
+        const windowElement =
+          header.closest('.window');
+
+        if(
+          windowElement.classList.contains('maximized')
+        ){
+          return;
+        }
+
+        const rect =
+          windowElement.getBoundingClientRect();
+
+        drag = {
+
+          windowElement,
+
+          startX:
+            event.clientX,
+
+          startY:
+            event.clientY,
+
+          left:
+            rect.left,
+
+          top:
+            rect.top
+
+        };
+
+        windowElement.style.transform =
+          'none';
+
+        windowElement.style.left =
+          rect.left + 'px';
+
+        windowElement.style.top =
+          rect.top + 'px';
+
+
+        function move(e){
+
+          if(!drag){
+            return;
+          }
+
+          drag.windowElement.style.left =
+            (
+              drag.left +
+              e.clientX -
+              drag.startX
+            ) + 'px';
+
+          drag.windowElement.style.top =
+            (
+              drag.top +
+              e.clientY -
+              drag.startY
+            ) + 'px';
 
         }
 
 
-        start(
-          e.clientX,
-          e.clientY
-        );
+        function stop(){
 
+          drag = null;
 
-        const mm =
-          e=>{
+          document.removeEventListener(
+            'mousemove',
+            move
+          );
 
-            move(
-              e.clientX,
-              e.clientY
-            );
+          document.removeEventListener(
+            'mouseup',
+            stop
+          );
 
-          };
-
-
-        const up =
-          ()=>{
-
-            drag =
-              null;
-
-
-            document.removeEventListener(
-              'mousemove',
-              mm
-            );
-
-
-            document.removeEventListener(
-              'mouseup',
-              up
-            );
-
-          };
+        }
 
 
         document.addEventListener(
           'mousemove',
-          mm
+          move
         );
-
 
         document.addEventListener(
           'mouseup',
-          up
+          stop
         );
 
       }
-    );
-
-
-    header.addEventListener(
-      'touchstart',
-      e=>{
-
-        if(
-          e.target.classList.contains(
-            'dot'
-          )
-        ){
-
-          return;
-
-        }
-
-
-        const t =
-          e.touches[0];
-
-
-        start(
-          t.clientX,
-          t.clientY
-        );
-
-
-        const mm =
-          e=>{
-
-            if(!e.touches[0]){
-              return;
-            }
-
-            const t =
-              e.touches[0];
-
-
-            move(
-              t.clientX,
-              t.clientY
-            );
-
-          };
-
-
-        const up =
-          ()=>{
-
-            drag =
-              null;
-
-
-            document.removeEventListener(
-              'touchmove',
-              mm
-            );
-
-
-            document.removeEventListener(
-              'touchend',
-              up
-            );
-
-          };
-
-
-        document.addEventListener(
-          'touchmove',
-          mm,
-          {passive:false}
-        );
-
-
-        document.addEventListener(
-          'touchend',
-          up
-        );
-
-      },
-      {passive:true}
     );
 
   }
 );
 
 
-/* =========================================================
+/* =====================================================
    CARTA
-========================================================= */
+====================================================== */
 
 let typingTimer;
-
 
 function typeLetter(){
 
@@ -2492,54 +2026,42 @@ function typeLetter(){
     typingTimer
   );
 
-
-  const el =
+  const element =
     $('#display-carta');
 
-
-  if(!el){
+  if(!element){
     return;
   }
-
 
   const text =
-    appData.carta ||
-    '';
-
+    appData.carta;
 
   if(
-    el.dataset.done === text
+    element.dataset.done === text
   ){
-
     return;
-
   }
 
-
-  el.dataset.done =
+  element.dataset.done =
     text;
 
-
-  el.innerHTML =
+  element.textContent =
     '';
 
+  let index = 0;
 
-  let i =
-    0;
+  function write(){
 
+    if(index < text.length){
 
-  function step(){
+      element.textContent +=
+        text[index];
 
-    if(
-      i < text.length
-    ){
-
-      el.textContent +=
-        text[i++];
+      index++;
 
       typingTimer =
         setTimeout(
-          step,
+          write,
           12
         );
 
@@ -2547,115 +2069,90 @@ function typeLetter(){
 
   }
 
-
-  step();
+  write();
 
 }
 
 
-/* =========================================================
-   RENDER
-========================================================= */
+/* =====================================================
+   RENDER APP
+====================================================== */
 
 function renderApp(){
 
   try{
 
-    /* =========================
-       FONDO
-    ========================= */
-
     document.body.style.backgroundImage =
       'url("assets/fondo.jpg")';
 
 
-    /* =========================
-       GALERÍA
-    ========================= */
-
-    const gal =
+    const gallery =
       $('#display-galeria');
 
-
-    gal.innerHTML =
+    gallery.innerHTML =
       '';
 
 
     appData.fotos.forEach(
-      (src,i)=>{
+      (src,index)=>{
 
         const card =
-          document.createElement(
-            'div'
-          );
-
+          document.createElement('div');
 
         card.className =
           'photo-card';
 
-
         card.style.animationDelay =
-          (i*.07)+'s';
+          (index * .07) + 's';
 
 
-        const img =
-          document.createElement(
-            'img'
-          );
+        const image =
+          document.createElement('img');
 
-
-        img.src =
+        image.src =
           src;
 
+        image.alt =
+          'Foto ' + (index + 1);
 
-        img.alt =
-          'Foto '+(i+1);
-
-
-        img.loading =
+        image.loading =
           'lazy';
 
-
-        img.draggable =
+        image.draggable =
           false;
 
 
-        img.onerror =
+        image.onerror =
           ()=>{
-
             console.error(
               'No se pudo cargar:',
               src
             );
-
           };
 
 
-        const p =
-          document.createElement(
-            'p'
-          );
+        const caption =
+          document.createElement('p');
 
-
-        p.textContent =
-          'Foto #'+(i+1);
+        caption.textContent =
+          'Foto #' + (index + 1);
 
 
         card.append(
-          img,
-          p
+          image,
+          caption
         );
 
 
         card.addEventListener(
           'click',
           ()=>{
-            openViewer(i);
+            openViewer(index);
           }
         );
 
 
-        gal.appendChild(
+        gallery.appendChild(
           card
         );
 
@@ -2665,7 +2162,6 @@ function renderApp(){
 
     $('#display-carta').dataset.done =
       '';
-
 
   }catch(error){
 
@@ -2679,81 +2175,46 @@ function renderApp(){
 }
 
 
-/* =========================================================
-   VALES
-========================================================= */
+/* =====================================================
+   PRECARGAR FOTOS
+====================================================== */
 
-$$('.claim-btn').forEach(
-  btn=>{
+function preloadPhotos(){
 
-    btn.addEventListener(
-      'click',
-      ()=>{
+  appData.fotos.forEach(
+    src => {
 
-        btn.textContent =
-          '¡CANJEADO! ❤️';
+      const image =
+        new Image();
 
+      image.src =
+        src;
 
-        btn.classList.add(
-          'claimed'
-        );
+    }
+  );
 
-
-        showToast(
-          'Vale canjeado 💕'
-        );
-
-      }
-    );
-
-  }
-);
+}
 
 
-/* =========================================================
-   REGALO
-========================================================= */
-
-$('#gift-btn').addEventListener(
-  'click',
-  ()=>{
-
-    $('#gift-text').style.display =
-      'block';
-
-
-    $('#gift-btn').style.animation =
-      'none';
-
-
-    burstHearts();
-
-  }
-);
-
-
-/* =========================================================
+/* =====================================================
    VISOR DE FOTOS
-========================================================= */
+====================================================== */
 
-function openViewer(i){
+let viewerIndex = 0;
+
+
+function openViewer(index){
 
   if(
-    !appData.fotos ||
     !appData.fotos.length
   ){
-
     return;
-
   }
 
-
   viewerIndex =
-    i;
-
+    index;
 
   updateViewer();
-
 
   $('#image-viewer')
     .classList.add('show');
@@ -2764,59 +2225,43 @@ function openViewer(i){
 function updateViewer(){
 
   if(
-    !appData.fotos ||
     !appData.fotos.length
   ){
-
     return;
-
   }
 
-
-  const src =
-    appData.fotos[
-      viewerIndex
-    ];
-
+  const source =
+    appData.fotos[viewerIndex];
 
   $('#viewer-img').src =
-    src;
-
+    source;
 
   $('#viewer-caption').textContent =
-    `Foto ${viewerIndex+1} de ${appData.fotos.length}`;
+    'Foto ' +
+    (viewerIndex + 1) +
+    ' de ' +
+    appData.fotos.length;
 
 }
 
 
-/* =========================================================
-   CERRAR VISOR
-========================================================= */
+/* =====================================================
+   VISOR: CERRAR
+====================================================== */
 
 $('#viewer-close').onclick =
   ()=>{
-
     $('#image-viewer')
       .classList.remove('show');
-
   };
 
 
-/* =========================================================
-   FOTO ANTERIOR
-========================================================= */
+/* =====================================================
+   VISOR: ANTERIOR
+====================================================== */
 
 $('#viewer-prev').onclick =
   ()=>{
-
-    if(
-      !appData.fotos.length
-    ){
-
-      return;
-
-    }
-
 
     viewerIndex =
       (
@@ -2826,27 +2271,17 @@ $('#viewer-prev').onclick =
       ) %
       appData.fotos.length;
 
-
     updateViewer();
 
   };
 
 
-/* =========================================================
-   FOTO SIGUIENTE
-========================================================= */
+/* =====================================================
+   VISOR: SIGUIENTE
+====================================================== */
 
 $('#viewer-next').onclick =
   ()=>{
-
-    if(
-      !appData.fotos.length
-    ){
-
-      return;
-
-    }
-
 
     viewerIndex =
       (
@@ -2855,69 +2290,48 @@ $('#viewer-next').onclick =
       ) %
       appData.fotos.length;
 
-
     updateViewer();
 
   };
 
 
-/* =========================================================
-   SWIPE ANDROID
-========================================================= */
+/* =====================================================
+   SWIPE EN ANDROID
+====================================================== */
 
 const viewer =
   $('#image-viewer');
 
-
-const viewerImg =
+const viewerImage =
   $('#viewer-img');
 
-
-let touchStartX =
-  0;
-
-let touchStartY =
-  0;
-
-let touchStartTime =
-  0;
-
-let swipeHandled =
-  false;
+let touchStartX = 0;
+let touchStartY = 0;
+let touchStartTime = 0;
 
 
 viewer.addEventListener(
   'touchstart',
-  e=>{
+  event => {
 
     if(
-      !e.touches ||
-      e.touches.length !== 1
+      !event.touches ||
+      event.touches.length !== 1
     ){
-
       return;
-
     }
 
-
     const touch =
-      e.touches[0];
-
+      event.touches[0];
 
     touchStartX =
       touch.clientX;
 
-
     touchStartY =
       touch.clientY;
 
-
     touchStartTime =
       Date.now();
-
-
-    swipeHandled =
-      false;
 
   },
   {passive:true}
@@ -2926,75 +2340,48 @@ viewer.addEventListener(
 
 viewer.addEventListener(
   'touchend',
-  e=>{
-
-    if(swipeHandled){
-      return;
-    }
-
+  event => {
 
     if(
-      !e.changedTouches ||
-      e.changedTouches.length !== 1
+      !event.changedTouches ||
+      event.changedTouches.length !== 1
     ){
-
       return;
-
     }
 
-
     const touch =
-      e.changedTouches[0];
+      event.changedTouches[0];
 
-
-    const dx =
+    const deltaX =
       touch.clientX -
       touchStartX;
 
-
-    const dy =
+    const deltaY =
       touch.clientY -
       touchStartY;
-
 
     const duration =
       Date.now() -
       touchStartTime;
 
 
-    if(
-      duration > 1200
-    ){
-
+    if(duration > 1200){
       return;
+    }
 
+    if(Math.abs(deltaX) < 40){
+      return;
+    }
+
+    if(
+      Math.abs(deltaX) <=
+      Math.abs(deltaY)
+    ){
+      return;
     }
 
 
-    if(
-      Math.abs(dx) < 40
-    ){
-
-      return;
-
-    }
-
-
-    if(
-      Math.abs(dx) <=
-      Math.abs(dy)
-    ){
-
-      return;
-
-    }
-
-
-    swipeHandled =
-      true;
-
-
-    if(dx < 0){
+    if(deltaX < 0){
 
       $('#viewer-next').click();
 
@@ -3009,28 +2396,75 @@ viewer.addEventListener(
 );
 
 
-viewerImg.addEventListener(
+viewerImage.addEventListener(
   'dragstart',
-  e=>{
-    e.preventDefault();
+  event => {
+    event.preventDefault();
   }
 );
 
 
-/* =========================================================
+/* =====================================================
+   VALES
+====================================================== */
+
+$$('.claim-btn').forEach(
+  button => {
+
+    button.addEventListener(
+      'click',
+      ()=>{
+
+        button.textContent =
+          '¡CANJEADO! ❤️';
+
+        button.classList.add(
+          'claimed'
+        );
+
+        showToast(
+          'Vale canjeado 💕'
+        );
+
+      }
+    );
+
+  }
+);
+
+
+/* =====================================================
+   REGALO
+====================================================== */
+
+$('#gift-btn').addEventListener(
+  'click',
+  ()=>{
+
+    $('#gift-text').style.display =
+      'block';
+
+    $('#gift-btn').style.animation =
+      'none';
+
+    burstHearts();
+
+  }
+);
+
+
+/* =====================================================
    RELOJ
-========================================================= */
+====================================================== */
 
 function updateClock(){
 
   const clock =
     $('#mac-clock');
 
-
   if(!clock){
     return;
   }
-
 
   clock.textContent =
     new Date().toLocaleString(
@@ -3046,9 +2480,7 @@ function updateClock(){
 
 }
 
-
 updateClock();
-
 
 setInterval(
   updateClock,
@@ -3056,81 +2488,35 @@ setInterval(
 );
 
 
-/* =========================================================
+/* =====================================================
    TOAST
-========================================================= */
+====================================================== */
 
-function showToast(msg){
+function showToast(message){
 
-  const old =
-    $('.toast');
+  const previous =
+    document.querySelector('.toast');
 
-
-  if(old){
-    old.remove();
+  if(previous){
+    previous.remove();
   }
 
+  const toast =
+    document.createElement('div');
 
-  const t =
-    document.createElement(
-      'div'
-    );
-
-
-  t.className =
+  toast.className =
     'toast';
 
+  toast.textContent =
+    message;
 
-  t.textContent =
-    msg;
-
-
-  Object.assign(
-    t.style,
-    {
-
-      position:'fixed',
-
-      top:'48px',
-
-      left:'50%',
-
-      transform:
-        'translateX(-50%)',
-
-      zIndex:65000,
-
-      padding:'10px 16px',
-
-      borderRadius:'20px',
-
-      background:
-        'rgba(30,30,30,.78)',
-
-      color:'#fff',
-
-      fontSize:'12px',
-
-      backdropFilter:
-        'blur(15px)',
-
-      boxShadow:
-        '0 8px 25px rgba(0,0,0,.25)'
-
-    }
+  document.body.appendChild(
+    toast
   );
-
-
-  document.body.appendChild(t);
-
 
   setTimeout(
     ()=>{
-
-      if(t.parentNode){
-        t.remove();
-      }
-
+      toast.remove();
     },
     2200
   );
@@ -3138,53 +2524,47 @@ function showToast(msg){
 }
 
 
-/* =========================================================
+/* =====================================================
    CORAZONES
-========================================================= */
+====================================================== */
 
-function heart(x,y){
+function createHeart(x,y){
 
-  const h =
-    document.createElement(
-      'div'
-    );
+  const heart =
+    document.createElement('div');
 
-
-  h.className =
+  heart.className =
     'click-heart';
 
-
-  h.textContent =
+  const hearts =
     [
       '💖',
       '💕',
       '❤️',
       '💗'
-    ][
+    ];
+
+  heart.textContent =
+    hearts[
       Math.floor(
-        Math.random()*4
+        Math.random() *
+        hearts.length
       )
     ];
 
+  heart.style.left =
+    x + 'px';
 
-  h.style.left =
-    x+'px';
-
-
-  h.style.top =
-    y+'px';
-
+  heart.style.top =
+    y + 'px';
 
   document.body.appendChild(
-    h
+    heart
   );
-
 
   setTimeout(
     ()=>{
-      if(h.parentNode){
-        h.remove();
-      }
+      heart.remove();
     },
     900
   );
@@ -3194,55 +2574,60 @@ function heart(x,y){
 
 document.addEventListener(
   'click',
-  e=>{
+  event => {
 
     if(
-      e.target.closest(
-        'button,input,textarea,.window-header,.dock,.desktop-item,#image-viewer'
+      event.target.closest(
+        'button,' +
+        'input,' +
+        'textarea,' +
+        '.window-header,' +
+        '.dock,' +
+        '.desktop-item,' +
+        '#image-viewer'
       )
     ){
-
       return;
-
     }
 
-
-    heart(
-      e.clientX,
-      e.clientY
+    createHeart(
+      event.clientX,
+      event.clientY
     );
 
   }
 );
 
 
-/* =========================================================
+/* =====================================================
    EXPLOSIÓN DE CORAZONES
-========================================================= */
+====================================================== */
 
 function burstHearts(){
 
   for(
-    let i=0;
-    i<14;
+    let i = 0;
+    i < 14;
     i++
   ){
 
     setTimeout(
       ()=>{
 
-        heart(
+        createHeart(
 
-          innerWidth/2 +
-          (Math.random()-.5)*220,
+          innerWidth / 2 +
+          (Math.random() - .5) *
+          220,
 
-          innerHeight/2 +
-          (Math.random()-.5)*120
+          innerHeight / 2 +
+          (Math.random() - .5) *
+          120
 
         );
 
       },
-      i*45
+      i * 45
     );
 
   }
@@ -3250,38 +2635,23 @@ function burstHearts(){
 }
 
 
-/* =========================================================
+/* =====================================================
    TECLADO
-========================================================= */
+====================================================== */
 
 document.addEventListener(
   'keydown',
-  e=>{
-
-    /* ESC */
+  event => {
 
     if(
-      e.key === 'Escape'
+      event.key === 'Escape'
     ){
 
       $('#image-viewer')
-        .classList.remove(
-          'show'
-        );
-
-
-      $$('.window.active')
-        .forEach(
-          w =>
-            cerrarVentana(
-              w.id
-            )
-        );
+        .classList.remove('show');
 
     }
 
-
-    /* GALERÍA */
 
     if(
       $('#image-viewer')
@@ -3289,20 +2659,15 @@ document.addEventListener(
     ){
 
       if(
-        e.key === 'ArrowLeft'
+        event.key === 'ArrowLeft'
       ){
-
         $('#viewer-prev').click();
-
       }
 
-
       if(
-        e.key === 'ArrowRight'
+        event.key === 'ArrowRight'
       ){
-
         $('#viewer-next').click();
-
       }
 
     }
@@ -3311,33 +2676,11 @@ document.addEventListener(
 );
 
 
-/* =========================================================
-   PRE-CARGA DE FOTOS
-========================================================= */
+/* =====================================================
+   ARRANQUE
+====================================================== */
 
-function preloadPhotos(){
-
-  appData.fotos.forEach(
-    src=>{
-
-      const img =
-        new Image();
-
-      img.src =
-        src;
-
-    }
-  );
-
-}
-
-
-/* =========================================================
-   BOOT
-========================================================= */
-
-let bootDone =
-  false;
+let bootDone = false;
 
 
 function launchOS(){
@@ -3346,9 +2689,7 @@ function launchOS(){
     return;
   }
 
-
-  bootDone =
-    true;
+  bootDone = true;
 
 
   try{
@@ -3370,13 +2711,10 @@ function launchOS(){
   const boot =
     $('#boot');
 
-
   if(boot){
-
     boot.classList.add(
       'hide'
     );
-
   }
 
 
@@ -3388,50 +2726,29 @@ function launchOS(){
 }
 
 
-/*
-   Arranque normal.
-*/
-
 setTimeout(
   launchOS,
   1800
 );
 
 
-/*
-   Seguro adicional:
-   si algo falla antes de launchOS,
-   el boot no queda congelado.
-*/
+/* =====================================================
+   SEGURIDAD CONTRA BOOT CONGELADO
+====================================================== */
 
 setTimeout(
   ()=>{
-
-    const boot =
-      $('#boot');
-
-
-    if(
-      boot &&
-      !bootDone
-    ){
-
-      boot.classList.add(
-        'hide'
-      );
-
+    if(!bootDone){
       launchOS();
-
     }
-
   },
   2500
 );
 
 
-/* =========================================================
+/* =====================================================
    LOGIN
-========================================================= */
+====================================================== */
 
 $('#login-btn').addEventListener(
   'click',
@@ -3440,13 +2757,11 @@ $('#login-btn').addEventListener(
     $('#login').style.opacity =
       '0';
 
-
     setTimeout(
       ()=>{
 
         $('#login').style.display =
           'none';
-
 
         showToast(
           'Bienvenida a ViviOS ❤️'
