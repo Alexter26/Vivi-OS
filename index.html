@@ -2,2395 +2,3600 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
->
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>ViviOS - Para Mi Amor ❤️</title>
 
 <style>
-
-/* =====================================================
-   BASE
-===================================================== */
-
-* {
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-}
-
-html,
-body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    overflow: hidden;
-}
-
-body {
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-
-    background: #000;
-    color: white;
-
-    user-select: none;
-    -webkit-user-select: none;
-}
-
-
-/* =====================================================
-   PANTALLA DE CARGA
-===================================================== */
-
-#boot {
-    position: fixed;
-    inset: 0;
-
-    z-index: 99999;
-
-    background: #050505;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    transition: opacity 0.6s ease;
-}
-
-.boot-container {
-    width: 250px;
-    text-align: center;
-}
-
-.boot-logo {
-    font-size: 55px;
-    margin-bottom: 18px;
-
-    animation: bootPulse 1.5s infinite;
-}
-
-.boot-title {
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 7px;
-}
-
-.boot-subtitle {
-    font-size: 13px;
-    color: rgba(255,255,255,0.65);
-    margin-bottom: 20px;
-}
-
-.loading-bar {
-    width: 100%;
-    height: 4px;
-
-    background: rgba(255,255,255,0.15);
-
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.loading-progress {
-    height: 100%;
-    width: 0%;
-
-    background: #fff;
-
-    border-radius: 10px;
-
-    animation: loading 1.7s ease forwards;
-}
-
-@keyframes loading {
-    from {
-        width: 0%;
-    }
-
-    to {
-        width: 100%;
-    }
-}
-
-@keyframes bootPulse {
-    0%,100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.08);
-    }
-}
-
-
-/* =====================================================
-   ESCRITORIO
-===================================================== */
-
-#desktop {
-    position: fixed;
-    inset: 0;
-
-    background-image:
-        linear-gradient(
-            rgba(0,0,0,0.12),
-            rgba(0,0,0,0.25)
-        ),
-        url("assets/fondo.jpg");
-
-    background-size: cover;
-    background-position: center;
-
-    overflow: hidden;
-}
-
-
-/* =====================================================
-   BARRA SUPERIOR
-===================================================== */
-
-.top-bar {
-    position: absolute;
-
-    top: 0;
-    left: 0;
-    right: 0;
-
-    height: 38px;
-
-    display: flex;
-    align-items: center;
-
-    padding: 0 15px;
-
-    background: rgba(20,20,20,0.35);
-
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-
-    z-index: 1000;
-}
-
-.apple-logo {
-    font-size: 18px;
-    margin-right: 16px;
-}
-
-.menu-name {
-    font-size: 13px;
-    font-weight: 600;
-}
-
-.menu-item {
-    margin-left: 18px;
-    font-size: 12px;
-    opacity: 0.85;
-}
-
-.top-right {
-    margin-left: auto;
-
-    font-size: 12px;
-
-    display: flex;
-    gap: 13px;
-
-    opacity: 0.9;
-}
-
-
-/* =====================================================
-   ICONOS DEL ESCRITORIO
-===================================================== */
-
-.desktop-icons {
-    position: absolute;
-
-    top: 60px;
-    left: 18px;
-
-    display: flex;
-    flex-direction: column;
-
-    gap: 18px;
-
-    z-index: 100;
-}
-
-.desktop-icon {
-    width: 72px;
-
-    text-align: center;
-
-    cursor: pointer;
-
-    text-shadow:
-        0 2px 5px rgba(0,0,0,0.8);
-}
-
-.desktop-icon:active {
-    transform: scale(0.93);
-}
-
-.icon-image {
-    width: 52px;
-    height: 52px;
-
-    margin: 0 auto 5px;
-
-    border-radius: 13px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 28px;
-
-    background:
-        rgba(255,255,255,0.18);
-
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-
-    border:
-        1px solid rgba(255,255,255,0.2);
-
-    box-shadow:
-        0 6px 15px rgba(0,0,0,0.25);
-}
-
-.icon-label {
-    font-size: 11px;
-}
-
-
-/* =====================================================
-   VENTANAS
-===================================================== */
-
-.window {
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    width: min(720px, 90vw);
-    height: min(620px, 78vh);
-
-    transform:
-        translate(-50%, -50%)
-        scale(0.94);
-
-    opacity: 0;
-    pointer-events: none;
-
-    background:
-        rgba(25,25,30,0.78);
-
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-
-    border:
-        1px solid rgba(255,255,255,0.18);
-
-    border-radius: 15px;
-
-    overflow: hidden;
-
-    box-shadow:
-        0 25px 80px rgba(0,0,0,0.55);
-
-    transition:
-        opacity 0.25s ease,
-        transform 0.25s ease;
-
-    z-index: 3000;
-}
-
-.window.active {
-    opacity: 1;
-
-    pointer-events: auto;
-
-    transform:
-        translate(-50%, -50%)
-        scale(1);
-}
-
-.window-header {
-    height: 42px;
-
-    position: relative;
-
-    display: flex;
-    align-items: center;
-
-    padding: 0 13px;
-
-    background:
-        rgba(255,255,255,0.08);
-
-    border-bottom:
-        1px solid rgba(255,255,255,0.1);
-}
-
-.window-buttons {
-    display: flex;
-    gap: 7px;
-}
-
-.close-button {
-    width: 12px;
-    height: 12px;
-
-    border-radius: 50%;
-
-    background: #ff5f57;
-
-    cursor: pointer;
-}
-
-.window-title {
-    position: absolute;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    font-size: 13px;
-
-    font-weight: 600;
-
-    color: rgba(255,255,255,0.9);
-}
-
-.window-content {
-    height: calc(100% - 42px);
-
-    overflow: auto;
-
-    padding: 24px;
-}
-
-
-/* =====================================================
-   CARTA
-===================================================== */
-
-.letter {
-    max-width: 580px;
-
-    margin: auto;
-
-    line-height: 1.8;
-
-    font-size: 15px;
-
-    color:
-        rgba(255,255,255,0.9);
-}
-
-.letter h2 {
-    text-align: center;
-
-    margin-top: 0;
-
-    color: #ff9ab5;
-}
-
-.letter p {
-    margin-bottom: 18px;
-}
-
-.signature {
-    text-align: right;
-
-    color: #ff9ab5;
-
-    font-size: 17px;
-
-    font-weight: 600;
-}
-
-
-/* =====================================================
-   GALERÍA
-===================================================== */
-
-.photo-gallery {
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    flex-direction: column;
-}
-
-.photo-counter {
-    height: 25px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 12px;
-
-    color:
-        rgba(255,255,255,0.65);
-}
-
-.photo-slider {
-    position: relative;
-
-    flex: 1;
-
-    min-height: 0;
-
-    width: 100%;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    overflow: hidden;
-
-    /*
-       Permite detectar el movimiento horizontal
-       sin que el navegador convierta el gesto
-       en desplazamiento de la página.
-    */
-    touch-action: none;
-
-    -webkit-user-select: none;
-    user-select: none;
-}
-
-.main-photo {
-    display: block;
-
-    max-width: calc(100% - 100px);
-    max-height: calc(100% - 20px);
-
-    width: auto;
-    height: auto;
-
-    object-fit: contain;
-
-    border-radius: 12px;
-
-    box-shadow:
-        0 15px 45px rgba(0,0,0,0.5);
-
-    /*
-       MUY IMPORTANTE PARA ANDROID
-    */
-    touch-action: none;
-
-    -webkit-user-drag: none;
-    user-drag: none;
-
-    -webkit-user-select: none;
-    user-select: none;
-
-    pointer-events: auto;
-}
-
-.photo-arrow {
-    position: absolute;
-
-    top: 50%;
-
-    transform: translateY(-50%);
-
-    width: 43px;
-    height: 43px;
-
-    border: none;
-
-    border-radius: 50%;
-
-    background:
-        rgba(0,0,0,0.42);
-
-    color: white;
-
-    font-size: 30px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    cursor: pointer;
-
-    z-index: 20;
-
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-}
-
-.photo-arrow:active {
-    transform:
-        translateY(-50%)
-        scale(0.88);
-}
-
-.photo-prev {
-    left: 10px;
-}
-
-.photo-next {
-    right: 10px;
+:root{
+  --accent:#ff2d55;
+  --accent2:#ff6b8a;
+  --glass:rgba(255,255,255,.30);
+  --glass-strong:rgba(255,255,255,.72);
+  --border:rgba(255,255,255,.58);
+  --text:#1d1d1f;
 }
-
-.photo-hint {
-    position: absolute;
-
-    bottom: 8px;
 
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    padding: 5px 10px;
-
-    background:
-        rgba(0,0,0,0.4);
-
-    border-radius: 20px;
-
-    font-size: 10px;
-
-    color:
-        rgba(255,255,255,0.75);
-
-    pointer-events: none;
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif
 }
-
-
-/* =====================================================
-   MINIATURAS
-===================================================== */
 
-.photo-thumbnails {
-    height: 75px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    padding: 8px 2px;
-
-    overflow-x: auto;
-
-    scrollbar-width: none;
+html,body{
+  width:100%;
+  height:100%;
+  overflow:hidden
 }
 
-.photo-thumbnails::-webkit-scrollbar {
-    display: none;
+body{
+  background:linear-gradient(135deg,#ff9a9e,#fecfef 48%,#a1c4fd);
+  background-size:cover;
+  background-position:center;
+  color:var(--text);
 }
-
-.photo-thumb {
-    width: 57px;
-    height: 57px;
-
-    flex: 0 0 57px;
-
-    object-fit: cover;
 
-    border-radius: 8px;
-
-    border:
-        2px solid transparent;
-
-    opacity: 0.5;
-
-    cursor: pointer;
-
-    transition:
-        opacity 0.2s,
-        transform 0.2s,
-        border-color 0.2s;
-
-    -webkit-user-drag: none;
+button,input,textarea{
+  font:inherit
 }
-
-.photo-thumb.active {
-    opacity: 1;
 
-    border-color: #ff7fa2;
-
-    transform: scale(1.05);
+button{
+  cursor:pointer
 }
 
+/* =========================
+   BOOT
+========================= */
 
-/* =====================================================
-   ANIMACIÓN FOTOS
-===================================================== */
-
-.photo-slide-left {
-    animation:
-        photoLeft 0.22s ease;
+#boot{
+  position:fixed;
+  inset:0;
+  z-index:50000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  color:white;
+  background:radial-gradient(circle at center,#34203e,#120f18 70%);
+  transition:opacity .9s,visibility .9s;
 }
 
-.photo-slide-right {
-    animation:
-        photoRight 0.22s ease;
+#boot.hide{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none
 }
-
-@keyframes photoLeft {
 
-    from {
-        opacity: 0;
-        transform: translateX(35px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-
+.boot-logo{
+  font-size:54px;
+  margin-bottom:18px;
+  animation:pulse 2s infinite
 }
-
-@keyframes photoRight {
-
-    from {
-        opacity: 0;
-        transform: translateX(-35px);
-    }
 
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-
+.boot-title{
+  font-size:24px;
+  font-weight:600;
+  letter-spacing:.5px
 }
-
-
-/* =====================================================
-   MÚSICA
-===================================================== */
-
-.music-content {
-    height: 100%;
-
-    display: flex;
-    flex-direction: column;
 
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
+.boot-sub{
+  font-size:13px;
+  opacity:.65;
+  margin-top:6px
 }
-
-.music-icon {
-    font-size: 70px;
 
-    margin-bottom: 15px;
+.boot-progress{
+  width:190px;
+  height:5px;
+  background:rgba(255,255,255,.16);
+  border-radius:10px;
+  margin-top:28px;
+  overflow:hidden
 }
 
-.music-content h2 {
-    margin: 0 0 8px;
+.boot-progress span{
+  display:block;
+  height:100%;
+  width:0;
+  background:white;
+  border-radius:10px;
+  animation:load 1.8s ease forwards
 }
 
-.music-content p {
-    opacity: 0.7;
-
-    margin-bottom: 25px;
+@keyframes load{
+  to{width:100%}
 }
 
-audio {
-    width: min(450px, 100%);
+@keyframes pulse{
+  50%{transform:scale(1.08)}
+}
+
+/* =========================
+   LOGIN
+========================= */
+
+#login{
+  position:fixed;
+  inset:0;
+  z-index:40000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  color:white;
+  background:linear-gradient(135deg,#17121d,#40223c 55%,#1c1930);
+  opacity:0;
+  transition:opacity .8s;
 }
-
 
-/* =====================================================
-   RAZONES
-===================================================== */
-
-.reasons {
-    max-width: 570px;
-
-    margin: auto;
+#login.show{
+  display:flex;
+  opacity:1
+}
+
+.login-avatar{
+  width:92px;
+  height:92px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#fff,#ffd7e0);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:45px;
+  box-shadow:0 15px 45px rgba(0,0,0,.35);
+  margin-bottom:18px
 }
-
-.reasons h2 {
-    text-align: center;
-
-    color: #ff9ab5;
-
-    margin-top: 0;
 
-    margin-bottom: 25px;
+.login-name{
+  font-size:21px;
+  font-weight:600
+}
+
+.login-hint{
+  font-size:12px;
+  opacity:.6;
+  margin:5px 0 20px
+}
+
+.login-btn{
+  border:0;
+  border-radius:22px;
+  padding:11px 25px;
+  background:rgba(255,255,255,.16);
+  color:#fff;
+  border:1px solid rgba(255,255,255,.25);
+  backdrop-filter:blur(15px);
+  transition:.25s
 }
 
-.reason {
-    padding: 15px;
-
-    margin-bottom: 12px;
-
-    border-radius: 12px;
-
-    background:
-        rgba(255,255,255,0.06);
-
-    border:
-        1px solid rgba(255,255,255,0.08);
-
-    line-height: 1.5;
+.login-btn:hover{
+  background:rgba(255,255,255,.28);
+  transform:translateY(-2px)
 }
-
 
-/* =====================================================
-   VALES
-===================================================== */
+/* =========================
+   TOP BAR
+========================= */
 
-.vouchers {
-    display: grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(180px, 1fr)
-        );
-
-    gap: 15px;
+#top-bar{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:30px;
+  z-index:10000;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 14px;
+  background:rgba(255,255,255,.38);
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
+  border-bottom:1px solid rgba(255,255,255,.35);
+  font-size:12px;
+  font-weight:600
 }
-
-.voucher {
-    padding: 22px 15px;
 
-    text-align: center;
-
-    border-radius: 15px;
-
-    background:
-        rgba(255,255,255,0.06);
-
-    border:
-        1px solid rgba(255,255,255,0.1);
+.top-left{
+  display:flex;
+  align-items:center;
+  gap:12px
 }
-
-.voucher-icon {
-    font-size: 40px;
 
-    margin-bottom: 8px;
+.apple{
+  font-size:15px
 }
 
-.voucher h3 {
-    margin: 5px 0 8px;
-
-    font-size: 15px;
+.menu{
+  opacity:.7;
+  font-weight:400
 }
-
-.voucher p {
-    margin: 0;
 
-    font-size: 12px;
-
-    opacity: 0.65;
+#mac-clock{
+  font-variant-numeric:tabular-nums
 }
-
-
-/* =====================================================
-   SORPRESA
-===================================================== */
 
-.surprise {
-    height: 100%;
+/* =========================
+   DESKTOP
+========================= */
 
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
+#desktop{
+  position:fixed;
+  inset:30px 0 0 0;
+  padding:18px
 }
 
-.surprise-heart {
-    font-size: 90px;
-
-    animation:
-        heartBeat 1.2s infinite;
+.desktop-item{
+  width:82px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:5px;
+  padding:7px;
+  border-radius:9px;
+  cursor:pointer;
+  margin-bottom:10px;
+  color:#fff;
+  text-align:center;
+  transition:.2s
 }
 
-.surprise h2 {
-    color: #ff9ab5;
+.desktop-item:hover{
+  background:rgba(255,255,255,.18)
 }
-
-.surprise p {
-    max-width: 450px;
 
-    line-height: 1.7;
-
-    opacity: 0.8;
+.desktop-icon{
+  width:54px;
+  height:54px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:38px;
+  filter:drop-shadow(0 5px 7px rgba(0,0,0,.25))
 }
-
-@keyframes heartBeat {
 
-    0%,100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.12);
-    }
-
+.desktop-label{
+  font-size:11px;
+  font-weight:600;
+  text-shadow:0 2px 5px rgba(0,0,0,.8)
 }
-
 
-/* =====================================================
+/* =========================
    DOCK
-===================================================== */
+========================= */
 
-.dock {
-    position: absolute;
-
-    left: 50%;
-    bottom: 12px;
-
-    transform: translateX(-50%);
-
-    display: flex;
-
-    gap: 8px;
-
-    padding: 8px 10px;
-
-    border-radius: 19px;
-
-    background:
-        rgba(25,25,25,0.45);
-
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-
-    border:
-        1px solid rgba(255,255,255,0.15);
-
-    z-index: 5000;
+#dock-container{
+  position:fixed;
+  left:50%;
+  bottom:9px;
+  transform:translateX(-50%);
+  z-index:15000
 }
 
-.dock-item {
-    width: 43px;
-    height: 43px;
-
-    border-radius: 11px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 22px;
-
-    background:
-        rgba(255,255,255,0.12);
-
-    cursor: pointer;
-
-    transition:
-        transform 0.15s,
-        background 0.15s;
+#dock{
+  display:flex;
+  align-items:flex-end;
+  gap:7px;
+  padding:8px 10px;
+  border:1px solid var(--border);
+  border-radius:21px;
+  background:rgba(255,255,255,.30);
+  backdrop-filter:blur(25px);
+  -webkit-backdrop-filter:blur(25px);
+  box-shadow:0 14px 35px rgba(0,0,0,.20)
 }
 
-.dock-item:active {
-    transform: scale(0.86);
+.dock-icon{
+  position:relative;
+  width:48px;
+  height:48px;
+  border-radius:13px;
+  border:1px solid rgba(255,255,255,.45);
+  background:linear-gradient(
+    145deg,
+    rgba(255,255,255,.82),
+    rgba(255,255,255,.45)
+  );
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:25px;
+  box-shadow:0 5px 10px rgba(0,0,0,.12);
+  transition:transform .16s ease,margin .16s ease
 }
 
-
-/* =====================================================
-   TOAST
-===================================================== */
-
-#toast {
-    position: fixed;
-
-    left: 50%;
-    bottom: 80px;
-
-    transform:
-        translate(-50%, 15px);
-
-    padding: 9px 15px;
-
-    background:
-        rgba(20,20,20,0.7);
-
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-
-    border:
-        1px solid rgba(255,255,255,0.12);
-
-    border-radius: 18px;
-
-    font-size: 12px;
-
-    opacity: 0;
-
-    pointer-events: none;
-
-    transition:
-        opacity 0.25s,
-        transform 0.25s;
-
-    z-index: 10000;
+.dock-icon:hover{
+  transform:translateY(-10px) scale(1.22);
+  margin:0 5px
 }
 
-#toast.show {
-    opacity: 1;
-
-    transform:
-        translate(-50%, 0);
+.dock-icon.open::after{
+  content:"";
+  position:absolute;
+  bottom:-5px;
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:#333
 }
 
+/* =========================
+   WINDOWS
+========================= */
 
-/* =====================================================
-   MÓVIL
-===================================================== */
+.window{
+  position:fixed;
+  display:none;
+  flex-direction:column;
+  width:min(760px,88vw);
+  height:min(650px,76vh);
+  min-width:300px;
+  min-height:240px;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:rgba(248,248,250,.82);
+  backdrop-filter:blur(30px);
+  -webkit-backdrop-filter:blur(30px);
+  border:1px solid rgba(255,255,255,.65);
+  border-radius:14px;
+  box-shadow:0 30px 80px rgba(0,0,0,.32);
+  overflow:hidden;
+  z-index:2000;
+  opacity:0;
+  scale:.94
+}
 
-@media (max-width: 600px) {
+.window.active{
+  display:flex;
+  animation:windowIn .28s cubic-bezier(.2,.8,.2,1) forwards
+}
 
-    .top-bar {
-        height: 36px;
-    }
+.window.closing{
+  animation:windowOut .22s forwards
+}
 
-    .menu-item {
-        display: none;
-    }
+.window.minimized{
+  display:none!important
+}
 
-    .top-right {
-        font-size: 10px;
-    }
+@keyframes windowIn{
+  to{
+    opacity:1;
+    scale:1
+  }
+}
 
-    .desktop-icons {
-        top: 50px;
-        left: 8px;
-        gap: 12px;
-    }
+@keyframes windowOut{
+  to{
+    opacity:0;
+    scale:.92
+  }
+}
 
-    .desktop-icon {
-        width: 60px;
-    }
+.window.maximized{
+  top:40px!important;
+  left:0!important;
+  transform:none!important;
+  width:100vw!important;
+  height:calc(100vh - 40px)!important;
+  border-radius:0!important
+}
 
-    .icon-image {
-        width: 44px;
-        height: 44px;
+.window-header{
+  height:42px;
+  flex:none;
+  background:rgba(235,235,238,.78);
+  border-bottom:1px solid rgba(0,0,0,.08);
+  display:flex;
+  align-items:center;
+  padding:0 14px;
+  position:relative;
+  cursor:grab
+}
 
-        font-size: 23px;
-    }
+.window-header:active{
+  cursor:grabbing
+}
 
-    .icon-label {
-        font-size: 9px;
-    }
+.window-dots{
+  display:flex;
+  gap:7px;
+  z-index:2
+}
 
-    .window {
-        width: 94vw;
-        height: 78vh;
-    }
+.dot{
+  width:13px;
+  height:13px;
+  border-radius:50%;
+  border:0;
+  padding:0;
+  transition:transform .15s ease,filter .15s ease
+}
 
-    .window-content {
-        padding: 15px;
-    }
+.dot:hover{
+  transform:scale(1.12);
+  filter:brightness(.92)
+}
 
-    .main-photo {
-        max-width: calc(100% - 72px);
-        max-height: calc(100% - 10px);
-    }
+.dot-close{background:#ff5f57}
+.dot-min{background:#ffbd2e}
+.dot-max{background:#28c840}
 
-    .photo-arrow {
-        width: 38px;
-        height: 38px;
+.window-title{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:13px;
+  font-weight:600;
+  color:#4b4b4d;
+  white-space:nowrap;
+  max-width:55%;
+  overflow:hidden;
+  text-overflow:ellipsis
+}
 
-        font-size: 27px;
-    }
+.window-body{
+  flex:1;
+  overflow:auto;
+  padding:20px;
+  -webkit-overflow-scrolling:touch
+}
 
-    .photo-prev {
-        left: 5px;
-    }
+/* =========================
+   LETTER
+========================= */
 
-    .photo-next {
-        right: 5px;
-    }
+.letter-paper{
+  background:linear-gradient(145deg,#fff,#fff7fa);
+  padding:30px;
+  border-radius:14px;
+  box-shadow:0 8px 25px rgba(0,0,0,.08);
+  font-family:Georgia,serif;
+  font-size:15px;
+  line-height:1.8;
+  white-space:pre-line;
+  min-height:100%
+}
 
-    .photo-hint {
-        font-size: 9px;
-    }
+.letter-heading{
+  text-align:center;
+  font-family:inherit;
+  font-size:22px;
+  margin-bottom:22px;
+  color:#d91e4d
+}
 
-    .photo-thumbnails {
-        height: 68px;
-    }
+.letter-sign{
+  text-align:right;
+  margin-top:28px;
+  font-style:italic;
+  color:#b51d43
+}
 
-    .photo-thumb {
-        width: 51px;
-        height: 51px;
+/* =========================
+   GALLERY
+========================= */
 
-        flex-basis: 51px;
-    }
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+  gap:14px
+}
 
-    .dock {
-        bottom: 7px;
+.photo-card{
+  background:#fff;
+  padding:8px;
+  border-radius:12px;
+  box-shadow:0 7px 18px rgba(0,0,0,.09);
+  cursor:pointer;
+  transition:.25s;
+  animation:cardIn .45s both
+}
 
-        gap: 5px;
+.photo-card:hover{
+  transform:translateY(-4px) rotate(.3deg);
+  box-shadow:0 13px 25px rgba(0,0,0,.15)
+}
 
-        padding: 7px;
-    }
+.photo-card img{
+  width:100%;
+  height:145px;
+  object-fit:cover;
+  border-radius:8px;
+  display:block
+}
 
-    .dock-item {
-        width: 39px;
-        height: 39px;
+.photo-card p{
+  text-align:center;
+  font-size:11px;
+  margin:7px 0 2px;
+  color:#555
+}
 
-        font-size: 20px;
-    }
+@keyframes cardIn{
+  from{
+    opacity:0;
+    transform:translateY(15px)
+  }
+  to{
+    opacity:1;
+    transform:none
+  }
+}
+
+/* =========================
+   REASONS
+========================= */
+
+.reason-item{
+  background:rgba(255,255,255,.78);
+  padding:14px 16px;
+  margin-bottom:11px;
+  border-left:4px solid var(--accent);
+  border-radius:11px;
+  box-shadow:0 3px 12px rgba(0,0,0,.05);
+  font-size:14px;
+  animation:cardIn .4s both
+}
+
+/* =========================
+   COUPONS
+========================= */
+
+.coupon{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  background:#fff;
+  padding:15px;
+  border:1px solid #ffd2dc;
+  border-radius:13px;
+  margin-bottom:12px
+}
+
+.claim-btn,
+.surprise-btn,
+.save-btn{
+  border:0;
+  color:#fff;
+  background:var(--accent);
+  border-radius:20px;
+  padding:9px 15px;
+  font-size:12px;
+  font-weight:600;
+  white-space:nowrap
+}
+
+.claimed{
+  background:#34c759!important
+}
+
+/* =========================
+   SURPRISE
+========================= */
+
+.surprise{
+  text-align:center;
+  padding:35px 20px
+}
+
+.gift{
+  font-size:85px;
+  display:inline-block;
+  cursor:pointer;
+  animation:giftFloat 2s ease-in-out infinite
+}
+
+@keyframes giftFloat{
+  50%{
+    transform:translateY(-8px) rotate(2deg)
+  }
+}
+
+#gift-text{
+  display:none;
+  margin-top:20px;
+  font-size:21px;
+  font-weight:700;
+  color:var(--accent)
+}
+
+/* =========================
+   MUSIC
+========================= */
+
+.music-card{
+  text-align:center;
+  padding:35px 20px
+}
+
+.music-title{
+  font-size:20px;
+  font-weight:700
+}
+
+.music-artist{
+  font-size:13px;
+  color:#777;
+  margin:6px 0 15px
+}
+
+.yt-container{
+  width:100%;
+  max-width:450px;
+  height:180px;
+  margin:0 auto;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 8px 20px rgba(0,0,0,.15);
+  background:#000
+}
+
+.yt-container iframe{
+  width:100%;
+  height:100%;
+  border:0
+}
+
+/* =========================
+   SETTINGS
+========================= */
+
+.form-group{
+  margin-bottom:15px
+}
+
+.form-group label{
+  display:block;
+  font-size:12px;
+  font-weight:600;
+  color:#555;
+  margin-bottom:6px
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+  width:100%;
+  border:1px solid #ccc;
+  border-radius:9px;
+  padding:10px;
+  background:rgba(255,255,255,.9);
+  outline:none;
+  font-size:13px;
+  resize:vertical
+}
+
+.form-group input[type="file"]{
+  padding:7px;
+  background:#fff
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+  border-color:#007aff;
+  box-shadow:0 0 0 3px rgba(0,122,255,.12)
+}
+
+.save-btn{
+  width:100%;
+  background:#007aff;
+  margin-top:3px
+}
+
+/* =========================
+   ADMIN PHOTOS
+========================= */
+
+.admin-photo-list{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  max-height:160px;
+  overflow-y:auto;
+  border:1px solid #ddd;
+  padding:8px;
+  border-radius:8px;
+  background:#fff
+}
+
+.admin-photo-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  font-size:12px
+}
+
+.admin-photo-row img{
+  width:36px;
+  height:36px;
+  object-fit:cover;
+  border-radius:4px
+}
+
+.del-photo-btn{
+  background:#ff3b30;
+  color:white;
+  border:0;
+  padding:5px 10px;
+  border-radius:6px;
+  font-size:11px;
+  font-weight:600;
+  cursor:pointer
+}
+
+/* =========================
+   IMAGE VIEWER
+========================= */
+
+#image-viewer{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.82);
+  z-index:30000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  touch-action:none
+}
+
+#image-viewer.show{
+  display:flex;
+  animation:fadeIn .2s
+}
+
+#viewer-img{
+  max-width:90vw;
+  max-height:78vh;
+  object-fit:contain;
+  border-radius:10px;
+  box-shadow:0 20px 60px #000;
+  user-select:none;
+  -webkit-user-select:none;
+  -webkit-user-drag:none;
+  touch-action:none;
+  transition:opacity .15s ease,transform .15s ease
+}
+
+.viewer-close{
+  position:absolute;
+  top:25px;
+  right:25px;
+  width:35px;
+  height:35px;
+  border:0;
+  border-radius:50%;
+  background:rgba(255,255,255,.18);
+  color:white;
+  font-size:20px
+}
+
+.viewer-nav{
+  display:flex;
+  gap:15px;
+  margin-top:18px
+}
+
+.viewer-nav button{
+  border:0;
+  border-radius:20px;
+  padding:8px 18px;
+  background:rgba(255,255,255,.16);
+  color:white
+}
+
+#viewer-caption{
+  color:white;
+  font-size:12px;
+  margin-top:10px
+}
+
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+/* =========================
+   HEARTS
+========================= */
+
+.click-heart{
+  position:fixed;
+  pointer-events:none;
+  font-size:22px;
+  z-index:60000;
+  animation:heartFloat .9s forwards
+}
+
+@keyframes heartFloat{
+  from{
+    opacity:1;
+    transform:translate(-50%,-50%) scale(.5)
+  }
+  to{
+    opacity:0;
+    transform:translate(-50%,-95px) scale(1.35)
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+  #top-bar{
+    height:32px
+  }
+
+  #desktop{
+    inset:32px 0 0;
+    padding:12px
+  }
+
+  .desktop-item{
+    width:74px
+  }
+
+  .desktop-icon{
+    font-size:34px
+  }
+
+  .window{
+    width:96vw;
+    height:82vh;
+    min-width:0;
+    border-radius:12px
+  }
+
+  .window.maximized{
+    top:32px!important;
+    height:calc(100vh - 32px)!important
+  }
+
+  .window-header{
+    height:40px
+  }
+
+  .window-body{
+    padding:14px
+  }
+
+  .gallery-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:9px
+  }
+
+  .photo-card img{
+    height:120px
+  }
+
+  #dock{
+    max-width:95vw;
+    overflow-x:auto
+  }
+
+  .dock-icon{
+    flex:0 0 43px;
+    width:43px;
+    height:43px;
+    font-size:22px
+  }
+
+  #viewer-img{
+    max-width:94vw;
+    max-height:72vh
+  }
+
+  .viewer-nav{
+    gap:8px
+  }
+
+  .viewer-nav button{
+    padding:8px 13px;
+    font-size:12px
+  }
 
 }
 
+/* =========================
+   SCROLLBAR
+========================= */
 
-/* =====================================================
-   PREVENIR ARRASTRE
-===================================================== */
-
-img {
-    -webkit-user-drag: none;
+::-webkit-scrollbar{
+  width:7px
 }
 
+::-webkit-scrollbar-thumb{
+  background:rgba(0,0,0,.18);
+  border-radius:10px
+}
 </style>
 </head>
 
-
 <body>
 
-
-<!-- =====================================================
-     CARGA
-===================================================== -->
+<!-- =========================
+     BOOT
+========================= -->
 
 <div id="boot">
 
-    <div class="boot-container">
+  <div class="boot-logo">❤️</div>
 
-        <div class="boot-logo">
-            ❤️
-        </div>
+  <div class="boot-title">
+    ViviOS
+  </div>
 
-        <div class="boot-title">
-            ViviOS
-        </div>
+  <div class="boot-sub">
+    Preparando algo especial para Viviana...
+  </div>
 
-        <div class="boot-subtitle">
-            Preparando algo especial para ti...
-        </div>
-
-        <div class="loading-bar">
-
-            <div class="loading-progress"></div>
-
-        </div>
-
-    </div>
+  <div class="boot-progress">
+    <span></span>
+  </div>
 
 </div>
 
 
-<!-- =====================================================
-     ESCRITORIO
-===================================================== -->
+<!-- =========================
+     LOGIN
+========================= -->
+
+<div id="login">
+
+  <div class="login-avatar">
+    ❤️
+  </div>
+
+  <div class="login-name">
+    Viviana
+  </div>
+
+  <div class="login-hint">
+    Una pequeña sorpresa te está esperando
+  </div>
+
+  <button class="login-btn" id="login-btn">
+    Iniciar sesión
+  </button>
+
+</div>
+
+
+<!-- =========================
+     TOP BAR
+========================= -->
+
+<div id="top-bar">
+
+  <div class="top-left">
+    <span class="apple"></span>
+    <span>ViviOS</span>
+    <span class="menu">Archivo</span>
+    <span class="menu">Ventana</span>
+  </div>
+
+  <div id="mac-clock"></div>
+
+</div>
+
+
+<!-- =========================
+     DESKTOP
+========================= -->
 
 <div id="desktop">
 
-
-    <!-- BARRA SUPERIOR -->
-
-    <div class="top-bar">
-
-        <div class="apple-logo">
-            ❤️
-        </div>
-
-        <div class="menu-name">
-            ViviOS
-        </div>
-
-        <div class="menu-item">
-            Para mi amor
-        </div>
-
-        <div class="menu-item">
-            Recuerdos
-        </div>
-
-        <div class="menu-item">
-            Amor
-        </div>
-
-        <div class="top-right">
-
-            <span>♥</span>
-
-            <span id="clock">
-                00:00
-            </span>
-
-        </div>
-
-    </div>
-
-
-    <!-- =================================================
-         ICONOS
-    ================================================= -->
-
-    <div class="desktop-icons">
-
-
-        <div
-            class="desktop-icon"
-            onclick="openWindow('letter-window')"
-        >
-
-            <div class="icon-image">
-                💌
-            </div>
-
-            <div class="icon-label">
-                Carta
-            </div>
-
-        </div>
-
-
-        <div
-            class="desktop-icon"
-            onclick="openWindow('photos-window')"
-        >
-
-            <div class="icon-image">
-                🖼️
-            </div>
-
-            <div class="icon-label">
-                Fotos
-            </div>
-
-        </div>
-
-
-        <div
-            class="desktop-icon"
-            onclick="openWindow('music-window')"
-        >
-
-            <div class="icon-image">
-                🎵
-            </div>
-
-            <div class="icon-label">
-                Música
-            </div>
-
-        </div>
-
-
-        <div
-            class="desktop-icon"
-            onclick="openWindow('reasons-window')"
-        >
-
-            <div class="icon-image">
-                💗
-            </div>
-
-            <div class="icon-label">
-                Razones
-            </div>
-
-        </div>
-
-
-        <div
-            class="desktop-icon"
-            onclick="openWindow('vouchers-window')"
-        >
-
-            <div class="icon-image">
-                🎟️
-            </div>
-
-            <div class="icon-label">
-                Vales
-            </div>
-
-        </div>
-
-
-        <div
-            class="desktop-icon"
-            onclick="openWindow('surprise-window')"
-        >
-
-            <div class="icon-image">
-                🎁
-            </div>
-
-            <div class="icon-label">
-                Sorpresa
-            </div>
-
-        </div>
-
-
-    </div>
-
-
-    <!-- =================================================
-         CARTA
-    ================================================= -->
-
-    <div
-        class="window"
-        id="letter-window"
-    >
-
-        <div class="window-header">
-
-            <div class="window-buttons">
-
-                <div
-                    class="close-button"
-                    onclick="closeWindows()"
-                ></div>
-
-            </div>
-
-            <div class="window-title">
-                Carta 💌
-            </div>
-
-        </div>
-
-
-        <div class="window-content">
-
-            <div class="letter">
-
-                <h2>
-                    Para mi amor ❤️
-                </h2>
-
-                <p>
-                    Mi amor, hice este pequeño espacio
-                    pensando completamente en ti.
-                </p>
-
-                <p>
-                    Quería crear algo diferente, algo que
-                    pudiera guardar algunos de nuestros
-                    recuerdos y todas esas pequeñas cosas
-                    que hacen que nuestra historia sea
-                    especial.
-                </p>
-
-                <p>
-                    Cada foto, cada palabra y cada detalle
-                    de esta página está hecho con muchísimo
-                    cariño.
-                </p>
-
-                <p>
-                    Gracias por cada momento, cada llamada,
-                    cada conversación, cada risa y cada
-                    recuerdo que hemos creado juntos.
-                </p>
-
-                <p>
-                    Espero que cuando vuelvas a entrar aquí,
-                    siempre puedas recordar cuánto te quiero.
-                </p>
-
-                <p class="signature">
-                    Con todo mi amor ❤️
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- =================================================
-         FOTOS
-    ================================================= -->
-
-    <div
-        class="window"
-        id="photos-window"
-    >
-
-        <div class="window-header">
-
-            <div class="window-buttons">
-
-                <div
-                    class="close-button"
-                    onclick="closeWindows()"
-                ></div>
-
-            </div>
-
-            <div class="window-title">
-                Nuestros recuerdos 🖼️
-            </div>
-
-        </div>
-
-
-        <div class="window-content">
-
-            <div class="photo-gallery">
-
-
-                <div
-                    class="photo-counter"
-                    id="photo-counter"
-                >
-                    1 / 31
-                </div>
-
-
-                <div
-                    class="photo-slider"
-                    id="photo-slider"
-                >
-
-
-                    <button
-                        class="photo-arrow photo-prev"
-                        onclick="previousPhoto()"
-                    >
-                        ‹
-                    </button>
-
-
-                    <img
-                        id="main-photo"
-                        class="main-photo"
-                        src="assets/fotos/foto01.jpg"
-                        alt="Recuerdo 1"
-                        draggable="false"
-                    >
-
-
-                    <button
-                        class="photo-arrow photo-next"
-                        onclick="nextPhoto()"
-                    >
-                        ›
-                    </button>
-
-
-                    <div class="photo-hint">
-                        Desliza para cambiar de foto
-                    </div>
-
-
-                </div>
-
-
-                <div
-                    class="photo-thumbnails"
-                    id="photo-thumbnails"
-                ></div>
-
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- =================================================
-         MÚSICA
-    ================================================= -->
-
-    <div
-        class="window"
-        id="music-window"
-    >
-
-        <div class="window-header">
-
-            <div class="window-buttons">
-
-                <div
-                    class="close-button"
-                    onclick="closeWindows()"
-                ></div>
-
-            </div>
-
-            <div class="window-title">
-                Nuestra canción 🎵
-            </div>
-
-        </div>
-
-
-        <div class="window-content">
-
-            <div class="music-content">
-
-                <div class="music-icon">
-                    🎵
-                </div>
-
-                <h2>
-                    Nuestra canción
-                </h2>
-
-                <p>
-                    Una canción para nosotros.
-                </p>
-
-                <audio
-                    id="audio-player"
-                    controls
-                    preload="metadata"
-                >
-
-                    <source
-                        src="assets/musica/nuestra-cancion.mp3"
-                        type="audio/mpeg"
-                    >
-
-                </audio>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- =================================================
-         RAZONES
-    ================================================= -->
-
-    <div
-        class="window"
-        id="reasons-window"
-    >
-
-        <div class="window-header">
-
-            <div class="window-buttons">
-
-                <div
-                    class="close-button"
-                    onclick="closeWindows()"
-                ></div>
-
-            </div>
-
-            <div class="window-title">
-                Razones 💗
-            </div>
-
-        </div>
-
-
-        <div class="window-content">
-
-            <div class="reasons">
-
-                <h2>
-                    Algunas razones por las que te amo
-                </h2>
-
-                <div class="reason">
-                    Porque contigo puedo ser yo mismo.
-                </div>
-
-                <div class="reason">
-                    Porque sabes hacerme sonreír.
-                </div>
-
-                <div class="reason">
-                    Porque cada momento contigo se vuelve
-                    un recuerdo especial.
-                </div>
-
-                <div class="reason">
-                    Porque tienes una forma única de hacerme
-                    sentir querido.
-                </div>
-
-                <div class="reason">
-                    Porque simplemente eres tú. ❤️
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- =================================================
-         VALES
-    ================================================= -->
-
-    <div
-        class="window"
-        id="vouchers-window"
-    >
-
-        <div class="window-header">
-
-            <div class="window-buttons">
-
-                <div
-                    class="close-button"
-                    onclick="closeWindows()"
-                ></div>
-
-            </div>
-
-            <div class="window-title">
-                Vales de amor 🎟️
-            </div>
-
-        </div>
-
-
-        <div class="window-content">
-
-            <div class="vouchers">
-
-
-                <div class="voucher">
-
-                    <div class="voucher-icon">
-                        🤗
-                    </div>
-
-                    <h3>
-                        Vale por un abrazo
-                    </h3>
-
-                    <p>
-                        Canjeable cuando quieras.
-                    </p>
-
-                </div>
-
-
-                <div class="voucher">
-
-                    <div class="voucher-icon">
-                        💋
-                    </div>
-
-                    <h3>
-                        Vale por un beso
-                    </h3>
-
-                    <p>
-                        Sin fecha de vencimiento.
-                    </p>
-
-                </div>
-
-
-                <div class="voucher">
-
-                    <div class="voucher-icon">
-                        🍕
-                    </div>
-
-                    <h3>
-                        Vale por una cita
-                    </h3>
-
-                    <p>
-                        Una cita solo para nosotros.
-                    </p>
-
-                </div>
-
-
-                <div class="voucher">
-
-                    <div class="voucher-icon">
-                        ❤️
-                    </div>
-
-                    <h3>
-                        Vale por amor infinito
-                    </h3>
-
-                    <p>
-                        Este no se puede cancelar.
-                    </p>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- =================================================
-         SORPRESA
-    ================================================= -->
-
-    <div
-        class="window"
-        id="surprise-window"
-    >
-
-        <div class="window-header">
-
-            <div class="window-buttons">
-
-                <div
-                    class="close-button"
-                    onclick="closeWindows()"
-                ></div>
-
-            </div>
-
-            <div class="window-title">
-                Sorpresa 🎁
-            </div>
-
-        </div>
-
-
-        <div class="window-content">
-
-            <div class="surprise">
-
-                <div class="surprise-heart">
-                    ❤️
-                </div>
-
-                <h2>
-                    Te amo
-                </h2>
-
-                <p>
-                    Esta pequeña página está hecha para
-                    guardar un pedacito de nuestra historia.
-                </p>
-
-                <p>
-                    Y aunque solamente sea código,
-                    todo lo que representa es real.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- =================================================
-         DOCK
-    ================================================= -->
-
-    <div class="dock">
-
-
-        <div
-            class="dock-item"
-            onclick="openWindow('letter-window')"
-        >
-            💌
-        </div>
-
-
-        <div
-            class="dock-item"
-            onclick="openWindow('photos-window')"
-        >
-            🖼️
-        </div>
-
-
-        <div
-            class="dock-item"
-            onclick="openWindow('music-window')"
-        >
-            🎵
-        </div>
-
-
-        <div
-            class="dock-item"
-            onclick="openWindow('reasons-window')"
-        >
-            💗
-        </div>
-
-
-        <div
-            class="dock-item"
-            onclick="openWindow('vouchers-window')"
-        >
-            🎟️
-        </div>
-
-
-        <div
-            class="dock-item"
-            onclick="openWindow('surprise-window')"
-        >
-            🎁
-        </div>
-
-
-    </div>
-
+  <div class="desktop-item" data-open="win-carta">
+    <div class="desktop-icon">💌</div>
+    <div class="desktop-label">Carta.pdf</div>
+  </div>
+
+  <div class="desktop-item" data-open="win-momentos">
+    <div class="desktop-icon">🖼</div>
+    <div class="desktop-label">Fotos</div>
+  </div>
+
+  <div class="desktop-item" data-open="win-razones">
+    <div class="desktop-icon">📝</div>
+    <div class="desktop-label">Razones.txt</div>
+  </div>
+
+  <div class="desktop-item" data-open="win-papelera">
+    <div class="desktop-icon">🗑️</div>
+    <div class="desktop-label">Papelera</div>
+  </div>
 
 </div>
 
 
-<!-- =====================================================
-     TOAST
-===================================================== -->
+<!-- =========================
+     DOCK
+========================= -->
 
-<div id="toast"></div>
+<div id="dock-container">
+
+  <div id="dock">
+
+    <div class="dock-icon" data-open="win-carta">
+      💌
+    </div>
+
+    <div class="dock-icon" data-open="win-momentos">
+      📸
+    </div>
+
+    <div class="dock-icon" data-open="win-canciones">
+      🎵
+    </div>
+
+    <div class="dock-icon" data-open="win-razones">
+      💖
+    </div>
+
+    <div class="dock-icon" data-open="win-vales">
+      🎟️
+    </div>
+
+    <div class="dock-icon" data-open="win-sorpresa">
+      🎁
+    </div>
+
+    <div class="dock-icon" data-open="win-config">
+      ⚙️
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================
+     CARTA
+========================= -->
+
+<div id="win-carta" class="window">
+
+  <div class="window-header">
+
+    <div class="window-dots">
+
+      <button class="dot dot-close" data-close="win-carta"></button>
+      <button class="dot dot-min" data-min="win-carta"></button>
+      <button class="dot dot-max" data-max="win-carta"></button>
+
+    </div>
+
+    <div class="window-title">
+      Carta para ti
+    </div>
+
+  </div>
+
+  <div class="window-body">
+
+    <div class="letter-paper">
+
+      <div class="letter-heading">
+        Para Viviana ❤️
+      </div>
+
+      <div id="display-carta"></div>
+
+      <div class="letter-sign">
+        Con todo mi amor,<br>
+        para siempre ❤️
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================
+     FOTOS
+========================= -->
+
+<div id="win-momentos" class="window">
+
+  <div class="window-header">
+
+    <div class="window-dots">
+
+      <button class="dot dot-close" data-close="win-momentos"></button>
+      <button class="dot dot-min" data-min="win-momentos"></button>
+      <button class="dot dot-max" data-max="win-momentos"></button>
+
+    </div>
+
+    <div class="window-title">
+      Nuestras Fotos
+    </div>
+
+  </div>
+
+  <div class="window-body">
+
+    <div class="gallery-grid" id="display-galeria"></div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================
+     CANCIONES
+========================= -->
+
+<div id="win-canciones" class="window">
+
+  <div class="window-header">
+
+    <div class="window-dots">
+
+      <button class="dot dot-close" data-close="win-canciones"></button>
+      <button class="dot dot-min" data-min="win-canciones"></button>
+      <button class="dot dot-max" data-max="win-canciones"></button>
+
+    </div>
+
+    <div class="window-title">
+      Nuestra Canción
+    </div>
+
+  </div>
+
+  <div class="window-body music-card">
+
+    <div class="music-title" id="music-title">
+      Say You Won't Let Go
+    </div>
+
+    <div class="music-artist" id="music-artist">
+      James Arthur
+    </div>
+
+    <div class="yt-container" id="yt-player-box"></div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================
+     RAZONES
+========================= -->
+
+<div id="win-razones" class="window">
+
+  <div class="window-header">
+
+    <div class="window-dots">
+
+      <button class="dot dot-close" data-close="win-razones"></button>
+      <button class="dot dot-min" data-min="win-razones"></button>
+      <button class="dot dot-max" data-max="win-razones"></button>
+
+    </div>
+
+    <div class="window-title">
+      Razones para amarte
+    </div>
+
+  </div>
+
+  <div class="window-body">
+
+    <div class="reason-item">
+      1. Por tu forma tan bonita de sonreír. ❤️
+    </div>
+
+    <div class="reason-item">
+      2. Por cómo haces que incluso un día normal se sienta especial.
+    </div>
+
+    <div class="reason-item">
+      3. Por la paz que siento cuando estoy contigo.
+    </div>
+
+    <div class="reason-item">
+      4. Por cada recuerdo que hemos construido.
+    </div>
+
+    <div class="reason-item">
+      5. Por ser tú, sin tener que cambiar nada.
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================
+     VALES
+========================= -->
+
+<div id="win-vales" class="window">
+
+  <div class="window-header">
+
+    <div class="window-dots">
+
+      <button class="dot dot-close" data-close="win-vales"></button>
+      <button class="dot dot-min" data-min="win-vales"></button>
+      <button class="dot dot-max" data-max="win-vales"></button>
+
+    </div>
+
+    <div class="window-title">
+      Vales Canjeables
+    </div>
+
+  </div>
+
+  <div class="window-body">
+
+    <div class="coupon">
+
+      <div>
+
+        <strong>
+          Cena especial 🍝
+        </strong>
+
+        <p style="font-size:11px;color:#777;margin-top:4px">
+          Canjeable por tu comida favorita.
+        </p>
+
+      </div>
+
+      <button class="claim-btn">
+        Canjear
+      </button>
+
+    </div>
+
+
+    <div class="coupon">
+
+      <div>
+
+        <strong>
+          Tarde de películas 🎬
+        </strong>
+
+        <p style="font-size:11px;color:#777;margin-top:4px">
+          Tú eliges la película y el postre.
+        </p>
+
+      </div>
+
+      <button class="claim-btn">
+        Canjear
+      </button>
+
+    </div>
+
+
+    <div class="coupon">
+
+      <div>
+
+        <strong>
+          Abrazo infinito 🤗
+        </strong>
+
+        <p style="font-size:11px;color:#777;margin-top:4px">
+          Sin fecha de vencimiento.
+        </p>
+
+      </div>
+
+      <button class="claim-btn">
+        Canjear
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================
+     SORPRESA
+========================= -->
+
+<div id="win-sorpresa" class="window">
+
+  <div class="window-header">
+
+    <div class="window-dots">
+
+      <button class="dot dot-close" data-close="win-sorpresa"></button>
+      <button class="dot dot-min" data-min="win-sorpresa"></button>
+      <button class="dot dot-max" data-max="win-sorpresa"></button>
+
+    </div>
+
+    <div class="window-title">
+      Regalito Sorpresa
+    </div>
+
+  </div>
+
+  <div class="window-body surprise">
+
+    <p style="font-weight:600;margin-bottom:18px">
+      Hay algo escondido aquí...
+    </p>
+
+    <div class="gift" id="gift-btn">
+      🎁
+    </div>
+
+    <div id="gift-text">
+      ¡Vale por un postre juntos! 🍦❤️
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================
+     PAPELERA
+========================= -->
+
+<div id="win-papelera" class="window">
+
+  <div class="window-header">
+
+    <div class="window-dots">
+
+      <button class="dot dot-close" data-close="win-papelera"></button>
+      <button class="dot dot-min" data-min="win-papelera"></button>
+      <button class="dot dot-max" data-max="win-papelera"></button>
+
+    </div>
+
+    <div class="window-title">
+      Papelera
+    </div>
+
+  </div>
+
+  <div class="window-body" style="text-align:center;padding-top:55px">
+
+    <div style="font-size:65px">
+      ✨
+    </div>
+
+    <h3 style="margin:14px 0 8px">
+      La papelera está vacía
+    </h3>
+
+    <p style="font-size:13px;color:#666">
+      No hay nada que cambiaría de ti. Eres perfecta tal como eres. ❤️
+    </p>
+
+  </div>
+
+</div>
+
+
+<!-- =========================
+     CONFIGURACIÓN
+========================= -->
+
+<div id="win-config" class="window">
+
+  <div class="window-header">
+
+    <div class="window-dots">
+
+      <button class="dot dot-close" data-close="win-config"></button>
+      <button class="dot dot-min" data-min="win-config"></button>
+      <button class="dot dot-max" data-max="win-config"></button>
+
+    </div>
+
+    <div class="window-title">
+      Ajustes de ViviOS
+    </div>
+
+  </div>
+
+  <div class="window-body">
+
+    <div class="form-group">
+
+      <label>
+        Carta
+      </label>
+
+      <textarea id="cfg-carta" rows="5"></textarea>
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>
+        Fondo de pantalla (Imagen local)
+      </label>
+
+      <input
+        type="file"
+        id="cfg-fondo-file"
+        accept="image/*"
+      >
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>
+        Subir nuevas fotos
+      </label>
+
+      <input
+        type="file"
+        id="cfg-fotos-file"
+        accept="image/*"
+        multiple
+      >
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>
+        Administrar / Eliminar fotos actuales
+      </label>
+
+      <div
+        class="admin-photo-list"
+        id="admin-photo-list"
+      ></div>
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>
+        Enlace o ID del video de YouTube
+      </label>
+
+      <input
+        id="cfg-youtube"
+        placeholder="Ej: https://youtu.be/bdPG8SlmpNc"
+      >
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>
+        Título de la canción
+      </label>
+
+      <input
+        id="cfg-titulo"
+        placeholder="Nuestra canción"
+      >
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>
+        Artista
+      </label>
+
+      <input
+        id="cfg-artista"
+        placeholder="Artista"
+      >
+
+    </div>
+
+
+    <button class="save-btn" id="btn-guardar">
+      Guardar ajustes ❤
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- =========================
+     IMAGE VIEWER
+========================= -->
+
+<div id="image-viewer">
+
+  <button class="viewer-close" id="viewer-close">
+    ×
+  </button>
+
+  <img
+    id="viewer-img"
+    src=""
+    alt="Foto ampliada"
+  >
+
+  <div id="viewer-caption"></div>
+
+  <div class="viewer-nav">
+
+    <button id="viewer-prev">
+      ← Anterior
+    </button>
+
+    <button id="viewer-next">
+      Siguiente →
+    </button>
+
+  </div>
+
+</div>
 
 
 <script>
 
-/* =====================================================
-   CARGA
-===================================================== */
+/* =========================================================
+   DATOS
+========================================================= */
 
-/*
-   Este temporizador está fuera del resto de funciones
-   para que la pantalla de carga pueda desaparecer
-   incluso si algún otro elemento tarda en cargar.
-*/
-
-setTimeout(function() {
-
-    var boot =
-        document.getElementById("boot");
-
-    if (boot) {
-
-        boot.style.opacity = "0";
-
-        setTimeout(function() {
-
-            boot.style.display = "none";
-
-        }, 600);
-
-    }
-
-}, 2000);
+const defaultPhotos = Array.from(
+  {length:31},
+  (_,i) =>
+    `assets/fotos/foto${String(i+1).padStart(2,'0')}.jpg`
+);
 
 
-/* =====================================================
+const defaultData = {
+
+  carta: `Hola mi amor ❤️
+
+Quise crear este pequeño lugar solo para ti, Viviana.
+
+No es simplemente una página. Quería que cada carpeta, cada ventana y cada pequeño detalle escondiera algo que me recuerde a ti.
+
+Gracias por cada sonrisa, por cada momento y por hacer que mi vida tenga recuerdos que quiero guardar para siempre.
+
+Te amo muchísimo. 💕`,
+
+  fondo: '',
+
+  fotos: defaultPhotos,
+
+  youtubeId: 'bdPG8SlmpNc',
+
+  titulo: "Say You Won't Let Go",
+
+  artista: 'James Arthur'
+
+};
+
+
+/* =========================================================
+   CARGAR DATOS
+========================================================= */
+
+let appData;
+
+try{
+
+  const storedData =
+    localStorage.getItem('macViviOSData');
+
+
+  appData =
+    storedData
+      ? JSON.parse(storedData)
+      : {...defaultData};
+
+
+  if(
+    !appData ||
+    typeof appData !== 'object'
+  ){
+    appData = {...defaultData};
+  }
+
+
+  if(!Array.isArray(appData.fotos)){
+
+    appData.fotos =
+      [...defaultPhotos];
+
+  }
+
+
+  /*
+     Si existe un almacenamiento antiguo
+     con fotos vacías, usamos las 31 fotos
+     reales del proyecto.
+  */
+
+  if(appData.fotos.length === 0){
+
+    appData.fotos =
+      [...defaultPhotos];
+
+  }
+
+
+  if(!appData.youtubeId){
+    appData.youtubeId =
+      defaultData.youtubeId;
+  }
+
+
+  if(!appData.titulo){
+    appData.titulo =
+      defaultData.titulo;
+  }
+
+
+  if(!appData.artista){
+    appData.artista =
+      defaultData.artista;
+  }
+
+
+  if(typeof appData.carta !== 'string'){
+    appData.carta =
+      defaultData.carta;
+  }
+
+
+  if(typeof appData.fondo !== 'string'){
+    appData.fondo = '';
+  }
+
+}catch(error){
+
+  console.error(
+    'Error cargando datos:',
+    error
+  );
+
+  appData =
+    {...defaultData};
+
+}
+
+
+/* =========================================================
+   UTILIDADES
+========================================================= */
+
+const $ =
+  selector =>
+    document.querySelector(selector);
+
+
+const $$ =
+  selector =>
+    document.querySelectorAll(selector);
+
+
+let zIndex = 3000;
+
+let viewerIndex = 0;
+
+
+/* =========================================================
+   GUARDAR
+========================================================= */
+
+function save(){
+
+  try{
+
+    localStorage.setItem(
+      'macViviOSData',
+      JSON.stringify(appData)
+    );
+
+    return true;
+
+  }catch(error){
+
+    console.error(
+      'No se pudieron guardar los datos:',
+      error
+    );
+
+    showToast(
+      'No hay suficiente espacio para guardar estos archivos'
+    );
+
+    return false;
+
+  }
+
+}
+
+
+/* =========================================================
    VENTANAS
-===================================================== */
+========================================================= */
 
-function openWindow(id) {
+function abrirVentana(id){
 
-    closeWindows();
-
-    var windowElement =
-        document.getElementById(id);
-
-    if (windowElement) {
-
-        windowElement.classList.add("active");
-
-    }
-
-}
+  const w =
+    document.getElementById(id);
 
 
-function closeWindows() {
-
-    var windows =
-        document.querySelectorAll(".window");
-
-    for (
-        var i = 0;
-        i < windows.length;
-        i++
-    ) {
-
-        windows[i].classList.remove("active");
-
-    }
-
-}
+  if(!w) return;
 
 
-/* =====================================================
-   RELOJ
-===================================================== */
+  if(w.classList.contains('minimized')){
 
-function updateClock() {
-
-    var clock =
-        document.getElementById("clock");
-
-    if (!clock) {
-        return;
-    }
-
-    var now =
-        new Date();
-
-    var hours =
-        String(now.getHours())
-        .padStart(2, "0");
-
-    var minutes =
-        String(now.getMinutes())
-        .padStart(2, "0");
-
-    clock.textContent =
-        hours + ":" + minutes;
-
-}
-
-updateClock();
-
-setInterval(
-    updateClock,
-    1000
-);
-
-
-/* =====================================================
-   FOTOS
-===================================================== */
-
-var photos = [
-
-    "assets/fotos/foto01.jpg",
-    "assets/fotos/foto02.jpg",
-    "assets/fotos/foto03.jpg",
-    "assets/fotos/foto04.jpg",
-    "assets/fotos/foto05.jpg",
-    "assets/fotos/foto06.jpg",
-    "assets/fotos/foto07.jpg",
-    "assets/fotos/foto08.jpg",
-    "assets/fotos/foto09.jpg",
-    "assets/fotos/foto10.jpg",
-    "assets/fotos/foto11.jpg",
-    "assets/fotos/foto12.jpg",
-    "assets/fotos/foto13.jpg",
-    "assets/fotos/foto14.jpg",
-    "assets/fotos/foto15.jpg",
-    "assets/fotos/foto16.jpg",
-    "assets/fotos/foto17.jpg",
-    "assets/fotos/foto18.jpg",
-    "assets/fotos/foto19.jpg",
-    "assets/fotos/foto20.jpg",
-    "assets/fotos/foto21.jpg",
-    "assets/fotos/foto22.jpg",
-    "assets/fotos/foto23.jpg",
-    "assets/fotos/foto24.jpg",
-    "assets/fotos/foto25.jpg",
-    "assets/fotos/foto26.jpg",
-    "assets/fotos/foto27.jpg",
-    "assets/fotos/foto28.jpg",
-    "assets/fotos/foto29.jpg",
-    "assets/fotos/foto30.jpg",
-    "assets/fotos/foto31.jpg"
-
-];
-
-
-var currentPhoto = 0;
-
-var mainPhoto =
-    document.getElementById("main-photo");
-
-var photoCounter =
-    document.getElementById("photo-counter");
-
-var thumbnailsContainer =
-    document.getElementById(
-        "photo-thumbnails"
+    w.classList.remove(
+      'minimized'
     );
 
-
-/* =====================================================
-   MOSTRAR FOTO
-===================================================== */
-
-function showPhoto(index, direction) {
-
-    if (index < 0) {
-
-        index =
-            photos.length - 1;
-
-    }
-
-    if (index >= photos.length) {
-
-        index = 0;
-
-    }
-
-    currentPhoto = index;
+  }
 
 
-    /*
-       Animación
-    */
+  w.classList.add('active');
 
-    mainPhoto.classList.remove(
-        "photo-slide-left",
-        "photo-slide-right"
-    );
+  w.classList.remove('closing');
 
-    void mainPhoto.offsetWidth;
+  w.style.zIndex =
+    ++zIndex;
 
 
-    if (direction === "left") {
-
-        mainPhoto.classList.add(
-            "photo-slide-left"
-        );
-
-    }
-
-    if (direction === "right") {
-
-        mainPhoto.classList.add(
-            "photo-slide-right"
-        );
-
-    }
+  $$('.dock-icon').forEach(
+    x =>
+      x.classList.remove('open')
+  );
 
 
-    mainPhoto.src =
-        photos[currentPhoto];
-
-    mainPhoto.alt =
-        "Recuerdo " +
-        (currentPhoto + 1);
+  $$('.dock-icon[data-open="'+id+'"]').forEach(
+    x =>
+      x.classList.add('open')
+  );
 
 
-    photoCounter.textContent =
-        (currentPhoto + 1) +
-        " / " +
-        photos.length;
+  if(id === 'win-carta'){
 
+    typeLetter();
 
-    updateThumbnails();
+  }
 
 }
 
 
-/* =====================================================
-   SIGUIENTE
-===================================================== */
+function cerrarVentana(id){
 
-function nextPhoto() {
+  const w =
+    document.getElementById(id);
 
-    showPhoto(
-        currentPhoto + 1,
-        "left"
-    );
 
-}
+  if(!w) return;
 
 
-/* =====================================================
-   ANTERIOR
-===================================================== */
+  w.classList.add(
+    'closing'
+  );
 
-function previousPhoto() {
 
-    showPhoto(
-        currentPhoto - 1,
-        "right"
-    );
+  setTimeout(
+    ()=>{
 
-}
+      w.classList.remove(
+        'active',
+        'closing'
+      );
 
-
-/* =====================================================
-   MINIATURAS
-===================================================== */
-
-function createThumbnails() {
-
-    thumbnailsContainer.innerHTML = "";
-
-
-    for (
-        var i = 0;
-        i < photos.length;
-        i++
-    ) {
-
-        var thumb =
-            document.createElement("img");
-
-
-        thumb.className =
-            "photo-thumb";
-
-
-        thumb.src =
-            photos[i];
-
-
-        thumb.alt =
-            "Foto " +
-            (i + 1);
-
-
-        thumb.draggable = false;
-
-
-        thumb.dataset.index =
-            i;
-
-
-        thumb.addEventListener(
-            "click",
-            function() {
-
-                var index =
-                    parseInt(
-                        this.dataset.index,
-                        10
-                    );
-
-                showPhoto(index);
-
-            }
-        );
-
-
-        thumbnailsContainer.appendChild(
-            thumb
-        );
-
-    }
-
-
-    updateThumbnails();
-
-}
-
-
-function updateThumbnails() {
-
-    var thumbs =
-        document.querySelectorAll(
-            ".photo-thumb"
-        );
-
-
-    for (
-        var i = 0;
-        i < thumbs.length;
-        i++
-    ) {
-
-        thumbs[i].classList.remove(
-            "active"
-        );
-
-    }
-
-
-    if (thumbs[currentPhoto]) {
-
-        thumbs[currentPhoto]
-            .classList.add("active");
-
-
-        thumbs[currentPhoto]
-            .scrollIntoView({
-                behavior: "smooth",
-                block: "nearest",
-                inline: "center"
-            });
-
-    }
-
-}
-
-
-createThumbnails();
-
-
-/* =====================================================
-   PRE-CARGAR LAS 31 FOTOS
-===================================================== */
-
-for (
-    var i = 0;
-    i < photos.length;
-    i++
-) {
-
-    var preload =
-        new Image();
-
-    preload.src =
-        photos[i];
-
-}
-
-
-/* =====================================================
-   SWIPE ANDROID
-===================================================== */
-
-var photoSlider =
-    document.getElementById(
-        "photo-slider"
-    );
-
-
-var touchStartX = 0;
-var touchStartY = 0;
-
-var touchStartTime = 0;
-
-var swipeAlreadyTriggered = false;
-
-
-/*
-   TOUCHSTART
-*/
-
-photoSlider.addEventListener(
-    "touchstart",
-    function(event) {
-
-        if (
-            !event.touches ||
-            event.touches.length !== 1
-        ) {
-            return;
-        }
-
-
-        touchStartX =
-            event.touches[0].clientX;
-
-
-        touchStartY =
-            event.touches[0].clientY;
-
-
-        touchStartTime =
-            Date.now();
-
-
-        swipeAlreadyTriggered =
-            false;
+      updateDock(id);
 
     },
-    {
-        passive: true
-    }
+    210
+  );
+
+}
+
+
+function minimizarVentana(id){
+
+  const w =
+    document.getElementById(id);
+
+
+  if(!w) return;
+
+
+  w.classList.remove(
+    'active'
+  );
+
+  w.classList.add(
+    'minimized'
+  );
+
+  updateDock(id);
+
+}
+
+
+function updateDock(id){
+
+  $$('.dock-icon[data-open="'+id+'"]')
+    .forEach(
+      x =>
+        x.classList.remove('open')
+    );
+
+}
+
+
+function maximizarVentana(id){
+
+  const w =
+    document.getElementById(id);
+
+
+  if(!w) return;
+
+
+  w.classList.toggle(
+    'maximized'
+  );
+
+}
+
+
+/* =========================================================
+   BOTONES DE VENTANAS
+========================================================= */
+
+$$('[data-open]').forEach(
+  el => {
+
+    el.addEventListener(
+      'click',
+      e => {
+
+        e.stopPropagation();
+
+        abrirVentana(
+          el.dataset.open
+        );
+
+      }
+    );
+
+  }
 );
 
 
-/*
-   TOUCHEND
-*/
+$$('[data-close]').forEach(
+  el => {
 
-photoSlider.addEventListener(
-    "touchend",
-    function(event) {
+    el.addEventListener(
+      'click',
+      e => {
 
-        if (
-            swipeAlreadyTriggered
-        ) {
-            return;
-        }
+        e.stopPropagation();
 
+        cerrarVentana(
+          el.dataset.close
+        );
 
-        if (
-            !event.changedTouches ||
-            event.changedTouches.length !== 1
-        ) {
-            return;
-        }
+      }
+    );
 
-
-        var touch =
-            event.changedTouches[0];
-
-
-        var endX =
-            touch.clientX;
-
-        var endY =
-            touch.clientY;
-
-
-        var differenceX =
-            endX - touchStartX;
-
-
-        var differenceY =
-            endY - touchStartY;
-
-
-        var duration =
-            Date.now() -
-            touchStartTime;
-
-
-        /*
-           El gesto tiene que ser relativamente
-           rápido y claramente horizontal.
-        */
-
-        if (
-            duration > 1200
-        ) {
-            return;
-        }
-
-
-        if (
-            Math.abs(differenceX) < 35
-        ) {
-            return;
-        }
-
-
-        if (
-            Math.abs(differenceX) <=
-            Math.abs(differenceY)
-        ) {
-            return;
-        }
-
-
-        swipeAlreadyTriggered =
-            true;
-
-
-        if (
-            differenceX < 0
-        ) {
-
-            nextPhoto();
-
-        } else {
-
-            previousPhoto();
-
-        }
-
-    },
-    {
-        passive: true
-    }
+  }
 );
 
 
-/* =====================================================
-   EVITAR ARRASTRAR IMAGEN
-===================================================== */
+$$('[data-min]').forEach(
+  el => {
 
-mainPhoto.addEventListener(
-    "dragstart",
-    function(event) {
+    el.addEventListener(
+      'click',
+      e => {
 
-        event.preventDefault();
+        e.stopPropagation();
 
-    }
+        minimizarVentana(
+          el.dataset.min
+        );
+
+      }
+    );
+
+  }
 );
 
 
-/* =====================================================
-   TECLADO
-===================================================== */
+$$('[data-max]').forEach(
+  el => {
 
-document.addEventListener(
-    "keydown",
-    function(event) {
+    el.addEventListener(
+      'click',
+      e => {
 
-        var photosWindow =
-            document.getElementById(
-                "photos-window"
+        e.stopPropagation();
+
+        maximizarVentana(
+          el.dataset.max
+        );
+
+      }
+    );
+
+  }
+);
+
+
+/* =========================================================
+   Z-INDEX
+========================================================= */
+
+$$('.window').forEach(
+  w => {
+
+    w.addEventListener(
+      'mousedown',
+      () =>
+        w.style.zIndex =
+          ++zIndex
+    );
+
+
+    w.addEventListener(
+      'touchstart',
+      () =>
+        w.style.zIndex =
+          ++zIndex,
+      {passive:true}
+    );
+
+  }
+);
+
+
+/* =========================================================
+   DRAG
+========================================================= */
+
+let drag = null;
+
+
+$$('.window-header').forEach(
+  header => {
+
+    const start =
+      (clientX,clientY) => {
+
+        const w =
+          header.closest('.window');
+
+
+        if(
+          w.classList.contains(
+            'maximized'
+          )
+        ){
+          return;
+        }
+
+
+        const r =
+          w.getBoundingClientRect();
+
+
+        drag = {
+
+          w,
+
+          startX:clientX,
+
+          startY:clientY,
+
+          left:r.left,
+
+          top:r.top
+
+        };
+
+
+        w.style.transform =
+          'none';
+
+        w.style.left =
+          r.left+'px';
+
+        w.style.top =
+          r.top+'px';
+
+      };
+
+
+    const move =
+      (x,y) => {
+
+        if(!drag) return;
+
+
+        drag.w.style.left =
+          (
+            drag.left +
+            x -
+            drag.startX
+          )+'px';
+
+
+        drag.w.style.top =
+          (
+            drag.top +
+            y -
+            drag.startY
+          )+'px';
+
+      };
+
+
+    header.addEventListener(
+      'mousedown',
+      e => {
+
+        if(
+          e.target.classList.contains(
+            'dot'
+          )
+        ){
+          return;
+        }
+
+
+        start(
+          e.clientX,
+          e.clientY
+        );
+
+
+        const mm =
+          e =>
+            move(
+              e.clientX,
+              e.clientY
             );
 
 
-        if (
-            !photosWindow.classList.contains(
-                "active"
-            )
-        ) {
-            return;
+        const up =
+          () => {
+
+            drag = null;
+
+
+            document.removeEventListener(
+              'mousemove',
+              mm
+            );
+
+
+            document.removeEventListener(
+              'mouseup',
+              up
+            );
+
+          };
+
+
+        document.addEventListener(
+          'mousemove',
+          mm
+        );
+
+
+        document.addEventListener(
+          'mouseup',
+          up
+        );
+
+      }
+    );
+
+
+    header.addEventListener(
+      'touchstart',
+      e => {
+
+        if(
+          e.target.classList.contains(
+            'dot'
+          )
+        ){
+          return;
         }
 
 
-        if (
-            event.key === "ArrowLeft"
-        ) {
-
-            previousPhoto();
-
-        }
+        const t =
+          e.touches[0];
 
 
-        if (
-            event.key === "ArrowRight"
-        ) {
-
-            nextPhoto();
-
-        }
+        start(
+          t.clientX,
+          t.clientY
+        );
 
 
-        if (
-            event.key === "Escape"
-        ) {
+        const mm =
+          e => {
 
-            closeWindows();
+            const t =
+              e.touches[0];
 
-        }
 
-    }
+            move(
+              t.clientX,
+              t.clientY
+            );
+
+          };
+
+
+        const up =
+          () => {
+
+            drag = null;
+
+
+            document.removeEventListener(
+              'touchmove',
+              mm
+            );
+
+
+            document.removeEventListener(
+              'touchend',
+              up
+            );
+
+          };
+
+
+        document.addEventListener(
+          'touchmove',
+          mm,
+          {passive:false}
+        );
+
+
+        document.addEventListener(
+          'touchend',
+          up
+        );
+
+      },
+      {passive:true}
+    );
+
+  }
 );
 
 
-/* =====================================================
-   INICIAR GALERÍA
-===================================================== */
+/* =========================================================
+   CARTA
+========================================================= */
 
-showPhoto(0);
+let typingTimer;
+
+
+function typeLetter(){
+
+  clearTimeout(
+    typingTimer
+  );
+
+
+  const el =
+    $('#display-carta');
+
+
+  if(!el) return;
+
+
+  const text =
+    appData.carta || '';
+
+
+  if(
+    el.dataset.done === text
+  ){
+    return;
+  }
+
+
+  el.dataset.done =
+    text;
+
+
+  el.innerHTML =
+    '';
+
+
+  let i = 0;
+
+
+  function step(){
+
+    if(
+      i < text.length
+    ){
+
+      el.textContent +=
+        text[i++];
+
+
+      typingTimer =
+        setTimeout(
+          step,
+          12
+        );
+
+    }
+
+  }
+
+
+  step();
+
+}
+
+
+/* =========================================================
+   YOUTUBE
+========================================================= */
+
+function extractYouTubeId(
+  urlOrId
+){
+
+  if(!urlOrId){
+    return 'bdPG8SlmpNc';
+  }
+
+
+  urlOrId =
+    urlOrId.trim();
+
+
+  if(
+    urlOrId.length === 11 &&
+    !urlOrId.includes('/') &&
+    !urlOrId.includes('.')
+  ){
+
+    return urlOrId;
+
+  }
+
+
+  const regExp =
+    /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+
+
+  const match =
+    urlOrId.match(
+      regExp
+    );
+
+
+  return (
+    match &&
+    match[2] &&
+    match[2].length === 11
+  )
+    ? match[2]
+    : urlOrId;
+
+}
+
+
+/* =========================================================
+   PRECARGA DE FOTOS
+========================================================= */
+
+function preloadPhotos(){
+
+  if(
+    !appData.fotos ||
+    !appData.fotos.length
+  ){
+    return;
+  }
+
+
+  appData.fotos.forEach(
+    src => {
+
+      const img =
+        new Image();
+
+      img.src =
+        src;
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   RENDER
+========================================================= */
+
+function renderApp(){
+
+  try{
+
+    $('#cfg-carta').value =
+      appData.carta || '';
+
+
+    $('#cfg-titulo').value =
+      appData.titulo ||
+      defaultData.titulo;
+
+
+    $('#cfg-artista').value =
+      appData.artista ||
+      defaultData.artista;
+
+
+    $('#cfg-youtube').value =
+      appData.youtubeId ||
+      defaultData.youtubeId;
+
+
+    /* =========================
+       FONDO
+    ========================= */
+
+    if(appData.fondo){
+
+      document.body.style.backgroundImage =
+        `url("${appData.fondo}")`;
+
+    }else{
+
+      document.body.style.backgroundImage =
+        'linear-gradient(135deg,#ff9a9e,#fecfef 48%,#a1c4fd)';
+
+    }
+
+
+    /* =========================
+       GALERÍA
+    ========================= */
+
+    const gal =
+      $('#display-galeria');
+
+
+    gal.innerHTML =
+      '';
+
+
+    if(
+      !appData.fotos ||
+      appData.fotos.length === 0
+    ){
+
+      gal.innerHTML = `
+        <div style="
+          grid-column:1 / -1;
+          text-align:center;
+          padding:40px;
+          color:#666;
+          font-size:13px;
+        ">
+          No hay fotos aún.
+          Sube algunas desde los Ajustes (⚙).
+        </div>
+      `;
+
+    }else{
+
+      appData.fotos.forEach(
+        (src,i) => {
+
+          const card =
+            document.createElement(
+              'div'
+            );
+
+
+          card.className =
+            'photo-card';
+
+
+          card.style.animationDelay =
+            (i*.07)+'s';
+
+
+          const img =
+            document.createElement(
+              'img'
+            );
+
+
+          img.src =
+            src;
+
+
+          img.alt =
+            'Foto '+(i+1);
+
+
+          img.loading =
+            'lazy';
+
+
+          img.onerror =
+            () => {
+
+              img.style.display =
+                'none';
+
+            };
+
+
+          const p =
+            document.createElement(
+              'p'
+            );
+
+
+          p.textContent =
+            'Foto #'+(i+1);
+
+
+          card.append(
+            img,
+            p
+          );
+
+
+          card.addEventListener(
+            'click',
+            () =>
+              openViewer(i)
+          );
+
+
+          gal.appendChild(
+            card
+          );
+
+        }
+      );
+
+    }
+
+
+    /* =========================
+       ADMINISTRACIÓN
+    ========================= */
+
+    const adminList =
+      $('#admin-photo-list');
+
+
+    adminList.innerHTML =
+      '';
+
+
+    if(
+      !appData.fotos ||
+      appData.fotos.length === 0
+    ){
+
+      adminList.innerHTML = `
+        <div style="
+          font-size:11px;
+          color:#777;
+          text-align:center;
+          padding:10px
+        ">
+          No hay fotos para eliminar
+        </div>
+      `;
+
+    }else{
+
+      appData.fotos.forEach(
+        (src,i) => {
+
+          const row =
+            document.createElement(
+              'div'
+            );
+
+
+          row.className =
+            'admin-photo-row';
+
+
+          const thumb =
+            document.createElement(
+              'img'
+            );
+
+
+          thumb.src =
+            src;
+
+
+          const lbl =
+            document.createElement(
+              'span'
+            );
+
+
+          lbl.textContent =
+            `Foto #${i+1}`;
+
+
+          const delBtn =
+            document.createElement(
+              'button'
+            );
+
+
+          delBtn.className =
+            'del-photo-btn';
+
+
+          delBtn.textContent =
+            'Eliminar';
+
+
+          delBtn.onclick =
+            () => {
+
+              appData.fotos.splice(
+                i,
+                1
+              );
+
+
+              save();
+
+              renderApp();
+
+              showToast(
+                'Foto eliminada'
+              );
+
+            };
+
+
+          row.append(
+            thumb,
+            lbl,
+            delBtn
+          );
+
+
+          adminList.appendChild(
+            row
+          );
+
+        }
+      );
+
+    }
+
+
+    /* =========================
+       MÚSICA
+    ========================= */
+
+    $('#music-title').textContent =
+      appData.titulo ||
+      defaultData.titulo;
+
+
+    $('#music-artist').textContent =
+      appData.artista ||
+      defaultData.artista;
+
+
+    const ytBox =
+      $('#yt-player-box');
+
+
+    ytBox.innerHTML =
+      '';
+
+
+    const cleanId =
+      extractYouTubeId(
+        appData.youtubeId
+      );
+
+
+    if(cleanId){
+
+      ytBox.innerHTML = `
+        <iframe
+          src="https://www.youtube.com/embed/${cleanId}?autoplay=0"
+          allow="
+            accelerometer;
+            autoplay;
+            clipboard-write;
+            encrypted-media;
+            gyroscope;
+            picture-in-picture
+          "
+          allowfullscreen>
+        </iframe>
+      `;
+
+    }
+
+
+    $('#display-carta')
+      .dataset.done =
+        '';
+
+
+    preloadPhotos();
+
+
+  }catch(error){
+
+    console.error(
+      'Error renderizando ViviOS:',
+      error
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   BASE64
+========================================================= */
+
+const toBase64 =
+  file => {
+
+    return new Promise(
+      (resolve,reject) => {
+
+        const reader =
+          new FileReader();
+
+
+        reader.readAsDataURL(
+          file
+        );
+
+
+        reader.onload =
+          () =>
+            resolve(
+              reader.result
+            );
+
+
+        reader.onerror =
+          error =>
+            reject(error);
+
+      }
+    );
+
+  };
+
+
+/* =========================================================
+   GUARDAR AJUSTES
+========================================================= */
+
+$('#btn-guardar')
+  .addEventListener(
+    'click',
+    async () => {
+
+      appData.carta =
+        $('#cfg-carta').value;
+
+
+      appData.titulo =
+        $('#cfg-titulo').value.trim()
+        ||
+        defaultData.titulo;
+
+
+      appData.artista =
+        $('#cfg-artista').value.trim()
+        ||
+        defaultData.artista;
+
+
+      appData.youtubeId =
+        $('#cfg-youtube').value.trim()
+        ||
+        defaultData.youtubeId;
+
+
+      try{
+
+        const fondoFile =
+          $('#cfg-fondo-file').files[0];
+
+
+        if(fondoFile){
+
+          appData.fondo =
+            await toBase64(
+              fondoFile
+            );
+
+        }
+
+
+        const fotosFiles =
+          $('#cfg-fotos-file').files;
+
+
+        if(
+          fotosFiles.length > 0
+        ){
+
+          const nuevasFotos =
+            [];
+
+
+          for(
+            let file of fotosFiles
+          ){
+
+            nuevasFotos.push(
+              await toBase64(
+                file
+              )
+            );
+
+          }
+
+
+          appData.fotos = [
+            ...nuevasFotos,
+            ...(appData.fotos || [])
+          ];
+
+        }
+
+
+        const saved =
+          save();
+
+
+        if(saved){
+
+          renderApp();
+
+
+          cerrarVentana(
+            'win-config'
+          );
+
+
+          showToast(
+            '¡Ajustes y cambios guardados! ❤️'
+          );
+
+        }
+
+      }catch(err){
+
+        console.error(
+          'Error procesando archivos:',
+          err
+        );
+
+
+        showToast(
+          'Error al procesar los archivos'
+        );
+
+      }
+
+    }
+  );
+
+
+/* =========================================================
+   VALES
+========================================================= */
+
+$$('.claim-btn')
+  .forEach(
+    btn => {
+
+      btn.addEventListener(
+        'click',
+        () => {
+
+          btn.textContent =
+            '¡CANJEADO! ❤️';
+
+
+          btn.classList.add(
+            'claimed'
+          );
+
+
+          showToast(
+            'Vale canjeado 💕'
+          );
+
+        }
+      );
+
+    }
+  );
+
+
+/* =========================================================
+   REGALO
+========================================================= */
+
+$('#gift-btn')
+  .addEventListener(
+    'click',
+    () => {
+
+      $('#gift-text')
+        .style.display =
+          'block';
+
+
+      $('#gift-btn')
+        .style.animation =
+          'none';
+
+
+      burstHearts();
+
+    }
+  );
+
+
+/* =========================================================
+   VISOR DE FOTOS
+========================================================= */
+
+function openViewer(i){
+
+  if(
+    !appData.fotos ||
+    !appData.fotos.length
+  ){
+    return;
+  }
+
+
+  viewerIndex =
+    i;
+
+
+  updateViewer();
+
+
+  $('#image-viewer')
+    .classList.add(
+      'show'
+    );
+
+}
+
+
+function updateViewer(){
+
+  if(
+    !appData.fotos ||
+    !appData.fotos.length
+  ){
+    return;
+  }
+
+
+  const src =
+    appData.fotos[
+      viewerIndex
+    ];
+
+
+  const img =
+    $('#viewer-img');
+
+
+  img.style.opacity =
+    '0';
+
+
+  img.style.transform =
+    'scale(.98)';
+
+
+  img.src =
+    src;
+
+
+  img.onload =
+    () => {
+
+      img.style.opacity =
+        '1';
+
+      img.style.transform =
+        'scale(1)';
+
+    };
+
+
+  $('#viewer-caption')
+    .textContent =
+      `Foto ${viewerIndex+1} de ${appData.fotos.length}`;
+
+}
+
+
+/* =========================
+   CERRAR VISOR
+========================= */
+
+$('#viewer-close').onclick =
+  () => {
+
+    $('#image-viewer')
+      .classList.remove(
+        'show'
+      );
+
+  };
+
+
+/* =========================
+   ANTERIOR
+========================= */
+
+function previousPhoto(){
+
+  if(
+    !appData.fotos ||
+    !appData.fotos.length
+  ){
+    return;
+  }
+
+
+  viewerIndex =
+    (
+      viewerIndex -
+      1 +
+      appData.fotos.length
+    ) %
+    appData.fotos.length;
+
+
+  updateViewer();
+
+}
+
+
+$('#viewer-prev').onclick =
+  previousPhoto;
+
+
+/* =========================
+   SIGUIENTE
+========================= */
+
+function nextPhoto(){
+
+  if(
+    !appData.fotos ||
+    !appData.fotos.length
+  ){
+    return;
+  }
+
+
+  viewerIndex =
+    (
+      viewerIndex +
+      1
+    ) %
+    appData.fotos.length;
+
+
+  updateViewer();
+
+}
+
+
+$('#viewer-next').onclick =
+  nextPhoto;
+
+
+/* =========================================================
+   SWIPE EN ANDROID
+========================================================= */
+
+const imageViewer =
+  $('#image-viewer');
+
+
+const viewerImage =
+  $('#viewer-img');
+
+
+let touchStartX = 0;
+
+let touchStartY = 0;
+
+let touchStartTime = 0;
+
+let swipeHandled = false;
+
+
+imageViewer.addEventListener(
+  'touchstart',
+  e => {
+
+    if(
+      !e.touches ||
+      e.touches.length !== 1
+    ){
+      return;
+    }
+
+
+    touchStartX =
+      e.touches[0].clientX;
+
+
+    touchStartY =
+      e.touches[0].clientY;
+
+
+    touchStartTime =
+      Date.now();
+
+
+    swipeHandled =
+      false;
+
+  },
+  {passive:true}
+);
+
+
+imageViewer.addEventListener(
+  'touchend',
+  e => {
+
+    if(swipeHandled){
+      return;
+    }
+
+
+    if(
+      !e.changedTouches ||
+      e.changedTouches.length !== 1
+    ){
+      return;
+    }
+
+
+    const endX =
+      e.changedTouches[0].clientX;
+
+
+    const endY =
+      e.changedTouches[0].clientY;
+
+
+    const dx =
+      endX -
+      touchStartX;
+
+
+    const dy =
+      endY -
+      touchStartY;
+
+
+    const duration =
+      Date.now() -
+      touchStartTime;
+
+
+    if(
+      duration > 1200
+    ){
+      return;
+    }
+
+
+    if(
+      Math.abs(dx) < 35
+    ){
+      return;
+    }
+
+
+    if(
+      Math.abs(dx) <=
+      Math.abs(dy)
+    ){
+      return;
+    }
+
+
+    swipeHandled =
+      true;
+
+
+    if(dx < 0){
+
+      nextPhoto();
+
+    }else{
+
+      previousPhoto();
+
+    }
+
+  },
+  {passive:true}
+);
+
+
+viewerImage.addEventListener(
+  'dragstart',
+  e =>
+    e.preventDefault()
+);
+
+
+/* =========================================================
+   TECLADO
+========================================================= */
+
+document.addEventListener(
+  'keydown',
+  e => {
+
+    const viewer =
+      $('#image-viewer');
+
+
+    if(
+      !viewer.classList.contains(
+        'show'
+      )
+    ){
+      return;
+    }
+
+
+    if(e.key === 'ArrowLeft'){
+
+      e.preventDefault();
+
+      previousPhoto();
+
+    }
+
+
+    if(e.key === 'ArrowRight'){
+
+      e.preventDefault();
+
+      nextPhoto();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   RELOJ
+========================================================= */
+
+function updateClock(){
+
+  const clock =
+    $('#mac-clock');
+
+
+  if(!clock){
+    return;
+  }
+
+
+  clock.textContent =
+    new Date().toLocaleString(
+      'es-ES',
+      {
+        weekday:'short',
+        day:'numeric',
+        month:'short',
+        hour:'2-digit',
+        minute:'2-digit'
+      }
+    );
+
+}
+
+
+updateClock();
+
+
+setInterval(
+  updateClock,
+  1000
+);
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+function showToast(msg){
+
+  const old =
+    $('.toast');
+
+
+  if(old){
+    old.remove();
+  }
+
+
+  const t =
+    document.createElement(
+      'div'
+    );
+
+
+  t.className =
+    'toast';
+
+
+  t.textContent =
+    msg;
+
+
+  Object.assign(
+    t.style,
+    {
+      position:'fixed',
+      top:'48px',
+      left:'50%',
+      transform:'translateX(-50%)',
+      zIndex:65000,
+      padding:'10px 16px',
+      borderRadius:'20px',
+      background:'rgba(30,30,30,.78)',
+      color:'#fff',
+      fontSize:'12px',
+      backdropFilter:'blur(15px)',
+      boxShadow:'0 8px 25px rgba(0,0,0,.25)'
+    }
+  );
+
+
+  document.body.appendChild(
+    t
+  );
+
+
+  setTimeout(
+    () =>
+      t.remove(),
+    2200
+  );
+
+}
+
+
+/* =========================================================
+   CORAZONES
+========================================================= */
+
+function heart(x,y){
+
+  const h =
+    document.createElement(
+      'div'
+    );
+
+
+  h.className =
+    'click-heart';
+
+
+  h.textContent =
+    [
+      '💖',
+      '💕',
+      '❤️',
+      '💗'
+    ]
+    [
+      Math.floor(
+        Math.random()*4
+      )
+    ];
+
+
+  h.style.left =
+    x+'px';
+
+
+  h.style.top =
+    y+'px';
+
+
+  document.body.appendChild(
+    h
+  );
+
+
+  setTimeout(
+    () =>
+      h.remove(),
+    900
+  );
+
+}
+
+
+document.addEventListener(
+  'click',
+  e => {
+
+    if(
+      e.target.closest(
+        'button,input,textarea,.window-header,.dock,.desktop-item,#image-viewer'
+      )
+    ){
+      return;
+    }
+
+
+    heart(
+      e.clientX,
+      e.clientY
+    );
+
+  }
+);
+
+
+/* =========================================================
+   EXPLOSIÓN DE CORAZONES
+========================================================= */
+
+function burstHearts(){
+
+  for(
+    let i=0;
+    i<14;
+    i++
+  ){
+
+    setTimeout(
+      () => {
+
+        heart(
+
+          innerWidth/2 +
+          (Math.random()-.5)*220,
+
+          innerHeight/2 +
+          (Math.random()-.5)*120
+
+        );
+
+      },
+      i*45
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   TECLA ESC
+========================================================= */
+
+document.addEventListener(
+  'keydown',
+  e => {
+
+    if(
+      e.key === 'Escape'
+    ){
+
+      $('#image-viewer')
+        .classList.remove(
+          'show'
+        );
+
+
+      $$('.window.active')
+        .forEach(
+          w =>
+            cerrarVentana(
+              w.id
+            )
+        );
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   BOOT
+========================================================= */
+
+let bootDone =
+  false;
+
+
+function launchOS(){
+
+  if(bootDone){
+    return;
+  }
+
+
+  bootDone =
+    true;
+
+
+  try{
+
+    renderApp();
+
+  }catch(error){
+
+    console.error(
+      'Error iniciando ViviOS:',
+      error
+    );
+
+  }
+
+
+  const boot =
+    $('#boot');
+
+
+  if(boot){
+
+    boot.classList.add(
+      'hide'
+    );
+
+  }
+
+
+  $('#login')
+    .classList.add(
+      'show'
+    );
+
+}
+
+
+/*
+   Transición normal:
+   la barra de carga dura aproximadamente
+   1.8 segundos.
+*/
+
+setTimeout(
+  launchOS,
+  1800
+);
+
+
+/*
+   SEGURIDAD:
+   si por alguna razón el navegador,
+   el teléfono o alguna carga de imagen
+   retrasa el JavaScript principal,
+   la pantalla de boot jamás debe quedarse
+   permanentemente bloqueada.
+*/
+
+setTimeout(
+  () => {
+
+    if(!bootDone){
+
+      launchOS();
+
+    }
+
+  },
+  3000
+);
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+$('#login-btn')
+  .addEventListener(
+    'click',
+    () => {
+
+      $('#login')
+        .style.opacity =
+          '0';
+
+
+      setTimeout(
+        () => {
+
+          $('#login')
+            .style.display =
+              'none';
+
+
+          showToast(
+            'Bienvenida a ViviOS ❤️'
+          );
+
+        },
+        700
+      );
+
+    }
+  );
+
 
 </script>
 
